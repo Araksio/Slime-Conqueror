@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1701.0" prefWidth="1701.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InGameController">
+   <children>
+      <Label fx:id="hpBar" layoutX="14.0" layoutY="87.0" prefHeight="72.0" prefWidth="569.0" text="HP" textFill="#37cd26">
+         <font>
+            <Font name="Eras Bold ITC" size="50.0" />
+         </font></Label>
+      <Label fx:id="mpBar" layoutX="14.0" layoutY="160.0" prefHeight="82.0" prefWidth="569.0" text="MP" textFill="#27aacc">
+         <font>
+            <Font name="Eras Bold ITC" size="50.0" />
+         </font>
+      </Label>
+      <Label fx:id="pseudoJoueur" layoutX="14.0" layoutY="14.0" prefHeight="72.0" prefWidth="569.0" text="PSEUDO" textFill="#2c27cc">
+         <font>
+            <Font name="Eras Bold ITC" size="50.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1700.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MyGameMenuController">
+   <children>
+      <Button fx:id="resumeButton" layoutX="300.0" layoutY="564.0" mnemonicParsing="false" onMouseClicked="#resumeGame" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Reprendre" AnchorPane.topAnchor="554.0">
+         <font>
+            <Font name="Gill Sans Ultra Bold" size="34.0" />
+         </font>
+      </Button>
+      <Button fx:id="exitButton" layoutX="300.0" layoutY="941.0" mnemonicParsing="false" onMouseClicked="#exitGame" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Quitter le jeu" AnchorPane.bottomAnchor="554.0">
+         <font>
+            <Font name="Gill Sans Ultra Bold" size="34.0" />
+         </font>
+      </Button>
+      <Button fx:id="mainMenuButton" layoutX="300.0" layoutY="815.0" mnemonicParsing="false" onMouseClicked="#goToMainMenu" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Menu Principal" AnchorPane.topAnchor="885.0">
+         <font>
+            <Font name="Gill Sans Ultra Bold" size="34.0" />
+         </font>
+      </Button>
+      <Button fx:id="settingsButton" layoutX="300.0" layoutY="692.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Options" AnchorPane.topAnchor="722.0">
+         <font>
+            <Font name="Gill Sans Ultra Bold" size="34.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="659.0" layoutY="322.0" prefHeight="216.0" prefWidth="483.0" text="Pause" textAlignment="CENTER" textFill="#aeaeae">
+         <font>
+            <Font name="Gill Sans Ultra Bold" size="59.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
