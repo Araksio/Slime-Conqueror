@@ -43,8 +43,8 @@ import other.components.DelayMonsterAtkComponent;
 import other.components.PlayerComponent;
 import other.components.RandomAStarMoveComponent;
 
-
-public class GameFactory implements EntityFactory {
+import java.sql.*
+;public class GameFactory implements EntityFactory {
 	Joueur J1;
 	// Création des mur
     @Spawns("1")
@@ -162,16 +162,44 @@ public class GameFactory implements EntityFactory {
     public Entity newPlayer(SpawnData data) throws SQLException {
     	
     	
-    	
-    	
-    	
-    	
-        AnimatedTexture view = texture("player.png").toAnimatedTexture(1, Duration.seconds(0.33));
+    	String Pseudo = "";
+
+		Stat StatPlayer = new Stat(100, 0, 0, 0, 0, 0, 0);
+		AnimatedTexture view = texture("player.png").toAnimatedTexture(1, Duration.seconds(0.33));
+	    
+
+    			
+    			//partie sql java
+    			
+
+    			Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+
+    			Statement demandeRequete = db.createStatement();
         
-    	String Pseudo = "Pitohui";
-    	Stat StatPlayer = new Stat(10,80,73,45,23,42,70);
-    	Pos Pos1 = new Pos(5,1,0,0,1);
-        
+    			ResultSet pseudoDB = demandeRequete.executeQuery("Select nom from joueur where idjoueur=1");
+    			
+    			
+  			  
+    			while(pseudoDB.next()) {
+    				  Pseudo = pseudoDB.getString(1);
+    	    	}
+    		 
+    			ResultSet statDB = demandeRequete.executeQuery("SELECT * FROM `stats` WHERE idStats=1");
+    			
+    			while(statDB.next()) {
+    				StatPlayer = new Stat(statDB.getInt(2),statDB.getInt(4),statDB.getInt(6),statDB.getInt(8),statDB.getInt(10),statDB.getInt(12),statDB.getInt(14));
+    			}
+    			
+    			
+    			//fin partie sql java
+    			
+    			// pas encore fait le stockage de la position 
+    		   Pos Pos1 = new Pos(5,1,0,0,1);
+    			
+				
+				
+    			
+    			
     	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER); 	
     	
     	data.put("J", J1);
