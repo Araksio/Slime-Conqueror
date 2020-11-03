@@ -22,6 +22,9 @@ import static game.and.map.GameType.PLAYER;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Map;
 
 import com.almasb.fxgl.app.GameApplication;
@@ -33,6 +36,7 @@ import com.almasb.fxgl.entity.level.Level;
 import com.almasb.fxgl.entity.level.text.TextLevelLoader;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.net.Connection;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarCell;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
@@ -41,15 +45,17 @@ import GUI.MySceneFactory;
 import entity.Joueur;
 import entity.Monster;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.StageStyle;
 import other.components.PlayerComponent;
 
 public class GameApp extends GameApplication {
 	public static AnchorPane layout;
-	public static String vJeu = "v 2.1";
+	public static String vJeu = "v2.2";
 	
     public static final int BLOCK_SIZE = 80;  // Taille d'un bloc, dans la grille
 
@@ -80,11 +86,16 @@ public class GameApp extends GameApplication {
    
     @Override
     protected void initSettings(GameSettings settings) {
-        settings.setWidth(BLOCK_SIZE * MAP_SIZE_PRINT);  // Insantiation de la Largeur
-        settings.setHeight(BLOCK_SIZE * MAP_SIZE_PRINT); // Instanciation de la Hauteur
+        settings.setWidth(1280);  // Insantiation de la Largeur
+        settings.setHeight(900); // Instanciation de la Hauteur
         settings.setTitle("MAPFX"); // Nom de la fenettre du jeu
         settings.setVersion("1.0"); // Version du Jeu
-        
+        settings.setFullScreenAllowed(true);
+       settings.setTitle("Slime Conqueror");
+       settings.setVersion(vJeu);
+     
+
+
         settings.setManualResizeEnabled(true); // Autoriser le changement de taille de la fenettre manuellement
         settings.setPreserveResizeRatio(true); // Garder le ratio du jeu
     	settings.setSceneFactory(new MySceneFactory());
@@ -120,6 +131,24 @@ public class GameApp extends GameApplication {
     @Override
     protected void initInput() {
     	Input input = getInput();
+    	
+    	
+    	 getInput().addAction(new UserAction("HideGUI") {
+             @Override
+             protected void onActionBegin() {
+           
+             	if(layout.getScene() != null)
+             	{
+             		
+             		getGameScene().removeChild(layout);
+             	}
+             	else
+             	{
+             		getGameScene().addChild(layout);
+             	}
+  
+             }
+                     }, KeyCode.H);
     	
         getInput().addAction(new UserAction("Up") {
             @Override

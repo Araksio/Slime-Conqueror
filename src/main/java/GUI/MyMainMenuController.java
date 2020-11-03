@@ -3,9 +3,11 @@ package GUI;
 import java.net.URL;
 
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.profile.DataFile;
 
 import game.and.map.GameApp;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -55,6 +57,7 @@ public class MyMainMenuController {
 	        }
 	        else
 	        {
+	        	
 	        	if(InGameController.scheduledExecutorService != null)
 	        	{
 	        	InGameController.scheduledExecutorService.shutdown();
@@ -76,6 +79,7 @@ public class MyMainMenuController {
 		
 		versionJeu.setText(GameApp.vJeu);
 		startButton.setOnMouseEntered(e -> {
+			
 			startButton.setStyle("-fx-background-color: #914206; ");
 			buttonSFX();
 		}
@@ -99,7 +103,10 @@ public class MyMainMenuController {
 		);
 		exitButton.setOnMouseExited(e -> exitButton.setStyle("-fx-background-color: grey; "));
 	    mainMenuTheme();
-	   
+	    continueButton.setOnAction(e -> {
+	    	
+	    	
+	    });
 	   
 	   
 	

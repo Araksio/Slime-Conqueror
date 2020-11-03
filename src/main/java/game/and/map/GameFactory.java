@@ -10,6 +10,11 @@ import static game.and.map.GameType.ESCALIER;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.VIDE;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -154,11 +159,17 @@ public class GameFactory implements EntityFactory {
 
     //Creation du Joueur
     @Spawns("P")
-    public Entity newPlayer(SpawnData data) {
+    public Entity newPlayer(SpawnData data) throws SQLException {
+    	
+    	
+    	
+    	
+    	
+    	
         AnimatedTexture view = texture("player.png").toAnimatedTexture(1, Duration.seconds(0.33));
         
     	String Pseudo = "Pitohui";
-    	Stat StatPlayer = new Stat(1200,80,73,45,23,42,70);
+    	Stat StatPlayer = new Stat(10,80,73,45,23,42,70);
     	Pos Pos1 = new Pos(5,1,0,0,1);
         
     	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER); 	

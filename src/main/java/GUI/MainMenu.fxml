@@ -5,34 +5,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" onMouseMoved="#closeRequest" prefHeight="1701.0" prefWidth="1701.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MyMainMenuController">
+<AnchorPane fx:id="Anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" onMouseMoved="#closeRequest" prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MyMainMenuController">
    <children>
-      <Button fx:id="startButton" layoutX="290.0" layoutY="554.0" mnemonicParsing="false" onAction="#startGame" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Nouvelle partie" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="207.0" AnchorPane.topAnchor="554.0">
+      <Button fx:id="startButton" layoutX="140.0" layoutY="208.0" mnemonicParsing="false" onAction="#startGame" prefHeight="86.0" prefWidth="1000.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Nouvelle partie" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="34.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="292.0" layoutY="975.0" mnemonicParsing="false" onAction="#exitMenu" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Quitter" AnchorPane.bottomAnchor="554.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="207.0">
+      <Button fx:id="exitButton" layoutX="140.0" layoutY="682.0" mnemonicParsing="false" onAction="#exitMenu" prefHeight="86.0" prefWidth="1000.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Quitter" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="41.0" />
          </font>
       </Button>
-      <Button fx:id="settingsButton" layoutX="290.0" layoutY="885.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Options" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="207.0" AnchorPane.topAnchor="885.0">
+      <Button fx:id="settingsButton" layoutX="140.0" layoutY="526.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="1000.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Options" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="41.0" />
          </font>
       </Button>
-      <Button fx:id="continueButton" layoutX="290.0" layoutY="722.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Continuer" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="207.0" AnchorPane.topAnchor="722.0">
+      <Button fx:id="continueButton" layoutX="140.0" layoutY="364.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="1000.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Continuer" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="41.0" />
          </font>
       </Button>
-      <Label layoutX="577.0" layoutY="291.0" prefHeight="163.0" prefWidth="677.0" text="Slime Conqueror" textAlignment="CENTER" textFill="WHITE">
+      <Label layoutX="290.0" layoutY="14.0" prefHeight="163.0" prefWidth="700.0" text="Slime Conqueror" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0">
          <font>
             <Font size="90.0" />
          </font>
       </Label>
-      <Label fx:id="versionJeu" layoutX="1584.0" layoutY="1645.0" prefHeight="42.0" prefWidth="103.0" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="versionJeu" layoutX="1163.0" layoutY="844.0" prefHeight="42.0" prefWidth="103.0" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="27.0" />
          </font>

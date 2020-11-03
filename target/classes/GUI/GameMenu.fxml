@@ -5,29 +5,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1700.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MyGameMenuController">
+<AnchorPane prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MyGameMenuController">
    <children>
-      <Button fx:id="resumeButton" layoutX="300.0" layoutY="564.0" mnemonicParsing="false" onMouseClicked="#resumeGame" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Reprendre" AnchorPane.topAnchor="554.0">
+      <Button fx:id="resumeButton" layoutX="183.0" layoutY="207.0" mnemonicParsing="false" onMouseClicked="#resumeGame" prefHeight="86.0" prefWidth="1000.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Reprendre" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="207.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="34.0" />
          </font>
       </Button>
-      <Button fx:id="exitButton" layoutX="300.0" layoutY="941.0" mnemonicParsing="false" onMouseClicked="#exitGame" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Quitter le jeu" AnchorPane.bottomAnchor="554.0">
+      <Button fx:id="exitButton" layoutX="140.0" layoutY="682.0" mnemonicParsing="false" onMouseClicked="#exitGame" prefHeight="86.0" prefWidth="1000.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Quitter le jeu" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="34.0" />
          </font>
       </Button>
-      <Button fx:id="mainMenuButton" layoutX="300.0" layoutY="815.0" mnemonicParsing="false" onMouseClicked="#goToMainMenu" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Menu Principal" AnchorPane.topAnchor="885.0">
+      <Button fx:id="mainMenuButton" layoutX="141.0" layoutY="364.0" mnemonicParsing="false" onMouseClicked="#goToMainMenu" prefHeight="86.0" prefWidth="1000.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Menu Principal" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="139.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="34.0" />
          </font>
       </Button>
-      <Button fx:id="settingsButton" layoutX="300.0" layoutY="692.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Options" AnchorPane.topAnchor="722.0">
+      <Button fx:id="settingsButton" layoutX="140.0" layoutY="524.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="1000.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Options" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="34.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" layoutX="659.0" layoutY="322.0" prefHeight="216.0" prefWidth="483.0" text="Pause" textAlignment="CENTER" textFill="#aeaeae">
+      <Label alignment="CENTER" layoutX="526.0" layoutY="38.0" prefHeight="152.0" prefWidth="299.0" text="Pause" textAlignment="CENTER" textFill="#aeaeae" AnchorPane.bottomAnchor="710.0" AnchorPane.leftAnchor="526.0" AnchorPane.rightAnchor="525.0" AnchorPane.topAnchor="38.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="59.0" />
          </font>
