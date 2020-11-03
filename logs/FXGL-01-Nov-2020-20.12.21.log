@@ -1,0 +1,57 @@
+20:12:20.321 [main                     ] DEBUG Logger               - Configured Logger
+20:12:20.349 [main                     ] DEBUG GameApplication      - Logging settings
+Title: MAPFX
+Version: 1.0
+Width: 1280
+Height: 900
+Fullscreen: true
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class GUI.MySceneFactory
+
+20:12:20.806 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+20:12:20.815 [JavaFX Application Thread] INFO  Engine               - FXGL-11.11 (08.09.2020 18.00) on WINDOWS (J:11.0.8 FX:14)
+20:12:20.816 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+20:12:20.816 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 10 version 10.0
+20:12:20.817 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+20:12:20.817 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+20:12:20.817 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+20:12:20.955 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+20:12:21.030 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 1280.0 x 900.0
+20:12:21.030 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    1280.0 x 900.0
+20:12:21.031 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+20:12:21.032 [JavaFX Application Thread] DEBUG MainWindow           - Set initial scene to StartupScene
+20:12:21.041 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+20:12:21.146 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (16.0, 39.0)
+20:12:21.146 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 1280.0 x 900.0
+20:12:21.146 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+20:12:21.146 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 1280.0 x 900.0
+20:12:21.146 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 1296.0 x 939.0
+20:12:21.173 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+20:12:21.210 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+20:12:21.210 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/css/fxgl_dark.css
+20:12:21.255 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+20:12:21.328 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+20:12:21.385 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=900, physics.ppm=50.0
+20:12:21.388 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1280x900
+20:12:21.703 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+20:12:21.721 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+20:12:21.725 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Users\Gaël\workspace\4.7\MAPFX\system\fxgl.bundle
+20:12:21.730 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+20:12:21.730 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+20:12:21.735 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+20:12:21.735 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/VarelaRound-Regular.ttf
+20:12:21.736 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+20:12:21.736 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/languages/english.lang
+20:12:21.756 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0.583 sec
+20:12:21.800 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+20:12:21.800 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+20:12:21.801 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+20:12:21.820 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Users\Gaël\workspace\4.7\MAPFX\system\fxgl.bundle
+20:12:21.822 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+20:12:21.822 [JavaFX Application Thread] DEBUG MainWindow           - Closing main window
+20:12:21.846 [JavaFX Application Thread] DEBUG Logger               - Closing Logger
