@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InGameController">
+<AnchorPane fx:id="Pane" onKeyPressed="#keyPressed" prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InGameController">
    <children>
       <Label fx:id="hpBar" layoutX="14.0" layoutY="50.0" prefHeight="31.0" prefWidth="225.0" text="HP" textFill="#37cd26">
          <font>
@@ -90,5 +90,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
+      <Label fx:id="saveLabel" alignment="CENTER" layoutX="792.0" layoutY="14.0" prefHeight="20.0" prefWidth="459.0" text="Partie sauvegardé avec succès" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Eras Bold ITC" size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

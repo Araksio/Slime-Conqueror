@@ -12,6 +12,8 @@ import com.almasb.fxgl.dsl.FXGL;
 
 import entity.Joueur;
 import game.and.map.GameType;
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,9 +23,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Polygon;
+import javafx.util.Duration;
 public class InGameController{
 	 public static ScheduledExecutorService scheduledExecutorService;
 	 
@@ -83,6 +89,13 @@ private Label labelOptions;
 private Label labelQuitter; 
 @FXML
 private GridPane inventaireGridPane;
+@FXML
+private AnchorPane Pane;
+@FXML
+private Label saveLabel;
+
+
+
 
 
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
@@ -94,18 +107,42 @@ private GridPane inventaireGridPane;
  	getStats();
  	getImages();
     hoverButton();
-   
- 
-	
+  
  	
  }
  
+@FXML
+public void keyPressed(KeyEvent event)
+{
+	 if (event.getCode() == KeyCode.F1) { 
+		 
+		 // Ajout de la fonction save ici
+		 
+		 
+		  
+		 
+		    
+	    saveLabel.setVisible(true);
+	   
+	    PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
+	    pauseTransition.setOnFinished(e -> { 	
+	    saveLabel.setVisible(false);
+	    });
+	    pauseTransition.play();
+	    
+	    } 
+ 
+}
+ 
  public void hoverButton()
  {
+	
+	   
+		
 	 characterButton.setOnMouseEntered(e -> {
 		labelCharacter.setVisible(true);
 		polygonCharacter.setVisible(true);
-		FXGL.getSceneService();
+		
 	 });
 	 characterButton.setOnMouseExited(e -> {
 			labelCharacter.setVisible(false);
