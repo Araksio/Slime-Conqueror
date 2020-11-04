@@ -161,6 +161,7 @@ public class MyMainMenuController {
 		 FXGL.getGameController().exit();
 		
 	}
+	
 	@FXML
 	private void startGame() throws SQLException, InterruptedException
 	{
