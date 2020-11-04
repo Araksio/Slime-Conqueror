@@ -22,9 +22,6 @@ import static game.and.map.GameType.PLAYER;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URL;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Map;
 
 import com.almasb.fxgl.app.GameApplication;
@@ -36,7 +33,6 @@ import com.almasb.fxgl.entity.level.Level;
 import com.almasb.fxgl.entity.level.text.TextLevelLoader;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.net.Connection;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarCell;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
@@ -45,12 +41,10 @@ import GUI.MySceneFactory;
 import entity.Joueur;
 import entity.Monster;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.stage.StageStyle;
 import other.components.PlayerComponent;
 
 public class GameApp extends GameApplication {
