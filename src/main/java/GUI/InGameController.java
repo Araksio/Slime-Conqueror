@@ -128,12 +128,13 @@ private GridPane inventaireGridPane;
 		 if(!inventaireGridPane.isVisible())
 		 {
 			 inventaireGridPane.setVisible(true);
+			 inventaireGridPane.setLayoutX(925);
+			 inventaireGridPane.setLayoutY(421);
 		 }
 		 else {
 			 inventaireGridPane.setVisible(false);
 		 }
 	 });
-	 
 	 skillsButton.setOnMouseEntered(e -> {
 		 labelSkills.setVisible(true);
 		 skillsPolygon.setVisible(true);
