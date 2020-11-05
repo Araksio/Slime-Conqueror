@@ -1,12 +1,17 @@
 package GUI;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.profile.DataFile;
 
 import game.and.map.GameApp;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -16,14 +21,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.sql.*
-;
 public class MyMainMenuController {
 	
-	 MediaPlayer mediaPlayer;
+	 static MediaPlayer mediaPlayer;
 	
 	 // Controller
     @FXML
@@ -87,35 +90,55 @@ public class MyMainMenuController {
 		}
 		);
 		startButton.setOnMouseExited(e -> startButton.setStyle("-fx-background-color: grey; "));
+		
+		startButton.setOnMouseClicked(e -> {
+			
+			
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/GUI/selectCharacter.fxml"));
+		    
+				try {
+					AnchorPane layout = loader.<AnchorPane>load();	
+					Scene scene = new Scene(layout); 
+					Stage stage = new Stage();
+					stage.initModality(Modality.APPLICATION_MODAL);
+					stage.setScene(scene);
+					stage.show();
+					
+				} catch (IOException f) {
+					// TODO Auto-generated catch block
+					f.printStackTrace();
+				}	
+				
+		});
+		
 		continueButton.setOnMouseEntered(e -> {
 			continueButton.setStyle("-fx-background-color: #914206; ");
 			buttonSFX();
 		}
 		);
 	    continueButton.setOnMouseExited(e -> continueButton.setStyle("-fx-background-color: grey; "));
+	    
+	    
 		settingsButton.setOnMouseEntered(e -> {
 		   settingsButton.setStyle("-fx-background-color: #914206; ");
 		   buttonSFX();
 		});
 		settingsButton.setOnMouseExited(e ->   settingsButton.setStyle("-fx-background-color: grey; "));
+		
+		
 		exitButton.setOnMouseEntered(e -> {
 		  exitButton.setStyle("-fx-background-color: #914206; ");
 		  buttonSFX();
 		}
 		);
 		exitButton.setOnMouseExited(e -> exitButton.setStyle("-fx-background-color: grey; "));
-	    mainMenuTheme();
-	    continueButton.setOnAction(e -> {
-	    	
-	    	
-	    });
-	    
-	    
-	    
+		
+		
 	    continueButton.setOnAction(e -> continueGame());
 	   
+	    mainMenuTheme();
 	   
-	
 	}
 	
 	
@@ -161,90 +184,6 @@ public class MyMainMenuController {
 		 FXGL.getGameController().exit();
 		
 	}
-	
-	@FXML
-	private void startGame() throws SQLException, InterruptedException
-	{
-		
-		
-		
-//fonction associé au bouton "nouvelle partie" ou startButton, donc je supprime tous les tuples et recree des tuples de bases
-		Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
-		Statement demandeRequete = db.createStatement();
-		
-		
-		
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idstats` = NULL WHERE `joueur`.`idJoueur` = 1");
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idmoney` = NULL WHERE `joueur`.`idJoueur` = 1");
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idlvl` = NULL WHERE `joueur`.`idJoueur` = 1");
-// a decommenter une fois la position faite		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idPosition` = '1' WHERE `joueur`.`idJoueur` = 1");
-
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`stats` SET `idjoueur` = NULL WHERE `stats`.`idStats` = 1");
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`money` SET `idjoueur` = NULL WHERE `money`.`idMoney` = 1");
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl` SET `idjoueur` = NULL WHERE `lvl`.`idLvl` = 1");
-//pareil		demandeRequete.executeUpdate("");
-		
-		
-		demandeRequete.executeUpdate("delete from effect");
-		demandeRequete.executeUpdate("delete from est_equipe");
-		demandeRequete.executeUpdate("delete from floor");
-//on ne supprime pas les objets		demandeRequete.executeUpdate("delete from item");
-		demandeRequete.executeUpdate("delete from joueur");
-		demandeRequete.executeUpdate("delete from lvl");
-		demandeRequete.executeUpdate("delete from map");
-		demandeRequete.executeUpdate("delete from money");
-		demandeRequete.executeUpdate("delete from monstre");
-		demandeRequete.executeUpdate("delete from monstre_effect");
-		demandeRequete.executeUpdate("delete from position");
-		demandeRequete.executeUpdate("delete from possede_effect");
-		demandeRequete.executeUpdate("delete from stats");
-		demandeRequete.executeUpdate("delete from tuile");
-		
-		
-//maintenant que tout est supprimé, on recree
-		
-		//cree le joueur
-		demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`joueur` (`idJoueur`, `nom`, `entityType`, `idstats`, `idmoney`, `idlvl`, `idposition`) VALUES ('1', 'joueur 1', NULL, NULL, NULL, NULL, NULL)");
-		
-		//cree les stats du joueurs
-		demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`stats` (`idStats`, `maxHP`, `currentHP`, `maxATK`, `currentATK`, `maxDEF`, `currentDEF`, `maxMP`, `currentMP`, `maxSPA`, `currentSPA`, `maxSPD`, `currentSPD`, `maxSPE`, `currentSPE`, `idjoueur`, `idmonstre`) VALUES ('1', '10', '10', '5', '5', '5', '5', '10', '10', '5', '5', '5', '5', '5', '5', '1', NULL)");
-		
-		//cree l'argent du joueur
-		demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`money` (`idMoney`, `moneyPlayer`, `moneyBank`, `idjoueur`) VALUES ('1', '500', '1000', NULL)");
-		
-		//cree le lvl du joueur
-		demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`) VALUES ('1', '1', '0', '0', '10', NULL, NULL)");
-		
-		//cree la position du joueur, a faire plus tard 
-		
-		//lie le joueur,les stats, l'argent et les lvl entre eux
-		
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idstats` = '1' WHERE `joueur`.`idJoueur` = 1");
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idmoney` = '1' WHERE `joueur`.`idJoueur` = 1");
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idlvl` = '1' WHERE `joueur`.`idJoueur` = 1");
-// a decommenter une fois la position faite		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idPosition` = '1' WHERE `joueur`.`idJoueur` = 1");
-
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`stats` SET `idjoueur` = '1' WHERE `stats`.`idStats` = 1");
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`money` SET `idjoueur` = '1' WHERE `money`.`idMoney` = 1");
-		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl` SET `idjoueur` = '1' WHERE `lvl`.`idLvl` = 1");
-//pareil		demandeRequete.executeUpdate("");
-		
-		
-		
-		
-		
-		
-		
-		mediaPlayer.stop();
-		
-		FXGL.getGameController().startNewGame();
-		
-	}
-	
-	
-	
-	
-	
 	
 	
 	private void continueGame()
