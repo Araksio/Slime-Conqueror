@@ -1,0 +1,533 @@
+22:51:31.916 [main                     ] DEBUG Logger               - Configured Logger
+22:51:31.946 [main                     ] DEBUG GameApplication      - Logging settings
+Title: Slime Conqueror
+Version: v2.2
+Width: 1280
+Height: 900
+Fullscreen: true
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class GUI.MySceneFactory
+
+22:51:32.543 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+22:51:32.554 [JavaFX Application Thread] INFO  Engine               - FXGL-11.11 (08.09.2020 18.00) on WINDOWS (J:11.0.8 FX:14)
+22:51:32.554 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+22:51:32.554 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 10 version 10.0
+22:51:32.555 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+22:51:32.555 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+22:51:32.555 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+22:51:32.693 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+22:51:32.768 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 1280.0 x 900.0
+22:51:32.768 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    1280.0 x 900.0
+22:51:32.768 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+22:51:32.769 [JavaFX Application Thread] DEBUG MainWindow           - Set initial scene to StartupScene
+22:51:32.780 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+22:51:32.876 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (16.0, 39.0)
+22:51:32.876 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 1280.0 x 900.0
+22:51:32.876 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+22:51:32.877 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 1280.0 x 900.0
+22:51:32.877 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 1296.0 x 939.0
+22:51:32.906 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+22:51:32.942 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+22:51:32.943 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/css/fxgl_dark.css
+22:51:33.003 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+22:51:33.091 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+22:51:33.152 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=900, physics.ppm=50.0
+22:51:33.154 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1280x900
+22:51:33.503 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+22:51:33.520 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+22:51:33.524 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Users\Gaël\workspace\4.7\Slime-Conquror\system\fxgl.bundle
+22:51:33.530 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+22:51:33.530 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+22:51:33.535 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+22:51:33.535 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/VarelaRound-Regular.ttf
+22:51:33.536 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+22:51:33.536 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/languages/english.lang
+22:51:33.551 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0.644 sec
+22:51:33.562 [JavaFX Application Thread] DEBUG Input                - Registered new binding: HideGUI - H
+22:51:33.562 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Up - Z
+22:51:33.562 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Down - S
+22:51:33.562 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Left - Q
+22:51:33.562 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Right - D
+22:51:33.562 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Teleport - F
+22:51:33.564 [JavaFX Application Thread] DEBUG Input                - Registered new binding: AttackPos - LMB
+22:51:33.564 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Attack - I
+22:51:33.564 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/fxgl_icon.png
+22:51:33.600 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/cursors/fxgl_default.png
+22:51:33.602 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+22:51:33.603 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+22:51:33.603 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+22:51:33.604 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+C
+22:51:33.606 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+22:51:33.608 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+22:51:33.616 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from StartupScene and adding to FXGLMainMenuDummyScene
+22:51:33.616 [JavaFX Application Thread] DEBUG MainWindow           - StartupScene -> FXGLMainMenuDummyScene
+22:51:33.616 [JavaFX Application Thread] DEBUG MainWindow           - Push state: MyMenu
+22:51:33.617 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+22:51:33.633 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to MyMenu
+22:51:33.634 [JavaFX Application Thread] DEBUG MainWindow           - FXGLMainMenuDummyScene -> MyMenu
+22:51:34.097 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/Abel-Regular.ttf
+22:51:34.103 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/lucida_console.ttf
+22:51:34.110 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/Courier-Prime.ttf
+22:51:34.115 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+22:51:34.194 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+22:51:34.194 [JavaFX Application Thread] DEBUG MainWindow           - Pop state: MyMenu
+22:51:34.194 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+22:51:34.195 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from MyMenu and adding to FXGLMainMenuDummyScene
+22:51:34.195 [JavaFX Application Thread] DEBUG MainWindow           - FXGLMainMenuDummyScene <- MyMenu
+22:51:34.196 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+22:51:34.206 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to FXGLLoadingScene
+22:51:34.206 [JavaFX Application Thread] DEBUG MainWindow           - FXGLMainMenuDummyScene -> FXGLLoadingScene
+22:51:34.206 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+22:51:34.206 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+22:51:34.206 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+22:51:34.206 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+22:51:34.209 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Initializing game
+22:51:34.329 [FXGL Background Thread 2 ] INFO  UpdaterService       - Your current version:  11.11
+22:51:34.332 [FXGL Background Thread 2 ] INFO  UpdaterService       - Latest stable version: dev-SNAPSHOT
+22:51:34.962 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/levels/map_level0.txt
+22:51:34.986 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/
+22:51:35.018 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.021 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.022 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.024 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.025 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.025 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.025 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.025 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.026 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.026 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.026 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.026 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.027 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.027 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.027 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/Monster.png
+22:51:35.046 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.047 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/player.png
+22:51:35.059 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.059 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.059 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.059 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.059 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.060 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.060 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.061 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.061 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.061 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.061 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.061 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.062 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.062 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.064 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.064 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.066 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.066 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.067 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.067 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.067 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.067 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.068 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.068 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.068 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.069 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.069 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.070 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.070 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.071 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.071 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.071 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.071 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.072 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.072 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.073 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.073 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.073 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.074 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.074 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.074 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.075 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.075 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.075 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.075 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.076 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.076 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.076 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.077 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.077 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.078 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.078 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.078 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.079 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.079 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.079 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.079 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.079 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.079 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.080 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.081 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.081 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.082 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.083 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.084 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.084 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.084 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.084 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.084 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.085 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.085 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.085 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.085 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.085 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.085 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.086 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.086 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.086 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.086 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.087 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.087 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.087 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.088 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.088 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.088 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.088 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.088 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.088 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.088 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.089 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.089 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.089 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.090 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.090 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.090 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.090 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.090 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.091 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.091 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.092 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.092 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.092 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.093 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.093 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.093 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.093 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.093 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.093 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.093 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.094 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.094 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.094 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.094 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.094 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.094 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.095 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.095 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.095 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.095 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.097 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.099 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.099 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.099 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.099 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.099 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.100 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.100 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.101 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.101 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.101 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.101 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.101 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.102 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.102 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.102 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.103 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.103 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.103 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.103 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.103 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.103 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.103 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.104 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.104 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.104 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.104 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.104 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.105 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.105 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.105 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.106 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.106 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.106 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.106 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.106 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.106 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.107 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.107 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.107 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.107 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.107 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.107 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.108 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.108 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.108 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.108 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.108 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.108 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.108 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.109 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.110 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.110 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.110 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.110 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.110 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.111 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.111 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.111 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.111 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.111 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.111 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.112 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.112 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.112 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.113 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.113 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.114 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.114 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.114 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.115 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.115 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.115 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.116 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.116 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.116 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.116 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.117 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.117 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.117 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.117 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.117 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.117 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.117 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.117 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.118 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.118 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.118 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.119 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.119 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.119 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.119 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.119 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.119 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.120 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.120 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.120 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.120 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.120 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.120 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.120 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.121 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.121 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.122 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.122 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.122 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.122 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.123 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.124 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.124 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.124 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.125 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.125 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.125 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.125 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.125 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.125 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.125 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.126 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.126 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.126 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.126 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.127 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.127 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.127 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.127 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.127 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.128 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.128 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.128 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.128 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.129 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.129 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.129 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.129 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.129 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.129 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.129 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.129 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.130 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.132 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.132 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.132 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.132 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.133 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.133 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.133 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.133 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.133 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.133 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.134 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.134 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.134 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.134 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.134 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.134 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.134 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.135 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.136 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.136 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.136 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.136 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.136 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.137 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.137 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.137 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.137 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.138 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.138 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.138 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.138 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.138 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.138 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.139 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.139 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.139 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.140 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.140 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.140 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.140 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.140 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.141 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.141 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.141 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.141 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.142 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.142 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Monster.png
+22:51:35.142 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.142 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.143 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.143 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.143 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/
+22:51:35.145 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/TP.png
+22:51:35.149 [FXGL Background Thread 4 ] DEBUG GameWorld            - Clearing removable entities
+22:51:35.150 [FXGL Background Thread 4 ] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@4a4139ca
+22:51:35.269 [FXGL Background Thread 4 ] INFO  FXGLApplication      - Game initialization took: 1.060 sec
+22:51:35.269 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+22:51:35.286 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
+22:51:35.287 [JavaFX Application Thread] DEBUG MainWindow           - FXGLLoadingScene -> GameScene
+22:51:36.534 [FXGL Background Thread 3 ] DEBUG Engine               - Logging environment variables
+22:51:36.534 [FXGL Background Thread 3 ] DEBUG Engine               - achievements: []
+22:51:36.534 [FXGL Background Thread 3 ] DEBUG Engine               - appIcon: fxgl_icon.png
+22:51:36.534 [FXGL Background Thread 3 ] DEBUG Engine               - applicationMode: DEVELOPER
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - cSSList: [fxgl_dark.css]
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - configClass: Optional.empty
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - credits: []
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - devBBoxColorProperty: ObjectProperty [value: 0xff0000ff]
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - devEnableDebugCameraProperty: BooleanProperty [value: false]
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - devSensorColorProperty: ObjectProperty [value: 0xffff00ff]
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - devShowBBoxProperty: BooleanProperty [value: false]
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - devShowPositionProperty: BooleanProperty [value: false]
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - enabledMenuItems: []
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - engineServices: [class com.almasb.fxgl.app.FXGLApplication$GameApplicationService, class com.almasb.fxgl.app.services.FXGLDialogService, class com.almasb.fxgl.app.services.IOTaskExecutorService, class com.almasb.fxgl.event.EventBusService, class com.almasb.fxgl.io.FileSystemService, class com.almasb.fxgl.localization.LocalizationService, class com.almasb.fxgl.app.services.FXGLAssetLoaderService, class com.almasb.fxgl.app.services.SystemBundleService, class com.almasb.fxgl.profile.SaveLoadService, class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider, class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider, class com.almasb.fxgl.audio.AudioPlayer, class com.almasb.fxgl.notification.impl.NotificationServiceProvider, class com.almasb.fxgl.achievement.AchievementService, class com.almasb.fxgl.cutscene.CutsceneService, class com.almasb.fxgl.minigames.MiniGameService, class com.almasb.fxgl.net.NetService, class com.almasb.fxgl.app.services.UpdaterService, class com.almasb.fxgl.dev.DevService]
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - fontGame: Abel-Regular.ttf
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - fontMono: lucida_console.ttf
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - fontText: Courier-Prime.ttf
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - fontUI: VarelaRound-Regular.ttf
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - fullScreen: BooleanProperty [value: false]
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficulty: MEDIUM
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficultyProperty: ObjectProperty [value: MEDIUM]
+22:51:36.535 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolume: 0.5
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolumeProperty: DoubleProperty [value: 0.5]
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolume: 0.5
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolumeProperty: DoubleProperty [value: 0.5]
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - height: 900
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isAndroid: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isBrowser: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isClickFeedbackEnabled: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isCloseConfirmation: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isDesktop: true
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isDeveloperMenuEnabled: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isEntityPreloadEnabled: true
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isExperimentalNative: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isExperimentalTiledLargeMap: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isFileSystemWriteAllowed: true
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenAllowed: true
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenFromStart: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isGameMenuEnabled: true
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isIOS: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isIntroEnabled: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isLinux: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isMac: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isMainMenuEnabled: true
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isManualResizeEnabled: true
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isMobile: false
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isPreserveResizeRatio: true
+22:51:36.536 [FXGL Background Thread 3 ] DEBUG Engine               - isProfilingEnabled: false
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - isSingleStep: false
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - isUserProfileEnabled: false
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - isWindows: true
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - language: ObjectProperty [value: ENGLISH]
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - menuKey: ESCAPE
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - notificationViewClass: class com.almasb.fxgl.notification.view.XboxNotificationView
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - pixelsPerMeter: 50.0
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - platform: WINDOWS
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - profileDir: profiles/
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - profileName: StringProperty [value: DEFAULT]
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - randomSeed: -1
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - runtimeInfo: RuntimeInfo(platform=WINDOWS, version=11.11, build=08.09.2020 18.00)
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - saveFileExt: sav
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - sceneFactory: GUI.MySceneFactory@64a58889
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - secondsIn24h: 60
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuBack: menu/back.wav
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuPress: menu/press.wav
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuSelect: menu/select.wav
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - soundNotification: core/notification.wav
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - stageStyle: DECORATED
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - supportedLanguages: [ENGLISH, FRENCH, GERMAN, HUNGARIAN, RUSSIAN]
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - title: Slime Conqueror
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - urlGithub: https://github.com/AlmasB/FXGL
+22:51:36.537 [FXGL Background Thread 3 ] DEBUG Engine               - urlLeaderboard: http://fxgl-top.herokuapp.com/
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - urlPOM: https://raw.githubusercontent.com/AlmasB/FXGL/master/pom.xml
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - version: v2.2
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - versionCheckDays: 7
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - width: 1280
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - Logging services
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.FXGLApplication$GameApplicationService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLDialogService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.IOTaskExecutorService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.event.EventBusService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.io.FileSystemService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.localization.LocalizationService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLAssetLoaderService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.SystemBundleService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.profile.SaveLoadService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.audio.AudioPlayer
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.notification.impl.NotificationServiceProvider
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.achievement.AchievementService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.cutscene.CutsceneService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.minigames.MiniGameService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.net.NetService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.UpdaterService
+22:51:36.538 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.dev.DevService
+22:51:39.434 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/Chest.jpg
+22:51:39.437 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.jpg
+22:51:57.024 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+22:51:57.024 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+22:51:57.024 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+22:51:57.026 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Users\Gaël\workspace\4.7\Slime-Conquror\system\fxgl.bundle
+22:51:57.028 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+22:51:57.028 [JavaFX Application Thread] DEBUG MainWindow           - Closing main window
+22:51:57.044 [JavaFX Application Thread] DEBUG Logger               - Closing Logger
