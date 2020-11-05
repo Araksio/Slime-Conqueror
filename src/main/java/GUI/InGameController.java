@@ -93,9 +93,28 @@ private GridPane inventaireGridPane;
 private AnchorPane Pane;
 @FXML
 private Label saveLabel;
-
-
-
+@FXML
+private AnchorPane characterPane;
+@FXML
+private Label hpLabelCharacter;
+@FXML
+private Label mpLabelCharacter;
+@FXML
+private Label atkLabelCharacter;
+@FXML
+private Label defLabelCharacter;
+@FXML
+private Label spdLabelCharacter;
+@FXML
+private Label spaLabelCharacter;
+@FXML
+private Label speLabelCharacter;
+@FXML
+private Label pseudoLabelCharacter;
+@FXML
+private Label levelLabelCharacter;
+@FXML
+private Label xpLabelCharacter;
 
 
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
@@ -149,7 +168,16 @@ public void keyPressed(KeyEvent event)
 			polygonCharacter.setVisible(false);
 		 });
 	 characterButton.setOnMouseClicked(e -> {
-		
+		if(!characterPane.isVisible())
+		{
+			characterPane.setVisible(true);
+			characterPane.setLayoutX(873);
+			characterPane.setLayoutY(421);
+		}
+		else
+		{
+			characterPane.setVisible(false);
+		}
 	 });
 	 
 	 
@@ -239,6 +267,14 @@ public void keyPressed(KeyEvent event)
 			
 		}
      });
+	 characterPane.setOnMouseDragged(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				characterPane.setLayoutX(event.getSceneX());
+				characterPane.setLayoutY(event.getSceneY());
+				
+			}
+	     });
 		
  }
 
@@ -281,11 +317,23 @@ public void keyPressed(KeyEvent event)
  public void getStats()
  {
 	
+	pseudoLabelCharacter.setText(J.getNom());
      scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
      scheduledExecutorService.scheduleAtFixedRate(() -> {
-    	
+    
         Platform.runLater(() -> {
            
+      hpLabelCharacter.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
+      mpLabelCharacter.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());
+      atkLabelCharacter.setText("ATK : " + J.getStat().getMaxATK());
+      defLabelCharacter.setText("DEF : " + J.getStat().getMaxDEF());
+      spdLabelCharacter.setText("SPD : " + J.getStat().getMaxSPD());
+      speLabelCharacter.setText("SPE : " + J.getStat().getMaxSPE());
+      spaLabelCharacter.setText("SPA : " + J.getStat().getMaxSPA());
+      
+      /* à implementer lorsque les les levels et l'xp seront implémenter
+      levelLabelCharacter.setText("LEVEL : " + J.getLv().getNiveau());
+      xpLabelCharacter.setText("XP :" + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());*/
       
        	hpBar.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
        	mpBar.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());	

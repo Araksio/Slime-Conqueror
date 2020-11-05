@@ -33,7 +33,7 @@ private void startGame() throws SQLException {
 	if(selectPseudo.getText().isEmpty() || selectPseudo.getText().length() < 3 || selectPseudo.getText().length() > 12)
 	{
 		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Erreur Pseudonyme");
+		alert.setTitle("Erreur");
 		alert.setHeaderText("Erreur Pseudo");
 		alert.setContentText("Votre pseudo ne doit pas être vide et doit être contenue entre 3 et 12 caractères");
 		alert.showAndWait();

@@ -7,14 +7,14 @@ public class LV {
 	
 	private int Niveau;
 	private double TotalXP;
-	private double CurentXPforLV;
+	private double CurrentXPforLV;
 	private double XPneedForNextLV;
 	
-	LV(int _Niveau, double _TotalXP, double _CurentXPforLV, double _XPneedForNextLV)
+	LV(int _Niveau, double _TotalXP, double _CurrentXPforLV, double _XPneedForNextLV)
 	{
 		Niveau = _Niveau;
 		TotalXP = _TotalXP;
-		CurentXPforLV = _CurentXPforLV;
+		CurrentXPforLV = _CurrentXPforLV;
 		XPneedForNextLV = _XPneedForNextLV;
 	}
 	
@@ -28,9 +28,9 @@ public class LV {
 		return this.TotalXP;
 	}
 	
-	public double getCurentXPforLV()
+	public double getCurrentXPforLV()
 	{
-		return this.CurentXPforLV;
+		return this.CurrentXPforLV;
 	}
 	
 	public double getXPneedForNextLV()
@@ -52,7 +52,7 @@ public class LV {
 	
 	public void setCurentXPforLV(double _CurentXPforLV)
 	{
-		this.CurentXPforLV = _CurentXPforLV;
+		this.CurrentXPforLV = _CurentXPforLV;
 	}
 	
 	public void setXPneedForNextLV(double _XPneedForNextLV)
@@ -65,16 +65,16 @@ public class LV {
 	public void addXP(double _xp)
 	{
 		this.TotalXP = this.TotalXP + _xp;
-		this.CurentXPforLV = this.CurentXPforLV + _xp;
+		this.CurrentXPforLV = this.CurrentXPforLV + _xp;
 	}
 	
 	public void checkLVisAvalaible()
 	{
-		if(this.CurentXPforLV >= this.XPneedForNextLV)
+		if(this.CurrentXPforLV >= this.XPneedForNextLV)
 		{
-			while(this.CurentXPforLV >= this.XPneedForNextLV)
+			while(this.CurrentXPforLV >= this.XPneedForNextLV)
 			{
-				this.CurentXPforLV = this.CurentXPforLV - this.XPneedForNextLV;
+				this.CurrentXPforLV = this.CurrentXPforLV - this.XPneedForNextLV;
 				Niveau++;
 			}
 		}
