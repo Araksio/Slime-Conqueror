@@ -101,7 +101,7 @@ import java.sql.*
         // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
         
     	String Nom = "Soldat Squelette";
-    	Stat StatPlayer = new Stat(50,12,60,10,5,3,19);
+    	Stat StatPlayer = new Stat(20,5,5,5,5,5,5); // HP,ATK,DEF,MP,SPA,SPD,SPE
     	Pos Pos1 = new Pos(2,1,0,0,1);
     	
     	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER); 

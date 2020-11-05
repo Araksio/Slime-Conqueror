@@ -453,7 +453,7 @@ public class GameApp extends GameApplication {
 			    					set("grid", grid);
 			    					
 			    					Joueur P1 = getPlayer().getProperties().getValue("Joueur1");
-			    					FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de trouver une épé Légendaire : Excalibur" );
+			    					FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de trouver une épée Légendaire : Excalibur" );
 			    					FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de trouver 200 gold !");
 			        			}
 			    				
@@ -616,12 +616,19 @@ public class GameApp extends GameApplication {
     	int MX = (int) Mo.getX();
     	int MY = (int) Mo.getY();
     	
-    	int PuissanceAtk = (int)(J.getStat().getCurrentATK() * (0.5 * 2) *(0.5 * 2));
-    	int DegatSubit = (int) (PuissanceAtk - (M.getStat().getCurrentDEF() * 1.2));
+    	int PuissanceAtk = (int)(J.getStat().getCurrentATK());
+    	int DegatSubit = (int) (PuissanceAtk - ((M.getStat().getCurrentDEF())/2));
     	
-    	println("Degat Subit : " + DegatSubit);
     	
+    	if(DegatSubit <= 0)
+    	{
+    		DegatSubit = 0;
+    	}
+    	else
+    	{
     	M.getStat().setCurrentHP(M.getStat().getCurrentHP()-(DegatSubit));
+    	}
+    	println("Degat Subit : " + DegatSubit);
     	
     	println("HP : " + M.getStat().getCurrentHP());
     	
