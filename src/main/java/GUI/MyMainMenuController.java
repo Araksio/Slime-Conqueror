@@ -207,7 +207,7 @@ public class MyMainMenuController {
 		demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`joueur` (`idJoueur`, `nom`, `entityType`, `idstats`, `idmoney`, `idlvl`, `idposition`) VALUES ('1', 'joueur 1', NULL, NULL, NULL, NULL, NULL)");
 		
 		//cree les stats du joueurs
-		demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`stats` (`idStats`, `maxHP`, `currentHP`, `maxATK`, `currentATK`, `maxDEF`, `currentDEF`, `maxMP`, `currentMP`, `maxSPA`, `currentSPA`, `maxSPD`, `currentSPD`, `maxSPE`, `currentSPE`, `idjoueur`, `idmonstre`) VALUES ('1', '4096', '4096', '50', '50', '50', '50', '50', '50', '50', '50', '50', '50', '50', '50', '1', NULL)");
+		demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`stats` (`idStats`, `maxHP`, `currentHP`, `maxATK`, `currentATK`, `maxDEF`, `currentDEF`, `maxMP`, `currentMP`, `maxSPA`, `currentSPA`, `maxSPD`, `currentSPD`, `maxSPE`, `currentSPE`, `idjoueur`, `idmonstre`) VALUES ('1', '4096', '4096', '80', '80', '50', '50', '50', '50', '50', '50', '50', '50', '50', '50', '1', NULL)");
 		
 		//cree l'argent du joueur
 		demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`money` (`idMoney`, `moneyPlayer`, `moneyBank`, `idjoueur`) VALUES ('1', '500', '1000', NULL)");
