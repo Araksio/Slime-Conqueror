@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Pane" onKeyPressed="#keyPressed" prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InGameController">
+<AnchorPane fx:id="Pane" onKeyPressed="#keyPressed" onMouseMoved="#closeRequest" prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InGameController">
    <children>
       <Label fx:id="hpBar" layoutX="14.0" layoutY="50.0" prefHeight="31.0" prefWidth="225.0" text="HP" textFill="#37cd26">
          <font>
@@ -97,7 +97,7 @@
             <Font name="Eras Bold ITC" size="30.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="characterPane" layoutX="873.0" layoutY="421.0" maxHeight="382.0" maxWidth="200.0" prefHeight="382.0" prefWidth="70.0" style="-fx-background-color: #263238; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5; -fx-border-width: 2;" visible="false">
+      <AnchorPane fx:id="characterPane" layoutX="873.0" layoutY="421.0" maxHeight="418.0" maxWidth="200.0" prefHeight="418.0" prefWidth="198.0" style="-fx-background-color: #263238; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5; -fx-border-width: 2;" visible="false">
          <children>
             <Label layoutX="7.0" layoutY="5.0" prefHeight="12.0" prefWidth="186.0" text="Personnage" textFill="#f8f8f8">
                <font>
@@ -145,19 +145,54 @@
                   <Font name="Eras Bold ITC" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="148.0" layoutY="354.0" text="XP" textFill="#f8f8f8" fx:id="xpLabelCharacter">
+            <Label layoutX="89.0" layoutY="390.0" text="XP" textFill="#f8f8f8" fx:id="xpLabelCharacter">
                <font>
                   <Font name="Eras Bold ITC" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="levelLabelCharacter" layoutX="21.0" layoutY="354.0" text="LEVEL" textFill="#f8f8f8">
+            <Label fx:id="levelLabelCharacter" layoutX="8.0" layoutY="390.0" text="LEVEL" textFill="#f8f8f8">
                <font>
                   <Font name="Eras Bold ITC" size="12.0" />
                </font>
             </Label>
             <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="64.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
             <Line blendMode="SRC_ATOP" endX="92.0" layoutX="101.0" layoutY="32.0" startX="-100.0" />
-            <Line blendMode="SRC_ATOP" endX="92.0" layoutX="101.0" layoutY="341.0" startX="-100.0" />
+            <Line blendMode="SRC_ATOP" endX="92.0" layoutX="103.0" layoutY="373.0" startX="-100.0" />
+            <Label layoutX="15.0" layoutY="352.0" text="XP TOTAL : " textFill="#f8f8f8" fx:id="xpTotalLabelCharacter">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="atkBonusButton" layoutX="23.0" layoutY="229.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: #263238;" text="+" textFill="RED">
+               <font>
+                  <Font name="Eras Bold ITC" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="defBonusButton" layoutX="84.0" layoutY="229.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: #263238;" text="+" textFill="RED">
+               <font>
+                  <Font name="Eras Bold ITC" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="spdBonusButton" layoutX="147.0" layoutY="229.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: #263238;" text="+" textFill="RED">
+               <font>
+                  <Font name="Eras Bold ITC" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="spaBonusButton" layoutX="62.0" layoutY="283.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: #263238;" text="+" textFill="RED">
+               <font>
+                  <Font name="Eras Bold ITC" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="speBonusButton" layoutX="120.0" layoutY="283.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" style="-fx-background-color: #263238;" text="+" textFill="RED">
+               <font>
+                  <Font name="Eras Bold ITC" size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="pointsBonusLabel" layoutX="14.0" layoutY="326.0" text="POINTS BONUS :" textFill="#f8f8f8">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

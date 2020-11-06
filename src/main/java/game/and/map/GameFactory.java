@@ -15,6 +15,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -32,6 +33,7 @@ import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.texture.AnimatedTexture;
 
 import entity.Joueur;
+import entity.LV;
 import entity.Monster;
 import entity.Pos;
 import entity.Stat;
@@ -46,6 +48,7 @@ import other.components.RandomAStarMoveComponent;
 import java.sql.*
 ;public class GameFactory implements EntityFactory {
 	Joueur J1;
+	public static ArrayList<LV> lvls;
 	// Création des mur
     @Spawns("1")
     public Entity newBlock(SpawnData data) {
@@ -101,10 +104,11 @@ import java.sql.*
         // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
         
     	String Nom = "Soldat Squelette";
+    	
     	Stat StatPlayer = new Stat(20,5,5,5,5,5,5); // HP,ATK,DEF,MP,SPA,SPD,SPE
     	Pos Pos1 = new Pos(2,1,0,0,1);
     	
-    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER); 
+    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,5.0); 
     	
     	view.setTranslateX(-40);
     	view.setTranslateY(-40);
@@ -156,12 +160,30 @@ import java.sql.*
                 .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, 50))
                 .build();
     }
-
+    
+    //Création des niveaux
+    public static ArrayList<LV> createLVs()
+	{
+		lvls = new ArrayList<LV>();
+		LV lvl1 = new LV(1,0,0,20,1); // niveau,xp total, xp actuel, xp pour prochain niveau
+		LV lvl2 = new LV(2,20,0,60,1);
+		LV lvl3 = new LV(3,80,0,200,2);
+		LV lvl4 = new LV(4,280,0,500,2);
+		LV lvl5 = new LV(5,780,0,1273,3);
+		lvls.add(lvl1);
+		lvls.add(lvl2);
+		lvls.add(lvl3);
+		lvls.add(lvl4);
+		lvls.add(lvl5);
+		return lvls;
+	}
+    
+    
     //Creation du Joueur
     @Spawns("P")
     public Entity newPlayer(SpawnData data) throws SQLException {
     	
-    	
+    	createLVs();
     	String Pseudo = "";
 
 		Stat StatPlayer = new Stat(0, 0, 0, 0, 0, 0, 0);
@@ -201,7 +223,7 @@ import java.sql.*
     			
     			
     	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER); 	
-    	
+    	J1.setLV(lvls.get(0));
     	data.put("J", J1);
     	
     	
