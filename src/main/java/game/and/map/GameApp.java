@@ -22,7 +22,6 @@ import static game.and.map.GameType.PLAYER;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
 
 import com.almasb.fxgl.app.GameApplication;
@@ -424,7 +423,6 @@ public class GameApp extends GameApplication {
 				    		}
 		    			}
 	    			}
-	    			nbr = geti("nbrMob");
     			}
     			
     			
@@ -636,9 +634,6 @@ public class GameApp extends GameApplication {
     	
     	if (M.getStat().getCurrentHP() <= 0)
     	{
-			int nbr = geti("nbrMob");
-			nbr--;
-			set("nbrMob",nbr);
     		Mo.removeFromWorld();
     		J.getLv().addXP(M.getDroppedXP());
 			println("Le " + M.getNom() + " Est mort");
@@ -664,6 +659,10 @@ public class GameApp extends GameApplication {
 			grid.set(MX,MY,c);
 			
 			set("grid", grid);
+			
+			int nbr = geti("nbrMob");
+			nbr--;
+			set("nbrMob",nbr);
 
 			
 			//NotificationView N1 = null;
@@ -714,7 +713,6 @@ public class GameApp extends GameApplication {
             System.out.println("Impossible de creer le fichier");
         }
         
-        boolean GridOfAllEntityOnWorld [][] = new boolean [MAP_SIZE_REEL][MAP_SIZE_REEL];
 
         Level level = getAssetLoader().loadLevel("map_level0.txt", new TextLevelLoader(80, 80, ' ')); // Instanciation de la carte
         getGameWorld().setLevel(level);        
@@ -726,30 +724,7 @@ public class GameApp extends GameApplication {
             return CellState.WALKABLE;
         });
         
-        ArrayList<Entity> AllEntity = getGameWorld().getEntities();
         
-        
-        for(Entity E : AllEntity)
-        {
-        	//println("" + E.getType() + " x  : " + (int) E.getX()/80 + " y : " + (int) E.getY()/80);
-        	
-        	
-        	if(E.getType() == GameType.VIDE)
-        	{
-        		GridOfAllEntityOnWorld[(int) E.getX()/80][(int) E.getY()/80] = false;
-        	}
-        	else
-        	{
-        		GridOfAllEntityOnWorld[(int) E.getX()/80][(int) E.getY()/80] = true;
-        	}
-        	
-        }        
-        
-        
-        
-        set("GridOfAllEntityOnWorld", GridOfAllEntityOnWorld);
-
-        set("grid", grid);
 
         set("grid", grid);
         

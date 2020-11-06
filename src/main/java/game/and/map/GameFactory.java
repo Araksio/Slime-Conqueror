@@ -162,21 +162,66 @@ import java.sql.*
     }
     
     //Création des niveaux
-    public static ArrayList<LV> createLVs()
+    public static ArrayList<LV> createLVs() throws SQLException
 	{
 		lvls = new ArrayList<LV>();
-		LV lvl1 = new LV(1,0,0,20,1); // niveau,xp total, xp actuel, xp pour prochain niveau
-		LV lvl2 = new LV(2,20,0,60,1);
-		LV lvl3 = new LV(3,80,0,200,2);
-		LV lvl4 = new LV(4,280,0,500,2);
-		LV lvl5 = new LV(5,780,0,1273,3);
-		lvls.add(lvl1);
-		lvls.add(lvl2);
-		lvls.add(lvl3);
-		lvls.add(lvl4);
-		lvls.add(lvl5);
+		//la table lvl, l id 1 est reservé au joueur et apres c est reservé pour creer c'est niveaux
+		
+		//debut du sql
+		Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+		Statement demandeRequete = db.createStatement();
+
+		ResultSet niveauACreer;
+		
+		int niveau;
+		double xpTotal;
+		double xpActuel;
+		double xpProchain;
+		int pointBonus;
+		LV lvl ; 
+	
+		int nombreLvlACreer;
+		ResultSet resultatRequete = demandeRequete.executeQuery("SELECT count(*) FROM `lvl`"); 
+		
+//		a faire pour automatiser quand on creera d autre lvl
+//		while(resultatRequete.next()) {
+//			nombreLvlACreer = nombreLvlACreer-1;
+//		}
+			
+			//ce for sert a creer les 5 premiers niveaux - les levels deja passé
+			for(int i = 1 ; i<=5; i+=1) {
+
+				//je recupere toutes les infos pour creer chaque lvl
+			niveauACreer = demandeRequete.executeQuery("SELECT * FROM `lvl` WHERE idLvl="+i);
+			
+			//obligatoire sinon ne marche pas
+			while(niveauACreer.next()) {
+				niveau = niveauACreer.getInt(2) ;
+				xpTotal = (double) niveauACreer.getInt(3);
+				xpActuel = (double) niveauACreer.getInt(4);
+				xpProchain = (double) niveauACreer.getInt(5);
+				pointBonus = niveauACreer.getInt(8);
+				
+			//on cree le lvl
+		 lvl = new LV(niveau,xpTotal,xpActuel,xpProchain,pointBonus); 
+					
+			//on l ajoute a la liste
+		lvls.add(lvl);
+			}
+			
+		}
+		
+		
+		
+		
+		
+	
+		
+		//fin du sql
+
 		return lvls;
 	}
+    
     
     
     //Creation du Joueur
@@ -206,10 +251,18 @@ import java.sql.*
     				  Pseudo = pseudoDB.getString(1);
     	    	}
     		 
+    			//crée les stats du joueur
     			ResultSet statDB = demandeRequete.executeQuery("SELECT * FROM `stats` WHERE idStats=1");
     			
     			while(statDB.next()) {
     				StatPlayer = new Stat(statDB.getInt(2),statDB.getInt(4),statDB.getInt(6),statDB.getInt(8),statDB.getInt(10),statDB.getInt(12),statDB.getInt(14));
+    				StatPlayer.setCurrentHP(statDB.getInt(3));
+    				StatPlayer.setCurrentATK(statDB.getInt(5));
+    				StatPlayer.setCurrentDEF(statDB.getInt(7));
+    				StatPlayer.setCurrentMP(statDB.getInt(9));
+    				StatPlayer.setCurrentSPA(statDB.getInt(11));
+    				StatPlayer.setCurrentSPD(statDB.getInt(13));
+    				StatPlayer.setCurrentSPE(statDB.getInt(15));
     			}
     			
     			
@@ -220,10 +273,18 @@ import java.sql.*
     			
 				
 				
+    	
+    	
     			
-    			
-    	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER); 	
-    	J1.setLV(lvls.get(0));
+    	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER); 
+    	
+    	ResultSet lvlDuJoueur = demandeRequete.executeQuery("Select idlvl from lvl where idjoueur=1");
+		while(lvlDuJoueur.next()) {
+	    	J1.setLV(lvls.get(lvlDuJoueur.getInt(1)-1));	
+		}
+    	
+    	
+    	
     	data.put("J", J1);
     	
     	
@@ -277,4 +338,3 @@ import java.sql.*
 	}
 
 }
-
