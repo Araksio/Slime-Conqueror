@@ -2,8 +2,6 @@ package other.components;
 
 import static com.almasb.fxgl.dsl.FXGL.getDialogService;
 import static com.almasb.fxgl.dsl.FXGL.getGameController;
-import static com.almasb.fxgl.dsl.FXGL.geto;
-import static com.almasb.fxgl.dsl.FXGL.set;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -75,190 +73,63 @@ public class DelayMonsterAtkComponent extends Component {
     			}
     			*/
         
-		if(astar.getEntity().getType() == GameType.MONSTER)
-		{
-			if(x > -3 && x < 3 && y > -3 && y < 3)
-	        {
-	        	/*
-	        	int MX = (int) astar.getEntity().getX();
-	        	int MY = (int) astar.getEntity().getY();
-	        	
-	        	AStarCell c = new AStarCell((int)(MX/80), (int)(MY/80), CellState.WALKABLE);
-				AStarGrid grid = geto("grid");
-				grid.set((int)(MX/80), (int)(MY/80),c);
-				//println("MX " + (int)(MX/80));
-				//println("MY " + (int)(MY/80));
-				
-				set("grid", grid);
-	        	*/
-	        	
-	        	move(player);
-	        	/*
-				c = new AStarCell((int)(MX/80), (int)(MY/80), CellState.NOT_WALKABLE);
-				grid = geto("grid");
-				grid.set((int)(MX/80), (int)(MY/80),c);
-				//println("MX " + (int)(MX/80));
-				//println("MY " + (int)(MY/80));
-				
-				set("grid", grid);
-	        	*/
-	        	/*
-	        	int ValMax = 40;
-	        	int ValMin = 5;
-	        	
-	        	int RandomTimerAtk = (int)(Math.random() * (ValMax - ValMin) + ValMin + 1);
-	        	double RandomTimerAtk2 = (double) RandomTimerAtk * 0.1;
-	        	*/
-	        	
-	            timeToSwitch += tpf;
-	            
-	            double RandomTimerAtk2 = 2.0;
+        if(x > -3 && x < 3 && y > -3 && y < 3)
+        {
+        	/*
+        	int MX = (int) astar.getEntity().getX();
+        	int MY = (int) astar.getEntity().getY();
+        	
+        	AStarCell c = new AStarCell((int)(MX/80), (int)(MY/80), CellState.WALKABLE);
+			AStarGrid grid = geto("grid");
+			grid.set((int)(MX/80), (int)(MY/80),c);
+			//println("MX " + (int)(MX/80));
+			//println("MY " + (int)(MY/80));
+			
+			set("grid", grid);
+        	*/
+        	
+        	move();
+        	/*
+			c = new AStarCell((int)(MX/80), (int)(MY/80), CellState.NOT_WALKABLE);
+			grid = geto("grid");
+			grid.set((int)(MX/80), (int)(MY/80),c);
+			//println("MX " + (int)(MX/80));
+			//println("MY " + (int)(MY/80));
+			
+			set("grid", grid);
+        	*/
+        	/*
+        	int ValMax = 40;
+        	int ValMin = 5;
+        	
+        	int RandomTimerAtk = (int)(Math.random() * (ValMax - ValMin) + ValMin + 1);
+        	double RandomTimerAtk2 = (double) RandomTimerAtk * 0.1;
+        	*/
+        	
+            timeToSwitch += tpf;
+            
+            double RandomTimerAtk2 = 2.0;
 
-	            
-	            if (timeToSwitch >= RandomTimerAtk2) {
-	            	MonsterAttack(astar.getEntity(),player);
-	                timeToSwitch = 0;
-	            }
+            
+            if (timeToSwitch >= RandomTimerAtk2) {
+            	MonsterAttack(astar.getEntity(),player);
+                timeToSwitch = 0;
+            }
 
-	        	
-	        	
-	        	
-	        }
-		}
-        
+        	
+        	
+        	
+        }
     	 
     }
 
-private void move(Entity R) {
-    	
-        if(!astar.isMoving() && astar.getEntity().getType() == GameType.MONSTER)
-        {
-        	Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
-        	
-	    	int px = (int) P.getX()/80;
-	    	int py = (int) P.getY()/80;
-        	
-	    	boolean GridOfAllEntityOnWorld [][] = geto("GridOfAllEntityOnWorld");
-	    	
-	    	int xp = (int) R.getX()/80;
-	    	int yp = (int) R.getY()/80;
+    private void move() {
+        var player = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
 
-	    	Entity EntityCurrentMove = astar.getEntity();
-	    	
-	    	int x = (int) EntityCurrentMove.getX()/80;
-	    	int y = (int) EntityCurrentMove.getY()/80;
-	    	
-	    	//println("type : " + EntityCurrentMove.getType());
-	    	//println("x : " + x);
-	    	//println("y : " + y);
-	    	
-	        boolean CanMoveRight = !GridOfAllEntityOnWorld[x+1][y];
-	        boolean CanMoveLeft = !GridOfAllEntityOnWorld[x-1][y];
-	        boolean CanMoveUp = !GridOfAllEntityOnWorld[x][y-1];
-	        boolean CanMoveDown = !GridOfAllEntityOnWorld[x][y+1];
-	        
-	        
-	        if(x+1 == px && y == py)
-	        {
-	        	CanMoveRight = false;
-	        }
-	        if(x-1 == px && y == py)
-	        {
-	        	CanMoveLeft = false;
-	        }
-	        if(x == px && y-1 == py)
-	        {
-	        	CanMoveUp = false;
-	        }
-	        if(x == px && y+1 == py)
-	        {
-	        	CanMoveDown = false;
-	        }
-	        
-	        
-	        boolean NeedMoveToRight = false;
-	        boolean NeedMoveToLeft = false;
-	        boolean NeedMoveToUp = false;
-	        boolean NeedMoveToDown = false;
-	        
-			int RisRight = Math.abs((xp+1) - x);
-			int RisLeft =  Math.abs((xp-1) - x);
-			int RisUp =    Math.abs((yp-1) - y);
-			int RisDown =  Math.abs((yp+1) - y);
-    	
-			//int RisXVerif = Math.abs((xp) - x);
-			//int RisYVerif = Math.abs((yp) - y);
-			
-			//println("RisRight : " + RisRight);
-			//println("RisLeft : " + RisLeft);
-			//println("RisUp : " + RisUp);
-			//println("RisDown : " + RisDown);
-			
-			//println("RisXVerif : " + RisXVerif);
-			//println("RisYVerif : " + RisYVerif);
+        int x = player.call("getCellX");
+        int y = player.call("getCellY");
 
-			if(RisRight >= RisLeft && RisRight >= RisUp && RisRight >= RisDown)
-			{
-				NeedMoveToRight = true;
-				//println("NeedMoveToRight");
-				
-			}
-			
-			if(RisLeft >= RisRight && RisLeft >= RisUp && RisLeft >= RisDown)
-			{
-				NeedMoveToLeft = true;
-				//println("NeedMoveToLeft");
-			}
-			
-			if(RisUp >= RisRight && RisUp >= RisLeft && RisUp >= RisDown)
-			{
-				NeedMoveToUp = true;
-				//println("NeedMoveToUp");
-			}
-			
-			if(RisDown >= RisRight && RisDown >= RisUp && RisDown >= RisLeft)
-			{
-				NeedMoveToDown = true;
-				//println("NeedMoveToDown");
-			}
-			
-			//println("--------------");
-
-	        //int ValMax = 4;
-			//int ValMin = 1;
-			//int randomMove = (int)(Math.random() * (ValMax - ValMin) + ValMin + 1);
-			if(CanMoveLeft && NeedMoveToLeft) 
-			{
-				astar.moveToCell(x-1, y);
-				GridOfAllEntityOnWorld[x][y] = false;
-				GridOfAllEntityOnWorld[x-1][y] = true;
-			}
-			else if(CanMoveRight && NeedMoveToRight)
-			{
-				astar.moveToCell(x+1, y);
-				GridOfAllEntityOnWorld[x][y] = false;
-				GridOfAllEntityOnWorld[x+1][y] = true;
-			}
-			else if(CanMoveUp && NeedMoveToUp)
-			{
-				astar.moveToCell(x, y-1);
-				GridOfAllEntityOnWorld[x][y] = false;
-				GridOfAllEntityOnWorld[x][y-1] = true;
-			}
-			else if(CanMoveDown && NeedMoveToDown)
-			{
-				astar.moveToCell(x, y+1);
-				GridOfAllEntityOnWorld[x][y] = false;
-				GridOfAllEntityOnWorld[x][y+1] = true;
-			}
-			else
-			{
-				
-			}
-	    	
-			set("GridOfAllEntityOnWorld",GridOfAllEntityOnWorld);
-        }
-        		
+        astar.moveToCell(x, y);
     }
 
     public DelayMonsterAtkComponent withDelay() {

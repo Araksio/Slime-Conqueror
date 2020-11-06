@@ -86,7 +86,13 @@ private void startGame() throws SQLException {
 			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`money` (`idMoney`, `moneyPlayer`, `moneyBank`, `idjoueur`) VALUES ('1', '500', '1000', NULL)");
 			
 			//cree le lvl du joueur
-			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`) VALUES ('1', '1', '0', '0', '10', NULL, NULL)");
+			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('1', '1', '0', '0', '20', NULL, NULL,'0')");
+			
+			//cree les lvl que le joueur pourra atteindre, pas besoin du lvl1 
+			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('2', '2', '20', '0', '60', NULL, NULL,'2')");
+			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('3', '3', '80', '0', '200', NULL, NULL,'2')");
+			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('4', '4', '280', '0', '500', NULL, NULL,'3')");
+			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('5', '5', '780', '0', '1273', NULL, NULL,'3')");
 			
 			//cree la position du joueur, a faire plus tard 
 			

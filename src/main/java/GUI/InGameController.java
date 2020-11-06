@@ -1,6 +1,6 @@
 package GUI;
 
-
+import java.sql.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -32,7 +32,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-public class InGameController{
+public class InGameController {
 	 public static ScheduledExecutorService scheduledExecutorService;
 	 
  @FXML
@@ -132,14 +132,14 @@ private Button spaBonusButton;
 @FXML
 private Button speBonusButton;
 
-int pointsBonus = 1;
+int pointsBonus;
 
 
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
  
 
  
- public void initialize() throws URISyntaxException, IOException {
+ public void initialize() throws URISyntaxException, IOException, SQLException {
 	
  	getStats();
  	getImages();
@@ -149,13 +149,44 @@ int pointsBonus = 1;
  }
  
 @FXML
-public void keyPressed(KeyEvent event)
+public void keyPressed(KeyEvent event) throws SQLException
 {
 	 if (event.getCode() == KeyCode.F1) { 
 		 
 		 // Ajout de la fonction save ici
-		 
-		 
+		 //debut du sql
+			Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+			Statement demandeRequete = db.createStatement();
+			
+
+			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`stats`  "
+					+ "SET `maxHP` = '"+ J.getStat().getMaxHP()+"'"
+					+ ", `currentHP` ='"+ J.getStat().getCurrentHP()+"'"
+					+ ", `maxATK`= '"+ J.getStat().getMaxATK()+"'"
+					+ ", `currentATK`= '"+ J.getStat().getCurrentATK()+"'"
+					+ ", `maxDEF`= '"+ J.getStat().getMaxDEF()+"'"
+					+ ", `currentDEF`= '"+ J.getStat().getCurrentDEF()+"'"
+					+ ", `maxMP`= '"+ J.getStat().getMaxMP()+"'"
+					+ ", `currentMP`= '"+ J.getStat().getCurrentMP()+"'"
+					+ ", `maxSPA`= '"+ J.getStat().getMaxSPA()+"'"
+					+ ", `currentSPA`= '"+ J.getStat().getCurrentSPA()+"'"
+					+ ", `maxSPD`= '"+ J.getStat().getMaxSPD()+"'"
+					+ ", `currentSPD`= '"+ J.getStat().getCurrentSPD()+"'"
+					+ ", `maxSPE`= '"+ J.getStat().getMaxSPE()+"'"
+					+ ", `currentSPE`= '"+ J.getStat().getCurrentSPE()+"'"
+					+ "WHERE `stats`.`idJoueur` = 1");
+			
+			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl`"
+					+ "SET `level` = '"+J.getLv().getNiveau()+"'"
+					+ ",`totalXP`='"+J.getLv().getTotalXP()+"'"
+					+ ",`currentXP`= '"+J.getLv().getCurrentXPforLV()+"'"
+					+ ",`xpNeeded`= '"+J.getLv().getXPneedForNextLV()+"'"
+					+ "WHERE `lvl`.`idJoueur` = 1");
+			
+			
+			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur`"
+					+ "SET `pointBonusJoueur` = '"+pointsBonus+"'"
+					+ "WHERE `joueur`.`idjoueur` = 1");
 		  
 		 
 		    
@@ -171,7 +202,7 @@ public void keyPressed(KeyEvent event)
  
 }
  
- public void hoverButton()
+ public void hoverButton() throws SQLException
  {
 	
 	   
@@ -190,7 +221,7 @@ public void keyPressed(KeyEvent event)
 		{
 			characterPane.setVisible(true);
 			characterPane.setLayoutX(873);
-			characterPane.setLayoutY(421);
+			characterPane.setLayoutY(385);
 		}	
 		else
 		{
@@ -367,15 +398,21 @@ public void keyPressed(KeyEvent event)
 
  
  
- public void getStats()
+ public void getStats() throws SQLException
  {
-	
+	pointsBonus = J.getLv().getPointsBonus();
 	pseudoLabelCharacter.setText(J.getNom());
+	 if(J.getLv().getNiveau() == 1)
+	    {
+	    	pointsBonus = 1;
+	    }
+	 J.getLv().setPointsBonus(J.getLv().getPointsBonus());
+	
      scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
      scheduledExecutorService.scheduleAtFixedRate(() -> {
-    
+   
         Platform.runLater(() -> {
-           
+        	
       hpLabelCharacter.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
       mpLabelCharacter.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());
       atkLabelCharacter.setText("ATK : " + J.getStat().getMaxATK());
@@ -387,13 +424,15 @@ public void keyPressed(KeyEvent event)
       xpTotalLabelCharacter.setText("XP TOTAL : " + J.getLv().getTotalXP());
      if(J.getLv().checkLVisAvalaible())
      {
+  
+		
     	J.setLV(GameFactory.lvls.get(J.getLv().getNiveau()-1));
     	J.getStat().setMaxHP(J.getStat().getMaxHP() + (5 + (int)(Math.random() * ((10 - 5) + 1))));
     	J.getStat().setMaxMP(J.getStat().getMaxMP() + (5 + (int)(Math.random() * ((10 - 5) + 1))));
     	J.getStat().setCurrentHP(J.getStat().getMaxHP());
     	J.getStat().setCurrentMP(J.getStat().getMaxMP());
     	pointsBonus += J.getLv().getPointsBonus();
-    	System.out.println(pointsBonus);
+    	
      }
       
       levelLabelCharacter.setText("LEVEL : " + J.getLv().getNiveau());
@@ -459,6 +498,3 @@ public void keyPressed(KeyEvent event)
   });
  }
  }
-
-
-
