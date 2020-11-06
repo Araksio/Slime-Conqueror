@@ -424,7 +424,7 @@ public void keyPressed(KeyEvent event)
     
          });
        
-     }, 0, 100, TimeUnit.MILLISECONDS);
+     }, 0, 1, TimeUnit.MILLISECONDS);
  }
  
 

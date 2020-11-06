@@ -24,7 +24,7 @@
             <Font name="Eras Bold ITC" size="30.0" />
          </font>
       </Label>
-      <Label fx:id="pseudoJoueur" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="572.0" text="PSEUDO, LVL, EXP" textFill="#2c27cc">
+      <Label fx:id="pseudoJoueur" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="572.0" text="PSEUDO, LVL, EXP" textFill="#e8993a">
          <font>
             <Font name="Eras Bold ITC" size="30.0" />
          </font>
@@ -97,7 +97,7 @@
             <Font name="Eras Bold ITC" size="30.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="characterPane" layoutX="873.0" layoutY="421.0" maxHeight="418.0" maxWidth="200.0" prefHeight="418.0" prefWidth="198.0" style="-fx-background-color: #263238; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5; -fx-border-width: 2;" visible="false">
+      <AnchorPane fx:id="characterPane" layoutX="871.0" layoutY="385.0" maxHeight="418.0" maxWidth="200.0" prefHeight="418.0" prefWidth="198.0" style="-fx-background-color: #263238; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5; -fx-border-width: 2;" visible="false">
          <children>
             <Label layoutX="7.0" layoutY="5.0" prefHeight="12.0" prefWidth="186.0" text="Personnage" textFill="#f8f8f8">
                <font>
