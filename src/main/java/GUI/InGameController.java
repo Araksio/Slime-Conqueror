@@ -132,7 +132,7 @@ private Button spaBonusButton;
 @FXML
 private Button speBonusButton;
 
-int pointsBonus = 1;
+int pointsBonus;
 
 
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
@@ -181,9 +181,12 @@ public void keyPressed(KeyEvent event) throws SQLException
 					+ ",`totalXP`='"+J.getLv().getTotalXP()+"'"
 					+ ",`currentXP`= '"+J.getLv().getCurrentXPforLV()+"'"
 					+ ",`xpNeeded`= '"+J.getLv().getXPneedForNextLV()+"'"
-					+ ",`pointBonus`= '"+J.getLv().getPointsBonus()+"'"
 					+ "WHERE `lvl`.`idJoueur` = 1");
-		 
+			
+			
+			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur`"
+					+ "SET `pointBonusJoueur` = '"+pointsBonus+"'"
+					+ "WHERE `joueur`.`idjoueur` = 1");
 		  
 		 
 		    
@@ -218,7 +221,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 		{
 			characterPane.setVisible(true);
 			characterPane.setLayoutX(873);
-			characterPane.setLayoutY(421);
+			characterPane.setLayoutY(385);
 		}	
 		else
 		{
@@ -397,13 +400,19 @@ public void keyPressed(KeyEvent event) throws SQLException
  
  public void getStats() throws SQLException
  {
-	
+	pointsBonus = J.getLv().getPointsBonus();
 	pseudoLabelCharacter.setText(J.getNom());
+	 if(J.getLv().getNiveau() == 1)
+	    {
+	    	pointsBonus = 1;
+	    }
+	 J.getLv().setPointsBonus(J.getLv().getPointsBonus());
+	
      scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
      scheduledExecutorService.scheduleAtFixedRate(() -> {
-    
+   
         Platform.runLater(() -> {
-           
+        	
       hpLabelCharacter.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
       mpLabelCharacter.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());
       atkLabelCharacter.setText("ATK : " + J.getStat().getMaxATK());
@@ -423,7 +432,7 @@ public void keyPressed(KeyEvent event) throws SQLException
     	J.getStat().setCurrentHP(J.getStat().getMaxHP());
     	J.getStat().setCurrentMP(J.getStat().getMaxMP());
     	pointsBonus += J.getLv().getPointsBonus();
-    	System.out.println(pointsBonus);
+    	
      }
       
       levelLabelCharacter.setText("LEVEL : " + J.getLv().getNiveau());

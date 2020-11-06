@@ -283,7 +283,10 @@ import java.sql.*
 	    	J1.setLV(lvls.get(lvlDuJoueur.getInt(1)-1));	
 		}
     	
-    	
+		ResultSet pointBonusJoueur = demandeRequete.executeQuery("Select pointBonusJoueur from joueur where idjoueur=1");
+		while(pointBonusJoueur.next()) {
+	    	J1.getLv().setPointsBonus(pointBonusJoueur.getInt(1));
+		}
     	
     	data.put("J", J1);
     	

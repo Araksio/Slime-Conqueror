@@ -692,7 +692,7 @@ public class GameApp extends GameApplication {
         getGameWorld().addEntityFactory(new GameFactory()); // Ajout des "classe, joueur, mur et autre"
         
         
-        final String chemin = "chemin vers map_level0";
+        final String chemin = ""; // Chemin à remplir
         final File fichier =new File(chemin); 
         CreatAlea M=new CreatAlea();
         try {
