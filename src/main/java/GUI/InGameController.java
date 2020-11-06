@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 import com.almasb.fxgl.dsl.FXGL;
 
 import entity.Joueur;
+import game.and.map.GameFactory;
 import game.and.map.GameType;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
@@ -29,6 +30,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Polygon;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 public class InGameController{
 	 public static ScheduledExecutorService scheduledExecutorService;
@@ -115,6 +117,22 @@ private Label pseudoLabelCharacter;
 private Label levelLabelCharacter;
 @FXML
 private Label xpLabelCharacter;
+@FXML
+private Label xpTotalLabelCharacter;
+@FXML
+private Label pointsBonusLabel;
+@FXML
+private Button atkBonusButton;
+@FXML
+private Button defBonusButton;
+@FXML
+private Button spdBonusButton;
+@FXML
+private Button spaBonusButton;
+@FXML
+private Button speBonusButton;
+
+int pointsBonus = 1;
 
 
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
@@ -126,7 +144,7 @@ private Label xpLabelCharacter;
  	getStats();
  	getImages();
     hoverButton();
-  
+   
  	
  }
  
@@ -173,12 +191,47 @@ public void keyPressed(KeyEvent event)
 			characterPane.setVisible(true);
 			characterPane.setLayoutX(873);
 			characterPane.setLayoutY(421);
-		}
+		}	
 		else
 		{
 			characterPane.setVisible(false);
 		}
 	 });
+	 
+	 atkBonusButton.setOnMouseClicked(e -> {
+		 
+	 J.getStat().setMaxATK(J.getStat().getMaxATK() + 1);
+	 J.getStat().setCurrentATK(J.getStat().getMaxATK());
+	 pointsBonus--;
+	 });
+	 
+	 defBonusButton.setOnMouseClicked(e -> {
+		 
+		 J.getStat().setMaxDEF(J.getStat().getMaxDEF() + 1);
+		 J.getStat().setCurrentDEF(J.getStat().getMaxDEF());
+		 pointsBonus--;
+		 });
+	 
+	 spaBonusButton.setOnMouseClicked(e -> {
+		 
+		 J.getStat().setMaxSPA(J.getStat().getMaxSPA() + 1);
+		 J.getStat().setCurrentSPA(J.getStat().getMaxSPA());
+		 pointsBonus--;
+		 });
+	 
+	 spdBonusButton.setOnMouseClicked(e -> {
+		 
+		 J.getStat().setMaxSPD(J.getStat().getMaxSPD() + 1);
+		 J.getStat().setCurrentSPD(J.getStat().getMaxSPD());
+		 pointsBonus--;
+		 });
+	 
+	 speBonusButton.setOnMouseClicked(e -> {
+		 
+		 J.getStat().setMaxSPE(J.getStat().getMaxSPE() + 1);
+		 J.getStat().setCurrentSPE(J.getStat().getMaxSPE());
+		 pointsBonus--;
+		 });
 	 
 	 
 	 inventoryButton.setOnMouseEntered(e -> {
@@ -330,16 +383,45 @@ public void keyPressed(KeyEvent event)
       spdLabelCharacter.setText("SPD : " + J.getStat().getMaxSPD());
       speLabelCharacter.setText("SPE : " + J.getStat().getMaxSPE());
       spaLabelCharacter.setText("SPA : " + J.getStat().getMaxSPA());
+      pointsBonusLabel.setText("POINTS BONUS : "+ pointsBonus);
+      xpTotalLabelCharacter.setText("XP TOTAL : " + J.getLv().getTotalXP());
+     if(J.getLv().checkLVisAvalaible())
+     {
+    	J.setLV(GameFactory.lvls.get(J.getLv().getNiveau()-1));
+    	J.getStat().setMaxHP(J.getStat().getMaxHP() + (5 + (int)(Math.random() * ((10 - 5) + 1))));
+    	J.getStat().setMaxMP(J.getStat().getMaxMP() + (5 + (int)(Math.random() * ((10 - 5) + 1))));
+    	J.getStat().setCurrentHP(J.getStat().getMaxHP());
+    	J.getStat().setCurrentMP(J.getStat().getMaxMP());
+    	pointsBonus += J.getLv().getPointsBonus();
+    	System.out.println(pointsBonus);
+     }
       
-      /* à implementer lorsque les les levels et l'xp seront implémenter
       levelLabelCharacter.setText("LEVEL : " + J.getLv().getNiveau());
-      xpLabelCharacter.setText("XP :" + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());*/
+     xpLabelCharacter.setText("XP :" + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());
       
        	hpBar.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
        	mpBar.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());	
-       	 pseudoJoueur.setText(J.getNom());	
-      
-      
+       	
+       	 pseudoJoueur.setText(J.getNom() + " " + "LV. "+J.getLv().getNiveau() + " XP :" + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());	
+       	if(pointsBonus == 0)
+		{
+			atkBonusButton.setVisible(false);
+			defBonusButton.setVisible(false);
+			spdBonusButton.setVisible(false);
+			spaBonusButton.setVisible(false);
+			speBonusButton.setVisible(false);
+		}
+       	else
+       	{
+       		atkBonusButton.setVisible(true);
+			defBonusButton.setVisible(true);
+			spdBonusButton.setVisible(true);
+			spaBonusButton.setVisible(true);
+			speBonusButton.setVisible(true);
+       	}
+	
+	
+    
          });
        
      }, 0, 100, TimeUnit.MILLISECONDS);
@@ -347,7 +429,35 @@ public void keyPressed(KeyEvent event)
  
 
     
-    
+ @FXML
+ private void closeRequest() {
+        
+       
+  Stage s = (Stage)hpBar.getScene().getWindow();
+  s.setOnCloseRequest(e -> {
+	
+	  Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous vraiment fermer l'application?", ButtonType.YES, ButtonType.NO);
+        ButtonType result = alert.showAndWait().orElse(ButtonType.NO);
+        if (ButtonType.NO.equals(result)) {
+          
+            e.consume();
+        }
+        else
+        {
+        	
+        	if(scheduledExecutorService != null)
+        	{
+        	scheduledExecutorService.shutdown();
+        	}
+        	else
+        	{
+        		
+        	}
+        }
+      
+ 
+  });
+ }
  }
 
 

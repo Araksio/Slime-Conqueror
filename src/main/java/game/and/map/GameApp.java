@@ -635,6 +635,7 @@ public class GameApp extends GameApplication {
     	if (M.getStat().getCurrentHP() <= 0)
     	{
     		Mo.removeFromWorld();
+    		J.getLv().addXP(M.getDroppedXP());
 			println("Le " + M.getNom() + " Est mort");
 			CurrentBattle = null;
 			

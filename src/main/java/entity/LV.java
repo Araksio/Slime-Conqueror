@@ -9,13 +9,15 @@ public class LV {
 	private double TotalXP;
 	private double CurrentXPforLV;
 	private double XPneedForNextLV;
+	private int pointsBonus;
 	
-	LV(int _Niveau, double _TotalXP, double _CurrentXPforLV, double _XPneedForNextLV)
+	public LV(int _Niveau, double _TotalXP, double _CurrentXPforLV, double _XPneedForNextLV, int _pointsBonus)
 	{
 		Niveau = _Niveau;
 		TotalXP = _TotalXP;
 		CurrentXPforLV = _CurrentXPforLV;
 		XPneedForNextLV = _XPneedForNextLV;
+		pointsBonus = _pointsBonus;
 	}
 	
 	public int getNiveau()
@@ -50,9 +52,9 @@ public class LV {
 		this.TotalXP = _TotalXP;
 	}
 	
-	public void setCurentXPforLV(double _CurentXPforLV)
+	public void setCurrentXPforLV(double _CurrentXPforLV)
 	{
-		this.CurrentXPforLV = _CurentXPforLV;
+		this.CurrentXPforLV = _CurrentXPforLV;
 	}
 	
 	public void setXPneedForNextLV(double _XPneedForNextLV)
@@ -68,7 +70,7 @@ public class LV {
 		this.CurrentXPforLV = this.CurrentXPforLV + _xp;
 	}
 	
-	public void checkLVisAvalaible()
+	public boolean checkLVisAvalaible()
 	{
 		if(this.CurrentXPforLV >= this.XPneedForNextLV)
 		{
@@ -76,8 +78,22 @@ public class LV {
 			{
 				this.CurrentXPforLV = this.CurrentXPforLV - this.XPneedForNextLV;
 				Niveau++;
+				return true;
 			}
 		}
+		else
+		{
+			return false;
+		}
+		return false;
+	}
+
+	public int getPointsBonus() {
+		return pointsBonus;
+	}
+
+	public void setPointsBonus(int pointsBonus) {
+		this.pointsBonus = pointsBonus;
 	}
 
 }
