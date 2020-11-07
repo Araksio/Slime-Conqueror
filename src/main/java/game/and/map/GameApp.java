@@ -365,7 +365,7 @@ public class GameApp extends GameApplication {
     			
     			for(int i = 0; i < nbr; i++)
     			{
-    			System.out.println("test");
+    			
     				nbr = geti("nbrMob");
     				
 	    			Entity CurentEntityOnClic = getGameWorld().getEntitiesByType(MONSTER).get(i);

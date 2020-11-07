@@ -14,6 +14,7 @@ import static game.and.map.GameType.PLAYER;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -42,7 +43,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 public class InGameController {
@@ -146,10 +149,10 @@ private Button spaBonusButton;
 private Button speBonusButton;
 
 int pointsBonus;
-
+int nbr;
 
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
- Monster M = FXGL.getGameWorld().getEntitiesByType(MONSTER).get(1).getProperties().getValue("Mosnter1");
+
 
  
  public void initialize() throws URISyntaxException, IOException, SQLException {
@@ -417,16 +420,27 @@ public void keyPressed(KeyEvent event) throws SQLException
 	 
 	 Viewport viewport = getGameScene().getViewport();
 	 viewport.bindToEntity(getGameWorld().getSingleton(PLAYER), getAppWidth()/2,getAppHeight()/2);
+	 nbr = getGameWorld().getEntitiesByType(MONSTER).size();
+	 ArrayList<Label> labels = new ArrayList<Label>();
+	 pointsBonus = J.getLv().getPointsBonus();
+	 pseudoLabelCharacter.setText(J.getNom());
+	 
+		for(int i = 0; i < getGameWorld().getEntitiesByType(MONSTER).size(); i++)
+		{
+			Label label = new Label("Label : " + i);
+			labels.add(label);
+			getGameScene().addUINodes(labels.get(i));
+			labels.get(i).setTextFill(Color.RED);
+			labels.get(i).setFont(new Font("Eras Bold ITC", 14));
+		}
+			
 	
-
-		Label label = new Label();
-			getGameScene().addUINodes(label);
-	pointsBonus = J.getLv().getPointsBonus();
-	pseudoLabelCharacter.setText(J.getNom());
 	 if(J.getLv().getNiveau() == 1)
 	    {
 	    	pointsBonus = 1;
 	    }
+	 
+	 
 	 J.getLv().setPointsBonus(J.getLv().getPointsBonus());
 	 
      scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
@@ -439,34 +453,52 @@ public void keyPressed(KeyEvent event) throws SQLException
       atkLabelCharacter.setText("ATK : " + J.getStat().getMaxATK());
       defLabelCharacter.setText("DEF : " + J.getStat().getMaxDEF());
       spdLabelCharacter.setText("SPD : " + J.getStat().getMaxSPD());
-      label.setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(1).getX()-viewport.getX()-30);
-      label.setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(1).getY()-viewport.getY()-60);
-      label.setText("HP : "+ M.getStat().getCurrentHP() + " / " + M.getStat().getMaxHP());
+      
+      
+      for(int i = 0; i < nbr; i++)
+      {
+    	  Monster m = getGameWorld().getEntitiesByType(MONSTER).get(i).getProperties().getValue("Mosnter1");
+    	   labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-40);
+    	   labels.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()-60);
+    	  labels.get(i).setText("HP : " + m.getStat().getCurrentHP() + " / " + m.getStat().getMaxHP());
+    	  
+    	  
+    	if(nbr != getGameWorld().getEntitiesByType(MONSTER).size())
+    	{
+    		nbr--;
+    		labels.get(nbr).setText("");
+    	}
+    	
+    	
+      }
+    
 
+      
       speLabelCharacter.setText("SPE : " + J.getStat().getMaxSPE());
       spaLabelCharacter.setText("SPA : " + J.getStat().getMaxSPA());
       pointsBonusLabel.setText("POINTS BONUS : "+ pointsBonus);
       xpTotalLabelCharacter.setText("XP TOTAL : " + J.getLv().getTotalXP());
+      
+      
      if(J.getLv().checkLVisAvalaible())
-     {
-  
-		
+     {	
     	J.setLV(GameFactory.lvls.get(J.getLv().getNiveau()-1));
     	J.getStat().setMaxHP(J.getStat().getMaxHP() + (5 + (int)(Math.random() * ((10 - 5) + 1))));
     	J.getStat().setMaxMP(J.getStat().getMaxMP() + (5 + (int)(Math.random() * ((10 - 5) + 1))));
     	J.getStat().setCurrentHP(J.getStat().getMaxHP());
     	J.getStat().setCurrentMP(J.getStat().getMaxMP());
     	pointsBonus += J.getLv().getPointsBonus();
-    	
      }
       
+     
+     
       levelLabelCharacter.setText("LEVEL : " + J.getLv().getNiveau());
-     xpLabelCharacter.setText("XP :" + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());
+      xpLabelCharacter.setText("XP : " + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());
+      hpBar.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
+      mpBar.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());	
+      pseudoJoueur.setText(J.getNom() + " " + "LV. "+J.getLv().getNiveau() + " XP : " + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());	
       
-       	hpBar.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
-       	mpBar.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());	
-       	
-       	 pseudoJoueur.setText(J.getNom() + " " + "LV. "+J.getLv().getNiveau() + " XP :" + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());	
+      
        	if(pointsBonus == 0)
 		{
 			atkBonusButton.setVisible(false);
@@ -475,6 +507,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 			spaBonusButton.setVisible(false);
 			speBonusButton.setVisible(false);
 		}
+       	
        	else
        	{
        		atkBonusButton.setVisible(true);
@@ -484,11 +517,9 @@ public void keyPressed(KeyEvent event) throws SQLException
 			speBonusButton.setVisible(true);
        	}
 	
-	
-    
          });
        
-     }, 0, 1, TimeUnit.MILLISECONDS);
+     }, 0, 30, TimeUnit.MILLISECONDS);
  
  
 
