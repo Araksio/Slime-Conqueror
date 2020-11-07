@@ -41,6 +41,7 @@ import GUI.MySceneFactory;
 import entity.Joueur;
 import entity.Monster;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
@@ -88,8 +89,7 @@ public class GameApp extends GameApplication {
        settings.setTitle("Slime Conqueror");
        settings.setVersion(vJeu);
      
-
-
+ 
         settings.setManualResizeEnabled(true); // Autoriser le changement de taille de la fenettre manuellement
         settings.setPreserveResizeRatio(true); // Garder le ratio du jeu
     	settings.setSceneFactory(new MySceneFactory());
@@ -365,7 +365,7 @@ public class GameApp extends GameApplication {
     			
     			for(int i = 0; i < nbr; i++)
     			{
-    			
+    			System.out.println("test");
     				nbr = geti("nbrMob");
     				
 	    			Entity CurentEntityOnClic = getGameWorld().getEntitiesByType(MONSTER).get(i);
@@ -734,6 +734,8 @@ public class GameApp extends GameApplication {
         
         Viewport viewport = getGameScene().getViewport();
         viewport.bindToEntity(getGameWorld().getSingleton(PLAYER), getAppWidth()/2,getAppHeight()/2);
+        
+        
         //viewport.bindToEntity(getGameWorld().getSingleton(MONSTER), getAppWidth()/2,getAppHeight()/2);
         
         viewport.setBounds(0, 0, MAP_SIZE_REEL * BLOCK_SIZE, MAP_SIZE_REEL * BLOCK_SIZE);

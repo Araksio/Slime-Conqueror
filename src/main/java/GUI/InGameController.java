@@ -1,6 +1,16 @@
 package GUI;
 
 import java.sql.*;
+
+import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
+import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
+import static com.almasb.fxgl.dsl.FXGL.getGameScene;
+import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
+import static com.almasb.fxgl.dsl.FXGL.geti;
+import static game.and.map.GameType.CHEST;
+import static game.and.map.GameType.MONSTER;
+import static game.and.map.GameType.PLAYER;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -8,9 +18,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
 
 import entity.Joueur;
+import entity.Monster;
 import game.and.map.GameFactory;
 import game.and.map.GameType;
 import javafx.animation.FadeTransition;
@@ -18,6 +30,7 @@ import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -136,7 +149,7 @@ int pointsBonus;
 
 
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
- 
+ Monster M = FXGL.getGameWorld().getEntitiesByType(MONSTER).get(1).getProperties().getValue("Mosnter1");
 
  
  public void initialize() throws URISyntaxException, IOException, SQLException {
@@ -210,6 +223,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	 characterButton.setOnMouseEntered(e -> {
 		labelCharacter.setVisible(true);
 		polygonCharacter.setVisible(true);
+		
 		
 	 });
 	 characterButton.setOnMouseExited(e -> {
@@ -400,6 +414,13 @@ public void keyPressed(KeyEvent event) throws SQLException
  
  public void getStats() throws SQLException
  {
+	 
+	 Viewport viewport = getGameScene().getViewport();
+	 viewport.bindToEntity(getGameWorld().getSingleton(PLAYER), getAppWidth()/2,getAppHeight()/2);
+	
+
+		Label label = new Label();
+			getGameScene().addUINodes(label);
 	pointsBonus = J.getLv().getPointsBonus();
 	pseudoLabelCharacter.setText(J.getNom());
 	 if(J.getLv().getNiveau() == 1)
@@ -407,7 +428,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	    	pointsBonus = 1;
 	    }
 	 J.getLv().setPointsBonus(J.getLv().getPointsBonus());
-	
+	 
      scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
      scheduledExecutorService.scheduleAtFixedRate(() -> {
    
@@ -418,6 +439,10 @@ public void keyPressed(KeyEvent event) throws SQLException
       atkLabelCharacter.setText("ATK : " + J.getStat().getMaxATK());
       defLabelCharacter.setText("DEF : " + J.getStat().getMaxDEF());
       spdLabelCharacter.setText("SPD : " + J.getStat().getMaxSPD());
+      label.setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(1).getX()-viewport.getX()-30);
+      label.setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(1).getY()-viewport.getY()-60);
+      label.setText("HP : "+ M.getStat().getCurrentHP() + " / " + M.getStat().getMaxHP());
+
       speLabelCharacter.setText("SPE : " + J.getStat().getMaxSPE());
       spaLabelCharacter.setText("SPA : " + J.getStat().getMaxSPA());
       pointsBonusLabel.setText("POINTS BONUS : "+ pointsBonus);
@@ -464,10 +489,18 @@ public void keyPressed(KeyEvent event) throws SQLException
          });
        
      }, 0, 1, TimeUnit.MILLISECONDS);
- }
+ 
  
 
-    
+ 
+
+
+ 
+
+       
+        
+  
+}
  @FXML
  private void closeRequest() {
         

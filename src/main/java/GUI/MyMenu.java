@@ -21,6 +21,7 @@ public class MyMenu extends FXGLMenu {
         if(type == MenuType.MAIN_MENU)
         {
         	loadMainMenuLayout();
+        	
         }
         else
         {
