@@ -1,0 +1,85 @@
+14:30:54.104 [main                     ] DEBUG Logger               - Configured Logger
+14:30:54.131 [main                     ] DEBUG GameApplication      - Logging settings
+Title: Slime Conqueror
+Version: v2.2
+Width: 1280
+Height: 900
+Fullscreen: true
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class GUI.MySceneFactory
+
+14:30:54.572 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+14:30:54.582 [JavaFX Application Thread] INFO  Engine               - FXGL-11.11 (08.09.2020 18.00) on WINDOWS (J:11.0.8 FX:14)
+14:30:54.582 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+14:30:54.582 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 10 version 10.0
+14:30:54.583 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+14:30:54.583 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+14:30:54.583 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+14:30:54.705 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+14:30:54.769 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 1280.0 x 900.0
+14:30:54.769 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    1280.0 x 900.0
+14:30:54.770 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+14:30:54.771 [JavaFX Application Thread] DEBUG MainWindow           - Set initial scene to StartupScene
+14:30:54.779 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+14:30:54.869 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (16.0, 39.0)
+14:30:54.869 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 1280.0 x 900.0
+14:30:54.869 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (1.0, 1.0)
+14:30:54.869 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 1280.0 x 900.0
+14:30:54.870 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 1296.0 x 939.0
+14:30:54.877 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+14:30:54.903 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+14:30:54.904 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/css/fxgl_dark.css
+14:30:54.949 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+14:30:54.989 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+14:30:55.053 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=900, physics.ppm=50,0
+14:30:55.055 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1280x900
+14:30:55.348 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+14:30:55.367 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+14:30:55.371 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Users\Cardinal\eclipse-workspace\Slime-Conqueror\system\fxgl.bundle
+14:30:55.375 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+14:30:55.376 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+14:30:55.381 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+14:30:55.381 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/VarelaRound-Regular.ttf
+14:30:55.381 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+14:30:55.382 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/languages/english.lang
+14:30:55.398 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0,521 sec
+14:30:55.409 [JavaFX Application Thread] DEBUG Input                - Registered new binding: HideGUI - H
+14:30:55.409 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Up - Z
+14:30:55.409 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Down - S
+14:30:55.410 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Left - Q
+14:30:55.410 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Right - D
+14:30:55.410 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Teleport - F
+14:30:55.412 [JavaFX Application Thread] DEBUG Input                - Registered new binding: AttackPos - LMB
+14:30:55.412 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Attack - I
+14:30:55.412 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/fxgl_icon.png
+14:30:55.455 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/cursors/fxgl_default.png
+14:30:55.458 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+14:30:55.459 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+14:30:55.460 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+14:30:55.460 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+C
+14:30:55.463 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+14:30:55.465 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:30:55.474 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from StartupScene and adding to FXGLMainMenuDummyScene
+14:30:55.475 [JavaFX Application Thread] DEBUG MainWindow           - StartupScene -> FXGLMainMenuDummyScene
+14:30:55.475 [JavaFX Application Thread] DEBUG MainWindow           - Push state: MyMenu
+14:30:55.475 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:30:55.486 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to MyMenu
+14:30:55.486 [JavaFX Application Thread] DEBUG MainWindow           - FXGLMainMenuDummyScene -> MyMenu
+14:30:55.670 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/Abel-Regular.ttf
+14:30:55.673 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/lucida_console.ttf
+14:30:55.677 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/Courier-Prime.ttf
+14:30:55.681 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+14:30:56.048 [FXGL Background Thread 2 ] INFO  UpdaterService       - Your current version:  11.11
+14:30:56.049 [FXGL Background Thread 2 ] INFO  UpdaterService       - Latest stable version: dev-SNAPSHOT
+14:30:56.056 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+14:30:56.056 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+14:30:56.056 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+14:30:56.057 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Users\Cardinal\eclipse-workspace\Slime-Conqueror\system\fxgl.bundle
+14:30:56.059 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+14:30:56.059 [JavaFX Application Thread] DEBUG MainWindow           - Closing main window
+14:30:56.071 [JavaFX Application Thread] DEBUG Logger               - Closing Logger

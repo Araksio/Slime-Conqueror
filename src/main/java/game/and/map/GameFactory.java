@@ -105,7 +105,7 @@ import java.sql.*
         
     	String Nom = "Soldat Squelette";
     	
-    	Stat StatPlayer = new Stat(20,5,5,5,5,5,5); // HP,ATK,DEF,MP,SPA,SPD,SPE
+    	Stat StatPlayer = new Stat(20,3,3,3,3,3,3); // HP,ATK,DEF,MP,SPA,SPD,SPE
     	Pos Pos1 = new Pos(2,1,0,0,1);
     	
     	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,5.0); 

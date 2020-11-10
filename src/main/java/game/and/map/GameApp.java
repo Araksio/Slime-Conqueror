@@ -22,6 +22,7 @@ import static game.and.map.GameType.PLAYER;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.almasb.fxgl.app.GameApplication;
@@ -70,6 +71,8 @@ public class GameApp extends GameApplication {
     public static Entity CurrentBattle;
     
     public static Viewport viewport;
+    
+    public static boolean CanUpFloor = false;
     
     public static Entity getPlayer() {
         return getGameWorld().getSingleton(PLAYER); // Instanciation du Joueur dans le Jeux
@@ -363,67 +366,77 @@ public class GameApp extends GameApplication {
     			
     			set("nbrMob", nbr);
     			
-    			for(int i = 0; i < nbr; i++)
-    			{
+    			println("" + nbr);
     			
-    				nbr = geti("nbrMob");
-    				
-	    			Entity CurentEntityOnClic = getGameWorld().getEntitiesByType(MONSTER).get(i);
-	    			
-	    			//println("nbr : " + nbr);
-	    			//println("Entity x = " + CurentEntityOnClic.getX()/80);
-	    			//println("Entity y = " + CurentEntityOnClic.getX()/80);
-	    			//println("Clic   x = " + x/80);
-	    			//println("Clic   y = " + y/80);
-	    			int xe = (int)CurentEntityOnClic.getX();
-	    			int ye = (int)CurentEntityOnClic.getY();
-	    			
-	    			if(xe/80 == x/80 && ye/80 == y/80)
-	    			{
-		    			  			
-		    			//println("ETT = " + CurentEntityOnClic );
-		    			
-		    			if(CurentEntityOnClic.getType() == MONSTER)
+    		
+    			
+		    			for(int i = 0; i < nbr; i++)
 		    			{
-		    				@SuppressWarnings("unused")
-							Joueur P1 = getPlayer().getProperties().getValue("Joueur1");
-		    				int P1X = (int)(getPlayer().getX()/BLOCK_SIZE);
-		    				int P1Y = (int)(getPlayer().getY()/BLOCK_SIZE);
-		    				int M1X = (int)(CurentEntityOnClic.getX()/BLOCK_SIZE);
-		    				int M1Y = (int)(CurentEntityOnClic.getY()/BLOCK_SIZE);
-		    				boolean PosEgal = (P1X == M1X && P1Y == M1Y);
-		    				boolean PosXP1 = (P1X+1 == M1X && P1Y == M1Y);
-		    				boolean PosXM1 = (P1X-1 == M1X && P1Y == M1Y);
-		    				boolean PosYP1 = (P1X == M1X && P1Y+1 == M1Y);
-		    				boolean PosYM1 = (P1X == M1X && P1Y-1 == M1Y);
-		    				boolean PosXYP1 = (P1X+1 == M1X && P1Y+1 == M1Y);
-		    				boolean PosXYM1 = (P1X-1 == M1X && P1Y-1 == M1Y);
-		    				boolean PosXPYM1 = (P1X+1 == M1X && P1Y-1 == M1Y);
-		    				boolean PosXMYP1 = (P1X-1 == M1X && P1Y+1 == M1Y);
-		    				if(PosEgal || PosXP1 || PosXM1 || PosYP1 || PosYM1 || PosXYP1 || PosXYM1 || PosXPYM1 || PosXMYP1)
-		    				{
-				    			@SuppressWarnings("unused")
-								Monster M = CurentEntityOnClic.getProperties().getValue("Mosnter1");
+		    				
+		    				nbr = geti("nbrMob");
+		    				
+			    			Entity CurentEntityOnClic = getGameWorld().getEntitiesByType(MONSTER).get(i);
+			    			
+			    			//println("nbr : " + nbr);
+			    			//println("Entity x = " + CurentEntityOnClic.getX()/80);
+			    			//println("Entity y = " + CurentEntityOnClic.getX()/80);
+			    			//println("Clic   x = " + x/80);
+			    			//println("Clic   y = " + y/80);
+			    			int xe = (int)CurentEntityOnClic.getX();
+			    			int ye = (int)CurentEntityOnClic.getY();
+			    			
+			    			if(xe/80 == x/80 && ye/80 == y/80)
+			    			{
+				    			  			
+				    			//println("ETT = " + CurentEntityOnClic );
 				    			
-				    			PlayerAttack(getPlayer(),CurentEntityOnClic);
-				    			
-				    			/*
-				    			int mhp = M.getStat().getCurrentHP();
-					    			mhp--;
-					    			M.getStat().setCurrentHP(mhp);
-					    			println("HP : " + mhp);
-					    			
-					    			if(M.getStat().getCurrentHP() <= 0)
-					    			{
-					    				CurrentBattle.removeFromWorld();
-					    				println("Le " + M.getNom() + " Est mort");
-					    				CurrentBattle = null;
-					    			}*/
-					    			
-				    		}
+				    			if(CurentEntityOnClic.getType() == MONSTER)
+				    			{
+				    				@SuppressWarnings("unused")
+									Joueur P1 = getPlayer().getProperties().getValue("Joueur1");
+				    				int P1X = (int)(getPlayer().getX()/BLOCK_SIZE);
+				    				int P1Y = (int)(getPlayer().getY()/BLOCK_SIZE);
+				    				int M1X = (int)(CurentEntityOnClic.getX()/BLOCK_SIZE);
+				    				int M1Y = (int)(CurentEntityOnClic.getY()/BLOCK_SIZE);
+				    				boolean PosEgal = (P1X == M1X && P1Y == M1Y);
+				    				boolean PosXP1 = (P1X+1 == M1X && P1Y == M1Y);
+				    				boolean PosXM1 = (P1X-1 == M1X && P1Y == M1Y);
+				    				boolean PosYP1 = (P1X == M1X && P1Y+1 == M1Y);
+				    				boolean PosYM1 = (P1X == M1X && P1Y-1 == M1Y);
+				    				boolean PosXYP1 = (P1X+1 == M1X && P1Y+1 == M1Y);
+				    				boolean PosXYM1 = (P1X-1 == M1X && P1Y-1 == M1Y);
+				    				boolean PosXPYM1 = (P1X+1 == M1X && P1Y-1 == M1Y);
+				    				boolean PosXMYP1 = (P1X-1 == M1X && P1Y+1 == M1Y);
+				    				if(PosEgal || PosXP1 || PosXM1 || PosYP1 || PosYM1 || PosXYP1 || PosXYM1 || PosXPYM1 || PosXMYP1)
+				    				{
+						    			@SuppressWarnings("unused")
+										Monster M = CurentEntityOnClic.getProperties().getValue("Mosnter1");
+						    			
+						    			PlayerAttack(getPlayer(),CurentEntityOnClic);
+						    			
+						    			/*
+						    			int mhp = M.getStat().getCurrentHP();
+							    			mhp--;
+							    			M.getStat().setCurrentHP(mhp);
+							    			println("HP : " + mhp);
+							    			
+							    			if(M.getStat().getCurrentHP() <= 0)
+							    			{
+							    				CurrentBattle.removeFromWorld();
+							    				println("Le " + M.getNom() + " Est mort");
+							    				CurrentBattle = null;
+							    			}*/
+							    			
+						    		}
+				    			}
+			    			}
+			    			nbr = geti("nbrMob");
 		    			}
-	    			}
-    			}
+        			
+    				
+    			
+    			
+    			
     			
     			
     			for(int i = 0; i < nbrChest; i++)
@@ -504,8 +517,12 @@ public class GameApp extends GameApplication {
 	}
 
     protected void initPhysics() {
-    	onCollision(PLAYER, ESCALIER, (p,e) -> 
-    	FLOOR = getPlayerComponent().teleport(++FLOOR,BLOCK_SIZE,MAP_SIZE_PRINT)
+    	onCollision(PLAYER, ESCALIER, (p,e) -> {
+    	if(CanUpFloor)
+    	{
+    		FLOOR = getPlayerComponent().teleport(++FLOOR,BLOCK_SIZE,MAP_SIZE_PRINT);
+    	}
+    	}
     	);
     	/*
     	onCollision(PLAYER, MONSTER, (p,m) -> {
@@ -663,6 +680,11 @@ public class GameApp extends GameApplication {
 			int nbr = geti("nbrMob");
 			nbr--;
 			set("nbrMob",nbr);
+			
+			if(nbr <= 0)
+			{
+				CanUpFloor = true;
+			}
 
 			
 			//NotificationView N1 = null;
@@ -713,6 +735,7 @@ public class GameApp extends GameApplication {
             System.out.println("Impossible de creer le fichier");
         }
         
+        boolean GridOfAllEntityOnWorld [][] = new boolean [MAP_SIZE_REEL][MAP_SIZE_REEL];
 
         Level level = getAssetLoader().loadLevel("map_level0.txt", new TextLevelLoader(80, 80, ' ')); // Instanciation de la carte
         getGameWorld().setLevel(level);        
@@ -724,7 +747,28 @@ public class GameApp extends GameApplication {
             return CellState.WALKABLE;
         });
         
+        ArrayList<Entity> AllEntity = getGameWorld().getEntities();
         
+        
+        for(Entity E : AllEntity)
+        {
+        	//println("" + E.getType() + " x  : " + (int) E.getX()/80 + " y : " + (int) E.getY()/80);
+        	
+        	
+        	if(E.getType() == GameType.VIDE)
+        	{
+        		GridOfAllEntityOnWorld[(int) E.getX()/80][(int) E.getY()/80] = false;
+        	}
+        	else
+        	{
+        		GridOfAllEntityOnWorld[(int) E.getX()/80][(int) E.getY()/80] = true;
+        	}
+        	
+        }        
+        
+        
+        
+        set("GridOfAllEntityOnWorld", GridOfAllEntityOnWorld);
 
         set("grid", grid);
         
