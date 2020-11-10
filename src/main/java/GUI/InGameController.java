@@ -457,17 +457,22 @@ public void keyPressed(KeyEvent event) throws SQLException
       
       for(int i = 0; i < nbr; i++)
       {
+    	if(getGameWorld().getEntitiesByType(MONSTER).size() > 0)
+    	{
     	  Monster m = getGameWorld().getEntitiesByType(MONSTER).get(i).getProperties().getValue("Mosnter1");
+    	  
     	  labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-40);
     	  labels.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()-60);
     	  labels.get(i).setText("HP : " + m.getStat().getCurrentHP() + " / " + m.getStat().getMaxHP());
-    	  
+    	}
     	  
     	if(nbr != getGameWorld().getEntitiesByType(MONSTER).size())
     	{
     		nbr--;
     		labels.get(nbr).setText("");
+    		System.out.println(nbr);
     	}
+    
     	
     	
       }
