@@ -180,16 +180,17 @@ import java.sql.*
 		int pointBonus;
 		LV lvl ; 
 	
-		int nombreLvlACreer;
 		ResultSet resultatRequete = demandeRequete.executeQuery("SELECT count(*) FROM `lvl`"); 
 		
-//		a faire pour automatiser quand on creera d autre lvl
-//		while(resultatRequete.next()) {
-//			nombreLvlACreer = nombreLvlACreer-1;
-//		}
+		//sert à automatiser les lvl, c est a dire qu on peut rajouter autant de palier de lvl dans la db
+		
+		int nombreLvlACreer = 0;
+		while(resultatRequete.next()) {
+			nombreLvlACreer = resultatRequete.getInt(1);
+		}
 			
 			//ce for sert a creer les 5 premiers niveaux - les levels deja passé
-			for(int i = 1 ; i<=5; i+=1) {
+			for(int i = 1 ; i<=nombreLvlACreer; i+=1) {
 
 				//je recupere toutes les infos pour creer chaque lvl
 			niveauACreer = demandeRequete.executeQuery("SELECT * FROM `lvl` WHERE idLvl="+i);
