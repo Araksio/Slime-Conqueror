@@ -48,6 +48,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import other.components.PlayerComponent;
 public class InGameController {
 	 public static ScheduledExecutorService scheduledExecutorService;
 	 
@@ -149,7 +150,7 @@ private Button spaBonusButton;
 private Button speBonusButton;
 
 int pointsBonus;
-int nbr;
+public static int nbr;
 
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
 
@@ -454,23 +455,39 @@ public void keyPressed(KeyEvent event) throws SQLException
       defLabelCharacter.setText("DEF : " + J.getStat().getMaxDEF());
       spdLabelCharacter.setText("SPD : " + J.getStat().getMaxSPD());
       
-      
+     
+      if(PlayerComponent.changedMap == true)
+	  {
+		  nbr = getGameWorld().getEntitiesByType(MONSTER).size();
+		  System.out.println(nbr);
+	      PlayerComponent.changedMap = false;  
+	      for(int i = 0; i < getGameWorld().getEntitiesByType(MONSTER).size(); i++)
+			{
+				Label label = new Label("Label : " + i);
+				labels.add(label);
+				getGameScene().addUINodes(labels.get(i));
+				labels.get(i).setTextFill(Color.RED);
+				labels.get(i).setFont(new Font("Eras Bold ITC", 14));
+			}
+	  }
       for(int i = 0; i < nbr; i++)
       {
+    	  
+    	  
     	if(getGameWorld().getEntitiesByType(MONSTER).size() > 0)
     	{
-    	  Monster m = getGameWorld().getEntitiesByType(MONSTER).get(i).getProperties().getValue("Mosnter1");
-    	  
-    	  labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-40);
+    	  Monster m = getGameWorld().getEntitiesByType(MONSTER).get(0).getProperties().getValue("Mosnter1");
+    	  System.out.println(nbr);
+    	 labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-40);
     	  labels.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()-60);
     	  labels.get(i).setText("HP : " + m.getStat().getCurrentHP() + " / " + m.getStat().getMaxHP());
     	}
-    	  
+    	
     	if(nbr != getGameWorld().getEntitiesByType(MONSTER).size())
     	{
     		nbr--;
-    		labels.get(nbr).setText("");
-    		System.out.println(nbr);
+    		getGameScene().removeUINodes(labels.get(nbr));
+    		
     	}
     
     	
