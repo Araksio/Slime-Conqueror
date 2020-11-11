@@ -38,6 +38,7 @@ import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarCell;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 
+import GUI.InGameController;
 import GUI.MySceneFactory;
 import entity.Joueur;
 import entity.Monster;
@@ -69,7 +70,7 @@ public class GameApp extends GameApplication {
     
     public static Entity PlayerCombat;
     public static Entity CurrentBattle;
-    
+    public static int DegatSubit;
     public static Viewport viewport;
     
     public static boolean CanUpFloor = false;
@@ -634,7 +635,7 @@ public class GameApp extends GameApplication {
     	int MY = (int) Mo.getY();
     	
     	int PuissanceAtk = (int)(J.getStat().getCurrentATK());
-    	int DegatSubit = (int) (PuissanceAtk - ((M.getStat().getCurrentDEF())/2));
+    	DegatSubit = (int) (PuissanceAtk - ((M.getStat().getCurrentDEF())/2));
     	
     	
     	if(DegatSubit <= 0)
@@ -644,11 +645,12 @@ public class GameApp extends GameApplication {
     	else
     	{
     	M.getStat().setCurrentHP(M.getStat().getCurrentHP()-(DegatSubit));
+    	
     	}
     	println("Degat Subit : " + DegatSubit);
     	
     	println("HP : " + M.getStat().getCurrentHP());
-    	
+    	InGameController.displayOnAttack();
     	if (M.getStat().getCurrentHP() <= 0)
     	{
     		Mo.removeFromWorld();

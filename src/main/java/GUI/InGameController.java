@@ -1,19 +1,19 @@
 package GUI;
 
-import java.sql.*;
-
 import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
-import static com.almasb.fxgl.dsl.FXGL.geti;
-import static game.and.map.GameType.CHEST;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -21,21 +21,22 @@ import java.util.concurrent.TimeUnit;
 
 import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.ui.Position;
 
 import entity.Joueur;
 import entity.Monster;
+import game.and.map.GameApp;
 import game.and.map.GameFactory;
 import game.and.map.GameType;
-import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Bounds;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -148,6 +149,10 @@ private Button spdBonusButton;
 private Button spaBonusButton;
 @FXML
 private Button speBonusButton;
+@FXML
+private ProgressBar progHpBar;
+@FXML
+private ProgressBar progMpBar;
 
 int pointsBonus;
 public static int nbr;
@@ -161,7 +166,7 @@ public static int nbr;
  	getStats();
  	getImages();
     hoverButton();
-   
+   getBarre();
  	
  }
  
@@ -219,6 +224,12 @@ public void keyPressed(KeyEvent event) throws SQLException
  
 }
  
+public void getBarre()
+
+{
+	getGameScene().addUINodes(progHpBar,progMpBar);
+}
+
  public void hoverButton() throws SQLException
  {
 	
@@ -423,6 +434,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	 viewport.bindToEntity(getGameWorld().getSingleton(PLAYER), getAppWidth()/2,getAppHeight()/2);
 	 nbr = getGameWorld().getEntitiesByType(MONSTER).size();
 	 ArrayList<Label> labels = new ArrayList<Label>();
+	 ArrayList<ProgressBar> progressBarMonsters = new ArrayList<ProgressBar>();
 	 pointsBonus = J.getLv().getPointsBonus();
 	 pseudoLabelCharacter.setText(J.getNom());
 	 
@@ -430,15 +442,23 @@ public void keyPressed(KeyEvent event) throws SQLException
 		{
 			Label label = new Label("Label : " + i);
 			labels.add(label);
-			getGameScene().addUINodes(labels.get(i));
 			labels.get(i).setTextFill(Color.RED);
 			labels.get(i).setFont(new Font("Eras Bold ITC", 14));
+			
+			ProgressBar progressBar = new ProgressBar();
+			progressBarMonsters.add(progressBar);
+			progressBarMonsters.get(i).setStyle("-fx-accent : red");
+			
+			getGameScene().addUINodes(labels.get(i),progressBarMonsters.get(i));
+			
 		}
 			
 	
 	 if(J.getLv().getNiveau() == 1)
 	    {
+		 
 	    	pointsBonus = 1;
+	    	
 	    }
 	 
 	 
@@ -455,39 +475,68 @@ public void keyPressed(KeyEvent event) throws SQLException
       defLabelCharacter.setText("DEF : " + J.getStat().getMaxDEF());
       spdLabelCharacter.setText("SPD : " + J.getStat().getMaxSPD());
       
-     
+      progHpBar.setProgress((double)J.getStat().getCurrentHP() / (double)J.getStat().getMaxHP());
+      progMpBar.setProgress((double)J.getStat().getCurrentMP() / (double)J.getStat().getMaxMP());
+      
+      
+      if(progHpBar.getProgress() <= 0.5 && progHpBar.getProgress() > 0.25)
+      {
+    	  progHpBar.setStyle("-fx-accent: orange; ");
+    	  hpBar.setTextFill(Color.ORANGE);
+      }
+      else if(progHpBar.getProgress() < 0.25)
+      {
+    	  progHpBar.setStyle("-fx-accent: red;");
+    	  hpBar.setTextFill(Color.RED);
+      }
+      
       if(PlayerComponent.changedMap == true)
 	  {
 		  nbr = getGameWorld().getEntitiesByType(MONSTER).size();
 		  System.out.println(nbr);
-	      PlayerComponent.changedMap = false;  
+
 	      for(int i = 0; i < getGameWorld().getEntitiesByType(MONSTER).size(); i++)
 			{
 				Label label = new Label("Label : " + i);
 				labels.add(label);
-				getGameScene().addUINodes(labels.get(i));
 				labels.get(i).setTextFill(Color.RED);
 				labels.get(i).setFont(new Font("Eras Bold ITC", 14));
+				
+				ProgressBar progressBar = new ProgressBar();
+				progressBarMonsters.add(progressBar);
+				progressBarMonsters.get(i).setStyle("-fx-accent : red");
+				
+				getGameScene().addUINodes(labels.get(i),progressBarMonsters.get(i));
+				
 			}
+	      
+	      PlayerComponent.changedMap = false; 
+	      
 	  }
+      
+      
+      
       for(int i = 0; i < nbr; i++)
       {
     	  
     	  
     	if(getGameWorld().getEntitiesByType(MONSTER).size() > 0)
     	{
-    	  Monster m = getGameWorld().getEntitiesByType(MONSTER).get(0).getProperties().getValue("Mosnter1");
-    	  System.out.println(nbr);
-    	 labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-40);
+    	  Monster m = getGameWorld().getEntitiesByType(MONSTER).get(i).getProperties().getValue("Mosnter1");
+    	  labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-40);
     	  labels.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()-60);
     	  labels.get(i).setText("HP : " + m.getStat().getCurrentHP() + " / " + m.getStat().getMaxHP());
+    	  progressBarMonsters.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-50);
+    	  progressBarMonsters.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()+40);
+    	  progressBarMonsters.get(i).setProgress((double)m.getStat().getCurrentHP() / (double)m.getStat().getMaxHP());
+    	  
     	}
     	
     	if(nbr != getGameWorld().getEntitiesByType(MONSTER).size())
     	{
     		nbr--;
-    		getGameScene().removeUINodes(labels.get(nbr));
-    		
+    		getGameScene().removeUINodes(labels.get(nbr),progressBarMonsters.get(nbr));
+    
     	}
     
     	
@@ -502,6 +551,7 @@ public void keyPressed(KeyEvent event) throws SQLException
       xpTotalLabelCharacter.setText("XP TOTAL : " + J.getLv().getTotalXP());
       
       
+      
      if(J.getLv().checkLVisAvalaible())
      {	
     	J.setLV(GameFactory.lvls.get(J.getLv().getNiveau()-1));
@@ -514,11 +564,13 @@ public void keyPressed(KeyEvent event) throws SQLException
       
      
      
+     
       levelLabelCharacter.setText("LEVEL : " + J.getLv().getNiveau());
       xpLabelCharacter.setText("XP : " + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());
-      hpBar.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
-      mpBar.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());	
+      hpBar.setText("HP :                             " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
+      mpBar.setText("MP :                             " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());	
       pseudoJoueur.setText(J.getNom() + " " + "LV. "+J.getLv().getNiveau() + " XP : " + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());	
+      
       
       
        	if(pointsBonus == 0)
@@ -545,15 +597,21 @@ public void keyPressed(KeyEvent event) throws SQLException
  
  
 
- 
-
-
- 
-
-       
-        
-  
 }
+ 
+ public static void displayOnAttack()
+ {
+	 for(int i = 0; i < nbr; i++)
+     {
+		  Monster m = getGameWorld().getEntitiesByType(MONSTER).get(i).getProperties().getValue("Mosnter1");
+		  Label label = new Label("Le "+m.getNom()+" a subit " + GameApp.DegatSubit + " dégats");
+		  getGameScene().addUINodes(label);
+     }
+     
+	 
+	 
+ }
+ 
  @FXML
  private void closeRequest() {
         

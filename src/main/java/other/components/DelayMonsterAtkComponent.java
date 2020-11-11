@@ -11,6 +11,7 @@ import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.component.Required;
 import com.almasb.fxgl.pathfinding.astar.AStarMoveComponent;
 
+import GUI.InGameController;
 import entity.Joueur;
 import entity.Monster;
 import game.and.map.GameType;
@@ -292,7 +293,10 @@ private void move(Entity R) {
 	    	int DegatSubit = (int) (PuissanceAtk - ((J.getStat().getCurrentDEF())/2))+1; 
 	    	
 	    	println("Degat Subit : " + DegatSubit);
-	    	
+	    	if(DegatSubit < 0)
+	    	{
+	    		DegatSubit = 0;
+	    	}
 	    	J.getStat().setCurrentHP(J.getStat().getCurrentHP()-(DegatSubit));
 	    	
 	    	println("HP : " + J.getStat().getCurrentHP());
@@ -302,6 +306,7 @@ private void move(Entity R) {
 				println("Le " + J.getNom() + " Est mort");
 	    		P.removeFromWorld();
 	    		getDialogService().showMessageBox("Game Over", getGameController()::exit);
+	    		InGameController.scheduledExecutorService.shutdown();
 	    	}
 		}
 	    	
