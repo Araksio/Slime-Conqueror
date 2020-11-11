@@ -8,7 +8,8 @@ import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
 
-import java.io.IOException;
+import java.util.*;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Connection;
@@ -16,6 +17,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -176,9 +178,9 @@ public static int nbr;
  }
  
 @FXML
-public void keyPressed(KeyEvent event) throws SQLException
+public void keyPressed(KeyEvent event) throws SQLException, IOException
 {
-	 if (event.getCode() == KeyCode.F1) { 
+ if (event.getCode() == KeyCode.F1) { 
 		 
 		 // Ajout de la fonction save ici
 		 //debut du sql
@@ -216,9 +218,53 @@ public void keyPressed(KeyEvent event) throws SQLException
 					+ "WHERE `joueur`.`idjoueur` = 1");
 		  
 		 
+					
+			
+			
+			//remet la sauvegare de la map a 0
+			demandeRequete.executeUpdate("delete from tuile");
+			
+			//va ecrire dans le fichier 1, pour l instant sauvegarde que le fichier 1
+			  File fichier =new File("src\\main\\resources\\assets\\levels\\map_level1.txt"); //ou est ce qu il est crée
+			 
+			  //toutes les maps font 21 x 21
+			  
+			  
+			  Scanner sc = new Scanner(fichier);
+
+			  
+			  int i = -1; // sert a compter les lignes
+					  while(sc.hasNextLine()) {
+						  i+=1;
+						  String ligne = sc.next();
+						  for(int j = 0; j < 21 ; j+=1) { // pour les colonnes 0 a 20  
+						 demandeRequete.executeUpdate("INSERT INTO `tuile` (`idTuile`, `type`, `positionLigne`, `idFloor`, `positionColonne`) VALUES (NULL, '"+ligne.charAt(j)+"', '"+i+"', '1','"+j+"')");
+					  }
+				  
+				  }
+				  
+			  
+			  
+			  sc.close();
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		    
 	    saveLabel.setVisible(true);
-	   
 	    PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
 	    pauseTransition.setOnFinished(e -> { 	
 	    saveLabel.setVisible(false);
