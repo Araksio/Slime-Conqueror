@@ -236,7 +236,7 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 			  int i = -1; // sert a compter les lignes
 					  while(sc.hasNextLine()) {
 						  i+=1;
-						  String ligne = sc.next();
+						 String ligne = sc.next();
 						  for(int j = 0; j < 21 ; j+=1) { // pour les colonnes 0 a 20  
 						 demandeRequete.executeUpdate("INSERT INTO `tuile` (`idTuile`, `type`, `positionLigne`, `idFloor`, `positionColonne`) VALUES (NULL, '"+ligne.charAt(j)+"', '"+i+"', '1','"+j+"')");
 					  }

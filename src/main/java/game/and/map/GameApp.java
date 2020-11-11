@@ -717,27 +717,7 @@ public class GameApp extends GameApplication {
         getGameWorld().addEntityFactory(new GameFactory()); // Ajout des "classe, joueur, mur et autre"
         
         
-        final String chemin = ""; // Chemin à remplir
-        final File fichier =new File(chemin); 
-        CreatAlea M=new CreatAlea();
-        try {
-          // fichier .createNewFile();// Creation du fichier
-            final FileWriter writer = new FileWriter(fichier);// creation d'un writer (un écrivain)
-            
-            	
-                writer.write("111111111111111111111\n");
-               for(int i=0;i<19;i++) {
-            	   System.out.println(i);
-            	   writer.write("1"+M.ligne(i)+"1\n");
-               }
-               writer.write("1111111111111E1111111\n");
-            
-                writer.close();// quoiqu'il arrive, on ferme le fichier
-            
-        } catch (Exception e) {
-            System.out.println("Impossible de creer le fichier");
-        }
-        
+     
         boolean GridOfAllEntityOnWorld [][] = new boolean [MAP_SIZE_REEL][MAP_SIZE_REEL];
 
         Level level = getAssetLoader().loadLevel("map_level0.txt", new TextLevelLoader(80, 80, ' ')); // Instanciation de la carte

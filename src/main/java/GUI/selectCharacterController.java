@@ -1,5 +1,6 @@
 package GUI;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import java.sql.Statement;
 
 import com.almasb.fxgl.dsl.FXGL;
 
+import game.and.map.Write;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -41,7 +43,13 @@ private void startGame() throws SQLException {
 		}
 		else
 		{
-			
+			 try {
+					new Write(3,3,"map_level0.txt");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			String pseudo = selectPseudo.getText();
 			
 			
