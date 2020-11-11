@@ -19,8 +19,7 @@ import static game.and.map.GameType.ESCALIER;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
 
-import java.io.File;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.util.Map;
 
@@ -692,26 +691,12 @@ public class GameApp extends GameApplication {
         getGameWorld().addEntityFactory(new GameFactory()); // Ajout des "classe, joueur, mur et autre"
         
         
-        final String chemin = ""; // Chemin à remplir
-        final File fichier =new File(chemin); 
-        CreatAlea M=new CreatAlea();
         try {
-          // fichier .createNewFile();// Creation du fichier
-            final FileWriter writer = new FileWriter(fichier);// creation d'un writer (un écrivain)
-            
-            	
-                writer.write("111111111111111111111\n");
-               for(int i=0;i<19;i++) {
-            	   System.out.println(i);
-            	   writer.write("1"+M.ligne(i)+"1\n");
-               }
-               writer.write("1111111111111E1111111\n");
-            
-                writer.close();// quoiqu'il arrive, on ferme le fichier
-            
-        } catch (Exception e) {
-            System.out.println("Impossible de creer le fichier");
-        }
+			new Write(3,3,"map_level0.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
 
         Level level = getAssetLoader().loadLevel("map_level0.txt", new TextLevelLoader(80, 80, ' ')); // Instanciation de la carte

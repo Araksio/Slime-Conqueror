@@ -1,5 +1,6 @@
 package GUI;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,6 +8,7 @@ import java.sql.Statement;
 
 import com.almasb.fxgl.dsl.FXGL;
 
+import game.and.map.Write;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -60,18 +62,18 @@ private void startGame() throws SQLException {
 			
 			demandeRequete.executeUpdate("delete from effect");
 			demandeRequete.executeUpdate("delete from est_equipe");
-			demandeRequete.executeUpdate("delete from floor");
+			//demandeRequete.executeUpdate("delete from floor");
 	//on ne supprime pas les objets		demandeRequete.executeUpdate("delete from item");
 			demandeRequete.executeUpdate("delete from joueur");
 			demandeRequete.executeUpdate("delete from lvl");
-			demandeRequete.executeUpdate("delete from map");
+			//demandeRequete.executeUpdate("delete from map");
 			demandeRequete.executeUpdate("delete from money");
 			demandeRequete.executeUpdate("delete from monstre");
 			demandeRequete.executeUpdate("delete from monstre_effect");
 			demandeRequete.executeUpdate("delete from position");
 			demandeRequete.executeUpdate("delete from possede_effect");
 			demandeRequete.executeUpdate("delete from stats");
-			demandeRequete.executeUpdate("delete from tuile");
+			//demandeRequete.executeUpdate("delete from tuile");
 			
 			
 	//maintenant que tout est supprimé, on recree
@@ -117,6 +119,9 @@ private void startGame() throws SQLException {
 			MyMainMenuController.mediaPlayer.stop();
 			Stage s = (Stage)startButton.getScene().getWindow();
 			s.close();
+			
+			
+			
 			FXGL.getGameController().startNewGame();
 	}
 }
