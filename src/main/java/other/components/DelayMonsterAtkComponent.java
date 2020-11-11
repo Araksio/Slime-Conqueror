@@ -299,7 +299,7 @@ private void move(Entity R) {
 	    	}
 	    	J.getStat().setCurrentHP(J.getStat().getCurrentHP()-(DegatSubit));
 	    	
-	    	println("HP : " + J.getStat().getCurrentHP());
+	    	println("HP lol : " + J.getStat().getCurrentHP());
 	    	
 	    	if (J.getStat().getCurrentHP() <= 0)
 	    	{

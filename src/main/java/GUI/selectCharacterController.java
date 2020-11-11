@@ -30,85 +30,96 @@ private void initialize()
 @FXML
 private void startGame() throws SQLException {
 	
-	if(selectPseudo.getText().isEmpty() || selectPseudo.getText().length() < 3 || selectPseudo.getText().length() > 12)
 	{
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Erreur");
-		alert.setHeaderText("Erreur Pseudo");
-		alert.setContentText("Votre pseudo ne doit pas être vide et doit être contenue entre 3 et 12 caractères");
-		alert.showAndWait();
-	}
-	else
-	{
-	String pseudo = selectPseudo.getText();
-	//fonction associé au bouton "nouvelle partie" ou startButton, donc je supprime tous les tuples et recree des tuples de bases
-			Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
-			Statement demandeRequete = db.createStatement();
-			
-			
-			
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idstats` = NULL WHERE `joueur`.`idJoueur` = 1");
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idmoney` = NULL WHERE `joueur`.`idJoueur` = 1");
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idlvl` = NULL WHERE `joueur`.`idJoueur` = 1");
-	// a decommenter une fois la position faite		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idPosition` = '1' WHERE `joueur`.`idJoueur` = 1");
+		if(selectPseudo.getText().isEmpty() || selectPseudo.getText().length() < 3 || selectPseudo.getText().length() > 12)
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erreur");
+			alert.setHeaderText("Erreur Pseudo");
+			alert.setContentText("Votre pseudo ne doit pas être vide et doit être contenue entre 3 et 12 caractères");
+			alert.showAndWait();
+		}
+		else
+		{
+		String pseudo = selectPseudo.getText();
+		//fonction associé au bouton "nouvelle partie" ou startButton, donc je supprime tous les tuples et recree des tuples de bases
+				Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+				Statement demandeRequete = db.createStatement();
+				
+				
+				
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idstats` = NULL WHERE `joueur`.`idJoueur` = 1");
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idmoney` = NULL WHERE `joueur`.`idJoueur` = 1");
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idlvl` = NULL WHERE `joueur`.`idJoueur` = 1");
+		// a decommenter une fois la position faite		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idPosition` = '1' WHERE `joueur`.`idJoueur` = 1");
 
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`stats` SET `idjoueur` = NULL WHERE `stats`.`idStats` = 1");
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`money` SET `idjoueur` = NULL WHERE `money`.`idMoney` = 1");
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl` SET `idjoueur` = NULL WHERE `lvl`.`idLvl` = 1");
-	//pareil		demandeRequete.executeUpdate("");
-			
-			
-			demandeRequete.executeUpdate("delete from effect");
-			demandeRequete.executeUpdate("delete from est_equipe");
-			demandeRequete.executeUpdate("delete from floor");
-	//on ne supprime pas les objets		demandeRequete.executeUpdate("delete from item");
-			demandeRequete.executeUpdate("delete from joueur");
-			demandeRequete.executeUpdate("delete from lvl");
-			demandeRequete.executeUpdate("delete from map");
-			demandeRequete.executeUpdate("delete from money");
-			demandeRequete.executeUpdate("delete from monstre");
-			demandeRequete.executeUpdate("delete from monstre_effect");
-			demandeRequete.executeUpdate("delete from position");
-			demandeRequete.executeUpdate("delete from possede_effect");
-			demandeRequete.executeUpdate("delete from stats");
-			demandeRequete.executeUpdate("delete from tuile");
-			
-			
-	//maintenant que tout est supprimé, on recree
-			
-			//cree le joueur
-			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`joueur` (`idJoueur`, `nom`, `entityType`, `idstats`, `idmoney`, `idlvl`, `idposition`) VALUES ('1', '"+ pseudo +"', NULL, NULL, NULL, NULL, NULL)");
-			
-			//cree les stats du joueurs
-			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`stats` (`idStats`, `maxHP`, `currentHP`, `maxATK`, `currentATK`, `maxDEF`, `currentDEF`, `maxMP`, `currentMP`, `maxSPA`, `currentSPA`, `maxSPD`, `currentSPD`, `maxSPE`, `currentSPE`, `idjoueur`, `idmonstre`) VALUES ('1', '10', '10', '5', '5', '5', '5', '10', '10', '5', '5', '5', '5', '5', '5', '1', NULL)");
-			
-			//cree l'argent du joueur
-			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`money` (`idMoney`, `moneyPlayer`, `moneyBank`, `idjoueur`) VALUES ('1', '500', '1000', NULL)");
-			
-			//cree le lvl du joueur
-			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('1', '1', '0', '0', '20', NULL, NULL,'0')");
-			
-			//cree les lvl que le joueur pourra atteindre, pas besoin du lvl1 
-			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('2', '2', '20', '0', '60', NULL, NULL,'2')");
-			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('3', '3', '80', '0', '200', NULL, NULL,'2')");
-			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('4', '4', '280', '0', '500', NULL, NULL,'3')");
-			demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('5', '5', '780', '0', '1273', NULL, NULL,'3')");
-			
-			//cree la position du joueur, a faire plus tard 
-			
-			//lie le joueur,les stats, l'argent et les lvl entre eux
-			
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idstats` = '1' WHERE `joueur`.`idJoueur` = 1");
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idmoney` = '1' WHERE `joueur`.`idJoueur` = 1");
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idlvl` = '1' WHERE `joueur`.`idJoueur` = 1");
-	// a decommenter une fois la position faite		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idPosition` = '1' WHERE `joueur`.`idJoueur` = 1");
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`stats` SET `idjoueur` = NULL WHERE `stats`.`idStats` = 1");
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`money` SET `idjoueur` = NULL WHERE `money`.`idMoney` = 1");
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl` SET `idjoueur` = NULL WHERE `lvl`.`idLvl` = 1");
+		//pareil		demandeRequete.executeUpdate("");
+				
+				
+				demandeRequete.executeUpdate("delete from effect");
+				demandeRequete.executeUpdate("delete from est_equipe");
+			//demandeRequete.executeUpdate("delete from floor");
+		//on ne supprime pas les objets		demandeRequete.executeUpdate("delete from item");
+				demandeRequete.executeUpdate("delete from joueur");
+				demandeRequete.executeUpdate("delete from lvl");
+				//demandeRequete.executeUpdate("delete from map");
+				demandeRequete.executeUpdate("delete from money");
+				demandeRequete.executeUpdate("delete from monstre");
+				demandeRequete.executeUpdate("delete from monstre_effect");
+				demandeRequete.executeUpdate("delete from position");
+				demandeRequete.executeUpdate("delete from possede_effect");
+				demandeRequete.executeUpdate("delete from stats");
+			//	demandeRequete.executeUpdate("delete from tuile");
+				
+				
+		//maintenant que tout est supprimé, on recree
+				
+				//cree le joueur
+				demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`joueur` (`idJoueur`, `nom`, `entityType`, `idstats`, `idmoney`, `idlvl`, `idposition`) VALUES ('1', '"+ pseudo +"', NULL, NULL, NULL, NULL, NULL)");
+				
+				//cree les stats du joueurs
+				demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`stats` (`idStats`, `maxHP`, `currentHP`, `maxATK`, `currentATK`, `maxDEF`, `currentDEF`, `maxMP`, `currentMP`, `maxSPA`, `currentSPA`, `maxSPD`, `currentSPD`, `maxSPE`, `currentSPE`, `idjoueur`, `idmonstre`) VALUES ('1', '10', '10', '5', '5', '5', '5', '10', '10', '5', '5', '5', '5', '5', '5', '1', NULL)");
+				
+				//cree l'argent du joueur
+				demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`money` (`idMoney`, `moneyPlayer`, `moneyBank`, `idjoueur`) VALUES ('1', '500', '1000', NULL)");
+				
+				//cree le lvl du joueur
+				demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('1', '1', '0', '0', '20', NULL, NULL,'0')");
+				
+				//cree les lvl que le joueur pourra atteindre, pas besoin du lvl1 
+				demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('2', '2', '20', '0', '60', NULL, NULL,'2')");
+				demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('3', '3', '80', '0', '200', NULL, NULL,'2')");
+				demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('4', '4', '280', '0', '500', NULL, NULL,'3')");
+				demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('5', '5', '780', '0', '1273', NULL, NULL,'3')");
+				
+				//cree la position du joueur, a faire plus tard 
+				
+				//lie le joueur,les stats, l'argent et les lvl entre eux
+				
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idstats` = '1' WHERE `joueur`.`idJoueur` = 1");
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idmoney` = '1' WHERE `joueur`.`idJoueur` = 1");
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idlvl` = '1' WHERE `joueur`.`idJoueur` = 1");
+		// a decommenter une fois la position faite		demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur` SET `idPosition` = '1' WHERE `joueur`.`idJoueur` = 1");
 
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`stats` SET `idjoueur` = '1' WHERE `stats`.`idStats` = 1");
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`money` SET `idjoueur` = '1' WHERE `money`.`idMoney` = 1");
-			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl` SET `idjoueur` = '1' WHERE `lvl`.`idLvl` = 1");
-	//pareil		demandeRequete.executeUpdate("");
-			
-			
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`stats` SET `idjoueur` = '1' WHERE `stats`.`idStats` = 1");
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`money` SET `idjoueur` = '1' WHERE `money`.`idMoney` = 1");
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl` SET `idjoueur` = '1' WHERE `lvl`.`idLvl` = 1");
+		//pareil		demandeRequete.executeUpdate("");
+				
+				
+				
+		//cree la map
+				
+			//	demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`map` (`idMap`) VALUES ('1')");
+		//cree les etages
+				
+			//	demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`floor` (`idFloor`, `idMap`) VALUES ('1', '1'), ('2', '1'), ('3', '1')");
+				
+				
+				
 			
 			
 			
@@ -118,6 +129,7 @@ private void startGame() throws SQLException {
 			Stage s = (Stage)startButton.getScene().getWindow();
 			s.close();
 			FXGL.getGameController().startNewGame();
+	}
 	}
 }
 }

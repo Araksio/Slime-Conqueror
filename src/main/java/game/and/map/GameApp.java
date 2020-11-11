@@ -139,6 +139,7 @@ public class GameApp extends GameApplication {
              	{
              		
              		getGameScene().removeChild(layout);
+             		
              	}
              	else
              	{

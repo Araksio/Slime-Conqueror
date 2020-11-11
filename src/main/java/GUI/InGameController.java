@@ -4,6 +4,7 @@ import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
+import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
 
@@ -21,6 +22,8 @@ import java.util.concurrent.TimeUnit;
 
 import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.input.Input;
+import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.ui.Position;
 
 import entity.Joueur;
@@ -157,6 +160,7 @@ private ProgressBar progMpBar;
 int pointsBonus;
 public static int nbr;
 
+
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
 
 
@@ -166,7 +170,8 @@ public static int nbr;
  	getStats();
  	getImages();
     hoverButton();
-   getBarre();
+
+  
  	
  }
  
@@ -224,11 +229,7 @@ public void keyPressed(KeyEvent event) throws SQLException
  
 }
  
-public void getBarre()
 
-{
-	getGameScene().addUINodes(progHpBar,progMpBar);
-}
 
  public void hoverButton() throws SQLException
  {
@@ -425,8 +426,7 @@ public void getBarre()
 	 exitButton.setGraphic(exitImage);   
  }
 
- 
- 
+
  public void getStats() throws SQLException
  {
 	 
@@ -484,16 +484,23 @@ public void getBarre()
     	  progHpBar.setStyle("-fx-accent: orange; ");
     	  hpBar.setTextFill(Color.ORANGE);
       }
-      else if(progHpBar.getProgress() < 0.25)
+      else if(progHpBar.getProgress() <= 0.25)
       {
     	  progHpBar.setStyle("-fx-accent: red;");
     	  hpBar.setTextFill(Color.RED);
       }
+      else if(progHpBar.getProgress() > 0.5)
+      {
+    	  progHpBar.setStyle("-fx-accent: #37cd26;");
+    	  Color c = Color.web("#37cd26",1.0);
+    	  hpBar.setTextFill(c);
+      }  
+      
       
       if(PlayerComponent.changedMap == true)
 	  {
 		  nbr = getGameWorld().getEntitiesByType(MONSTER).size();
-		  System.out.println(nbr);
+		 // J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
 
 	      for(int i = 0; i < getGameWorld().getEntitiesByType(MONSTER).size(); i++)
 			{
@@ -523,9 +530,9 @@ public void getBarre()
     	if(getGameWorld().getEntitiesByType(MONSTER).size() > 0)
     	{
     	  Monster m = getGameWorld().getEntitiesByType(MONSTER).get(i).getProperties().getValue("Mosnter1");
-    	  labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-40);
-    	  labels.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()-60);
-    	  labels.get(i).setText("HP : " + m.getStat().getCurrentHP() + " / " + m.getStat().getMaxHP());
+    	  labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-25);
+    	  labels.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()+60);
+    	  labels.get(i).setText(m.getStat().getCurrentHP() + " / " + m.getStat().getMaxHP());
     	  progressBarMonsters.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-50);
     	  progressBarMonsters.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()+40);
     	  progressBarMonsters.get(i).setProgress((double)m.getStat().getCurrentHP() / (double)m.getStat().getMaxHP());
@@ -570,8 +577,7 @@ public void getBarre()
       hpBar.setText("HP :                             " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
       mpBar.setText("MP :                             " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());	
       pseudoJoueur.setText(J.getNom() + " " + "LV. "+J.getLv().getNiveau() + " XP : " + J.getLv().getCurrentXPforLV() + " / " + J.getLv().getXPneedForNextLV());	
-      
-      
+   
       
        	if(pointsBonus == 0)
 		{
