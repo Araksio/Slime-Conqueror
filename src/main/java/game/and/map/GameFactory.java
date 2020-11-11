@@ -269,7 +269,14 @@ import java.sql.*
     			
     			//fin partie sql java
     			
-    			// pas encore fait le stockage de la position 
+    			// pas encore fait le stockage de la position
+    			
+    			
+    			
+    			
+    			
+    			
+    			
     		   Pos Pos1 = new Pos(5,1,0,0,1);
     			
 				

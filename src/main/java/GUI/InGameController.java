@@ -225,7 +225,7 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 			demandeRequete.executeUpdate("delete from tuile");
 			
 			//va ecrire dans le fichier 1, pour l instant sauvegarde que le fichier 1
-			  File fichier =new File("src\\main\\resources\\assets\\levels\\map_level1.txt"); //ou est ce qu il est crée
+			  File fichier =new File("src\\main\\resources\\assets\\levels\\map_level0.txt"); //ou est ce qu il est crée
 			 
 			  //toutes les maps font 21 x 21
 			  
