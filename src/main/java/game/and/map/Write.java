@@ -14,7 +14,7 @@ public class Write {
 		final String chemin = a+fichierSible;
         final File fichier =new File(chemin); 
         final String[][] carte= new Tsprite(hauteur,largeur).getMap();
-         
+         int compteur = 0;
         
            fichier .createNewFile();// Creation du fichier
             final FileWriter writer = new FileWriter(fichier);// creation d'un writer (un �crivain)
@@ -38,7 +38,11 @@ public class Write {
         	            	writer.write(readLine);
         	            
         	            b.close();
-            		}writer.write("\n");
+            		}
+            		 if(compteur<(carte.length*7)-1) {
+                        compteur++;
+                        writer.write("\n");
+                    }
             }
             	}
             writer.close(); 
