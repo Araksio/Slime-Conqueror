@@ -159,7 +159,7 @@ private ProgressBar progHpBar;
 @FXML
 private ProgressBar progMpBar;
 
-int pointsBonus;
+public static int pointsBonus;
 public static int nbr;
 
 
@@ -562,7 +562,7 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 				getGameScene().addUINodes(labels.get(i),progressBarMonsters.get(i));
 				
 			}
-	      
+	      J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
 	      PlayerComponent.changedMap = false; 
 	      
 	  }

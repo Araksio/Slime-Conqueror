@@ -22,6 +22,10 @@ import static game.and.map.GameType.PLAYER;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -338,7 +342,12 @@ public class GameApp extends GameApplication {
     		@Override
     		protected void onActionBegin() {
     			
-    			getPlayerComponent().teleport(0,BLOCK_SIZE,MAP_SIZE_PRINT);
+    			try {
+					getPlayerComponent().teleport(0,BLOCK_SIZE,MAP_SIZE_PRINT);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
     		}
     	}, KeyCode.F);
     	
@@ -522,7 +531,50 @@ public class GameApp extends GameApplication {
     	onCollision(PLAYER, ESCALIER, (p,e) -> {
     	if(CanUpFloor)
     	{
-    		FLOOR = getPlayerComponent().teleport(++FLOOR,BLOCK_SIZE,MAP_SIZE_PRINT);
+    		Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
+			try {
+				Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+				
+				Statement demandeRequete = db.createStatement();
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`stats`  "
+						+ "SET `maxHP` = '"+ J.getStat().getMaxHP()+"'"
+						+ ", `currentHP` ='"+ J.getStat().getCurrentHP()+"'"
+						+ ", `maxATK`= '"+ J.getStat().getMaxATK()+"'"
+						+ ", `currentATK`= '"+ J.getStat().getCurrentATK()+"'"
+						+ ", `maxDEF`= '"+ J.getStat().getMaxDEF()+"'"
+						+ ", `currentDEF`= '"+ J.getStat().getCurrentDEF()+"'"
+						+ ", `maxMP`= '"+ J.getStat().getMaxMP()+"'"
+						+ ", `currentMP`= '"+ J.getStat().getCurrentMP()+"'"
+						+ ", `maxSPA`= '"+ J.getStat().getMaxSPA()+"'"
+						+ ", `currentSPA`= '"+ J.getStat().getCurrentSPA()+"'"
+						+ ", `maxSPD`= '"+ J.getStat().getMaxSPD()+"'"
+						+ ", `currentSPD`= '"+ J.getStat().getCurrentSPD()+"'"
+						+ ", `maxSPE`= '"+ J.getStat().getMaxSPE()+"'"
+						+ ", `currentSPE`= '"+ J.getStat().getCurrentSPE()+"'"
+						+ "WHERE `stats`.`idJoueur` = 1");
+				
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl`"
+						+ "SET `level` = '"+J.getLv().getNiveau()+"'"
+						+ ",`totalXP`='"+J.getLv().getTotalXP()+"'"
+						+ ",`currentXP`= '"+J.getLv().getCurrentXPforLV()+"'"
+						+ ",`xpNeeded`= '"+J.getLv().getXPneedForNextLV()+"'"
+						+ "WHERE `lvl`.`idJoueur` = 1");
+				
+				
+				demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur`"
+						+ "SET `pointBonusJoueur` = '"+InGameController.pointsBonus+"'"
+						+ "WHERE `joueur`.`idjoueur` = 1");
+				
+				FLOOR = getPlayerComponent().teleport(++FLOOR,BLOCK_SIZE,MAP_SIZE_PRINT);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+
+		
+		 
+    		
     	}
     	}
     	);

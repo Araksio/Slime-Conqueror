@@ -6,10 +6,17 @@ import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
 import static com.almasb.fxgl.dsl.FXGL.set;
+import static com.almasb.fxgl.dsl.FXGL.texture;
 import static game.and.map.GameType.BLOCK;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
 import static other.components.PlayerComponent.MoveDirection.RIGHT;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
@@ -21,9 +28,12 @@ import com.almasb.fxgl.pathfinding.CellMoveComponent;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.pathfinding.astar.AStarMoveComponent;
+import com.almasb.fxgl.texture.AnimatedTexture;
 
 import GUI.InGameController;
+import entity.Stat;
 import game.and.map.GameApp;
+import javafx.util.Duration;
 
 @Required(AStarMoveComponent.class)
 public class PlayerComponent extends Component {
@@ -70,7 +80,7 @@ public static boolean changedMap;
        
     }
     
-    public int teleport(int floor, int BLOCK_SIZE, int MAP_SIZE) {
+    public int teleport(int floor, int BLOCK_SIZE, int MAP_SIZE) throws SQLException {
 
     	String Floor = "map_level" + floor + ".txt";
     	Level level1 = getAssetLoader().loadLevel(Floor, new TextLevelLoader(80, 80, ' '));
@@ -89,6 +99,39 @@ public static boolean changedMap;
         });
         
         set("grid", grid);
+        
+        Stat StatPlayer = new Stat(0, 0, 0, 0, 0, 0, 0);
+		
+
+    			
+    			//partie sql java
+    			
+
+    			Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
+
+    			Statement demandeRequete = db.createStatement();
+        
+    		
+    			
+  			 
+    		 
+    			//crée les stats du joueur
+    			ResultSet statDB = demandeRequete.executeQuery("SELECT * FROM `stats` WHERE idStats=1");
+    			
+    			while(statDB.next()) {
+    				StatPlayer = new Stat(statDB.getInt(2),statDB.getInt(4),statDB.getInt(6),statDB.getInt(8),statDB.getInt(10),statDB.getInt(12),statDB.getInt(14));
+    				StatPlayer.setCurrentHP(statDB.getInt(3));
+    				StatPlayer.setCurrentATK(statDB.getInt(5));
+    				StatPlayer.setCurrentDEF(statDB.getInt(7));
+    				StatPlayer.setCurrentMP(statDB.getInt(9));
+    				StatPlayer.setCurrentSPA(statDB.getInt(11));
+    				StatPlayer.setCurrentSPD(statDB.getInt(13));
+    				StatPlayer.setCurrentSPE(statDB.getInt(15));
+    			}
+    			
+    			
+        
+        
         
         return floor;
     }

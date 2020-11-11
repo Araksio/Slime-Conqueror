@@ -15,7 +15,7 @@ public class Write {
         final File fichier =new File(chemin); 
         final String[][] carte= new Tsprite(hauteur,largeur).getMap();
          int compteur = 0;
-        
+         fichier.delete();
            fichier .createNewFile();// Creation du fichier
             final FileWriter writer = new FileWriter(fichier);// creation d'un writer (un �crivain)
             
