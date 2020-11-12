@@ -42,6 +42,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -158,6 +159,33 @@ private Button speBonusButton;
 private ProgressBar progHpBar;
 @FXML
 private ProgressBar progMpBar;
+@FXML
+private Label saveLabel2;
+@FXML
+private Label objectifLabel1;
+@FXML
+private Button cacherObjectifButton;
+@FXML
+private ScrollPane objectifPane;
+@FXML
+private Button skillButton1;
+@FXML
+private Button skillButton2;
+@FXML
+private Button skillButton3;
+@FXML
+private Button skillButton4;
+@FXML
+private Button skillButton5;
+@FXML
+private Button skillButton6;
+@FXML
+private Button skillButton7;
+@FXML
+private Button skillButton8;
+@FXML
+private Button skillButton9;
+
 
 public static int pointsBonus;
 public static int nbr;
@@ -436,6 +464,25 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 			}
 	     });
 		
+	 cacherObjectifButton.setOnMouseClicked(e -> {
+		if(objectifPane.isVisible())
+		{
+			objectifPane.setVisible(false);
+			cacherObjectifButton.setText("Afficher objectifs");
+			cacherObjectifButton.setPrefWidth(150.0);
+			cacherObjectifButton.setLayoutX(0);
+		}
+		else
+		{
+			objectifPane.setVisible(true);
+			cacherObjectifButton.setText("Cacher");
+			cacherObjectifButton.setPrefWidth(75.0);
+			cacherObjectifButton.setLayoutX(199.0);
+		}
+			
+		 
+	 });
+	 
  }
 
  public void getImages() throws URISyntaxException
@@ -520,6 +567,16 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
       atkLabelCharacter.setText("ATK : " + J.getStat().getMaxATK());
       defLabelCharacter.setText("DEF : " + J.getStat().getMaxDEF());
       spdLabelCharacter.setText("SPD : " + J.getStat().getMaxSPD());
+      objectifLabel1.setText("- Tuer " + getGameWorld().getEntitiesByType(MONSTER).size() + " monstres pour passer \nau prochain étage");
+      if(getGameWorld().getEntitiesByType(MONSTER).size() == 0)
+      {
+    	  objectifLabel1.setText("Prochain étage débloqué");
+    	  objectifLabel1.setTextFill(Color.GREEN);
+      }
+      else
+      {
+    	  objectifLabel1.setTextFill(Color.WHITE);
+      }
       
       progHpBar.setProgress((double)J.getStat().getCurrentHP() / (double)J.getStat().getMaxHP());
       progMpBar.setProgress((double)J.getStat().getCurrentMP() / (double)J.getStat().getMaxMP());
@@ -547,7 +604,7 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 	  {
 		  nbr = getGameWorld().getEntitiesByType(MONSTER).size();
 		 // J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
-
+          
 	      for(int i = 0; i < getGameWorld().getEntitiesByType(MONSTER).size(); i++)
 			{
 				Label label = new Label("Label : " + i);
@@ -563,6 +620,15 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 				
 			}
 	      J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
+	        saveLabel2.setVisible(true);
+		    PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
+		    pauseTransition.setOnFinished(e -> { 	
+		    saveLabel2.setVisible(false);
+		    });
+		    pauseTransition.play();
+		    
+	  
+       
 	      PlayerComponent.changedMap = false; 
 	      
 	  }
