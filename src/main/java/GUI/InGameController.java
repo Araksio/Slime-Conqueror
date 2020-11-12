@@ -220,32 +220,33 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 		 
 					
 			
-			
-			//remet la sauvegare de la map a 0
-			demandeRequete.executeUpdate("delete from tuile");
-			
-			//va ecrire dans le fichier 1, pour l instant sauvegarde que le fichier 1
-			  File fichier =new File("src\\main\\resources\\assets\\levels\\map_level0.txt"); //ou est ce qu il est crée
-			 
-			  //toutes les maps font 21 x 21
-			  
-			  
-			  Scanner sc = new Scanner(fichier);
-
-			  
-			  int i = -1; // sert a compter les lignes
-					  while(sc.hasNextLine()) {
-						  i+=1;
-						 String ligne = sc.next();
-						  for(int j = 0; j < 21 ; j+=1) { // pour les colonnes 0 a 20  
-						 demandeRequete.executeUpdate("INSERT INTO `tuile` (`idTuile`, `type`, `positionLigne`, `idFloor`, `positionColonne`) VALUES (NULL, '"+ligne.charAt(j)+"', '"+i+"', '1','"+j+"')");
-					  }
-				  
-				  }
-				  
-			  
-			  
-			  sc.close();
+			//en dessous -> sauvegarde da la map 1 mais ne sert a rien a cause du systeme de fxgl
+//			
+//			//remet la sauvegare de la map a 0
+//			demandeRequete.executeUpdate("delete from tuile");
+//			
+//			//va ecrire dans le fichier 1, pour l instant sauvegarde que le fichier 1
+//			  File fichier =new File("src\\main\\resources\\assets\\levels\\map_level0.txt"); //ou est ce qu il est crée
+//			 
+//			  //toutes les maps font 21 x 21
+//			  
+//			  
+//			  Scanner sc = new Scanner(fichier);
+//
+//			  
+//			  int i = -1; // sert a compter les lignes
+//					  while(sc.hasNextLine()) {
+//						  i+=1;
+//						 String ligne = sc.next();
+//						  for(int j = 0; j < 21 ; j+=1) { // pour les colonnes 0 a 20  
+//						 demandeRequete.executeUpdate("INSERT INTO `tuile` (`idTuile`, `type`, `positionLigne`, `idFloor`, `positionColonne`) VALUES (NULL, '"+ligne.charAt(j)+"', '"+i+"', '1','"+j+"')");
+//					  }
+//				  
+//				  }
+//				  
+//			  
+//			  
+//			  sc.close();
 	
 			
 			
