@@ -26,6 +26,9 @@ public class Items {
 	public static final ItemsArmes Exatest1 = new ItemsArmes(148774588,1,6,"Exatest1",1,3000,3000,5000,new Rarity());
 	public static final ItemsArmes Exatest2 = new ItemsArmes(148774588,1,7,"Exatest2",1,3000,3000,5000,new Rarity());
 	
+	public static final ItemsLoot SlimeBallElectic = new ItemsLoot(148774588,1,7,"Slime Ball Electic",5,3000,3000,"Boule de Slime au propriété electrique, parfaite pour crafter des objet magique",RH4);
+	public static final ItemsLoot KaguyaHeart = new ItemsLoot(148774588,1,8,"Kaguya Heart",5,3000,3000,"Coeur de Kaguya, parfait pour faire des enchantement",RH4);
+	
 	
 	
 	

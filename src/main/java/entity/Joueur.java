@@ -21,12 +21,51 @@ public class Joueur extends Entiter{
 			CurrentStuff = _CurrentStuff;
 			PlayerMoney = _PlayerMoney;
 			PlayerTalent = _PlayerTalent;	
+			Inventaire[0] = new Sous_Inventaire("Armes");
+			Inventaire[1] = new Sous_Inventaire("Armures/Tenue");
+			Inventaire[2] = new Sous_Inventaire("Potion");
+			Inventaire[3] = new Sous_Inventaire("Items Spéciaux");
+			Inventaire[4] = new Sous_Inventaire("Craft");
+			Inventaire[5] = new Sous_Inventaire("Loot");
 		}
 		
 		Joueur(String _nom, Pos _position,Stat _statistiques,Sous_Inventaire _Inventaire[])
 		{
 			super(_nom, _position, _statistiques);
 			Inventaire = _Inventaire;
+			Inventaire = _Inventaire;
+			Inventaire[0] = new Sous_Inventaire("Armes");
+			Inventaire[1] = new Sous_Inventaire("Armures/Tenue");
+			Inventaire[2] = new Sous_Inventaire("Potion");
+			Inventaire[3] = new Sous_Inventaire("Items Spéciaux");
+			Inventaire[4] = new Sous_Inventaire("Craft");
+			Inventaire[5] = new Sous_Inventaire("Loot");
+			
+		}
+		
+		public Joueur(String _nom,Stat _Statistiques, Pos _Position,GameType _entityType,Sous_Inventaire _Inventaire[])
+		{
+			super(_nom, _Position, _Statistiques,GameType.PLAYER);
+			Inventaire = _Inventaire;
+			Inventaire[0] = new Sous_Inventaire("Armes");
+			Inventaire[1] = new Sous_Inventaire("Armures/Tenue");
+			Inventaire[2] = new Sous_Inventaire("Potion");
+			Inventaire[3] = new Sous_Inventaire("Items Spéciaux");
+			Inventaire[4] = new Sous_Inventaire("Craft");
+			Inventaire[5] = new Sous_Inventaire("Loot");
+		}
+		
+		public Joueur(String _nom,Stat _Statistiques, Pos _Position,GameType _entityType,Sous_Inventaire _Inventaire[],Money _PlayerMoney)
+		{
+			super(_nom, _Position, _Statistiques,GameType.PLAYER);
+			Inventaire = _Inventaire;
+			PlayerMoney = _PlayerMoney;
+			Inventaire[0] = new Sous_Inventaire("Armes");
+			Inventaire[1] = new Sous_Inventaire("Armures/Tenue");
+			Inventaire[2] = new Sous_Inventaire("Potion");
+			Inventaire[3] = new Sous_Inventaire("Items Spéciaux");
+			Inventaire[4] = new Sous_Inventaire("Craft");
+			Inventaire[5] = new Sous_Inventaire("Loot");
 		}
 		
 		public Joueur(String _nom,Stat _Statistiques, Pos _Position,GameType _entityType)
@@ -99,6 +138,13 @@ public class Joueur extends Entiter{
 		{
 			this.getInventaire()[IT.getType()].addItems(IT);
 		}
+		
+		public void addItems(Item IT, int Quantity)
+		{
+			this.getInventaire()[IT.getType()].addItems(IT,Quantity);
+		}
+		
+		
 		
 		public void showInventory()
 		{

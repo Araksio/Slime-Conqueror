@@ -113,7 +113,7 @@ public class DelayMonsterAtkComponent extends Component {
 	        	
 	            timeToSwitch += tpf;
 	            
-	            double RandomTimerAtk2 = 2.0;
+	            float RandomTimerAtk2 = astar.getEntity().getProperties().getValue("CADofMonster");
 
 	            
 	            if (timeToSwitch >= RandomTimerAtk2) {

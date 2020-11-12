@@ -12,6 +12,7 @@ public class Item{
 	private int CurrentDurability;    // durabilit� actuelle de l'objet
 	private int MaxDurability;        // durabilit� maximum qu'a l'objet au debut
 	private int InventoryID;          // ID de l'object dans l'inventaire
+	private String Description;
 	
 	Item(int _UniqueID,int _ID, int _inventoryID, String _Nom,int _Type,int _CurrentDurability,int _MaxDurability)
 	{
@@ -22,6 +23,19 @@ public class Item{
 		Type = _Type;
 		CurrentDurability = _CurrentDurability;
 		MaxDurability = _MaxDurability;
+		
+	}
+	
+	Item(int _UniqueID,int _ID, int _inventoryID, String _Nom,int _Type,int _CurrentDurability,int _MaxDurability, String _Description)
+	{
+		UniqueID = _UniqueID;
+		UniqueID = _ID;
+		InventoryID = _inventoryID;
+		Nom = _Nom;
+		Type = _Type;
+		CurrentDurability = _CurrentDurability;
+		MaxDurability = _MaxDurability;
+		Description = _Description;
 		
 	}
 	
@@ -71,6 +85,11 @@ public class Item{
 		return this.MaxDurability;
 	}
 	
+	public String getDescription()
+	{
+		return this.Description;
+	}
+	
 	
 	
 	public void setUniqueID(int _UniqueID)
@@ -106,5 +125,10 @@ public class Item{
 	public void setMaxDurability(int _MaxDurability)
 	{
 		this.MaxDurability = _MaxDurability;
+	}
+	
+	public void setDescription(String _Description)
+	{
+		this.Description = _Description;
 	}
 }

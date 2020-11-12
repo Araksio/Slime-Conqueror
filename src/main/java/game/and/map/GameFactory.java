@@ -32,10 +32,15 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.texture.AnimatedTexture;
 
+import entity.Item;
+import entity.Items;
 import entity.Joueur;
 import entity.LV;
+import entity.Loot;
+import entity.Money;
 import entity.Monster;
 import entity.Pos;
+import entity.Sous_Inventaire;
 import entity.Stat;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
@@ -86,7 +91,6 @@ import java.sql.*
     public Entity newChest(SpawnData data) {
     	var view = texture("Chest.jpg");
     	
-    	
         return entityBuilder(data)
                 .type(CHEST)
                 .zIndex(-1)
@@ -99,38 +103,127 @@ import java.sql.*
     
     @Spawns("M")
     public Entity newMonster(SpawnData data) {
-        var view = texture("Monster.png");
-        
-        // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
-        
-    	String Nom = "Soldat Squelette";
     	
-    	Stat StatPlayer = new Stat(20,3,3,3,3,3,3); // HP,ATK,DEF,MP,SPA,SPD,SPE
-    	Pos Pos1 = new Pos(2,1,0,0,1);
+    	int RandomMonsterGenerate = (int)(Math.random() * (3 - 1) + 1 + 1);
     	
-    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,5.0); 
-    	
-    	view.setTranslateX(-40);
-    	view.setTranslateY(-40);
+    	if(RandomMonsterGenerate == 2)
+    	{
+    		 var view = texture("MonsterElectricSlime.png");
+    	        
+    	        // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
+    	        
+    	    	String Nom = "Slime Electric";
+    	    	
+    	    	int HPofMonster =  (int)(Math.random() * (15 - 10) + 10);
+    	    	int AtkofMonster =  (int)(Math.random() * (3 - 2) + 2);
+    	    	int DefofMonster =  (int)(Math.random() * (3 - 2) + 2);
+    	    	int MPfMonster =  (int)(Math.random() * (12 - 8) + 8);
+    	    	int SPAofMonster =  (int)(Math.random() * (4 - 2) + 2);
+    	    	int SPDofMonster =  (int)(Math.random() * (4 - 2) + 2);
+    	    	int SPEofMonster =  (int)(Math.random() * (8 - 4) + 4);
+    	    	float CADofMonster = (float)(Math.random() * (20 - 10) + 10)/10;
+    	    	
+ 
+    	    	
+    	    	ArrayList<Item> LootItemsOfMonster = new ArrayList<Item>();
+    	    	ArrayList<Integer> LootQuantityItemsOfMonster = new ArrayList<Integer>();
+    	    	LootItemsOfMonster.add(Items.SlimeBallElectic);
+    	    	LootQuantityItemsOfMonster.add((int)(Math.random() * (5 - 1) + 1 + 1));
+    	    	String LootMessage = "";
+    	    	
+       	    	Loot LootOfMonster = new Loot(LootItemsOfMonster,LootQuantityItemsOfMonster,LootMessage);
+    	    	//LootOfMonster.addItems(Items.SlimeBallElectic, (int)(Math.random() * (5 - 1) + 1 + 1));
 
-    	@SuppressWarnings("unused")
-		Component C1;
-    	
-    	
-        var mo = entityBuilder(data)
-                .type(MONSTER)
-                .bbox(new HitBox(new Point2D(50, 50), BoundingShape.box(300, 300)))
-                .view(view)
-                .zIndex(-1)
-                .with(new CollidableComponent(true))
-                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, 50))
-                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
-                .with(aiComponents.get())
-                .with("Mosnter1",M1)
-                .build();
-        
-        
-        return mo;
+       	    	int LootGold = (int)(Math.random() * (50 - 10) + 10 + 1);
+
+    	    	
+    	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
+    	    	Pos Pos1 = new Pos(2,1,0,0,1);
+    	    	
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,5.0); 
+    	    	
+    	    	view.setTranslateX(-40);
+    	    	view.setTranslateY(-40);
+
+
+    			Component C1;
+    	    	
+    	    	
+    	        var mo = entityBuilder(data)
+    	                .type(MONSTER)
+    	                .bbox(new HitBox(new Point2D(50, 50), BoundingShape.box(300, 300)))
+    	                .view(view)
+    	                .zIndex(-1)
+    	                .with(new CollidableComponent(true))
+    	                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, SPEofMonster*10))
+    	                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+    	                .with(aiComponents.get())
+    	                .with("Mosnter1",M1)
+    	                .with("CADofMonster",CADofMonster)
+    	                .with("LootOfMonster",LootOfMonster)
+    	                .with("LootGold",LootGold)
+    	                .build();
+    	        
+    	        return mo;
+    	}
+    	else
+    	{
+    		 var view = texture("Monster.png");
+    	        
+    	        // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
+    	        
+    	    	String Nom = "Kaguya Shinomiya";
+    	    	
+    	    	int HPofMonster =  (int)(Math.random() * (30 - 15) + 15);
+    	    	int AtkofMonster =  (int)(Math.random() * (5 - 2) + 2);
+    	    	int DefofMonster =  (int)(Math.random() * (5 - 2) + 2);
+    	    	int MPfMonster =  (int)(Math.random() * (12 - 8) + 8);
+    	    	int SPAofMonster =  (int)(Math.random() * (4 - 2) + 2);
+    	    	int SPDofMonster =  (int)(Math.random() * (4 - 2) + 2);
+    	    	int SPEofMonster =  (int)(Math.random() * (8 - 4) + 4);
+    	    	float CADofMonster = (float)(Math.random() * (30 - 15) + 15)/10;
+    	    	
+    	    	ArrayList<Item> LootItemsOfMonster = new ArrayList<Item>();
+    	    	ArrayList<Integer> LootQuantityItemsOfMonster = new ArrayList<Integer>();
+    	    	LootItemsOfMonster.add(Items.KaguyaHeart);
+    	    	LootQuantityItemsOfMonster.add((int)(Math.random() * (5 - 1) + 1 + 1));
+    	    	String LootMessage = "";
+    	    	
+       	    	Loot LootOfMonster = new Loot(LootItemsOfMonster,LootQuantityItemsOfMonster,LootMessage);
+       	    	
+       	    	int LootGold = (int)(Math.random() * (100 - 20) + 20 + 1);
+    	    	
+    	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
+    	    	Pos Pos1 = new Pos(2,1,0,0,1);
+    	    	
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,5.0); 
+    	    	
+    	    	view.setTranslateX(-40);
+    	    	view.setTranslateY(-40);
+
+    	    	@SuppressWarnings("unused")
+    			Component C1;
+    	    	
+    	    	
+    	        var mo = entityBuilder(data)
+    	                .type(MONSTER)
+    	                .bbox(new HitBox(new Point2D(50, 50), BoundingShape.box(300, 300)))
+    	                .view(view)
+    	                .zIndex(-1)
+    	                .with(new CollidableComponent(true))
+    	                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, 50))
+    	                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+    	                .with(aiComponents.get())
+    	                .with("Mosnter1",M1)
+    	                .with("CADofMonster",CADofMonster)
+    	                .with("LootOfMonster",LootOfMonster)
+    	                .with("LootGold",LootGold)
+    	                .build();
+    	        
+    	        
+    	        return mo;
+    	}
+
     }
     
     
@@ -272,7 +365,15 @@ import java.sql.*
     			// pas encore fait le stockage de la position
     			
     			
-    			
+    	        Sous_Inventaire PlayerInventory [] = new Sous_Inventaire [6];
+    	        PlayerInventory[0] = new Sous_Inventaire("Armes");
+    	        PlayerInventory[1] = new Sous_Inventaire("Armures/Tenue");
+    	        PlayerInventory[2] = new Sous_Inventaire("Potion");
+    	        PlayerInventory[3] = new Sous_Inventaire("Items Spéciaux");
+    	        PlayerInventory[4] = new Sous_Inventaire("Craft");
+    	        PlayerInventory[5] = new Sous_Inventaire("Loot");
+    	        
+    	        Money PlayerMoney = new Money(0,0);
     			
     			
     			
@@ -284,7 +385,7 @@ import java.sql.*
     	
     	
     			
-    	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER); 
+    	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER,PlayerInventory,PlayerMoney); 
     	
     	ResultSet lvlDuJoueur = demandeRequete.executeQuery("Select idlvl from lvl where idjoueur=1");
 		while(lvlDuJoueur.next()) {

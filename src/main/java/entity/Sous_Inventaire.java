@@ -9,7 +9,7 @@ public class Sous_Inventaire {
 	private Item CurrentSousInventory[]= new Item[999];
 	private int CurrentSousInventoryNumber[]= new int[999];
 	
-	Sous_Inventaire(String _Nom)
+	public Sous_Inventaire(String _Nom)
 	{
 		Nom = _Nom;
 	}
@@ -71,12 +71,15 @@ public class Sous_Inventaire {
 	
 	public void addItems(Item IT,int quantity)
 	{
-		for(int i = 0; i < 999; i++)
+		int IID = IT.getInventoryID();
+		if(this.CurrentSousInventory[IID] == null)
 		{
-			if(this.CurrentSousInventory[i].getID() == IT.getID())
-			{
-				this.CurrentSousInventoryNumber[i] = this.CurrentSousInventoryNumber[i] + quantity;
-			}
+			this.CurrentSousInventory[IID] = IT;
+			this.CurrentSousInventoryNumber[IID] = this.CurrentSousInventoryNumber[IID] + quantity;;
+		}
+		else
+		{
+			this.CurrentSousInventoryNumber[IID] = this.CurrentSousInventoryNumber[IID] + quantity;
 		}
 	}
 	

@@ -8,7 +8,7 @@ public class Money {
 	private double MoneyOnPlayer;
 	private double MoneyOnBank;
 	
-	Money(double _MoneyOnPlayer,double _MoneyOnBank)
+	public Money(double _MoneyOnPlayer,double _MoneyOnBank)
 	{
 		MoneyOnPlayer = _MoneyOnPlayer;
 		MoneyOnBank = _MoneyOnBank;

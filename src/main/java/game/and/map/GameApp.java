@@ -44,7 +44,10 @@ import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 
 import GUI.InGameController;
 import GUI.MySceneFactory;
+import entity.Item;
+import entity.Items;
 import entity.Joueur;
+import entity.Loot;
 import entity.Monster;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -465,6 +468,8 @@ public class GameApp extends GameApplication {
 			    				
 			    		
 			    				{
+			    					Loot LootInTheChest = CurentEntityOnClic.getProperties().getValue("LootOnChest");
+			    					int LootGold = CurentEntityOnClic.getProperties().getValue("LootGold"); 
 			    					CurentEntityOnClic.removeFromWorld();
 			    					nbrChest--;
 			    					
@@ -476,9 +481,24 @@ public class GameApp extends GameApplication {
 			    					
 			    					set("grid", grid);
 			    					
+			    					LootInTheChest.AutoGenerateLootMessage();
+			    					
+			    					ArrayList<Item> LootItemsOfMonster = LootInTheChest.getListOfItemsLoot();
+			    					ArrayList<Integer> QuantityLootItemsOfMonster = LootInTheChest.getListOfQuantityItemsLoot();
+			    					
 			    					Joueur P1 = getPlayer().getProperties().getValue("Joueur1");
-			    					FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de trouver une épée Légendaire : Excalibur" );
-			    					FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de trouver 200 gold !");
+			    					
+			    					FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de trouver" + LootInTheChest.getLootMessage());
+			    					for(Item I : LootItemsOfMonster)
+			    					{
+			    						int pos = LootItemsOfMonster.indexOf(I);
+				    					P1.addItems(I,QuantityLootItemsOfMonster.get(pos));
+			    					}
+			    					P1.showInventory();
+			    					
+			    					FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de trouver " + LootGold + " gold !");
+			    					P1.getPlayerMoney().addMoney((double)LootGold);
+			    					println("Argernt de " + P1.getNom() + " : " + (int)(P1.getPlayerMoney().getMoneyOnPlayer()) + " gold");
 			        			}
 			    				
 			    			
@@ -706,6 +726,8 @@ public class GameApp extends GameApplication {
     	InGameController.displayOnAttack();
     	if (M.getStat().getCurrentHP() <= 0)
     	{
+    		Loot LootOfMonster = Mo.getProperties().getValue("LootOfMonster");
+    		int LootGold = Mo.getProperties().getValue("LootGold");
     		Mo.removeFromWorld();
     		J.getLv().addXP(M.getDroppedXP());
 			println("Le " + M.getNom() + " Est mort");
@@ -719,8 +741,9 @@ public class GameApp extends GameApplication {
 
 			MX = (int)(MX - (MX%80));
 			MY = (int)(MY - (MY%80));
-			@SuppressWarnings("unused")
 			Entity CC = spawn("C",MX, MY);
+			CC.getProperties().setValue("LootOnChest", LootOfMonster);
+			CC.getProperties().setValue("LootGold", LootGold);
 			//CC.translateX(-40);
 			//CC.translateY(-40);
 			println("MX " + MX);

@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.ArrayList;
+
 import game.and.map.*;
 import other.components.*;
 
@@ -77,6 +79,9 @@ public class testCombat {
         J2.addItems(Items.Exatest2);
         
         J2.showInventory();   
+        
+
+        
         
         
         J2.InspectPlayer();
