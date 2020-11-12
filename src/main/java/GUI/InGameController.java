@@ -4,12 +4,11 @@ import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
-import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
 
-import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,9 +23,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.input.Input;
-import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.ui.Position;
 
 import entity.Joueur;
 import entity.Monster;
