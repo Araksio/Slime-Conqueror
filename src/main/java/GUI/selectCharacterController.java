@@ -30,7 +30,7 @@ private void initialize()
 
 
 @FXML
-private void startGame() throws SQLException {
+private void startGame() throws SQLException, InterruptedException {
 	
 	{
 		if(selectPseudo.getText().isEmpty() || selectPseudo.getText().length() < 3 || selectPseudo.getText().length() > 12)
@@ -44,7 +44,11 @@ private void startGame() throws SQLException {
 		else
 		{
 			 try {
-					new Write(3,3,"map_level0.txt");
+				 //decommenter quand ce sera fixe
+//					new Write(3,3,"map_level0.txt");
+				 
+				 //solution de secours
+				 new Write();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -134,6 +138,8 @@ private void startGame() throws SQLException {
 			MyMainMenuController.mediaPlayer.stop();
 			Stage s = (Stage)startButton.getScene().getWindow();
 			s.close();
+			//je dois mettre un sleep assez consequent pour pouvoir generer la map ET quel soit prise en compte 
+			
 			FXGL.getGameController().startNewGame();
 	}
 	}

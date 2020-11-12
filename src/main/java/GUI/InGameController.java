@@ -4,12 +4,11 @@ import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
-import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
 
-import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,9 +23,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.input.Input;
-import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.ui.Position;
 
 import entity.Joueur;
 import entity.Monster;
@@ -42,6 +38,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -158,6 +155,33 @@ private Button speBonusButton;
 private ProgressBar progHpBar;
 @FXML
 private ProgressBar progMpBar;
+@FXML
+private Label saveLabel2;
+@FXML
+private Label objectifLabel1;
+@FXML
+private Button cacherObjectifButton;
+@FXML
+private ScrollPane objectifPane;
+@FXML
+private Button skillButton1;
+@FXML
+private Button skillButton2;
+@FXML
+private Button skillButton3;
+@FXML
+private Button skillButton4;
+@FXML
+private Button skillButton5;
+@FXML
+private Button skillButton6;
+@FXML
+private Button skillButton7;
+@FXML
+private Button skillButton8;
+@FXML
+private Button skillButton9;
+
 
 public static int pointsBonus;
 public static int nbr;
@@ -220,32 +244,33 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 		 
 					
 			
-			
-			//remet la sauvegare de la map a 0
-			demandeRequete.executeUpdate("delete from tuile");
-			
-			//va ecrire dans le fichier 1, pour l instant sauvegarde que le fichier 1
-			  File fichier =new File("src\\main\\resources\\assets\\levels\\map_level0.txt"); //ou est ce qu il est crée
-			 
-			  //toutes les maps font 21 x 21
-			  
-			  
-			  Scanner sc = new Scanner(fichier);
-
-			  
-			  int i = -1; // sert a compter les lignes
-					  while(sc.hasNextLine()) {
-						  i+=1;
-						 String ligne = sc.next();
-						  for(int j = 0; j < 21 ; j+=1) { // pour les colonnes 0 a 20  
-						 demandeRequete.executeUpdate("INSERT INTO `tuile` (`idTuile`, `type`, `positionLigne`, `idFloor`, `positionColonne`) VALUES (NULL, '"+ligne.charAt(j)+"', '"+i+"', '1','"+j+"')");
-					  }
-				  
-				  }
-				  
-			  
-			  
-			  sc.close();
+			//en dessous -> sauvegarde da la map 1 mais ne sert a rien a cause du systeme de fxgl
+//			
+//			//remet la sauvegare de la map a 0
+//			demandeRequete.executeUpdate("delete from tuile");
+//			
+//			//va ecrire dans le fichier 1, pour l instant sauvegarde que le fichier 1
+//			  File fichier =new File("src\\main\\resources\\assets\\levels\\map_level0.txt"); //ou est ce qu il est crée
+//			 
+//			  //toutes les maps font 21 x 21
+//			  
+//			  
+//			  Scanner sc = new Scanner(fichier);
+//
+//			  
+//			  int i = -1; // sert a compter les lignes
+//					  while(sc.hasNextLine()) {
+//						  i+=1;
+//						 String ligne = sc.next();
+//						  for(int j = 0; j < 21 ; j+=1) { // pour les colonnes 0 a 20  
+//						 demandeRequete.executeUpdate("INSERT INTO `tuile` (`idTuile`, `type`, `positionLigne`, `idFloor`, `positionColonne`) VALUES (NULL, '"+ligne.charAt(j)+"', '"+i+"', '1','"+j+"')");
+//					  }
+//				  
+//				  }
+//				  
+//			  
+//			  
+//			  sc.close();
 	
 			
 			
@@ -436,6 +461,25 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 			}
 	     });
 		
+	 cacherObjectifButton.setOnMouseClicked(e -> {
+		if(objectifPane.isVisible())
+		{
+			objectifPane.setVisible(false);
+			cacherObjectifButton.setText("Afficher objectifs");
+			cacherObjectifButton.setPrefWidth(150.0);
+			cacherObjectifButton.setLayoutX(0);
+		}
+		else
+		{
+			objectifPane.setVisible(true);
+			cacherObjectifButton.setText("Cacher");
+			cacherObjectifButton.setPrefWidth(75.0);
+			cacherObjectifButton.setLayoutX(199.0);
+		}
+			
+		 
+	 });
+	 
  }
 
  public void getImages() throws URISyntaxException
@@ -520,6 +564,16 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
       atkLabelCharacter.setText("ATK : " + J.getStat().getMaxATK());
       defLabelCharacter.setText("DEF : " + J.getStat().getMaxDEF());
       spdLabelCharacter.setText("SPD : " + J.getStat().getMaxSPD());
+      objectifLabel1.setText("- Tuer " + getGameWorld().getEntitiesByType(MONSTER).size() + " monstres pour passer \nau prochain étage");
+      if(getGameWorld().getEntitiesByType(MONSTER).size() == 0)
+      {
+    	  objectifLabel1.setText("Prochain étage débloqué");
+    	  objectifLabel1.setTextFill(Color.GREEN);
+      }
+      else
+      {
+    	  objectifLabel1.setTextFill(Color.WHITE);
+      }
       
       progHpBar.setProgress((double)J.getStat().getCurrentHP() / (double)J.getStat().getMaxHP());
       progMpBar.setProgress((double)J.getStat().getCurrentMP() / (double)J.getStat().getMaxMP());
@@ -547,7 +601,7 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 	  {
 		  nbr = getGameWorld().getEntitiesByType(MONSTER).size();
 		 // J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
-
+          
 	      for(int i = 0; i < getGameWorld().getEntitiesByType(MONSTER).size(); i++)
 			{
 				Label label = new Label("Label : " + i);
@@ -563,6 +617,15 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 				
 			}
 	      J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
+	        saveLabel2.setVisible(true);
+		    PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
+		    pauseTransition.setOnFinished(e -> { 	
+		    saveLabel2.setVisible(false);
+		    });
+		    pauseTransition.play();
+		    
+	  
+       
 	      PlayerComponent.changedMap = false; 
 	      
 	  }
