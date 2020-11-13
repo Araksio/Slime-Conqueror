@@ -80,7 +80,6 @@ public class GameApp extends GameApplication {
     public static int DegatSubit;
     public static Viewport viewport;
     public static boolean chestOpened = false;
-    public static boolean CanUpFloor = false;
     
     public static Entity getPlayer() {
         return getGameWorld().getSingleton(PLAYER); // Instanciation du Joueur dans le Jeux
@@ -495,7 +494,7 @@ public class GameApp extends GameApplication {
 			    						int pos = LootItemsOfMonster.indexOf(I);
 				    					P1.addItems(I,QuantityLootItemsOfMonster.get(pos));
 			    					}
-			    					
+			    					P1.showInventory();
 			    					
 			    					FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de trouver " + LootGold + " gold !");
 			    					P1.getPlayerMoney().addMoney((double)LootGold);
@@ -550,7 +549,8 @@ public class GameApp extends GameApplication {
 
     protected void initPhysics() {
     	onCollision(PLAYER, ESCALIER, (p,e) -> {
-    	if(CanUpFloor)
+    	int nbr = geti("nbrMob");
+    	if(nbr <= 0)
     	{
     		Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
 			try {
@@ -724,9 +724,7 @@ public class GameApp extends GameApplication {
     	println("Degat Subit : " + DegatSubit);
     	
     	println("HP : " + M.getStat().getCurrentHP());
-    	
-    	//Affichage des dégats fait au monstre : InGameController.displayOnAttack(); 
-    	
+    	InGameController.displayOnAttack();
     	if (M.getStat().getCurrentHP() <= 0)
     	{
     		Loot LootOfMonster = Mo.getProperties().getValue("LootOfMonster");
@@ -762,11 +760,15 @@ public class GameApp extends GameApplication {
 			nbr--;
 			set("nbrMob",nbr);
 			
-			if(nbr <= 0)
+			int MPToWin = (int)(Math.random() * (3 - 1) + 1);
+			if(J.getStat().getCurrentMP() + MPToWin >= J.getStat().getMaxMP())
 			{
-				CanUpFloor = true;
+				J.getStat().setCurrentMP(J.getStat().getMaxMP());
 			}
-
+			else
+			{
+				J.getStat().setCurrentMP(J.getStat().getCurrentMP() +  MPToWin);
+			}
 			
 			//NotificationView N1 = null;
 			//N1.setBackgroundColor(javafx.scene.paint.Color.rgb(39, 56, 58));
@@ -836,6 +838,9 @@ public class GameApp extends GameApplication {
         PlayerCombat = null;
         
         PlayerCombat = getPlayer();
+        
+        int nbr = getGameWorld().getEntitiesByType(MONSTER).size();
+        set("nbrMob", nbr);
         
         Viewport viewport = getGameScene().getViewport();
         viewport.bindToEntity(getGameWorld().getSingleton(PLAYER), getAppWidth()/2,getAppHeight()/2);

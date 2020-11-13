@@ -5,6 +5,7 @@ import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
 import static com.almasb.fxgl.dsl.FXGL.getInput;
+import static com.almasb.fxgl.dsl.FXGL.set;
 import static game.and.map.GameType.CHEST;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
@@ -26,6 +27,7 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.Input;
 
+import entity.Competence;
 import entity.Item;
 import entity.Joueur;
 import entity.Monster;
@@ -209,6 +211,11 @@ public static int nbrChests;
   
  	
  }
+ 
+	public static void println(String T)
+	{
+		System.out.println(T);
+	}
  
 @FXML
 public void keyPressed(KeyEvent event) throws SQLException, IOException
@@ -487,6 +494,58 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 			cacherObjectifButton.setLayoutX(199.0);
 		}
 			
+		 
+	 });
+	 
+	 skillButton1.setOnMouseClicked(e -> {
+		 Competence[] CompetenceList = J.getCompetences();
+		 Competence FirstCompetence = CompetenceList[0];		
+		 
+		 if(FirstCompetence.getCost() <= J.getStat().getCurrentMP() && FirstCompetence.getCoolDownIsOver())
+		 {
+			 FirstCompetence.UseCompetence();
+			 int HPtoHeal = J.getStat().getMaxHP() - J.getStat().getCurrentHP();
+			 J.getStat().setCurrentHP(J.getStat().getCurrentHP() + HPtoHeal);
+			 J.getStat().setCurrentMP(J.getStat().getCurrentMP()-FirstCompetence.getCost());
+		 }
+		 
+		 
+	 });
+	 
+	 skillButton2.setOnMouseClicked(e -> {
+		 Competence[] CompetenceList = J.getCompetences();
+		 Competence FirstCompetence = CompetenceList[1];
+				 
+		 if(FirstCompetence.getCost() <= J.getStat().getCurrentMP() && FirstCompetence.getCoolDownIsOver())
+		 {
+			Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
+		    int px = (int) P.getX()/80;
+		    int py = (int) P.getY()/80;
+		    int nbr = getGameWorld().getEntitiesByType(MONSTER).size();
+		    set("nbrMob", nbr);
+		    for(int i = 0; i < nbr; i++)
+		    {
+		    	println("" + nbr);
+		    	Entity CurentEntity = getGameWorld().getEntitiesByType(MONSTER).get(i);
+		    	int mx = (int) CurentEntity.getX()/80;
+		    	int my = (int) CurentEntity.getY()/80;
+		    	int Distance = 3;
+		    	if(Math.abs(px - mx) < Distance && Math.abs(py - my) < Distance)
+		    	{
+		    		println("Deleted");
+		    		CurentEntity.removeFromWorld();
+		    		nbr--;
+		    		set("nbrMob", nbr);	    		
+		    		println("nbr : " + nbr);
+		    		println("i : " + i);
+		    		i--;
+		    		
+		    	}
+		    }
+		    J.getStat().setCurrentMP(J.getStat().getCurrentMP()-FirstCompetence.getCost());
+		   
+		 }
+		 
 		 
 	 });
 	 

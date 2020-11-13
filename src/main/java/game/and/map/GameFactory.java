@@ -32,6 +32,8 @@ import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.texture.AnimatedTexture;
 
+import entity.Competence;
+import entity.Competences;
 import entity.Item;
 import entity.Items;
 import entity.Joueur;
@@ -374,18 +376,20 @@ import java.sql.*
     	        PlayerInventory[5] = new Sous_Inventaire("Loot");
     	        
     	        Money PlayerMoney = new Money(0,0);
-    			
-    			
-    			
-    			
-    		   Pos Pos1 = new Pos(5,1,0,0,1);
+    	          	        
+    	        Competence[] CompetenceList = new Competence[9];
+    	        
+    	        CompetenceList[0] = Competences.HealII;
+    	        CompetenceList[1] = Competences.Explosion;
+
+    	        Pos Pos1 = new Pos(5,1,0,0,1);
     			
 				
 				
     	
     	
     			
-    	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER,PlayerInventory,PlayerMoney); 
+    	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER,PlayerInventory,PlayerMoney,CompetenceList); 
     	
     	ResultSet lvlDuJoueur = demandeRequete.executeQuery("Select idlvl from lvl where idjoueur=1");
 		while(lvlDuJoueur.next()) {
@@ -423,6 +427,7 @@ import java.sql.*
 
         return e;
     }
+
     
     private Supplier<Component> aiComponents = new Supplier<>() {
         private Map<Integer, Supplier<Component>> components = Map.of(

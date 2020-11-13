@@ -10,7 +10,7 @@ public class Joueur extends Entiter{
 		
 		
 		private Sous_Inventaire Inventaire[] = new  Sous_Inventaire [6];         // Tableau qui regroupe tout les items dans l'inventaire du Joueur
-		private Competence Competences[];   // Tableau qui regroupe la liste des competence que le joueur poss�de
+		private Competence Competences[]  = new  Competence [9];   // Tableau qui regroupe la liste des competence que le joueur poss�de
 		private StuffPlayer CurrentStuff;   // Stuff Actuellement Equipe sur le Joueur (il est dans l'inventaire avec une �toile pour sigaler qu'il est equipe sur le joeur)
 		private Money PlayerMoney;          // Argent Actuel que le joueur poss�de sur lui (peut �tre prochain ajout avec l'argent en banque stocker dans cette classe
 		private Tallent PlayerTalent;       // Tallent Unique que le joeur poss�de
@@ -70,6 +70,22 @@ public class Joueur extends Entiter{
 			Inventaire[4] = new Sous_Inventaire("Craft");
 			Inventaire[5] = new Sous_Inventaire("Loot");
 		}
+		
+		public Joueur(String _nom,Stat _Statistiques, Pos _Position,GameType _entityType,Sous_Inventaire _Inventaire[],Money _PlayerMoney,Competence _Competences[])
+		{
+			super(_nom, _Position, _Statistiques,GameType.PLAYER);
+			Inventaire = _Inventaire;
+			PlayerMoney = _PlayerMoney;
+			Inventaire[0] = new Sous_Inventaire("Armes");
+			Inventaire[1] = new Sous_Inventaire("Armures/Tenue");
+			Inventaire[2] = new Sous_Inventaire("Potion");
+			Inventaire[3] = new Sous_Inventaire("Items Spéciaux");
+			Inventaire[4] = new Sous_Inventaire("Craft");
+			Inventaire[5] = new Sous_Inventaire("Loot");
+			Competences = _Competences;
+		}
+		
+		
 		
 		public Joueur(String _nom,Stat _Statistiques, Pos _Position,GameType _entityType)
 		{
