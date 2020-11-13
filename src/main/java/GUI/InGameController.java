@@ -4,10 +4,11 @@ import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
+import static com.almasb.fxgl.dsl.FXGL.getInput;
+import static game.and.map.GameType.CHEST;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -16,14 +17,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.input.Input;
 
+import entity.Item;
 import entity.Joueur;
 import entity.Monster;
 import game.and.map.GameApp;
@@ -31,12 +34,15 @@ import game.and.map.GameFactory;
 import game.and.map.GameType;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -182,13 +188,15 @@ private Button skillButton8;
 @FXML
 private Button skillButton9;
 
+@FXML
+private ListView<String> inventoryList;
 
 public static int pointsBonus;
 public static int nbr;
-
+public static int nbrChests;
 
  Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
-
+  
 
  
  public void initialize() throws URISyntaxException, IOException, SQLException {
@@ -196,6 +204,7 @@ public static int nbr;
  	getStats();
  	getImages();
     hoverButton();
+
 
   
  	
@@ -375,15 +384,16 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 		 inventairePolygon.setVisible(false);
 	 });
 	 inventoryButton.setOnMouseClicked(e -> {
-		 if(!inventaireGridPane.isVisible())
-		 {
-			 inventaireGridPane.setVisible(true);
-			 inventaireGridPane.setLayoutX(925);
-			 inventaireGridPane.setLayoutY(421);
-		 }
-		 else {
-			 inventaireGridPane.setVisible(false);
-		 }
+		if(inventoryList.isVisible())
+		{
+			inventoryList.setVisible(false);
+		}
+		else
+		{
+			inventoryList.setVisible(true);
+			inventoryList.setLayoutX(922);
+			inventoryList.setLayoutY(522);
+		}
 	 });
 	 skillsButton.setOnMouseEntered(e -> {
 		 labelSkills.setVisible(true);
@@ -444,11 +454,11 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 	      
 	 });
 	 
-	 inventaireGridPane.setOnMouseDragged(new EventHandler<MouseEvent>() {
+	inventoryList.setOnMouseDragged(new EventHandler<MouseEvent>() {
 		@Override
 		public void handle(MouseEvent event) {
-			inventaireGridPane.setLayoutX(event.getSceneX());
-			inventaireGridPane.setLayoutY(event.getSceneY());
+			inventoryList.setLayoutX(event.getSceneX());
+			inventoryList.setLayoutY(event.getSceneY());
 			
 		}
      });
@@ -519,11 +529,25 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 
  public void getStats() throws SQLException
  {
+	 ObservableList<String> list = FXCollections.observableArrayList(); 
+
 	 
 	 Viewport viewport = getGameScene().getViewport();
 	 viewport.bindToEntity(getGameWorld().getSingleton(PLAYER), getAppWidth()/2,getAppHeight()/2);
 	 nbr = getGameWorld().getEntitiesByType(MONSTER).size();
+	 nbrChests = getGameWorld().getEntitiesByType(CHEST).size();
 	 ArrayList<Label> labels = new ArrayList<Label>();
+	 ArrayList<Label> labelsInventory = new ArrayList<Label>();
+	 
+	 for(int i = 0; i < 999; i++)
+	 {
+		 Label label = new Label(" ");
+		 labelsInventory.add(label);
+		 
+			getGameScene().addUINodes(labelsInventory.get(i));
+			
+	 }
+	 
 	 ArrayList<ProgressBar> progressBarMonsters = new ArrayList<ProgressBar>();
 	 pointsBonus = J.getLv().getPointsBonus();
 	 pseudoLabelCharacter.setText(J.getNom());
@@ -550,14 +574,34 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 	    	pointsBonus = 1;
 	    	
 	    }
-	 
-	 
+	
 	 J.getLv().setPointsBonus(J.getLv().getPointsBonus());
-	 
+	
      scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
      scheduledExecutorService.scheduleAtFixedRate(() -> {
    
         Platform.runLater(() -> {
+        	if(GameApp.chestOpened == true)
+        	{
+        		
+        		ArrayList<Item> Inventaire = J.getNewInventory();
+        		for(int i = 0; i < J.ItemsCountOnInventoryV2(); i++)
+        		{
+        			
+        			list.add(" ");
+        			
+        				if(list.get(i) != null)
+        				{
+        					list.set(i,Inventaire.get(i).getNom() + " x " + J.getNewInventoryQuantity().get(i));
+        				}
+        			
+        		
+        			
+        		}
+        		inventoryList.setItems(list);
+        		GameApp.chestOpened = false;
+        		
+        	}
         	
       hpLabelCharacter.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
       mpLabelCharacter.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());
@@ -711,6 +755,7 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
      }, 0, 30, TimeUnit.MILLISECONDS);
  
  
+     
 
 }
  

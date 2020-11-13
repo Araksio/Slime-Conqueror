@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.ArrayList;
+
 import game.and.map.*;
 import other.components.*;
 
@@ -42,6 +44,7 @@ public class Joueur extends Entiter{
 			Inventaire[5] = new Sous_Inventaire("Loot");
 			
 		}
+		
 		
 		public Joueur(String _nom,Stat _Statistiques, Pos _Position,GameType _entityType,Sous_Inventaire _Inventaire[])
 		{
@@ -149,7 +152,7 @@ public class Joueur extends Entiter{
 		public void showInventory()
 		{
 			 this.getInventaire()[0].showInventoryComplette();
-			 this.getInventaire()[1].showInventoryComplette();
+			this.getInventaire()[1].showInventoryComplette();
 			 this.getInventaire()[2].showInventoryComplette();
 			 this.getInventaire()[3].showInventoryComplette();
 			 this.getInventaire()[4].showInventoryComplette();
@@ -159,8 +162,43 @@ public class Joueur extends Entiter{
 		
 		public int ItemsCountOnInventory()
 		{
-			return (this.getInventaire()[0].TotalItems() + this.getInventaire()[1].TotalItems() + this.getInventaire()[2].TotalItems() + this.getInventaire()[3].TotalItems() + this.getInventaire()[4].TotalItems()  + this.getInventaire()[5].TotalItems());
+			return (this.getInventaire()[0].totalItems() + this.getInventaire()[1].totalItems() + this.getInventaire()[2].totalItems() + this.getInventaire()[3].totalItems() + this.getInventaire()[4].totalItems()  + this.getInventaire()[5].totalItems());
 		}
+		public ArrayList<Item> getNewInventory()
+        {
+            ArrayList<Item> AllItems = new ArrayList<Item>();
+            for(int i = 0; i <= 5 ; i++)
+            {
+                ArrayList<Item> ItemOfInventory = this.getInventaire()[i].GetSousInventaire();
+                for(Item IT : ItemOfInventory)
+                {
+                    AllItems.add(IT);
+                }
+            }
+            return AllItems;
+
+        }
+		
+		public int ItemsCountOnInventoryV2()
+        {
+            return (this.getInventaire()[0].totalItemsv2() + this.getInventaire()[1].totalItemsv2() + this.getInventaire()[2].totalItemsv2() + this.getInventaire()[3].totalItemsv2() + this.getInventaire()[4].totalItemsv2()  + this.getInventaire()[5].totalItemsv2());
+        }
+		
+		
+		public ArrayList<Integer> getNewInventoryQuantity()
+        {
+            ArrayList<Integer> AllItemsQuantity = new ArrayList<Integer>();
+            for(int i = 0; i <= 5 ; i++)
+            {
+                ArrayList<Integer> ItemOfInventoryQuantity = this.getInventaire()[i].GetSousInventaireQuantity();
+                for(int Number : ItemOfInventoryQuantity)
+                {
+                    AllItemsQuantity.add(Number);
+                }
+            }
+            return AllItemsQuantity;
+
+        }
 		
 		/*
 			private byte regenDelay;

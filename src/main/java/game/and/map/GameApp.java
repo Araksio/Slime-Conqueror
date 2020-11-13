@@ -79,7 +79,7 @@ public class GameApp extends GameApplication {
     public static Entity CurrentBattle;
     public static int DegatSubit;
     public static Viewport viewport;
-    
+    public static boolean chestOpened = false;
     public static boolean CanUpFloor = false;
     
     public static Entity getPlayer() {
@@ -468,6 +468,7 @@ public class GameApp extends GameApplication {
 			    				
 			    		
 			    				{
+			    					chestOpened = true;
 			    					Loot LootInTheChest = CurentEntityOnClic.getProperties().getValue("LootOnChest");
 			    					int LootGold = CurentEntityOnClic.getProperties().getValue("LootGold"); 
 			    					CurentEntityOnClic.removeFromWorld();
@@ -494,7 +495,7 @@ public class GameApp extends GameApplication {
 			    						int pos = LootItemsOfMonster.indexOf(I);
 				    					P1.addItems(I,QuantityLootItemsOfMonster.get(pos));
 			    					}
-			    					P1.showInventory();
+			    					
 			    					
 			    					FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de trouver " + LootGold + " gold !");
 			    					P1.getPlayerMoney().addMoney((double)LootGold);
@@ -723,7 +724,9 @@ public class GameApp extends GameApplication {
     	println("Degat Subit : " + DegatSubit);
     	
     	println("HP : " + M.getStat().getCurrentHP());
-    	InGameController.displayOnAttack();
+    	
+    	//Affichage des dégats fait au monstre : InGameController.displayOnAttack(); 
+    	
     	if (M.getStat().getCurrentHP() <= 0)
     	{
     		Loot LootOfMonster = Mo.getProperties().getValue("LootOfMonster");

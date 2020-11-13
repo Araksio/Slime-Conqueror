@@ -1,14 +1,27 @@
 package entity;
 
+import java.util.ArrayList;
+
 import game.and.map.*;
 import other.components.*;
 
 public class Sous_Inventaire {
 	
 	private String Nom;
-	private Item CurrentSousInventory[]= new Item[999];
-	private int CurrentSousInventoryNumber[]= new int[999];
+	public Item CurrentSousInventory[]= new Item[999];
+	public int CurrentSousInventoryNumber[]= new int[999];
 	
+
+
+
+	public int[] getCurrentSousInventoryNumber() {
+		return CurrentSousInventoryNumber;
+	}
+
+	public void setCurrentSousInventoryNumber(int[] currentSousInventoryNumber) {
+		CurrentSousInventoryNumber = currentSousInventoryNumber;
+	}
+
 	public Sous_Inventaire(String _Nom)
 	{
 		Nom = _Nom;
@@ -24,7 +37,7 @@ public class Sous_Inventaire {
 		return this.Nom;
 	}
 	
-	public Item [] getIventory()
+	public Item [] getInventory()
 	{
 		return this.CurrentSousInventory;
 	}
@@ -83,7 +96,7 @@ public class Sous_Inventaire {
 		}
 	}
 	
-	public int TotalItems()
+	public int totalItems()
 	{
 		int total = 0;
 		for(int i = 0; i < 999; i++)
@@ -110,6 +123,7 @@ public class Sous_Inventaire {
 		}
 	}
 	
+	
 	public void showInventoryComplette()
 	{
 		println("");
@@ -125,8 +139,56 @@ public class Sous_Inventaire {
 		println("------------------------------");
 		println("");
 	}
+	public String showInventorySimple()
+    {
+        for(int i = 0; i < 999; i++)
+        {
+            if(this.CurrentSousInventory[i] != null)
+            {
+                return "Item ID: " + i + " | " + this.CurrentSousInventory[i].getNom() + " | " + CurrentSousInventoryNumber[i];
+            }
+        }
+        return null;
+    }
+	public ArrayList<Item> GetSousInventaire()
+    {
+        ArrayList<Item> AllItem = new ArrayList<Item>();
+        for(int i = 0; i < 999; i++)
+        {
+            if(this.CurrentSousInventory[i] != null)
+            {
+                AllItem.add(this.CurrentSousInventory[i]);
+            }
+        }
+        return AllItem;
+    }
 	
+	public int totalItemsv2()
+    {
+        int total = 0;
+        for(int i = 0; i < 999; i++)
+        {
+            if(this.CurrentSousInventory[i] != null)
+            {
+                total = total + 1;
+            }
+        }
+
+        return total;
+    }
 	
+	public ArrayList<Integer> GetSousInventaireQuantity()
+    {
+        ArrayList<Integer> AllItemQuantity = new ArrayList<Integer>();
+        for(int i = 0; i < 999; i++)
+        {
+            if(this.CurrentSousInventory[i] != null)
+            {
+                AllItemQuantity.add(this.CurrentSousInventoryNumber[i]);
+            }
+        }
+        return AllItemQuantity;
+    }
 
 
 }
