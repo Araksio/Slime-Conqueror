@@ -81,7 +81,7 @@ private void startGame() throws SQLException, InterruptedException {
 		//on ne supprime pas les map			demandeRequete.executeUpdate("delete from map");
 					//on ne supprime pas les objets		demandeRequete.executeUpdate("delete from item");
 					demandeRequete.executeUpdate("delete from joueur");
-					demandeRequete.executeUpdate("delete from lvl");
+//		on recree juste le lvl 1			demandeRequete.executeUpdate("delete from lvl");
 		//on ne supprime pas les floors			demandeRequete.executeUpdate("delete from floor");
 					demandeRequete.executeUpdate("delete from money");
 					demandeRequete.executeUpdate("delete from monstre");
@@ -104,15 +104,9 @@ private void startGame() throws SQLException, InterruptedException {
 					demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`money` (`idMoney`, `moneyPlayer`, `moneyBank`, `idjoueur`) VALUES ('1', '500', '1000', NULL)");
 					
 					//cree le lvl du joueur
-					demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('1', '1', '0', '0', '20', NULL, NULL,'0')");
+					demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl` SET `level` = '1',`totalXP` = '0',`currentXP` = '0',`xpNeeded` = '20',`pointBonus` = '0' WHERE `lvl`.`idLvl` = 1");
 					
-					//cree les lvl que le joueur pourra atteindre, pas besoin du lvl1 
-					demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('2', '2', '20', '0', '60', NULL, NULL,'2')");
-					demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('3', '3', '80', '0', '200', NULL, NULL,'2')");
-					demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('4', '4', '280', '0', '500', NULL, NULL,'3')");
-					demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`lvl` (`idLvl`, `level`, `totalXP`, `currentXP`, `xpNeeded`, `idjoueur`, `idmonstre`,`pointBonus`) VALUES ('5', '5', '780', '0', '1273', NULL, NULL,'3')");
 					
-					//cree la position du joueur, a faire plus tard 
 					
 					//lie le joueur,les stats, l'argent et les lvl entre eux
 					
