@@ -4,7 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
@@ -187,7 +189,7 @@
             <Font name="Eras Bold ITC" size="30.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="objectifPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="269.0" opacity="0.68" prefHeight="200.0" prefWidth="200.0" style="-fx-background: black; -fx-background-color: black;">
+      <ScrollPane fx:id="objectifPane" hbarPolicy="NEVER" layoutX="-1.0" layoutY="269.0" opacity="0.68" prefHeight="200.0" prefWidth="200.0" style="-fx-background: black; -fx-background-color: black; -fx-border-color: orange;">
          <content>
             <Label fx:id="objectifLabel1" text="- Objectif1" textFill="WHITE">
                <font>
@@ -196,7 +198,7 @@
             </Label>
          </content>
       </ScrollPane>
-      <Button fx:id="cacherObjectifButton" layoutX="199.0" layoutY="269.0" mnemonicParsing="false" opacity="0.68" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #2b2727; -fx-background-radius: 0;" text="Cacher" textFill="#bf9f10">
+      <Button fx:id="cacherObjectifButton" layoutX="199.0" layoutY="269.0" mnemonicParsing="false" opacity="0.68" prefHeight="36.0" prefWidth="75.0" style="-fx-background-color: #2b2727; -fx-background-radius: 0; -fx-border-color: orange;" text="Cacher" textFill="#bf9f10">
          <font>
             <Font name="Eras Bold ITC" size="12.0" />
          </font>
@@ -227,9 +229,56 @@
                   <Font name="System Bold" size="12.0" />
                </font></Label>
             <Label layoutX="543.0" layoutY="48.0" text="9" textFill="WHITE" />
+            <ProgressIndicator fx:id="skillCooldown1" layoutX="14.0" layoutY="18.0" progress="0.51" stylesheets="@progressIndicator.css" visible="false" />
+            <ProgressIndicator fx:id="skillCooldown2" layoutX="78.0" layoutY="18.0" progress="0.51" stylesheets="@progressIndicator.css" visible="false" />
          </children>
       </AnchorPane>
       <ListView fx:id="inventoryList" layoutX="922.0" layoutY="522.0" prefHeight="281.0" prefWidth="214.0" style="-fx-background-color: white;" visible="false" />
+      <AnchorPane fx:id="skillPane" layoutX="28.0" layoutY="547.0" prefHeight="256.0" prefWidth="297.0" style="-fx-background-color: #696969; -fx-background-radius: 12; -fx-border-color: black; -fx-border-radius: 12;" visible="false">
+         <children>
+            <ImageView fx:id="imageSkill" fitHeight="75.0" fitWidth="75.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="14.0" layoutY="6.0" text="Skills" textFill="#b9b9b9">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="99.0" layoutY="26.0" text="Nom:" textFill="#b9b9b9">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="99.0" layoutY="55.0" text="Coût:" textFill="#b9b9b9">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="99.0" layoutY="84.0" text="Cooldown:" textFill="#b9b9b9">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="nomSkill" layoutX="132.0" layoutY="26.0">
+               <font>
+                  <Font name="Imprint MT Shadow" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="coutSkill" layoutX="132.0" layoutY="55.0">
+               <font>
+                  <Font name="Imprint MT Shadow" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="cooldownSkill" layoutX="165.0" layoutY="84.0">
+               <font>
+                  <Font name="Imprint MT Shadow" size="13.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="descriptionSkill" layoutX="6.0" layoutY="109.0" prefHeight="129.0" prefWidth="262.0" style="text-area-background: black; -fx-background-color: #696969;" stylesheets="@progressIndicator.css" wrapText="true">
+               <font>
+                  <Font name="Imprint MT Shadow" size="14.0" />
+               </font>
+            </TextArea>
+         </children>
+      </AnchorPane>
       
    </children>
 </AnchorPane>

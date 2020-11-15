@@ -34,8 +34,7 @@ public class Write {
 //                        String readLine = "";
 //                       if(l>1) {
 //                           b.skip(9*(l-1));
-//                           Thread.sleep(2000);
-//                           System.out.println("nop");
+//                          
 //
 //                       }
 //                        readLine = b.readLine();

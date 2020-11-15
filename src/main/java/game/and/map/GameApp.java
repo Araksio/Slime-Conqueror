@@ -80,7 +80,9 @@ public class GameApp extends GameApplication {
     public static int DegatSubit;
     public static Viewport viewport;
     public static boolean chestOpened = false;
-    
+    public static Entity CurentEntityOnClic;
+    public static ArrayList<Item> LootItemsOfMonster;
+    public static ArrayList<Integer> QuantityLootItemsOfMonster;
     public static Entity getPlayer() {
         return getGameWorld().getSingleton(PLAYER); // Instanciation du Joueur dans le Jeux
     }
@@ -145,6 +147,7 @@ public class GameApp extends GameApplication {
              	{
              		
              		getGameScene().removeChild(layout);
+             		
              		
              	}
              	else
@@ -455,7 +458,7 @@ public class GameApp extends GameApplication {
     			for(int i = 0; i < nbrChest; i++)
     			{
     				
-	    			Entity CurentEntityOnClic = getGameWorld().getEntitiesByType(CHEST).get(i);
+	    			CurentEntityOnClic = getGameWorld().getEntitiesByType(CHEST).get(i);
     				
 	    			int xe = (int)CurentEntityOnClic.getX();
 	    			int ye = (int)CurentEntityOnClic.getY();
@@ -468,6 +471,7 @@ public class GameApp extends GameApplication {
 			    		
 			    				{
 			    					chestOpened = true;
+			    					
 			    					Loot LootInTheChest = CurentEntityOnClic.getProperties().getValue("LootOnChest");
 			    					int LootGold = CurentEntityOnClic.getProperties().getValue("LootGold"); 
 			    					CurentEntityOnClic.removeFromWorld();
@@ -483,8 +487,8 @@ public class GameApp extends GameApplication {
 			    					
 			    					LootInTheChest.AutoGenerateLootMessage();
 			    					
-			    					ArrayList<Item> LootItemsOfMonster = LootInTheChest.getListOfItemsLoot();
-			    					ArrayList<Integer> QuantityLootItemsOfMonster = LootInTheChest.getListOfQuantityItemsLoot();
+			    					LootItemsOfMonster = LootInTheChest.getListOfItemsLoot();
+			    					QuantityLootItemsOfMonster = LootInTheChest.getListOfQuantityItemsLoot();
 			    					
 			    					Joueur P1 = getPlayer().getProperties().getValue("Joueur1");
 			    					

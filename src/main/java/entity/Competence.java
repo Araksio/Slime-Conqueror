@@ -8,13 +8,15 @@ public class Competence {
 	private String name; // nom de la compétence
 	private double cooldown; // temps avant de pouvoir utiliser de nouveau la compétence
 	private int cost; // coût en mp de l'utilisation de la competence
+	private String description;
 	private long next;
 	
-	public Competence(String _name, double _cooldown, int _cost)
+	public Competence(String _name, double _cooldown, int _cost, String _description)
 	{
 		name = _name;
 		cooldown = _cooldown;
 		cost = _cost;
+		description = _description;
 	}
 	
 	public static void println(String T)
@@ -78,6 +80,14 @@ public class Competence {
 	{
 		long NextUse = (long) (System.currentTimeMillis() + (this.cooldown * 1000));
 		this.setNext(NextUse);
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 

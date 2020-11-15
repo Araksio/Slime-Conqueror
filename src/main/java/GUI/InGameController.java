@@ -34,19 +34,25 @@ import entity.Monster;
 import game.and.map.GameApp;
 import game.and.map.GameFactory;
 import game.and.map.GameType;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -189,24 +195,43 @@ private Button skillButton7;
 private Button skillButton8;
 @FXML
 private Button skillButton9;
-
+@FXML
+private ProgressIndicator skillCooldown1;
+@FXML
+private ProgressIndicator skillCooldown2;
 @FXML
 private ListView<String> inventoryList;
+@FXML
+private Label nomSkill;
+@FXML
+private Label coutSkill;
+@FXML
+private Label cooldownSkill;
+@FXML
+private TextArea descriptionSkill;
+@FXML
+private ImageView imageSkill;
+@FXML
+private AnchorPane skillPane;
 
+
+boolean wasPressed1 = false; 
+boolean wasPressed2 = false;
 public static int pointsBonus;
 public static int nbr;
 public static int nbrChests;
-
- Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
-  
+Joueur J = FXGL.getGameWorld().getSingleton(GameType.PLAYER).getProperties().getValue("Joueur1");
+Competence[] CompetenceList = J.getCompetences();
+Competence FirstCompetence = CompetenceList[0];	
+Competence SecondCompetence = CompetenceList[1];
 
  
  public void initialize() throws URISyntaxException, IOException, SQLException {
 	
+	
  	getStats();
  	getImages();
     hoverButton();
-
 
   
  	
@@ -220,6 +245,93 @@ public static int nbrChests;
 @FXML
 public void keyPressed(KeyEvent event) throws SQLException, IOException
 {
+	
+	if(event.getCode() == KeyCode.DIGIT1)
+	{
+		
+		 if(FirstCompetence.getCost() <= J.getStat().getCurrentMP() && FirstCompetence.getCoolDownIsOver() && J.getStat().getCurrentHP() != J.getStat().getMaxHP())
+		 {
+			 wasPressed1 = true;
+			 FirstCompetence.UseCompetence();
+			 int HPtoHeal = J.getStat().getMaxHP() - J.getStat().getCurrentHP();
+			 J.getStat().setCurrentHP(J.getStat().getCurrentHP() + HPtoHeal);
+			 J.getStat().setCurrentMP(J.getStat().getCurrentMP()-FirstCompetence.getCost());
+			 skillButton1.setDisable(true);
+			 skillCooldown1.setVisible(true);
+			 Timeline time = new Timeline(
+
+					    new KeyFrame(Duration.ZERO,new KeyValue(skillCooldown1.progressProperty(), 1)),
+					    new KeyFrame(Duration.seconds(FirstCompetence.getCooldown()),new KeyValue(skillCooldown1.progressProperty(), 0))
+					);
+					time.setCycleCount(1);
+					time.play();
+					
+				
+		}
+			 
+		 
+		 else if(FirstCompetence.getCost() > J.getStat().getCurrentMP())
+		 {
+			 System.out.println("Vous n'avez pas assez de MP");
+		 }
+		 else if(!FirstCompetence.getCoolDownIsOver())
+		 {
+			 System.out.println("La compétence est en cooldown");
+		 }
+		 else if(J.getStat().getCurrentHP() == J.getStat().getMaxHP())
+		 {
+			 System.out.println("Vous avez tout vos HPs");
+		 }
+			
+	}
+	
+if(event.getCode() == KeyCode.DIGIT2)
+{
+	
+	 if(SecondCompetence.getCost() <= J.getStat().getCurrentMP() && SecondCompetence.getCoolDownIsOver())
+		 {
+		 wasPressed2 = true;
+			Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
+		    int px = (int) P.getX()/80;
+		    int py = (int) P.getY()/80;
+		    int nbr = getGameWorld().getEntitiesByType(MONSTER).size();
+		    set("nbrMob", nbr);
+		    for(int i = 0; i < nbr; i++)
+		    {
+		    	println("" + nbr);
+		    	Entity CurentEntity = getGameWorld().getEntitiesByType(MONSTER).get(i);
+		    	int mx = (int) CurentEntity.getX()/80;
+		    	int my = (int) CurentEntity.getY()/80;
+		    	int Distance = 3;
+		    	if(Math.abs(px - mx) < Distance && Math.abs(py - my) < Distance)
+		    	{
+		    		println("Deleted");
+		    		CurentEntity.removeFromWorld();
+		    		nbr--;
+		    		set("nbrMob", nbr);	    		
+		    		println("nbr : " + nbr);
+		    		println("i : " + i);
+		    		i--;
+		    		
+		    	}
+		    }
+		    J.getStat().setCurrentMP(J.getStat().getCurrentMP()-SecondCompetence.getCost());
+		    skillButton2.setDisable(true);
+			 skillCooldown2.setVisible(true);
+			 Timeline time = new Timeline(
+
+					    new KeyFrame(Duration.ZERO,new KeyValue(skillCooldown2.progressProperty(), 1)),
+					    new KeyFrame(Duration.seconds(SecondCompetence.getCooldown()),new KeyValue(skillCooldown2.progressProperty(), 0))
+					);
+					time.setCycleCount(1);
+					time.play();
+
+		 }
+		 
+		 
+	 }
+
+	
  if (event.getCode() == KeyCode.F1) { 
 		 
 		 // Ajout de la fonction save ici
@@ -498,26 +610,75 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 	 });
 	 
 	 skillButton1.setOnMouseClicked(e -> {
-		 Competence[] CompetenceList = J.getCompetences();
-		 Competence FirstCompetence = CompetenceList[0];		
-		 
-		 if(FirstCompetence.getCost() <= J.getStat().getCurrentMP() && FirstCompetence.getCoolDownIsOver())
+		 	
+		
+		 if(FirstCompetence.getCost() <= J.getStat().getCurrentMP() && FirstCompetence.getCoolDownIsOver() && J.getStat().getCurrentHP() != J.getStat().getMaxHP())
 		 {
+			 wasPressed1 = true;
 			 FirstCompetence.UseCompetence();
 			 int HPtoHeal = J.getStat().getMaxHP() - J.getStat().getCurrentHP();
 			 J.getStat().setCurrentHP(J.getStat().getCurrentHP() + HPtoHeal);
 			 J.getStat().setCurrentMP(J.getStat().getCurrentMP()-FirstCompetence.getCost());
+			 skillButton1.setDisable(true);
+			 skillCooldown1.setVisible(true);
+			 Timeline time = new Timeline(
+
+					    new KeyFrame(Duration.ZERO,new KeyValue(skillCooldown1.progressProperty(), 1)),
+					    new KeyFrame(Duration.seconds(FirstCompetence.getCooldown()),new KeyValue(skillCooldown1.progressProperty(), 0))
+					);
+					time.setCycleCount(1);
+					time.play();
+
 		 }
+				
+		
+			 
 		 
+		 else if(FirstCompetence.getCost() > J.getStat().getCurrentMP())
+		 {
+			 System.out.println("Vous n'avez pas assez de MP");
+		 }
+		 else if(!FirstCompetence.getCoolDownIsOver())
+		 {
+			 System.out.println("La compétence est en cooldown");
+		 }
+		 else if(J.getStat().getCurrentHP() == J.getStat().getMaxHP())
+		 {
+			 System.out.println("Vous avez tout vos HPs");
+		 }
+		 }
+	 );
+	
+	
 		 
-	 });
+
+	 
+	skillButton1.setOnMouseEntered(e -> {
+		skillPane.setVisible(true);
+		nomSkill.setText(" " +FirstCompetence.getNom());
+		coutSkill.setText(" " + FirstCompetence.getCost() + " MP");
+		cooldownSkill.setText(" "+ FirstCompetence.getCooldown() + " s.");
+		descriptionSkill.setText(FirstCompetence.getDescription());
+		
+		
+	});
+	skillButton1.setOnMouseExited(e -> skillPane.setVisible(false));
+	
+	skillButton2.setOnMouseEntered(e -> {
+		skillPane.setVisible(true);
+		nomSkill.setText(" " +SecondCompetence.getNom());
+		coutSkill.setText(" " + SecondCompetence.getCost() + " MP");
+		cooldownSkill.setText(" "+ SecondCompetence.getCooldown() + " s.");
+		descriptionSkill.setText(SecondCompetence.getDescription());
+	});
+	skillButton2.setOnMouseExited(e -> skillPane.setVisible(false));
+	
+	 
 	 
 	 skillButton2.setOnMouseClicked(e -> {
-		 Competence[] CompetenceList = J.getCompetences();
-		 Competence FirstCompetence = CompetenceList[1];
-				 
-		 if(FirstCompetence.getCost() <= J.getStat().getCurrentMP() && FirstCompetence.getCoolDownIsOver())
+		 if(SecondCompetence.getCost() <= J.getStat().getCurrentMP() && SecondCompetence.getCoolDownIsOver())
 		 {
+		 wasPressed2 = true;
 			Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
 		    int px = (int) P.getX()/80;
 		    int py = (int) P.getY()/80;
@@ -542,9 +703,19 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 		    		
 		    	}
 		    }
-		    J.getStat().setCurrentMP(J.getStat().getCurrentMP()-FirstCompetence.getCost());
-		   
+		    J.getStat().setCurrentMP(J.getStat().getCurrentMP()-SecondCompetence.getCost());
+		    skillButton2.setDisable(true);
+			 skillCooldown2.setVisible(true);
+			 Timeline time = new Timeline(
+
+					    new KeyFrame(Duration.ZERO,new KeyValue(skillCooldown2.progressProperty(), 1)),
+					    new KeyFrame(Duration.seconds(SecondCompetence.getCooldown()),new KeyValue(skillCooldown2.progressProperty(), 0))
+					);
+					time.setCycleCount(1);
+					time.play();
+
 		 }
+		 
 		 
 		 
 	 });
@@ -584,6 +755,8 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
 	 exitImage.setImage(exitImage1);
 	 exitButton.setGraphic(exitImage);   
  }
+
+ 
 
 
  public void getStats() throws SQLException
@@ -642,6 +815,26 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
         Platform.runLater(() -> {
         	if(GameApp.chestOpened == true)
         	{
+        		Label label = new Label();
+        		label.setLayoutX(GameApp.CurentEntityOnClic.getX()-viewport.getX());
+        		label.setTextFill(Color.BLACK);
+        		label.setFont(new Font("Eras Bold ITC", 16));
+        		getGameScene().addUINodes(label);
+        		for(Item I : GameApp.LootItemsOfMonster)
+				{
+        			int pos = GameApp.LootItemsOfMonster.indexOf(I);
+					System.out.println(I.getNom() + " x" + GameApp.QuantityLootItemsOfMonster.get(pos));
+					label.setText(I.getNom() + " x" + GameApp.QuantityLootItemsOfMonster.get(pos));
+				}
+        		
+        		 Timeline time = new Timeline(
+
+ 					    new KeyFrame(Duration.ZERO,new KeyValue(label.opacityProperty(), 1),new KeyValue(label.layoutYProperty(),GameApp.CurentEntityOnClic.getY()-viewport.getY()+70)),
+        	
+ 					    new KeyFrame(Duration.seconds(2),new KeyValue(label.opacityProperty(), 0),new KeyValue(label.layoutYProperty(),GameApp.CurentEntityOnClic.getY()-viewport.getY()+120))
+ 					);
+        		 time.setCycleCount(1);
+					time.play();
         		
         		ArrayList<Item> Inventaire = J.getNewInventory();
         		for(int i = 0; i < J.ItemsCountOnInventoryV2(); i++)
@@ -658,9 +851,28 @@ public void keyPressed(KeyEvent event) throws SQLException, IOException
         			
         		}
         		inventoryList.setItems(list);
+        		
         		GameApp.chestOpened = false;
         		
         	}
+        	
+        	
+        	
+        	 if(FirstCompetence.getCoolDownIsOver() && wasPressed1 == true)
+    		 {
+        		 
+    			skillButton1.setDisable(false);
+    			skillCooldown1.setVisible(false);
+    			wasPressed1 = false;
+    		 }
+        	 if(SecondCompetence.getCoolDownIsOver() && wasPressed2 == true)
+        	 {
+        		 System.out.println("fini");
+        		 skillButton2.setDisable(false);
+     			skillCooldown2.setVisible(false);
+     			wasPressed2 = false;
+        	 }
+        	 
         	
       hpLabelCharacter.setText("HP : " + J.getStat().getCurrentHP() + " / " + J.getStat().getMaxHP());
       mpLabelCharacter.setText("MP : " + J.getStat().getCurrentMP() + " / " + J.getStat().getMaxMP());
