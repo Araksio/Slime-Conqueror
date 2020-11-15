@@ -14,6 +14,7 @@ import com.almasb.fxgl.pathfinding.astar.AStarMoveComponent;
 import GUI.InGameController;
 import entity.Joueur;
 import entity.Monster;
+import entity.MonsterType;
 import game.and.map.GameType;
 
 
@@ -75,42 +76,16 @@ public class DelayMonsterAtkComponent extends Component {
     				CurrentBattle = null;
     			}
     			*/
-        
-		if(astar.getEntity().getType() == GameType.MONSTER)
+
+		if(M.getState() == MonsterType.KAGUYA || M.getState() == MonsterType.SLIME)
 		{
 			if(x > -3 && x < 3 && y > -3 && y < 3)
 	        {
-	        	/*
-	        	int MX = (int) astar.getEntity().getX();
-	        	int MY = (int) astar.getEntity().getY();
-	        	
-	        	AStarCell c = new AStarCell((int)(MX/80), (int)(MY/80), CellState.WALKABLE);
-				AStarGrid grid = geto("grid");
-				grid.set((int)(MX/80), (int)(MY/80),c);
-				//println("MX " + (int)(MX/80));
-				//println("MY " + (int)(MY/80));
 				
-				set("grid", grid);
-	        	*/
+
 	        	
 	        	move(player);
-	        	/*
-				c = new AStarCell((int)(MX/80), (int)(MY/80), CellState.NOT_WALKABLE);
-				grid = geto("grid");
-				grid.set((int)(MX/80), (int)(MY/80),c);
-				//println("MX " + (int)(MX/80));
-				//println("MY " + (int)(MY/80));
-				
-				set("grid", grid);
-	        	*/
-	        	/*
-	        	int ValMax = 40;
-	        	int ValMin = 5;
-	        	
-	        	int RandomTimerAtk = (int)(Math.random() * (ValMax - ValMin) + ValMin + 1);
-	        	double RandomTimerAtk2 = (double) RandomTimerAtk * 0.1;
-	        	*/
-	        	
+
 	            timeToSwitch += tpf;
 	            
 	            float RandomTimerAtk2 = astar.getEntity().getProperties().getValue("CADofMonster");
@@ -126,13 +101,36 @@ public class DelayMonsterAtkComponent extends Component {
 	        	
 	        }
 		}
+		else if(M.getState() == MonsterType.DRAGONBOSS)
+		{
+			if(x > -7 && x < 7 && y > -7 && y < 7)
+	        {
+				move(player);
+				
+				
+				timeToSwitch += tpf;
+	            
+	            float RandomTimerAtk2 = astar.getEntity().getProperties().getValue("CADofMonster");
+
+	            
+	            if (timeToSwitch >= RandomTimerAtk2) {
+	            	BossDragonAttack(astar.getEntity(),player);
+	                timeToSwitch = 0;
+	            }
+	        }
+
+		}
         
     	 
     }
+    
+
 
 private void move(Entity R) {
     	
-        if(!astar.isMoving() && astar.getEntity().getType() == GameType.MONSTER)
+	Monster M = astar.getEntity().getProperties().getValue("Mosnter1");
+	
+        if(!astar.isMoving() && (M.getState() == MonsterType.KAGUYA || M.getState() == MonsterType.SLIME))
         {
         	Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
         	
@@ -259,6 +257,155 @@ private void move(Entity R) {
 	    	
 			set("GridOfAllEntityOnWorld",GridOfAllEntityOnWorld);
         }
+        else if(!astar.isMoving() && M.getState() == MonsterType.DRAGONBOSS )
+        {
+        	Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
+        	
+	    	int px = (int) P.getX()/80;
+	    	int py = (int) P.getY()/80;
+        	
+	    	boolean GridOfAllEntityOnWorld [][] = geto("GridOfAllEntityOnWorld");
+	    	
+	    	int xp = (int) R.getX()/80;
+	    	int yp = (int) R.getY()/80;
+
+	    	Entity EntityCurrentMove = astar.getEntity();
+	    	
+	    	int x = (int) EntityCurrentMove.getX()/80;
+	    	int y = (int) EntityCurrentMove.getY()/80;
+	    	
+	    	//println("type : " + EntityCurrentMove.getType());
+	    	//println("x : " + x);
+	    	//println("y : " + y);
+	    	
+	        boolean CanMoveRight = !GridOfAllEntityOnWorld[x+1][y];
+	        boolean CanMoveLeft = !GridOfAllEntityOnWorld[x-1][y];
+	        boolean CanMoveUp = !GridOfAllEntityOnWorld[x][y-1];
+	        boolean CanMoveDown = !GridOfAllEntityOnWorld[x][y+1];
+	        boolean DontMove = false;
+	        
+	        
+	        if(x+1 == px && y == py || x+1 == px && y+1 == py)
+	        {
+	        	CanMoveRight = false;
+	        }
+	        if(x-1 == px && y == py || x-1 == px && y-1 == py)
+	        {
+	        	CanMoveLeft = false;
+	        }
+	        if(x == px && y-1 == py || x+1 == px && y-1 == py)
+	        {
+	        	CanMoveUp = false;
+	        }
+	        if(x == px && y+1 == py || x-1 == px && y+1 == py)
+	        {
+	        	CanMoveDown = false;
+	        }
+	        if(x == px && y+2 == py || x-1 == px && y+2 == py || x+1 == px && y+2 == py)
+	        {
+	        	DontMove = true;
+	        }
+	        if(x == px && y-2 == py || x-1 == px && y-2 == py || x+1 == px && y-2 == py)
+	        {
+	        	DontMove = true;
+	        }
+	        if(x+2 == px && y == py || x+2 == px && y-1 == py || x+2 == px && y+1 == py)
+	        {
+	        	DontMove = true;
+	        }
+	        if(x-2 == px && y == py || x-2 == px && y-1 == py || x-2 == px && y+1 == py)
+	        {
+	        	DontMove = true;
+	        }
+	        
+	        
+	        boolean NeedMoveToRight = false;
+	        boolean NeedMoveToLeft = false;
+	        boolean NeedMoveToUp = false;
+	        boolean NeedMoveToDown = false;
+	        
+			int RisRight = Math.abs((xp+1) - x);
+			int RisLeft =  Math.abs((xp-1) - x);
+			int RisUp =    Math.abs((yp-1) - y);
+			int RisDown =  Math.abs((yp+1) - y);
+    	
+			//int RisXVerif = Math.abs((xp) - x);
+			//int RisYVerif = Math.abs((yp) - y);
+			
+			//println("RisRight : " + RisRight);
+			//println("RisLeft : " + RisLeft);
+			//println("RisUp : " + RisUp);
+			//println("RisDown : " + RisDown);
+			
+			//println("RisXVerif : " + RisXVerif);
+			//println("RisYVerif : " + RisYVerif);
+
+			if(RisRight >= RisLeft && RisRight >= RisUp && RisRight >= RisDown)
+			{
+				NeedMoveToRight = true;
+				//println("NeedMoveToRight");
+				
+			}
+			
+			if(RisLeft >= RisRight && RisLeft >= RisUp && RisLeft >= RisDown)
+			{
+				NeedMoveToLeft = true;
+				//println("NeedMoveToLeft");
+			}
+			
+			if(RisUp >= RisRight && RisUp >= RisLeft && RisUp >= RisDown)
+			{
+				NeedMoveToUp = true;
+				//println("NeedMoveToUp");
+			}
+			
+			if(RisDown >= RisRight && RisDown >= RisUp && RisDown >= RisLeft)
+			{
+				NeedMoveToDown = true;
+				//println("NeedMoveToDown");
+			}
+			
+			//println("--------------");
+
+	        //int ValMax = 4;
+			//int ValMin = 1;
+			//int randomMove = (int)(Math.random() * (ValMax - ValMin) + ValMin + 1);
+			if(DontMove)
+			{
+				
+			}
+			else if(CanMoveLeft && NeedMoveToLeft) 
+			{
+				astar.moveToCell(x-2, y);
+				GridOfAllEntityOnWorld[x][y] = false;
+				GridOfAllEntityOnWorld[x-2][y] = true;
+			}
+			else if(CanMoveRight && NeedMoveToRight)
+			{
+				astar.moveToCell(x+2, y);
+				GridOfAllEntityOnWorld[x][y] = false;
+				GridOfAllEntityOnWorld[x+2][y] = true;
+			}
+			else if(CanMoveUp && NeedMoveToUp)
+			{
+				astar.moveToCell(x, y-2);
+				GridOfAllEntityOnWorld[x][y] = false;
+				GridOfAllEntityOnWorld[x][y-2] = true;
+			}
+			else if(CanMoveDown && NeedMoveToDown)
+			{
+				astar.moveToCell(x, y+2);
+				GridOfAllEntityOnWorld[x][y] = false;
+				GridOfAllEntityOnWorld[x][y+2] = true;
+			}
+			else
+			{
+				
+			}
+	    	
+			set("GridOfAllEntityOnWorld",GridOfAllEntityOnWorld);
+        }
+        
         		
     }
 
@@ -304,8 +451,46 @@ private void move(Entity R) {
 	    	if (J.getStat().getCurrentHP() <= 0)
 	    	{
 				println("Le " + J.getNom() + " Est mort");
-	    		P.removeFromWorld();
-	    		getDialogService().showMessageBox("Game Over", getGameController()::exit);
+				getDialogService().showMessageBox("Game Over", getGameController()::exit);
+	    		//P.removeFromWorld();
+	    		InGameController.scheduledExecutorService.shutdown();
+	    	}
+		}
+	    	
+		
+		
+    }
+    
+    public void BossDragonAttack(Entity Mo,Entity P)
+    {
+    	Joueur J = P.getProperties().getValue("Joueur1");
+    	Monster M = Mo.getProperties().getValue("Mosnter1");
+    	
+		int px = (int)(P.getX()/80);
+		int py = (int)(P.getY()/80);
+		int mx = (int)(Mo.getX()/80);
+		int my = (int)(Mo.getY()/80);
+		int Distance = 3;
+		if(Math.abs(px - mx) < Distance && Math.abs(py - my) < Distance)
+		{
+    	
+			int PuissanceAtk = (int)(M.getStat().getCurrentATK());
+	    	int DegatSubit = (int) (PuissanceAtk - ((J.getStat().getCurrentDEF())/2))+1; 
+	    	
+	    	println("Degat Subit : " + DegatSubit);
+	    	if(DegatSubit < 0)
+	    	{
+	    		DegatSubit = 0;
+	    	}
+	    	J.getStat().setCurrentHP(J.getStat().getCurrentHP()-(DegatSubit));
+	    	
+	    	println("HP lol : " + J.getStat().getCurrentHP());
+	    	
+	    	if (J.getStat().getCurrentHP() <= 0)
+	    	{
+				println("Le " + J.getNom() + " Est mort");
+				getDialogService().showMessageBox("Game Over", getGameController()::exit);
+	    		//P.removeFromWorld();
 	    		InGameController.scheduledExecutorService.shutdown();
 	    	}
 		}

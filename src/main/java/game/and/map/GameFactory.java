@@ -41,6 +41,7 @@ import entity.LV;
 import entity.Loot;
 import entity.Money;
 import entity.Monster;
+import entity.MonsterType;
 import entity.Pos;
 import entity.Sous_Inventaire;
 import entity.Stat;
@@ -142,7 +143,7 @@ import java.sql.*
     	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
     	    	Pos Pos1 = new Pos(2,1,0,0,1);
     	    	
-    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,5.0); 
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.SLIME,5.0); 
     	    	
     	    	view.setTranslateX(-40);
     	    	view.setTranslateY(-40);
@@ -198,7 +199,7 @@ import java.sql.*
     	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
     	    	Pos Pos1 = new Pos(2,1,0,0,1);
     	    	
-    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,5.0); 
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.KAGUYA,5.0); 
     	    	
     	    	view.setTranslateX(-40);
     	    	view.setTranslateY(-40);
@@ -226,6 +227,69 @@ import java.sql.*
     	        return mo;
     	}
 
+    }
+    
+    @Spawns("D")
+    public Entity newDragonBoss(SpawnData data) {
+    	
+    		 var view = texture("FireDragonBoss.png");
+    	        
+    	        // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
+    	        
+    	    	String Nom = "Ultimate Fire Dragon";
+    	    	
+    	    	int HPofMonster =  1500;
+    	    	int AtkofMonster =  2;
+    	    	int DefofMonster =  2;
+    	    	int MPfMonster =  250;
+    	    	int SPAofMonster =  15;
+    	    	int SPDofMonster =  1;
+    	    	int SPEofMonster =  10;
+    	    	float CADofMonster = (float) 3.0;
+    	    	
+ 
+    	    	
+    	    	ArrayList<Item> LootItemsOfMonster = new ArrayList<Item>();
+    	    	ArrayList<Integer> LootQuantityItemsOfMonster = new ArrayList<Integer>();
+    	    	LootItemsOfMonster.add(Items.DragonHead);
+    	    	LootQuantityItemsOfMonster.add((int)(Math.random() * (5 - 1) + 1 + 1));
+    	    	String LootMessage = "";
+    	    	
+       	    	Loot LootOfMonster = new Loot(LootItemsOfMonster,LootQuantityItemsOfMonster,LootMessage);
+
+       	    	int LootGold = (int)(Math.random() * (50000 - 10000) + 10000 + 1);
+
+    	    	
+    	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
+    	    	Pos Pos1 = new Pos(2,1,0,0,1);
+    	    	
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.DRAGONBOSS,50.0); 
+    	    	
+    	    	view.setTranslateX(-120);
+    	    	view.setTranslateY(-120);
+
+
+    			Component C1;
+    	    	
+    	    	
+    	        var mo = entityBuilder(data)
+    	                .type(MONSTER)
+    	                .bbox(new HitBox(new Point2D(240, 240), BoundingShape.box(2, 2)))
+    	                .view(view)
+    	                .zIndex(-1)
+    	                .with(new CollidableComponent(true))
+    	                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, SPEofMonster*10))
+    	                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+    	                .with(aiComponents.get())
+    	                .with("Mosnter1",M1)
+    	                .with("CADofMonster",CADofMonster)
+    	                .with("LootOfMonster",LootOfMonster)
+    	                .with("LootGold",LootGold)
+    	                .build();
+    	        
+    	        return mo;
+    	
+    	
     }
     
     

@@ -28,6 +28,7 @@ public class Items {
 	
 	public static final ItemsLoot SlimeBallElectic = new ItemsLoot(148774588,1,7,"Slime Ball Electic",5,3000,3000,"Boule de Slime au propriété electrique, parfaite pour crafter des objet magique",RH4);
 	public static final ItemsLoot KaguyaHeart = new ItemsLoot(148774588,1,8,"Kaguya Heart",5,3000,3000,"Coeur de Kaguya, parfait pour faire des enchantement",RH4);
+	public static final ItemsLoot DragonHead = new ItemsLoot(148774588,1,9,"Dragon Head",5,3000,3000,"Tête de dragon, ce revend très cher au marché noir",RH8);
 	
 	
 	
