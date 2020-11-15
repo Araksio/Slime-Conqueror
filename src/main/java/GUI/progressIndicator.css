@@ -1,0 +1,13 @@
+.progress-indicator .percentage{
+ -fx-fill : null;
+}
+.progress-indicator .progress{
+-fx-background-color: grey;
+}
+.text-area .content {
+-fx-background-color: #696969;
+-fx-border-color:  #696969;
+}
+.text-area {
+-fx-text-fill: BLACK;
+}
