@@ -455,6 +455,18 @@ import java.sql.*
     			
     	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER,PlayerInventory,PlayerMoney,CompetenceList); 
     	
+     	ResultSet inventaireSQL =demandeRequete.executeQuery("SELECT * FROM `item` WHERE idJoueur='1'");
+    	//je dois corriger le resultat de la requete sql sans les espaces
+    	while(inventaireSQL.next()) {
+    			if(inventaireSQL.getString(2).equals("Kaguya Heart")) {
+    				J1.addItems(new Items().KaguyaHeart);
+    			}else if(inventaireSQL.getString(2).equals("Slime Ball Electic")) {
+    				J1.addItems(new Items().SlimeBallElectic);
+    			}else {
+    				System.out.println("item non reconnu");
+    			}
+    		}
+    		
     	ResultSet lvlDuJoueur = demandeRequete.executeQuery("Select idlvl from lvl where idjoueur=1");
 		while(lvlDuJoueur.next()) {
 	    	J1.setLV(lvls.get(lvlDuJoueur.getInt(1)-1));	

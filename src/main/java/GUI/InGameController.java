@@ -370,7 +370,16 @@ if(event.getCode() == KeyCode.DIGIT2)
 					+ "WHERE `joueur`.`idjoueur` = 1");
 		  
 		 
-					
+			for(int i = 0; i < J.getInventaire()[5].GetSousInventaireQuantity().stream().count() ; i+=1) {
+				
+				//for pour savoir le nombre d objet i
+				for(int k =0;k < J.getInventaire()[5].GetSousInventaireQuantity().get(i) ;k+=1) {
+				demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`item` (`idItem`, `nom`, `type`, `maxDurability`, `currentDurability`, `rarete`, `inventoryID`, `idjoueur`, `idmonstre`) VALUES (NULL, '"+
+						J.getInventaire()[5].GetSousInventaire().get(i).getNom()+"', NULL, NULL, NULL, NULL, NULL, '1', NULL);");
+					}
+			
+				}
+						
 			
 			//en dessous -> sauvegarde da la map 1 mais ne sert a rien a cause du systeme de fxgl
 //			
