@@ -59,7 +59,7 @@ public class Write {
 	public Write() throws IOException, InterruptedException {
 	    
 		//va ecrire les 3premiers lvl
-		for(int i = 0;i<=2; i+=1) {
+		for(int i = 0;i<2; i+=1) {
 		String cheminEcrire= "src/main/resources/assets/levels/";
 		String cheminLire= "src/main/resources/assets/mapSecours/";
 		File fichierEcrire =new File(cheminEcrire+"map_level"+i+".txt");
