@@ -426,6 +426,11 @@ import java.sql.*
     			}
     			
     			
+    			
+    			  
+    			  ResultSet argentDB = demandeRequete.executeQuery("SELECT * FROM `money` WHERE idJoueur=1");
+      		
+    			  
     			//fin partie sql java
     			
     			// pas encore fait le stockage de la position
@@ -439,8 +444,8 @@ import java.sql.*
     	        PlayerInventory[4] = new Sous_Inventaire("Craft");
     	        PlayerInventory[5] = new Sous_Inventaire("Loot");
     	        
-    	        Money PlayerMoney = new Money(0,0);
-    	          	        
+    	      
+    	        Money PlayerMoney = new Money(0,0);	        
     	        Competence[] CompetenceList = new Competence[9];
     	        
     	        CompetenceList[0] = Competences.HealII;
@@ -455,13 +460,22 @@ import java.sql.*
     			
     	J1 = new Joueur(Pseudo,StatPlayer,Pos1,GameType.PLAYER,PlayerInventory,PlayerMoney,CompetenceList); 
     	
-     	ResultSet inventaireSQL =demandeRequete.executeQuery("SELECT * FROM `item` WHERE idJoueur='1'");
+    	while(argentDB.next()) {
+			 J1.getPlayerMoney().addMoney(argentDB.getInt(2));
+			 J1.getPlayerMoney().seMoneyOnBank(argentDB.getInt(3));
+		  }
+    	
+    	//partie sql
+     	
+    	ResultSet inventaireSQL =demandeRequete.executeQuery("SELECT * FROM `item` WHERE idJoueur='1'");
     	//je dois corriger le resultat de la requete sql sans les espaces
     	while(inventaireSQL.next()) {
     			if(inventaireSQL.getString(2).equals("Kaguya Heart")) {
     				J1.addItems(new Items().KaguyaHeart);
     			}else if(inventaireSQL.getString(2).equals("Slime Ball Electic")) {
     				J1.addItems(new Items().SlimeBallElectic);
+    			}else if(inventaireSQL.getString(2).equals("Dragon Head")){
+    			J1.addItems(new Items().DragonHead);
     			}else {
     				System.out.println("item non reconnu");
     			}
@@ -476,7 +490,7 @@ import java.sql.*
 		while(pointBonusJoueur.next()) {
 	    	J1.getLv().setPointsBonus(pointBonusJoueur.getInt(1));
 		}
-    	
+    	//fin partie sql
     	data.put("J", J1);
     	
     	

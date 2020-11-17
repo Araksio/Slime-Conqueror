@@ -79,6 +79,12 @@ private void startGame() throws SQLException, InterruptedException {
 					//	demandeRequete.executeUpdate("UPDATE `projetpoagl`.`item` SET `idMonstre` = NULL");
 						
 						
+				//on remet l argent du joueur a 0
+						
+						demandeRequete.executeUpdate("update `money` set `moneyPlayer` = 500,`moneyBank` = 1000 where idMoney = 1");
+						
+						
+						
 						demandeRequete.executeUpdate("delete from effect");
 						demandeRequete.executeUpdate("delete from est_equipe");
 			//on ne supprime pas les map			demandeRequete.executeUpdate("delete from map");
@@ -86,7 +92,7 @@ private void startGame() throws SQLException, InterruptedException {
 						demandeRequete.executeUpdate("delete from joueur");
 //			on recree juste le lvl 1			demandeRequete.executeUpdate("delete from lvl");
 			//on ne supprime pas les floors			demandeRequete.executeUpdate("delete from floor");
-						demandeRequete.executeUpdate("delete from money");
+//			one ne supprime pas l argent du joueur			demandeRequete.executeUpdate("delete from money");
 						demandeRequete.executeUpdate("delete from monstre");
 						demandeRequete.executeUpdate("delete from monstre_effect");
 						demandeRequete.executeUpdate("delete from position");
@@ -103,8 +109,6 @@ private void startGame() throws SQLException, InterruptedException {
 						//cree les stats du joueurs
 						demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`stats` (`idStats`, `maxHP`, `currentHP`, `maxATK`, `currentATK`, `maxDEF`, `currentDEF`, `maxMP`, `currentMP`, `maxSPA`, `currentSPA`, `maxSPD`, `currentSPD`, `maxSPE`, `currentSPE`, `idjoueur`, `idmonstre`) VALUES ('1', '10', '10', '5', '5', '5', '5', '10', '10', '5', '5', '5', '5', '5', '5', '1', NULL)");
 						
-						//cree l'argent du joueur
-						demandeRequete.executeUpdate("INSERT INTO `projetpoagl`.`money` (`idMoney`, `moneyPlayer`, `moneyBank`, `idjoueur`) VALUES ('1', '500', '1000', NULL)");
 						
 						//cree le lvl du joueur
 						demandeRequete.executeUpdate("UPDATE `projetpoagl`.`lvl` SET `level` = '1',`totalXP` = '0',`currentXP` = '0',`xpNeeded` = '20',`pointBonus` = '0' WHERE `lvl`.`idLvl` = 1");

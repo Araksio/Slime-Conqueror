@@ -369,7 +369,9 @@ if(event.getCode() == KeyCode.DIGIT2)
 					+ "SET `pointBonusJoueur` = '"+pointsBonus+"'"
 					+ "WHERE `joueur`.`idjoueur` = 1");
 		  
-		 
+			demandeRequete.executeUpdate("UPDATE `projetpoagl`.`item` SET `idjoueur` = NULL");
+			demandeRequete.executeUpdate("delete from item where idjoueur is null and idmonstre is null");
+			
 			for(int i = 0; i < J.getInventaire()[5].GetSousInventaireQuantity().stream().count() ; i+=1) {
 				
 				//for pour savoir le nombre d objet i
@@ -379,6 +381,19 @@ if(event.getCode() == KeyCode.DIGIT2)
 					}
 			
 				}
+			
+			
+			
+			//sauvegarde de l argent du joueur 
+			
+			demandeRequete.executeUpdate("update `money` set `moneyPlayer` ="+J.getPlayerMoney().getMoneyOnPlayer()+",`moneyBank` = "+J.getPlayerMoney().MoneyOnBank()+" where idjoueur = 1");
+			
+			
+			
+			
+			
+			
+			
 						
 			
 			//en dessous -> sauvegarde da la map 1 mais ne sert a rien a cause du systeme de fxgl
