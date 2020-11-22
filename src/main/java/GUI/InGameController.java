@@ -334,6 +334,11 @@ if(event.getCode() == KeyCode.DIGIT2)
 	
  if (event.getCode() == KeyCode.F1) { 
 		 
+	 
+	 /**
+	  * si le joueur appuie ur f1 alors il enclenche cette fonction qui sauvegarde dans la db et en plus :
+	  * @return relance le jeu (le jeu est en pause tant qu il ne fini pas sa fonction)
+	  */
 		 // Ajout de la fonction save ici
 		 //debut du sql
 			Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");

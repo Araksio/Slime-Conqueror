@@ -56,7 +56,10 @@ private void startGame() throws SQLException, InterruptedException {
 
 				String pseudo = selectPseudo.getText();
 				
-				
+				/**
+				 * changement de la db en remettant les informations a leur valeur initial (quand le joueur aura fait une nouvelle partie et rentré son pseudo)
+				 * 
+				 */
 				//fonction associé au bouton "nouvelle partie" ou startButton, donc je supprime tous les tuples et recree des tuples de bases
 						Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
 						Statement demandeRequete = db.createStatement();

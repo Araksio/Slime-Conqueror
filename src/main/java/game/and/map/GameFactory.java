@@ -324,6 +324,12 @@ import java.sql.*
     public static ArrayList<LV> createLVs() throws SQLException
 	{
 		lvls = new ArrayList<LV>();
+		
+		/**
+		 * fonction pour creer le lvl du joueur selon le fonctionnement de la fonction utilisé par gael et de la db sql
+		 * 
+		 * @return une list contenant les lvl du joueurs classé en ordre croissant
+		 */
 		//la table lvl, l id 1 est reservé au joueur et apres c est reservé pour creer c'est niveaux
 		
 		//debut du sql
@@ -397,6 +403,12 @@ import java.sql.*
 
     			
     			//partie sql java
+		
+		/**
+		 * creation des informations du joueurs a partir de la db sql 
+		 * 
+		 * @return une instance joueur composé de son pseudo, ses statistiques, sa position, son type (reconnaitre que c est le joueur) son inventaire composé de plusieurs sous inventaire, de son argent et de sa liste de competence
+		 */
     			
 
     			Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
