@@ -1,71 +1,26 @@
 package game.and.map;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.*;
 import java.util.*;
-import java.math.*;
 
 public class Write {
-//     private String a="src\\main\\resources\\assets\\levels\\";
 
-//en attente de patch 
-//    public Write(int hauteur,int largeur,String fichierSible) throws IOException, InterruptedException {
-//        final String chemin = a+fichierSible;
-//        final File fichier =new File(chemin); 
-//        final String[][] carte= new Tsprite(hauteur,largeur).getMap();
-//         int compteur = 0;
-//         fichier.delete();
-//           fichier .createNewFile();// Creation du fichier
-//            final FileWriter writer = new FileWriter(fichier);// creation d'un writer (un �crivain)
-//
-//
-//            for(int i=0;i<carte.length;i++) {//cette partie , recopie les spryte sur le fichier de la carte
-//                for(int l=1;l<8;l++) {
-//                    for(int j=0;j<carte[i].length;j++) {
-//
-//                        File f = new File(carte[i][j]);
-//
-//                        BufferedReader b = new BufferedReader(new FileReader(f));
-//
-//                        String readLine = "";
-//                       if(l>1) {
-//                           b.skip(9*(l-1));
-//                          
-//
-//                       }
-//                        readLine = b.readLine();
-//                         System.out.println(readLine);
-//                            writer.write(readLine);
-//
-//                        b.close();
-//                    }
-//
-//                    writer.write("\n");
-//
-//                    }
-//            }
-//            writer.close();
-//                }
-
-	
-	
-//partie en attendant le fixe de l aleatoire
-	// generateur de secours
-	
-	public Write() throws IOException, InterruptedException {
+	/**
+	 * La classe write recupere aleatoirement un fichier map qu'il reecrit dans le fichier de la map de jeu.
+	 * @param nbrLevel
+	 * @author Mouchet-petit Nicolas
+	 */
+	public Write(int nbrLevel) throws IOException, InterruptedException {
 	    
-		//va ecrire les 3premiers lvl
 		for(int i = 0;i<2; i+=1) {
 		String cheminEcrire= "src/main/resources/assets/levels/";
 		String cheminLire= "src/main/resources/assets/mapSecours/";
 		File fichierEcrire =new File(cheminEcrire+"map_level"+i+".txt");
 		
 		
-		int randomFile = (int) ((Math.random()*4)+1);
+		int randomFile = (int) ((Math.random()*countFiles(cheminLire))+1);
 		
 		File fichierLire =new File(cheminLire+randomFile+".txt");
 		
@@ -83,16 +38,18 @@ public class Write {
 		  scLire.close();
 		  ecriteurDeFichierEcrire.close();
 		}
-	
-	
-	
-	
-	
-	
-	
-	
+	}
+	/**
+	 * countFiles compte le nombre de fichier dans le dossiers parent
+	 * @param parent
+	 * @return Le nombre de fichier 
+	 *  @author Mouchet-petit Nicolas
+	 */
+	private int countFiles (String parent)  {//regarde le nombre de spyte existant pour qu'il soit tousse possiblement choisie
+	    File file = new File (parent);
+	    return file.list().length;
 	}
 	
 	
 	
-    }
+   }

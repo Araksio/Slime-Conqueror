@@ -196,7 +196,7 @@ import java.sql.*
     	        
     	        return mo;
     	}
-    	if(RandomMonsterGenerate == 1)
+    	else if(RandomMonsterGenerate == 1)
     	{
     		 var view = texture("bat.png");
     	        

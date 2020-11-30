@@ -48,7 +48,7 @@ private void startGame() throws SQLException, InterruptedException {
 //					new Write(3,3,"map_level0.txt");
 				 
 				 //solution de secours
-				 new Write();
+				 new Write(2);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

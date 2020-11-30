@@ -13,16 +13,14 @@ public class Joueur extends Entiter{
 		private Competence Competences[]  = new  Competence [9];   // Tableau qui regroupe la liste des competence que le joueur poss�de
 		private StuffPlayer CurrentStuff;   // Stuff Actuellement Equipe sur le Joueur (il est dans l'inventaire avec une �toile pour sigaler qu'il est equipe sur le joeur)
 		private Money PlayerMoney;          // Argent Actuel que le joueur poss�de sur lui (peut �tre prochain ajout avec l'argent en banque stocker dans cette classe
-		private Tallent PlayerTalent;       // Tallent Unique que le joeur poss�de
-		
-		Joueur(String _nom, LV _lv,Pos _position,Stat _statistiques,Effect _curentEffect,GameType _entityType,Sous_Inventaire _Inventaire[],Competence _Competences[],StuffPlayer _CurrentStuff,Money _PlayerMoney,Tallent _PlayerTalent)
+
+		Joueur(String _nom, LV _lv,Pos _position,Stat _statistiques,Effect _curentEffect,GameType _entityType,Sous_Inventaire _Inventaire[],Competence _Competences[],StuffPlayer _CurrentStuff,Money _PlayerMoney)
 		{
 			super(_nom, _lv, _position, _statistiques, _curentEffect,GameType.PLAYER);
 			Inventaire = _Inventaire;
 			Competences =  _Competences;
 			CurrentStuff = _CurrentStuff;
-			PlayerMoney = _PlayerMoney;
-			PlayerTalent = _PlayerTalent;	
+			PlayerMoney = _PlayerMoney;	
 			Inventaire[0] = new Sous_Inventaire("Armes");
 			Inventaire[1] = new Sous_Inventaire("Armures/Tenue");
 			Inventaire[2] = new Sous_Inventaire("Potion");
@@ -122,11 +120,6 @@ public class Joueur extends Entiter{
 			return this.PlayerMoney;
 		}
 		
-		public Tallent getPlayerTalent()
-		{
-			return this.PlayerTalent;
-		}	
-		
 		public void setInventaire(Sous_Inventaire [] _Inventaire)
 		{
 			this.Inventaire = _Inventaire;
@@ -147,11 +140,6 @@ public class Joueur extends Entiter{
 			this.PlayerMoney = _PlayerMoney;
 		}
 		
-		public void setPlayerTalent(Tallent _PlayerTalent)
-		{
-			this.PlayerTalent = _PlayerTalent;
-		}
-		
 		
 		public void addItems(Item IT)
 		{
@@ -168,7 +156,7 @@ public class Joueur extends Entiter{
 		public void showInventory()
 		{
 			 this.getInventaire()[0].showInventoryComplette();
-			this.getInventaire()[1].showInventoryComplette();
+			 this.getInventaire()[1].showInventoryComplette();
 			 this.getInventaire()[2].showInventoryComplette();
 			 this.getInventaire()[3].showInventoryComplette();
 			 this.getInventaire()[4].showInventoryComplette();
@@ -215,30 +203,6 @@ public class Joueur extends Entiter{
             return AllItemsQuantity;
 
         }
-		
-		/*
-			private byte regenDelay;
-			public void regenerateHealth() {
-				if(this.hp < this.maxHp) this.regenDelay++;
-				else this.regenDelay = 0;
-			
-				if(this.regenDelay == 50) {
-					this.hp++;
-					this.regenDelay = 0;
-				}
-			}
-
-		 */
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 	}
 
