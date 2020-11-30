@@ -26,9 +26,10 @@ public class Items {
 	public static final ItemsArmes Exatest1 = new ItemsArmes(148774588,1,6,"Exatest1",1,3000,3000,5000,new Rarity());
 	public static final ItemsArmes Exatest2 = new ItemsArmes(148774588,1,7,"Exatest2",1,3000,3000,5000,new Rarity());
 	
-	public static final ItemsLoot SlimeBallElectic = new ItemsLoot(148774588,1,7,"Slime Ball Electic",5,3000,3000,"Boule de Slime au propriété electrique, parfaite pour crafter des objet magique",RH4);
-	public static final ItemsLoot KaguyaHeart = new ItemsLoot(148774588,1,8,"Kaguya Heart",5,3000,3000,"Coeur de Kaguya, parfait pour faire des enchantement",RH4);
-	public static final ItemsLoot DragonHead = new ItemsLoot(148774588,1,9,"Dragon Head",5,3000,3000,"Tête de dragon, ce revend très cher au marché noir",RH8);
+	public static final ItemsLoot LezardTail = new ItemsLoot(148774588,1,7,"Queue de lezard",5,3000,3000,"Une queue d'un lezard du dungeon",RH4);
+	public static final ItemsLoot BatWing = new ItemsLoot(148774588,1,7,"Aile de chauve-souris",5,3000,3000,"Une aile de chauve-souris du dungeon",RH4);
+	public static final ItemsLoot FoxTail = new ItemsLoot(148774588,1,8,"Queue de renard",5,3000,3000,"Une queue d'un renard du dungeon",RH4);
+	public static final ItemsLoot DragonHead = new ItemsLoot(148774588,1,9,"Dragon Head",5,3000,3000,"Tête de dragon, ce revend très cher au marché",RH8);
 	
 	
 	

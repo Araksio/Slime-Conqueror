@@ -77,7 +77,7 @@ public class DelayMonsterAtkComponent extends Component {
     			}
     			*/
 
-		if(M.getState() == MonsterType.KAGUYA || M.getState() == MonsterType.SLIME)
+		if(M.getState() == MonsterType.RENARD || M.getState() == MonsterType.BAT || M.getState() == MonsterType.LEZARD)
 		{
 			if(x > -3 && x < 3 && y > -3 && y < 3)
 	        {
@@ -130,7 +130,7 @@ private void move(Entity R) {
     	
 	Monster M = astar.getEntity().getProperties().getValue("Mosnter1");
 	
-        if(!astar.isMoving() && (M.getState() == MonsterType.KAGUYA || M.getState() == MonsterType.SLIME))
+        if(!astar.isMoving() && (M.getState() == MonsterType.BAT || M.getState() == MonsterType.RENARD || M.getState() == MonsterType.LEZARD))
         {
         	Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
         	
@@ -508,6 +508,6 @@ private void move(Entity R) {
 
 
 
-	
 
+	
 }

@@ -1,5 +1,5 @@
 package entity;
 
 public enum MonsterType {
-	SLIME,KAGUYA,DRAGONBOSS
+	BAT,RENARD,LEZARD,DRAGONBOSS
 }

@@ -60,31 +60,62 @@ import java.sql.*
 	// Création des mur
     @Spawns("1")
     public Entity newBlock(SpawnData data) {
-        var rect = new Rectangle(76, 76, Color.BLACK);
-        rect.setArcWidth(25);
-        rect.setArcHeight(25);
-        rect.setStrokeWidth(1);
-        rect.setStroke(Color.BLUE);
+    	var view = texture("murGauche.png");
+        
 
         return entityBuilder(data)
                 .type(BLOCK)
-                .viewWithBBox(rect)
+                .viewWithBBox(view)
+                .zIndex(-1)
+                .build();
+    }
+    
+
+    
+    @Spawns("2")
+    public Entity newBlock2(SpawnData data) {
+    	var view = texture("murDroite.png");
+
+        return entityBuilder(data)
+                .type(BLOCK)
+                .viewWithBBox(view)
+                .zIndex(-1)
+                .build();
+    }
+    
+    @Spawns("3")
+    public Entity newBlock3(SpawnData data) {
+    	var view = texture("murHautBas.png");
+
+        return entityBuilder(data)
+                .type(BLOCK)
+                .viewWithBBox(view)
                 .zIndex(-1)
                 .build();
     }
     
     
-    @Spawns("2")
-    public Entity newBlock2(SpawnData data) {
-        var rect = new Rectangle(76, 76, Color.YELLOW);
-        rect.setArcWidth(250);
-        rect.setArcHeight(250);
-        rect.setStrokeWidth(1);
-        rect.setStroke(Color.BLACK);
+    
+    //TODO
+    
+    @Spawns("4")
+    public Entity newBlock4(SpawnData data) {
+    	var view = texture("murCoinDroite.png");
 
         return entityBuilder(data)
                 .type(BLOCK)
-                .viewWithBBox(rect)
+                .viewWithBBox(view)
+                .zIndex(-1)
+                .build();
+    }
+    
+    @Spawns("5")
+    public Entity newBlock5(SpawnData data) {
+    	var view = texture("murCoinGauche.png");
+
+        return entityBuilder(data)
+                .type(BLOCK)
+                .viewWithBBox(view)
                 .zIndex(-1)
                 .build();
     }
@@ -92,11 +123,10 @@ import java.sql.*
     
     @Spawns("C")
     public Entity newChest(SpawnData data) {
-    	var view = texture("Chest.jpg");
+    	var view = texture("Chest.png");
     	
         return entityBuilder(data)
                 .type(CHEST)
-                .zIndex(-1)
                 .bbox(new HitBox(new Point2D(5, 5), BoundingShape.box(30, 30)))
                 .with(new CollidableComponent(true))
                 .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, 50))
@@ -107,15 +137,15 @@ import java.sql.*
     @Spawns("M")
     public Entity newMonster(SpawnData data) {
     	
-    	int RandomMonsterGenerate = (int)(Math.random() * (3 - 1) + 1 + 1);
+    	int RandomMonsterGenerate = (int)(Math.random()*(3));
     	
     	if(RandomMonsterGenerate == 2)
     	{
-    		 var view = texture("MonsterElectricSlime.png");
+    		 var view = texture("lezard.png");
     	        
     	        // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
     	        
-    	    	String Nom = "Slime Electric";
+    	    	String Nom = "Lezard";
     	    	
     	    	int HPofMonster =  (int)(Math.random() * (15 - 10) + 10);
     	    	int AtkofMonster =  (int)(Math.random() * (3 - 2) + 2);
@@ -130,7 +160,64 @@ import java.sql.*
     	    	
     	    	ArrayList<Item> LootItemsOfMonster = new ArrayList<Item>();
     	    	ArrayList<Integer> LootQuantityItemsOfMonster = new ArrayList<Integer>();
-    	    	LootItemsOfMonster.add(Items.SlimeBallElectic);
+    	    	LootItemsOfMonster.add(Items.LezardTail);
+    	    	LootQuantityItemsOfMonster.add((int)(Math.random() * (5 - 1) + 1 + 1));
+    	    	String LootMessage = "";
+    	    	
+       	    	Loot LootOfMonster = new Loot(LootItemsOfMonster,LootQuantityItemsOfMonster,LootMessage);
+    	    	//LootOfMonster.addItems(Items.SlimeBallElectic, (int)(Math.random() * (5 - 1) + 1 + 1));
+
+       	    	int LootGold = (int)(Math.random() * (50 - 10) + 10 + 1);
+
+    	    	
+    	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
+    	    	Pos Pos1 = new Pos(0,0,0,0,0);
+    	    	
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.LEZARD,5.0); 
+
+
+    			Component C1;
+    	    	
+    	    	
+    	        var mo = entityBuilder(data)
+    	                .type(MONSTER)
+    	                .bbox(new HitBox(new Point2D(50, 50), BoundingShape.box(300, 300)))
+    	                .view(view)
+    	                .zIndex(0)
+    	                .with(new CollidableComponent(true))
+    	                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, SPEofMonster*10))
+    	                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+    	                .with(aiComponents.get())
+    	                .with("Mosnter1",M1)
+    	                .with("CADofMonster",CADofMonster)
+    	                .with("LootOfMonster",LootOfMonster)
+    	                .with("LootGold",LootGold)
+    	                .build();
+    	        
+    	        return mo;
+    	}
+    	if(RandomMonsterGenerate == 1)
+    	{
+    		 var view = texture("bat.png");
+    	        
+    	        // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
+    	        
+    	    	String Nom = "Chauve souris";
+    	    	
+    	    	int HPofMonster =  (int)(Math.random() * (15 - 10) + 10);
+    	    	int AtkofMonster =  (int)(Math.random() * (3 - 2) + 2);
+    	    	int DefofMonster =  (int)(Math.random() * (3 - 2) + 2);
+    	    	int MPfMonster =  (int)(Math.random() * (12 - 8) + 8);
+    	    	int SPAofMonster =  (int)(Math.random() * (4 - 2) + 2);
+    	    	int SPDofMonster =  (int)(Math.random() * (4 - 2) + 2);
+    	    	int SPEofMonster =  (int)(Math.random() * (8 - 4) + 4);
+    	    	float CADofMonster = (float)(Math.random() * (20 - 10) + 10)/10;
+    	    	
+ 
+    	    	
+    	    	ArrayList<Item> LootItemsOfMonster = new ArrayList<Item>();
+    	    	ArrayList<Integer> LootQuantityItemsOfMonster = new ArrayList<Integer>();
+    	    	LootItemsOfMonster.add(Items.BatWing);
     	    	LootQuantityItemsOfMonster.add((int)(Math.random() * (5 - 1) + 1 + 1));
     	    	String LootMessage = "";
     	    	
@@ -143,10 +230,7 @@ import java.sql.*
     	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
     	    	Pos Pos1 = new Pos(2,1,0,0,1);
     	    	
-    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.SLIME,5.0); 
-    	    	
-    	    	view.setTranslateX(-40);
-    	    	view.setTranslateY(-40);
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.BAT,5.0); 
 
 
     			Component C1;
@@ -156,7 +240,7 @@ import java.sql.*
     	                .type(MONSTER)
     	                .bbox(new HitBox(new Point2D(50, 50), BoundingShape.box(300, 300)))
     	                .view(view)
-    	                .zIndex(-1)
+    	                .zIndex(0)
     	                .with(new CollidableComponent(true))
     	                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, SPEofMonster*10))
     	                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -171,11 +255,11 @@ import java.sql.*
     	}
     	else
     	{
-    		 var view = texture("Monster.png");
+    		 var view = texture("renard.png");
     	        
     	        // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
     	        
-    	    	String Nom = "Kaguya Shinomiya";
+    	    	String Nom = "Renard";
     	    	
     	    	int HPofMonster =  (int)(Math.random() * (30 - 15) + 15);
     	    	int AtkofMonster =  (int)(Math.random() * (5 - 2) + 2);
@@ -188,7 +272,7 @@ import java.sql.*
     	    	
     	    	ArrayList<Item> LootItemsOfMonster = new ArrayList<Item>();
     	    	ArrayList<Integer> LootQuantityItemsOfMonster = new ArrayList<Integer>();
-    	    	LootItemsOfMonster.add(Items.KaguyaHeart);
+    	    	LootItemsOfMonster.add(Items.FoxTail);
     	    	LootQuantityItemsOfMonster.add((int)(Math.random() * (5 - 1) + 1 + 1));
     	    	String LootMessage = "";
     	    	
@@ -197,12 +281,9 @@ import java.sql.*
        	    	int LootGold = (int)(Math.random() * (100 - 20) + 20 + 1);
     	    	
     	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
-    	    	Pos Pos1 = new Pos(2,1,0,0,1);
+    	    	Pos Pos1 = new Pos(0,0,0,0,0);
     	    	
-    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.KAGUYA,5.0); 
-    	    	
-    	    	view.setTranslateX(-40);
-    	    	view.setTranslateY(-40);
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.RENARD,5.0); 
 
     	    	@SuppressWarnings("unused")
     			Component C1;
@@ -212,7 +293,7 @@ import java.sql.*
     	                .type(MONSTER)
     	                .bbox(new HitBox(new Point2D(50, 50), BoundingShape.box(300, 300)))
     	                .view(view)
-    	                .zIndex(-1)
+    	                .zIndex(0)
     	                .with(new CollidableComponent(true))
     	                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, 50))
     	                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -238,7 +319,7 @@ import java.sql.*
     	        
     	    	String Nom = "Ultimate Fire Dragon";
     	    	
-    	    	int HPofMonster =  1500;
+    	    	int HPofMonster =  150;
     	    	int AtkofMonster =  2;
     	    	int DefofMonster =  2;
     	    	int MPfMonster =  250;
@@ -276,7 +357,7 @@ import java.sql.*
     	                .type(MONSTER)
     	                .bbox(new HitBox(new Point2D(240, 240), BoundingShape.box(2, 2)))
     	                .view(view)
-    	                .zIndex(-1)
+    	                .zIndex(0)
     	                .with(new CollidableComponent(true))
     	                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, SPEofMonster*10))
     	                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -296,12 +377,12 @@ import java.sql.*
     //Creation du vide
     @Spawns("0")
     public Entity newVide(SpawnData data) {
-        var view = texture("");
-        view.setTranslateX(5);
-        view.setTranslateY(5);
+    	var rect = new Rectangle(80, 80, Color.GREY);
 
         return entityBuilder(data)
                 .type(VIDE)
+                .zIndex(-1)
+                .viewWithBBox(rect)
                 .build();
     }
     
@@ -482,10 +563,12 @@ import java.sql.*
     	ResultSet inventaireSQL =demandeRequete.executeQuery("SELECT * FROM `item` WHERE idJoueur='1'");
     	//je dois corriger le resultat de la requete sql sans les espaces
     	while(inventaireSQL.next()) {
-    			if(inventaireSQL.getString(2).equals("Kaguya Heart")) {
-    				J1.addItems(new Items().KaguyaHeart);
-    			}else if(inventaireSQL.getString(2).equals("Slime Ball Electic")) {
-    				J1.addItems(new Items().SlimeBallElectic);
+    			if(inventaireSQL.getString(2).equals("Queue de renard")) {
+    				J1.addItems(new Items().FoxTail);
+    			}else if(inventaireSQL.getString(2).equals("Aile de chauve-souris")) {
+    				J1.addItems(new Items().BatWing);
+    			}else if(inventaireSQL.getString(2).equals("Queue de lezard")) {
+    				J1.addItems(new Items().LezardTail);
     			}else if(inventaireSQL.getString(2).equals("Dragon Head")){
     			J1.addItems(new Items().DragonHead);
     			}else {
@@ -517,7 +600,7 @@ import java.sql.*
                 .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, 200).allowRotation(false)) // Mouuvement et vitesse 
                 .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
                 .with(new PlayerComponent())
-                
+                .zIndex(0)
                 .with("Joueur1",J1)
                 .build();
         

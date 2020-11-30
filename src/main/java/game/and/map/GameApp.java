@@ -124,7 +124,6 @@ public class GameApp extends GameApplication {
 				 getGameScene().addChild(layout);
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -350,7 +349,6 @@ public class GameApp extends GameApplication {
     			try {
 					getPlayerComponent().teleport(0,BLOCK_SIZE,MAP_SIZE_PRINT);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
     		}
@@ -592,7 +590,6 @@ public class GameApp extends GameApplication {
 				
 				FLOOR = getPlayerComponent().teleport(++FLOOR,BLOCK_SIZE,MAP_SIZE_PRINT);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			
@@ -794,7 +791,7 @@ public class GameApp extends GameApplication {
 
     @Override
     protected void initGame() {
-        getGameScene().setBackgroundColor(Color.DARKSLATEGREY); // Fond de la carte
+        getGameScene().setBackgroundColor(Color.GREY); // Fond de la carte
        
 
 

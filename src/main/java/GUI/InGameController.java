@@ -983,11 +983,11 @@ if(event.getCode() == KeyCode.DIGIT2)
     	if(getGameWorld().getEntitiesByType(MONSTER).size() > 0)
     	{
     	  Monster m = getGameWorld().getEntitiesByType(MONSTER).get(i).getProperties().getValue("Mosnter1");
-    	  labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-25);
+    	  labels.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()+20);
     	  labels.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()+60);
     	  labels.get(i).setText(m.getStat().getCurrentHP() + " / " + m.getStat().getMaxHP());
-    	  progressBarMonsters.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-50);
-    	  progressBarMonsters.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY()+40);
+    	  progressBarMonsters.get(i).setLayoutX(getGameWorld().getEntitiesByType(MONSTER).get(i).getX()-viewport.getX()-10);
+    	  progressBarMonsters.get(i).setLayoutY(getGameWorld().getEntitiesByType(MONSTER).get(i).getY()-viewport.getY());
     	  progressBarMonsters.get(i).setProgress((double)m.getStat().getCurrentHP() / (double)m.getStat().getMaxHP());
     	  
     	}
