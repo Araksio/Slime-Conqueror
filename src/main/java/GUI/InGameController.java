@@ -291,6 +291,7 @@ if(event.getCode() == KeyCode.DIGIT2)
 	 if(SecondCompetence.getCost() <= J.getStat().getCurrentMP() && SecondCompetence.getCoolDownIsOver())
 		 {
 		 wasPressed2 = true;
+		 SecondCompetence.UseCompetence();
 			Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
 		    int px = (int) P.getX()/80;
 		    int py = (int) P.getY()/80;
@@ -311,7 +312,7 @@ if(event.getCode() == KeyCode.DIGIT2)
 		    		set("nbrMob", nbr);	    		
 		    		println("nbr : " + nbr);
 		    		println("i : " + i);
-		    		i--;
+		    		i=0;
 		    		
 		    	}
 		    }

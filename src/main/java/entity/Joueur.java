@@ -14,9 +14,9 @@ public class Joueur extends Entiter{
 		private StuffPlayer CurrentStuff;   // Stuff Actuellement Equipe sur le Joueur (il est dans l'inventaire avec une �toile pour sigaler qu'il est equipe sur le joeur)
 		private Money PlayerMoney;          // Argent Actuel que le joueur poss�de sur lui (peut �tre prochain ajout avec l'argent en banque stocker dans cette classe
 
-		Joueur(String _nom, LV _lv,Pos _position,Stat _statistiques,Effect _curentEffect,GameType _entityType,Sous_Inventaire _Inventaire[],Competence _Competences[],StuffPlayer _CurrentStuff,Money _PlayerMoney)
+		Joueur(String _nom, LV _lv,Pos _position,Stat _statistiques,GameType _entityType,Sous_Inventaire _Inventaire[],Competence _Competences[],StuffPlayer _CurrentStuff,Money _PlayerMoney)
 		{
-			super(_nom, _lv, _position, _statistiques, _curentEffect,GameType.PLAYER);
+			super(_nom, _lv, _position, _statistiques, GameType.PLAYER);
 			Inventaire = _Inventaire;
 			Competences =  _Competences;
 			CurrentStuff = _CurrentStuff;

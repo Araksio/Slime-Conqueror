@@ -3,6 +3,12 @@ package entity;
 import game.and.map.*;
 import other.components.*;
 
+/**
+ * cette classe permet la création et la modification des items
+ * @author Araksio
+ *
+ */
+
 public class Item{
 	
 	private int UniqueID;             // ID unique serviras pour identifier un objet en particulier dans la base de donn�e
@@ -44,7 +50,9 @@ public class Item{
 		System.out.println(T);
 	}
 	
-	
+	/**
+	 * cette fonction permet de voir la durabilité d'un objet
+	 */
 	public void showDurability()
 	{
 		println("La durabilit� de l'arme est de : " + this.getCurrentDurability() + "/" + this.getMaxDurability());

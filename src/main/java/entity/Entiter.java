@@ -3,21 +3,25 @@ package entity;
 import game.and.map.*;
 import other.components.*;
 
+/**
+ * cette classe permet la création des entités et possède les mutatateurs
+ * @author Araksio
+ *
+ */
+
 public class Entiter {
 	
 	private String nom;              // nom de l'entiter
 	private LV lv;                      // lv  de l'entiter
 	private Pos position;			//Position de l'entiter (MAP et x,y,z)
 	private Stat statistiques;          // Toute les Statistiques de l'entiter (ATK, DEF, etc ..)
-	private Effect curentEffect;        // Effet de potion ou de sort avec une dur�e stoquer dans une matrice
 	private GameType entityType;
 	
-	Entiter(String _nom, LV _lv,Pos _position,Stat _statistiques,Effect _curentEffect,GameType _entityType){
+	Entiter(String _nom, LV _lv,Pos _position,Stat _statistiques,GameType _entityType){
 		nom = _nom;
 		lv = _lv;
 		position = _position;
 		statistiques = _statistiques;
-		curentEffect = _curentEffect;
 		entityType = _entityType;
 	}
 	
@@ -61,11 +65,7 @@ public class Entiter {
 	{
 		return this.position;
 	}
-	
-	public Effect getEffect()
-	{
-		return this.curentEffect;
-	}
+
 	
 	public GameType getType()
 	{
@@ -97,10 +97,6 @@ public class Entiter {
 	public void setPos(Pos _Pos)
 	{
 		this.position = _Pos;
-	}
-	public void setCurentEffect(Effect _CurentEffect)
-	{
-		this.curentEffect = _CurentEffect;
 	}
 	
 	public void SetType(GameType _entityType)

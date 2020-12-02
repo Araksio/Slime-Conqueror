@@ -3,6 +3,14 @@ package entity;
 import game.and.map.*;
 import other.components.*;
 
+/**
+ * constructeur de compétence pour le joueur
+ * avec les mutateurs
+ * 
+ * @author Araksio
+ *
+ */
+
 public class Competence {
 	
 	private String name; // nom de la compétence
@@ -64,6 +72,21 @@ public class Competence {
 		this.next = _Next;
 	}
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
+	/**
+	 * permet de savoir si la compétence est disponible ou non
+	 * @return un booléan
+	 * @author Araksio
+	 */
+	
 	public boolean getCoolDownIsOver()
 	{
 		if(System.currentTimeMillis() > this.next)
@@ -76,19 +99,17 @@ public class Competence {
 		}
 	}
 	
+	/**
+	 * met la compétence en delais de recupération
+	 * @author Araksio
+	 */
+	
 	public void UseCompetence()
 	{
 		long NextUse = (long) (System.currentTimeMillis() + (this.cooldown * 1000));
 		this.setNext(NextUse);
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 	
 
 }
