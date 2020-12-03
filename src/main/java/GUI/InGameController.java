@@ -290,32 +290,35 @@ if(event.getCode() == KeyCode.DIGIT2)
 	
 	 if(SecondCompetence.getCost() <= J.getStat().getCurrentMP() && SecondCompetence.getCoolDownIsOver())
 		 {
-		 wasPressed2 = true;
-		 SecondCompetence.UseCompetence();
-			Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER);
-		    int px = (int) P.getX()/80;
-		    int py = (int) P.getY()/80;
-		    int nbr = getGameWorld().getEntitiesByType(MONSTER).size();
-		    set("nbrMob", nbr);
-		    for(int i = 0; i < nbr; i++)
+		 wasPressed2 = true; /// quand la touche et presser
+		 SecondCompetence.UseCompetence(); /// met la compétence en cd
+		 
+		 //////////// pour toi louis ///////////
+			Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER); /// recupère les info du joueur
+		    int px = (int) P.getX()/80; /// stock la position x du joueur
+		    int py = (int) P.getY()/80; /// stock la position y du joueur
+		    int nbr = getGameWorld().getEntitiesByType(MONSTER).size(); ///range tout les monstres de la map dans un tableau
+		    set("nbrMob", nbr);  /// recupère le nombre de mobs contenue dans le tableau
+		    for(int i = 0; i < nbr; i++) /// boucle for qui cause probleme a toi de voir si tu peut la debug
 		    {
-		    	println("" + nbr);
-		    	Entity CurentEntity = getGameWorld().getEntitiesByType(MONSTER).get(i);
-		    	int mx = (int) CurentEntity.getX()/80;
-		    	int my = (int) CurentEntity.getY()/80;
-		    	int Distance = 3;
-		    	if(Math.abs(px - mx) < Distance && Math.abs(py - my) < Distance)
-		    	{
+		    	println("" + nbr); //debug
+		    	Entity CurentEntity = getGameWorld().getEntitiesByType(MONSTER).get(i); /// selection l'entité a la position i dans le tableau
+		    	int mx = (int) CurentEntity.getX()/80; /// stock la position x du monstre
+		    	int my = (int) CurentEntity.getY()/80; /// stock la position y du monstre
+		    	int Distance = 3; /// initialise le rayon d'action autour du joueur
+		    	if(Math.abs(px - mx) < Distance && Math.abs(py - my) < Distance) /// test pour voir si le monstre est dans le rayons d'action
+		    	{/*
 		    		println("Deleted");
 		    		CurentEntity.removeFromWorld();
 		    		nbr--;
-		    		set("nbrMob", nbr);	    		
+		    		set("nbrMob", nbr);	    		/// a changé pour infligé des dégats et non suprimé
 		    		println("nbr : " + nbr);
 		    		println("i : " + i);
 		    		i=0;
-		    		
+		    		*/
 		    	}
 		    }
+		    ///////////////////// permet de géré le couldown et le cout en mana pour lancer la compétence deja refait ////////////////
 		    J.getStat().setCurrentMP(J.getStat().getCurrentMP()-SecondCompetence.getCost());
 		    skillButton2.setDisable(true);
 			 skillCooldown2.setVisible(true);

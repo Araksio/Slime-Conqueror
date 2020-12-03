@@ -183,8 +183,6 @@ public class GameApp extends GameApplication {
 			}
 		}, KeyCode.D);
 
-		
-
 		getInput().addAction(new UserAction("AttackPos") {
 			@Override
 			protected void onActionBegin() {
@@ -274,16 +272,12 @@ public class GameApp extends GameApplication {
 
 								Joueur P1 = getPlayer().getProperties().getValue("Joueur1");
 
-								// FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de
-								// trouver" + LootInTheChest.getLootMessage());
 								for (Item I : LootItemsOfMonster) {
 									int pos = LootItemsOfMonster.indexOf(I);
 									P1.addItems(I, QuantityLootItemsOfMonster.get(pos));
 								}
 								P1.showInventory();
 
-								// FXGL.getNotificationService().pushNotification(P1.getNom() + " vient de
-								// trouver " + LootGold + " gold !");
 								P1.getPlayerMoney().addMoney((double) LootGold);
 								println("Argernt de " + P1.getNom() + " : "
 										+ (int) (P1.getPlayerMoney().getMoneyOnPlayer()) + " gold");

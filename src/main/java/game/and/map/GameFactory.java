@@ -378,6 +378,18 @@ import java.sql.*
     @Spawns("0")
     public Entity newVide(SpawnData data) {
     	var rect = new Rectangle(80, 80, Color.GREY);
+    	 //var rect = texture("sol.png");
+
+        return entityBuilder(data)
+                .type(VIDE)
+                .zIndex(-1)
+                .viewWithBBox(rect)
+                .build();
+    }
+  //Creation du vide
+    @Spawns("9")
+    public Entity newVide2(SpawnData data) {
+    	var rect = new Rectangle(80, 80, Color.BLACK);
 
         return entityBuilder(data)
                 .type(VIDE)
@@ -389,7 +401,7 @@ import java.sql.*
     //Creation des Escalier
     @Spawns("E")
     public Entity newEscalier(SpawnData data) {
-        var view = texture("TP.png");
+        var view = texture("escalier.png");
 
         return entityBuilder(data)
                 .type(ESCALIER)
