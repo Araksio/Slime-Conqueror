@@ -5,7 +5,10 @@ import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
 import static com.almasb.fxgl.dsl.FXGL.getInput;
+import static com.almasb.fxgl.dsl.FXGL.geti;
+import static com.almasb.fxgl.dsl.FXGL.geto;
 import static com.almasb.fxgl.dsl.FXGL.set;
+import static com.almasb.fxgl.dsl.FXGL.spawn;
 import static game.and.map.GameType.CHEST;
 import static game.and.map.GameType.MONSTER;
 import static game.and.map.GameType.PLAYER;
@@ -26,10 +29,14 @@ import com.almasb.fxgl.app.scene.Viewport;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.input.Input;
+import com.almasb.fxgl.pathfinding.CellState;
+import com.almasb.fxgl.pathfinding.astar.AStarCell;
+import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 
 import entity.Competence;
 import entity.Item;
 import entity.Joueur;
+import entity.Loot;
 import entity.Monster;
 import game.and.map.GameApp;
 import game.and.map.GameFactory;
@@ -336,7 +343,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 {
 	
 	/**
-	 * @Gaël @Louis
+	 * @author Gaël, Louis
 	 * @see skillButton1.setOnMouseClicked
 	 * Fonction qui s'éxecute lorsque l'on appuit sur le bouton "1" du clavier.
 	 * @return lancementCompetence1()
@@ -346,7 +353,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	}
 	
 	/**
-	 * @Gaël @Louis
+	 * @author Gaël, Louis
 	 * @see skillButton2.setOnMouseClicked
 	 * Fonction qui s'éxecute lorsque l'on appuit sur le bouton "2" du clavier.
 	 * @return lancementCompetence2()
@@ -708,7 +715,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 		 
 
 	 /**
-		 * @Gaël @Louis
+		 * @author Gaël, Louis
 		 * @param skillButton1 Bouton de la compétence n°1
 		 * Fonction qui s'éxecute lorsque l'on pose la souris sur le bouton.
 		 * @return petite fenêtre d'information
@@ -723,7 +730,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	
 	
 	/**
-	 * @Gaël @Louis
+	 * @author Gaël, Louis
 	 * @param skillButton1 Bouton de la compétence n°1
 	 * @see .setOnMouseEntered
 	 * Fonction qui s'éxecute lorsque l'on enlève la souris qui est sur le bouton.
@@ -733,7 +740,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	
 	
 	/**
-	 * @Gaël @Louis
+	 * @author Gaël, Louis
 	 * @param skillButton1 Bouton de la compétence n°1
 	 * @see KeyCode.DIGIT1
 	 * Fonction qui s'éxecute lorsque l'on clique sur le bouton.
@@ -744,7 +751,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	
 	
 	/**
-	 * @Gaël @Louis
+	 * @author Gaël, Louis
 	 * @param skillButton2 Bouton de la compétence n°2
 	 * Fonction qui s'éxecute lorsque l'on pose la souris sur le bouton.
 	 * @return petite fenêtre d'information
@@ -759,7 +766,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	
 	
 	/**
-	 * @Gaël @Louis
+	 * @author Gaël, Louis
 	 * @param skillButton2 Bouton de la compétence n°2
 	 * @see .setOnMouseEntered
 	 * Fonction qui s'éxecute lorsque l'on enlève la souris qui est sur le bouton.
@@ -769,7 +776,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	
 	 
 	/**
-	 * @Gaël @Louis
+	 * @author Gaël, Louis
 	 * @param skillButton2 Bouton de la compétence n°2
 	 * @see KeyCode.DIGIT2
 	 * Fonction qui s'éxecute lorsque l'on clique sur le bouton.
@@ -1221,7 +1228,7 @@ public void keyPressed(KeyEvent event) throws SQLException
  
  
  /**
-	 * @Gaël @Louis @Gabriel @Rémi
+	 * @author Gaël, Louis, Gabriel, Rémi
 	 * @see KeyCode.DIGIT1
 	 * @see skillButton1.setOnMouseClicked
 	 * Fonction de lancement de la competence1.
@@ -1259,7 +1266,7 @@ public void keyPressed(KeyEvent event) throws SQLException
  
  
  /**
-	 * @Gaël @Louis @Gabriel @Rémi
+	 * @author Rémi, Louis
 	 * @see KeyCode.DIGIT2
 	 * @see skillButton2.setOnMouseClicked
 	 * Fonction de lancement de la competence2.
@@ -1267,18 +1274,27 @@ public void keyPressed(KeyEvent event) throws SQLException
 	 */
  public void lancementCompetence2() {
 	 if(competence2.getCost() <= J.getStat().getCurrentMP() && competence2.getCoolDownIsOver()) { //Si le joueur a assez de MP et que le temps d'attente est atteint, alors on peut lancer la fonction :
-	 wasPressed2 = true; //Activation de la competence2
-		Entity P = FXGL.getGameWorld().getSingleton(GameType.PLAYER); //Récupère les informations du joueur.
-	    int px = (int) (P.getX()/80); //Stock la position "x" du joueur
-	    int py = (int) P.getY()/80; //Stock la position "y" du joueur
-	    int nbr = getGameWorld().getEntitiesByType(MONSTER).size(); //Stock dans "nbr" le nombre de moobs actuellement sur la map
-	    //System.out.println("DEBUG LOUIS : nbrMonstre =" + nbr); //Affcihe le nombre de monstres sur la map
-	    //set("nbrMob", nbr);
-	    for(int i=0; i<nbr; i++) { //Boucle qui va parcourir tous les monstres du tableaux
-	    	//println("" + nbr);
+	 
+		wasPressed2 = true; //Activation de la competence2
+		J.getStat().setCurrentMP(J.getStat().getCurrentMP()-competence2.getCost()); //Met à jour la MP du joueur
+		
+		//INFOS DU JOUEURS :
+		Entity p = FXGL.getGameWorld().getSingleton(GameType.PLAYER); //Récupère les informations du joueur.
+	    int px = (int) (p.getX()/80); //Stock la position "x" du joueur
+	    int py = (int) p.getY()/80; //Stock la position "y" du joueur
+	    
+	    //TABLEAU DE MONSTRES ET PARCOURS DE CELUI-CI :
+	    int tabMonstre = getGameWorld().getEntitiesByType(MONSTER).size()-1; //Stock dans "nbr" le nombre de moobs actuellement sur la map
+	    for(int i=0; i<tabMonstre; i++) { //Boucle qui va parcourir tous les monstres du tableaux
+	    	
+	    	//INFOS DU MONSTRE D'INDEX i :
 	    	Entity CurentEntity = getGameWorld().getEntitiesByType(MONSTER).get(i); //Séléctionne les monstres 1 par 1
 	    	int mx = (int) (CurentEntity.getX()/80); //Stock la position "x" du monstre
 	    	int my = (int) (CurentEntity.getY()/80); //Stock la position "y" du monstre
+	    	int mX = (int) (CurentEntity.getX()); //Stock la position "x" du monstre (sans tenir compte des blocs)
+    		int mY = (int) (CurentEntity.getY()); //Stock la position "y" du monstre (sans tenr compte des blocs)
+	    	
+	    	//DISTANCE D'EFFET :
 	    	int distance = 3; //Distance d'effet autours du joueur
 //	    	if(Math.abs(px - mx) < distance && Math.abs(py - my) < distance) { //Test si les monstres sont dans le périmètre d'effet autours du joueur
 //	    		println("Deleted");
@@ -1291,31 +1307,84 @@ public void keyPressed(KeyEvent event) throws SQLException
 //	    		
 //	    	}
 	    	if(Math.abs(px - mx) < distance && Math.abs(py - my) < distance) { //Test si les monstres sont dans le périmètre d'effet autours du joueur
-	    		//A CONTINUER !
-	    		System.out.println("Pas encore codé"); //DEBUG LOUIS
-	    		//1)Infligé des dégâts aux monstres d'index i
-	    		//2)Si le monstre est tué :
-	    			//2.1)gagner l'Xp
-	    			//2.2)Générer le loot
-	    	}
-	    } 
-	    J.getStat().setCurrentMP(J.getStat().getCurrentMP()-competence2.getCost()); //Met à jour la MP du joueur
+	    		
+	    		//CHANGEMENT DE VARIABLE POUR LES ENTITEES :
+	    		Joueur J = p.getProperties().getValue("Joueur1"); //Joueur
+	    		Monster M = CurentEntity.getProperties().getValue("Mosnter1"); //Monstre à l'index "i"
+
+	    		//CALCUL DES DOMMAGES INFLIGES :
+	    		int PuissanceAtk = (int) (J.getStat().getCurrentATK()); //Statistique attaque du joueur
+	    		int DegatsInfliges = (int) (PuissanceAtk - ((M.getStat().getCurrentDEF()) / 2)); //Dégâts infligés
+	    		if (DegatsInfliges <= 0) { //Si les dégâts subi sont négatifs le monstre ne perd pas de dégâts
+	    			DegatsInfliges = 0;
+	    		}
+	    		else { //Sinon on lui soustrait les dégâts de ses points de vie
+	    			M.getStat().setCurrentHP(M.getStat().getCurrentHP() - (DegatsInfliges));
+	    		}
+
+	    		//XP + LOOT + MP + SUPPRESSION MONSTRE S'IL EST MORT :
+	    		if (M.getStat().getCurrentHP() <= 0) { //Test si le monstre est mort
+	    			
+	    			//SUPPRESSION MONSTRE
+	    			CurentEntity.removeFromWorld(); //Supprimer le monstre de la map
+	    			
+	    			//XP (EXPERIENCE) :
+	    			J.getLv().addXP(M.getDroppedXP()); //Ajoute l'expérience au joueur en fonction du monstre
+	    			
+//	    			Entity CurrentBattle = null; //?
+
+	    			//GENERATION DU LOOT (RECOMPENSE) A L'ENDROIT DU MONSTRE :
+	    			mX = (int) (mX - (mX % 80)); //Ajuste les position "x" du monstre pour tomber sur un bloc
+	    			mY = (int) (mY - (mY % 80)); //Ajuste les position "y" du monstre pour tomber sur un bloc
+	    			AStarCell c = new AStarCell((int) (mx), (int) (my), CellState.NOT_WALKABLE); //Céer l'endroit du spawn du loot (à l'endroit où le monstre était)
+	    			Entity CC = spawn("C", mX, mY); //Génération du loot sur la map
+	    			Loot LootOfMonster = CurentEntity.getProperties().getValue("LootOfMonster"); //Créer la récompense
+	    			int LootGold = CurentEntity.getProperties().getValue("LootGold"); //Attribut la valeur de la récompense
+	    			CC.getProperties().setValue("LootOnChest", LootOfMonster); //Créer l'entité de la récompense
+	    			CC.getProperties().setValue("LootGold", LootGold); //Attribut la valeur de la récompense à l'entité
+	    			
+//	    			AStarGrid grid = geto("grid"); //?
+//	    			grid.set(mx, my, c);
+//	    			set("grid", grid);
+//	    			int nbr = geti("nbrMob"); //?
+//	    			nbr--;
+//	    			set("nbrMob", nbr);
+
+	    			//MP (Magie)
+	    			int mpGagne = (int) (Math.random() * 2 + 1); //Génère des points de magie aléatoirement
+	    			if (J.getStat().getCurrentMP() + mpGagne >= J.getStat().getMaxMP()) { //Si les poinst de magie ajoutés dépassent le maximum --> attribuer le maximum
+	    				J.getStat().setCurrentMP(J.getStat().getMaxMP());
+	    			}
+	    			else {
+	    				J.getStat().setCurrentMP(J.getStat().getCurrentMP() + mpGagne); //Sinon ajouter les points de magie à ceux actuels
+	    			}
+
+	    		} //FERMETURE : Si le monstre est mort
+	    		
+	    	} //FERMETURE : Si le monstre est dans le rayon
+	    	
+	    } //FERMETURE : Testé tous les monstres
+	    
+	    //FIN DE LA COMPETENCE :
 	    skillButton2.setDisable(true); //Désactive le bouton de la compétence 2
 		skillCooldown2.setVisible(true); //Affiche le compte à rebours
-		Timeline time = new Timeline( //?
+		Timeline time = new Timeline( //? (Gère le compte à rebours)
 				    new KeyFrame(Duration.ZERO,new KeyValue(skillCooldown2.progressProperty(), 1)),
 				    new KeyFrame(Duration.seconds(competence2.getCooldown()),new KeyValue(skillCooldown2.progressProperty(), 0))
 				);
 				time.setCycleCount(1);
 				time.play();
 	 }
+	 
+	 //CAS D'ERREUR :
 	 else if(competence2.getCost() > J.getStat().getCurrentMP()) { //Cas d'erreur si le joueur n'as pas assez de MP
 		 System.out.println("Vous n'avez pas assez de MP");
 	 }
 	 else if(!competence2.getCoolDownIsOver()) { //Cas d'erreur si le temps avant de pouvoir réutiliser la compétence n'est pas désactivé
 		 System.out.println("La compétence est en cooldown");
 	 }
- }
+ } //FERMETURE : lancementCompetence2
+ 
  
  /**
   * @author Gaël
