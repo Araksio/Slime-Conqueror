@@ -3,6 +3,8 @@ package game.and.map;
 import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
 import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getAssetLoader;
+import static com.almasb.fxgl.dsl.FXGL.getDialogService;
+import static com.almasb.fxgl.dsl.FXGL.getGameController;
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
 import static com.almasb.fxgl.dsl.FXGL.getInput;
@@ -327,7 +329,13 @@ public class GameApp extends GameApplication {
 					demandeRequete.executeUpdate("UPDATE `projetpoagl`.`joueur`" + "SET `pointBonusJoueur` = '"
 							+ InGameController.pointsBonus + "'" + "WHERE `joueur`.`idjoueur` = 1");
 
+					
+					if(FLOOR==2) {
+						getDialogService().showMessageBox("BRAVO, Vous avez fini le jeu!!!", getGameController()::exit);
+					}
+					else {
 					FLOOR = getPlayerComponent().teleport(++FLOOR, BLOCK_SIZE, MAP_SIZE_PRINT);
+					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -364,7 +372,6 @@ public class GameApp extends GameApplication {
 		println("Degat Subit : " + DegatSubit);
 
 		println("HP : " + M.getStat().getCurrentHP());
-		InGameController.displayOnAttack();
 		if (M.getStat().getCurrentHP() <= 0) {
 			Loot LootOfMonster = Mo.getProperties().getValue("LootOfMonster");
 			int LootGold = Mo.getProperties().getValue("LootGold");

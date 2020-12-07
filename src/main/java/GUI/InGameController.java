@@ -1237,7 +1237,7 @@ public void keyPressed(KeyEvent event) throws SQLException
  public void lancementCompetence1() {
 	 if(competence1.getCost() <= J.getStat().getCurrentMP() && competence1.getCoolDownIsOver() && J.getStat().getCurrentHP() != J.getStat().getMaxHP()) { //Si le joueur a assez de MP et que le temps d'attente est atteint, alors on peut lancer la fonction :
 		 wasPressed1 = true; //Activation de la competence1
-		 competence1.UseCompetence(); //?
+		 competence1.UseCompetence(); //permet l'initialisation du cooldown de la compétence 1
 		 int HPtoHeal = J.getStat().getMaxHP() - J.getStat().getCurrentHP(); //HP à soigner = HP maximum - HP actuels
 		 J.getStat().setCurrentHP(J.getStat().getCurrentHP() + HPtoHeal); //Soigne le joueur : HP actuel + HP à soigner
 		 J.getStat().setCurrentMP(J.getStat().getCurrentMP()-competence1.getCost()); //Met à jour la MP du joueur
@@ -1276,6 +1276,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	 if(competence2.getCost() <= J.getStat().getCurrentMP() && competence2.getCoolDownIsOver()) { //Si le joueur a assez de MP et que le temps d'attente est atteint, alors on peut lancer la fonction :
 	 
 		wasPressed2 = true; //Activation de la competence2
+		competence2.UseCompetence(); //permet l'initialisation du cooldown de la compétence 2
 		J.getStat().setCurrentMP(J.getStat().getCurrentMP()-competence2.getCost()); //Met à jour la MP du joueur
 		
 		//INFOS DU JOUEURS :
@@ -1296,16 +1297,7 @@ public void keyPressed(KeyEvent event) throws SQLException
 	    	
 	    	//DISTANCE D'EFFET :
 	    	int distance = 3; //Distance d'effet autours du joueur
-//	    	if(Math.abs(px - mx) < distance && Math.abs(py - my) < distance) { //Test si les monstres sont dans le périmètre d'effet autours du joueur
-//	    		println("Deleted");
-//	    		CurentEntity.removeFromWorld(); //Permet de litéralement supprimer les monstres
-//	    		nbr--;
-//	    		set("nbrMob", nbr);	    		
-//	    		println("nbr : " + nbr);
-//	    		println("i : " + i);
-//	    		i--;
-//	    		
-//	    	}
+
 	    	if(Math.abs(px - mx) < distance && Math.abs(py - my) < distance) { //Test si les monstres sont dans le périmètre d'effet autours du joueur
 	    		
 	    		//CHANGEMENT DE VARIABLE POUR LES ENTITEES :
