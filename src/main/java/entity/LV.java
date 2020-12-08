@@ -81,10 +81,7 @@ public class LV {
 				return true;
 			}
 		}
-		else
-		{
-			return false;
-		}
+	
 		return false;
 	}
 
