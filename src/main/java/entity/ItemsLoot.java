@@ -1,8 +1,10 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
-
+/**
+ * cette classe comporte les diférentes varibles importante pour fonctionement drop d'item en jeu
+ * 
+ * @author Rémi
+ */
 public class ItemsLoot extends Item {
 	
 	private Rarity RarityOfItems;
@@ -28,7 +30,11 @@ public class ItemsLoot extends Item {
 	}
 	
 	
-	
+	/**
+	 * permet l'utilisation des objets
+	 * 
+	 * @author Rémi
+	 */
 	public void Use()
 	{
 		int D = this.getCurrentDurability();

@@ -5,7 +5,7 @@ import other.components.*;
 
 /**
  * cette classe permet la création des entités et possède les mutatateurs
- * @author Araksio
+ * @author Rémi, Gabriel
  *
  */
 
@@ -72,14 +72,6 @@ public class Entiter {
 		return this.entityType;
 	}
 	
-	public void InspectEntitie()
-	{
-		println("Identifiant de l'entiter : " + this.getNom());
-		println("LV de l'entiter : " + this.getLv());
-		println("Ses Statiques sont : ");
-		this.getStat().showAllMaxStat();
-	}
-	
 	public void setNom(String _nom)
 	{
 		this.nom = _nom;
@@ -103,4 +95,18 @@ public class Entiter {
 	{
 		this.entityType = _entityType;
 	}
+	
+	/**
+	 * sert à inspecté une entité
+	 * 
+	 * @author Rémi
+	 */
+	public void InspectEntitie()
+	{
+		println("Identifiant de l'entiter : " + this.getNom());
+		println("LV de l'entiter : " + this.getLv());
+		println("Ses Statiques sont : ");
+		this.getStat().showAllMaxStat();
+	}
+	
 }
