@@ -58,6 +58,12 @@ import java.sql.*
 	Joueur J1;
 	public static ArrayList<LV> lvls;
 	// Création des mur
+	
+	/**
+	 * quand un caractere 1 est lu dans maplevel, le traduit en murGauche
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 */
     @Spawns("1")
     public Entity newBlock(SpawnData data) {
     	var view = texture("murGauche.png");
@@ -71,7 +77,11 @@ import java.sql.*
     }
     
 
-    
+	/**
+	 * quand un caractere 2 est lu dans maplevel, le traduit en murDroite
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 */    
     @Spawns("2")
     public Entity newBlock2(SpawnData data) {
     	var view = texture("murDroite.png");
@@ -82,7 +92,16 @@ import java.sql.*
                 .zIndex(-1)
                 .build();
     }
+
     
+    
+
+	/**
+	 * quand un caractere 3 est lu dans maplevel, le traduit en murHautBas
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 */    
+
     @Spawns("3")
     public Entity newBlock3(SpawnData data) {
     	var view = texture("murHautBas.png");
@@ -96,7 +115,13 @@ import java.sql.*
     
     
     
-    //TODO
+
+	/**
+	 * quand un caractere 4 est lu dans maplevel, le traduit en murCoinDroite
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 */    
+
     
     @Spawns("4")
     public Entity newBlock4(SpawnData data) {
@@ -109,6 +134,14 @@ import java.sql.*
                 .build();
     }
     
+    
+
+	/**
+	 * quand un caractere 5 est lu dans maplevel, le traduit en murCoinGauche
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 */    
+
     @Spawns("5")
     public Entity newBlock5(SpawnData data) {
     	var view = texture("murCoinGauche.png");
@@ -120,7 +153,13 @@ import java.sql.*
                 .build();
     }
     
-    
+
+	/**
+	 * quand un caractere C est lu dans maplevel, le traduit en coffre
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 */    
+
     @Spawns("C")
     public Entity newChest(SpawnData data) {
     	var view = texture("Chest.png");
@@ -133,6 +172,14 @@ import java.sql.*
                 .view(view)
                 .build();
     }
+    
+
+	/**
+	 * quand un caractere M est lu dans maplevel, le traduit en un monstre
+	 * @param data : un caractere de maplevel
+	 * @return un monstre graphique
+	 */    
+
     
     @Spawns("M")
     public Entity newMonster(SpawnData data) {
@@ -310,6 +357,16 @@ import java.sql.*
 
     }
     
+    
+    
+
+	/**
+	 * quand un caractere D est lu dans maplevel, le traduit en Boss
+	 * @param data : un caractere de maplevel
+	 * @return un boss graphique
+	 */    
+
+    
     @Spawns("D")
     public Entity newDragonBoss(SpawnData data) {
     	
@@ -375,6 +432,14 @@ import java.sql.*
     
     
     //Creation du vide
+    
+
+	/**
+	 * quand un caractere 0 est lu dans maplevel, le traduit en Vide
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 */    
+
     @Spawns("0")
     public Entity newVide(SpawnData data) {
     	var rect = new Rectangle(80, 80, Color.GREY);
@@ -387,6 +452,14 @@ import java.sql.*
                 .build();
     }
   //Creation du vide
+    
+
+	/**
+	 * quand un caractere 9 est lu dans maplevel, le traduit en Vide
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 */    
+
     @Spawns("9")
     public Entity newVide2(SpawnData data) {
     	var rect = new Rectangle(80, 80, Color.BLACK);
@@ -399,6 +472,15 @@ import java.sql.*
     }
     
     //Creation des Escalier
+    
+    
+
+	/**
+	 * quand un caractere E est lu dans maplevel, le traduit en Escalier
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 */    
+
     @Spawns("E")
     public Entity newEscalier(SpawnData data) {
         var view = texture("escalier.png");
@@ -414,15 +496,18 @@ import java.sql.*
     }
     
     //Création des niveaux
+    
+
+	/**
+	 * @author Esteban
+	 * cree une liste de niveau basé sur la base de donnée
+	 * @return une array liste de niveau
+	 */    
+
     public static ArrayList<LV> createLVs() throws SQLException
 	{
 		lvls = new ArrayList<LV>();
-		
-		/**
-		 * fonction pour creer le lvl du joueur selon le fonctionnement de la fonction utilisé par gael et de la db sql
-		 * 
-		 * @return une list contenant les lvl du joueurs classé en ordre croissant
-		 */
+
 		//la table lvl, l id 1 est reservé au joueur et apres c est reservé pour creer c'est niveaux
 		
 		//debut du sql
@@ -484,6 +569,15 @@ import java.sql.*
     
     
     //Creation du Joueur
+    
+
+	/**
+	 * quand un caractere P est lu dans maplevel, cree le joueur et toutes ses statistiques liees
+	 * en se basant principalement sur la base de donnée
+	 * @param data : un caractere de maplevel
+	 * @return un Joueur graphique
+	 */    
+
     @Spawns("P")
     public Entity newPlayer(SpawnData data) throws SQLException {
     	
@@ -497,12 +591,7 @@ import java.sql.*
     			
     			//partie sql java
 		
-		/**
-		 * creation des informations du joueurs a partir de la db sql 
-		 * 
-		 * @return une instance joueur composé de son pseudo, ses statistiques, sa position, son type (reconnaitre que c est le joueur) son inventaire composé de plusieurs sous inventaire, de son argent et de sa liste de competence
-		 */
-    			
+	
 
     			Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
 
@@ -645,10 +734,6 @@ import java.sql.*
             return components.get(index).get();
         }
     };
-    
-	public static void println(String T)
-	{
-		System.out.println(T);
-	}
+
 
 }
