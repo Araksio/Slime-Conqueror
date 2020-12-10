@@ -1,12 +1,10 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
 
 /**
- * cette classe permet la création et la modification des items
- * @author Araksio
- *
+ * cette classe comporte les diférentes varibles importante pour leur fonctionement en jeu
+ * 
+ * @author Rémi
  */
 
 public class Item{
@@ -52,6 +50,8 @@ public class Item{
 	
 	/**
 	 * cette fonction permet de voir la durabilité d'un objet
+	 * 
+	 * @author Rémi
 	 */
 	public void showDurability()
 	{

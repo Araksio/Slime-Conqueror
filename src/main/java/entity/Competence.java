@@ -4,10 +4,9 @@ import game.and.map.*;
 import other.components.*;
 
 /**
- * constructeur de compétence pour le joueur
- * avec les mutateurs
+ * La classe compétence comporte les diférentes varibles (cooldown,cost...) importante pour leur fonctionement en jeu
  * 
- * @author Araksio
+ * @author Rémi(principalement),Gabriel
  *
  */
 
@@ -15,10 +14,12 @@ public class Competence {
 	
 	private String name; // nom de la compétence
 	private double cooldown; // temps avant de pouvoir utiliser de nouveau la compétence
-	private int cost; // coût en mp de l'utilisation de la competence
-	private String description;
+	private int cost; // coût en mana de l'utilisation de la competence
+	private String description; // décrit l'effet de la compétence
 	private long next;
 	
+
+	/////////////////////////// constructeur ///////////////////////////
 	public Competence(String _name, double _cooldown, int _cost, String _description)
 	{
 		name = _name;
@@ -27,6 +28,8 @@ public class Competence {
 		description = _description;
 	}
 	
+	
+	/////////////////////////// getters and setters ///////////////////////////
 	public static void println(String T)
 	{
 		System.out.println(T);
@@ -83,8 +86,8 @@ public class Competence {
 	
 	/**
 	 * permet de savoir si la compétence est disponible ou non
-	 * @return un booléan
-	 * @author Araksio
+	 * @return booléan
+	 * @author Rémi
 	 */
 	
 	public boolean getCoolDownIsOver()
@@ -101,7 +104,8 @@ public class Competence {
 	
 	/**
 	 * met la compétence en delais de recupération
-	 * @author Araksio
+	 * 
+	 * @author Rémi
 	 */
 	
 	public void UseCompetence()

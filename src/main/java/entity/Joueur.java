@@ -3,8 +3,12 @@ package entity;
 import java.util.ArrayList;
 
 import game.and.map.*;
-import other.components.*;
 
+/**
+ * cette classe comporte les diférentes varibles importante pour le fonctionement du joueur en jeu
+ * 
+ * @author Rémi
+ */
 public class Joueur extends Entiter{
 	
 		
@@ -94,7 +98,12 @@ public class Joueur extends Entiter{
 		{
 			System.out.println(T);
 		}	
-
+		
+		/**
+		 * inspection de l'inventaire du joueur
+		 * 
+		 * @author Rémi
+		 */
 		public void InspectPlayer()
 		{
 			println("L'inventaire du joueur est composer de " +  this.ItemsCountOnInventory() + " Objets");
@@ -140,19 +149,31 @@ public class Joueur extends Entiter{
 			this.PlayerMoney = _PlayerMoney;
 		}
 		
-		
+		/**
+		 * permet d'ajouté un objet a l'inventaire du joueur
+		 * @param un item IT
+		 * @author Rémi
+		 */
 		public void addItems(Item IT)
 		{
 			this.getInventaire()[IT.getType()].addItems(IT);
 		}
 		
+		/**
+		 * permet d'ajouté plusieur objets a l'inventaire du joueur
+		 * @param un item IT , un int
+		 * @author Rémi
+		 */
 		public void addItems(Item IT, int Quantity)
 		{
 			this.getInventaire()[IT.getType()].addItems(IT,Quantity);
 		}
 		
 		
-		
+		/**
+		 * permet de voir le contenue de l'inventaire du joueur
+		 * @author Rémi
+		 */
 		public void showInventory()
 		{
 			 this.getInventaire()[0].showInventoryComplette();
@@ -163,7 +184,10 @@ public class Joueur extends Entiter{
 			 this.getInventaire()[5].showInventoryComplette();
 		}
 		
-		
+		/**
+		 *conte le nombre d'objet dans l'inventaire du joueur
+		 * @author Rémi
+		 */
 		public int ItemsCountOnInventory()
 		{
 			return (this.getInventaire()[0].totalItems() + this.getInventaire()[1].totalItems() + this.getInventaire()[2].totalItems() + this.getInventaire()[3].totalItems() + this.getInventaire()[4].totalItems()  + this.getInventaire()[5].totalItems());
@@ -183,6 +207,10 @@ public class Joueur extends Entiter{
 
         }
 		
+		/**
+		 *conte le nombre d'objet dans l'inventaire du joueur
+		 * @author Rémi
+		 */
 		public int ItemsCountOnInventoryV2()
         {
             return (this.getInventaire()[0].totalItemsv2() + this.getInventaire()[1].totalItemsv2() + this.getInventaire()[2].totalItemsv2() + this.getInventaire()[3].totalItemsv2() + this.getInventaire()[4].totalItemsv2()  + this.getInventaire()[5].totalItemsv2());
