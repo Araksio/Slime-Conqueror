@@ -64,21 +64,20 @@ import java.sql.*
 	
 	Joueur J1;
 	public static ArrayList<LV> lvls;
-<<<<<<< HEAD
+
 	//////////////////////////// ajout des textures ////////////////////////////
 	/**
 	 * Pour toute les methodes spawn on génére une tuile avec différente variable et on y applique une texture
 	 * 
 	 * @param data
 	 * @return data
-=======
+
 	// Création des mur
 	
 	/**
 	 * quand un caractere 1 est lu dans maplevel, le traduit en murGauche
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
->>>>>>> test
 	 */
     @Spawns("1")
     public Entity newBlock(SpawnData data) {
@@ -129,9 +128,6 @@ import java.sql.*
                 .build();
     }
     
-<<<<<<< HEAD
-=======
-    
     
 
 	/**
@@ -140,8 +136,7 @@ import java.sql.*
 	 * @return un bloc graphique
 	 */    
 
-    
->>>>>>> test
+
     @Spawns("4")
     public Entity newBlock4(SpawnData data) {
     	var view = texture("murCoinDroite.png");
@@ -192,7 +187,7 @@ import java.sql.*
                 .build();
     }
     
-<<<<<<< HEAD
+
     
     /**
      * on génére une tuile monstre et on y aplique les methodes qui leurs seront propre 
@@ -201,7 +196,7 @@ import java.sql.*
      * @return mo  (variable ou sont stocker les monstres)
      * @author Rémi, Gabriel
      */
-=======
+
 
 	/**
 	 * quand un caractere M est lu dans maplevel, le traduit en un monstre
@@ -209,8 +204,7 @@ import java.sql.*
 	 * @return un monstre graphique
 	 */    
 
-    
->>>>>>> test
+
     @Spawns("M")
     public Entity newMonster(SpawnData data) {
     	
@@ -476,9 +470,8 @@ import java.sql.*
                 .viewWithBBox(rect)
                 .build();
     }
-<<<<<<< HEAD
+
   //Creation du vide2
-=======
   //Creation du vide
     
 
@@ -488,7 +481,6 @@ import java.sql.*
 	 * @return un bloc graphique
 	 */    
 
->>>>>>> test
     @Spawns("9")
     public Entity newVide2(SpawnData data) {
     	var rect = new Rectangle(80, 80, Color.BLACK);

@@ -61,7 +61,7 @@ import other.components.PlayerComponent;
 
 public class GameApp extends GameApplication {
 	public static AnchorPane layout;
-	public static String vJeu = "v2.2";
+	public static String vJeu = "v4.2";
 
 	public static final int BLOCK_SIZE = 80; // Taille d'un bloc, dans la grille
 

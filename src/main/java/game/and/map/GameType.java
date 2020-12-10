@@ -1,8 +1,8 @@
 package game.and.map;
 /**
- * enumeration de tout les composant du jeu.
- * Il sert pour gameFactory a afficher les element en jeu.
- * @author Mouchet-petit Nicolas
+ * definit les différents type d'élément constituant le jeu 
+ * 
+ * @author Rémi
  *
  */
 public enum GameType {
