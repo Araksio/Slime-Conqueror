@@ -1,8 +1,11 @@
 package entity;
 
 import game.and.map.*;
-import other.components.*;
-
+/**
+ * cette classe comporte les diférentes varibles importante pour le fonctionement des monstres en jeu
+ * 
+ * @author Rémi
+ */
 public class Monster extends Entiter{
 	
 	double droppedXP;

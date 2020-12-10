@@ -1,7 +1,10 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
+/**
+ * cette classe comporte les diférentes varibles importante pour leur fonctionement en jeu
+ * 
+ * @author Rémi
+ */
 
 public class ItemsArmes extends Item {
 	
@@ -35,7 +38,11 @@ public class ItemsArmes extends Item {
 	}
 	
 	
-	
+	/**
+	 * permet l'utilisation des objets
+	 * 
+	 * @author Rémi
+	 */
 	public void Use()
 	{
 		int D = this.getCurrentDurability();

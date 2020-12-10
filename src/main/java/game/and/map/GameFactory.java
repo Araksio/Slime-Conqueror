@@ -55,9 +55,22 @@ import other.components.RandomAStarMoveComponent;
 
 import java.sql.*
 ;public class GameFactory implements EntityFactory {
+	
+	/**
+	 * initialisation de la plus part des composants visuel du jeu
+	 * 
+	 * @author Rémi, Esteban, Gabriel
+	 */
+	
 	Joueur J1;
 	public static ArrayList<LV> lvls;
-	// Création des mur
+	//////////////////////////// ajout des textures ////////////////////////////
+	/**
+	 * Pour toute les methodes spawn on génére une tuile avec différente variable et on y applique une texture
+	 * 
+	 * @param data
+	 * @return data
+	 */
     @Spawns("1")
     public Entity newBlock(SpawnData data) {
     	var view = texture("murGauche.png");
@@ -93,10 +106,6 @@ import java.sql.*
                 .zIndex(-1)
                 .build();
     }
-    
-    
-    
-    //TODO
     
     @Spawns("4")
     public Entity newBlock4(SpawnData data) {
@@ -134,6 +143,14 @@ import java.sql.*
                 .build();
     }
     
+    
+    /**
+     * on génére une tuile monstre et on y aplique les methodes qui leurs seront propre 
+     * 
+     * @param data
+     * @return mo  (variable ou sont stocker les monstres)
+     * @author Rémi, Gabriel
+     */
     @Spawns("M")
     public Entity newMonster(SpawnData data) {
     	
@@ -141,20 +158,18 @@ import java.sql.*
     	
     	if(RandomMonsterGenerate == 2)
     	{
-    		 var view = texture("lezard.png");
+    		 var view = texture("lezard.png"); ///texture du monstre
     	        
-    	        // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
-    	        
-    	    	String Nom = "Lezard";
+    	    	String Nom = "Lezard"; ///nom du monstre
     	    	
-    	    	int HPofMonster =  (int)(Math.random() * (15 - 10) + 10);
-    	    	int AtkofMonster =  (int)(Math.random() * (3 - 2) + 2);
-    	    	int DefofMonster =  (int)(Math.random() * (3 - 2) + 2);
-    	    	int MPfMonster =  (int)(Math.random() * (12 - 8) + 8);
-    	    	int SPAofMonster =  (int)(Math.random() * (4 - 2) + 2);
-    	    	int SPDofMonster =  (int)(Math.random() * (4 - 2) + 2);
-    	    	int SPEofMonster =  (int)(Math.random() * (8 - 4) + 4);
-    	    	float CADofMonster = (float)(Math.random() * (20 - 10) + 10)/10;
+    	    	int HPofMonster =  (int)(Math.random() * (15 - 10) + 10); ///stat monstre
+    	    	int AtkofMonster =  (int)(Math.random() * (3 - 2) + 2); ///stat monstre
+    	    	int DefofMonster =  (int)(Math.random() * (3 - 2) + 2); ///stat monstre
+    	    	int MPfMonster =  (int)(Math.random() * (12 - 8) + 8); ///stat monstre
+    	    	int SPAofMonster =  (int)(Math.random() * (4 - 2) + 2); ///stat monstre
+    	    	int SPDofMonster =  (int)(Math.random() * (4 - 2) + 2); ///stat monstre
+    	    	int SPEofMonster =  (int)(Math.random() * (8 - 4) + 4); ///stat monstre
+    	    	float CADofMonster = (float)(Math.random() * (20 - 10) + 10)/10; ///stat monstre
     	    	
  
     	    	
@@ -165,7 +180,6 @@ import java.sql.*
     	    	String LootMessage = "";
     	    	
        	    	Loot LootOfMonster = new Loot(LootItemsOfMonster,LootQuantityItemsOfMonster,LootMessage);
-    	    	//LootOfMonster.addItems(Items.SlimeBallElectic, (int)(Math.random() * (5 - 1) + 1 + 1));
 
        	    	int LootGold = (int)(Math.random() * (50 - 10) + 10 + 1);
 
@@ -199,8 +213,6 @@ import java.sql.*
     	else if(RandomMonsterGenerate == 1)
     	{
     		 var view = texture("bat.png");
-    	        
-    	        // penser a changer les stat prédefini en stat random avec plusieurs montre et stat possible
     	        
     	    	String Nom = "Chauve souris";
     	    	
@@ -386,7 +398,7 @@ import java.sql.*
                 .viewWithBBox(rect)
                 .build();
     }
-  //Creation du vide
+  //Creation du vide2
     @Spawns("9")
     public Entity newVide2(SpawnData data) {
     	var rect = new Rectangle(80, 80, Color.BLACK);
