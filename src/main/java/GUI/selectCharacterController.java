@@ -30,6 +30,19 @@ private void initialize()
 
 
 @FXML
+
+/**
+ * test si le pseudo est correct puis crée les informations du joueur dans la
+ * base de donnée et lance le jeu
+ *  
+ * @author Gael et Esteban
+ * 
+ * @throws SQLException
+ * @throws InterruptedException
+ * 
+ * 
+ * 
+ */
 private void startGame() throws SQLException, InterruptedException {
 	
 	{
@@ -56,10 +69,7 @@ private void startGame() throws SQLException, InterruptedException {
 
 				String pseudo = selectPseudo.getText();
 				
-				/**
-				 * changement de la db en remettant les informations a leur valeur initial (quand le joueur aura fait une nouvelle partie et rentré son pseudo)
-				 * 
-				 */
+			
 				//fonction associé au bouton "nouvelle partie" ou startButton, donc je supprime tous les tuples et recree des tuples de bases
 						Connection db = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projetpoagl?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
 						Statement demandeRequete = db.createStatement();

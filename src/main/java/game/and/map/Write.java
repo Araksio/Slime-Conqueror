@@ -10,7 +10,7 @@ public class Write {
 	/**
 	 * La classe write recupere aleatoirement un fichier map qu'il reecrit dans le fichier de la map de jeu.
 	 * @param nbrLevel
-	 * @author Mouchet-petit Nicolas
+	 * @author Mouchet-petit Nicolas principalement , Esteban un tout petit peu 
 	 */
 	public Write(int nbrLevel) throws IOException, InterruptedException {
 	    

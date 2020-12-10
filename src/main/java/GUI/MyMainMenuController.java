@@ -78,6 +78,17 @@ public class MyMainMenuController {
 	 }
 	 
 	@FXML
+	/**
+	 * fonction qui initialise le menu principal et les boutons
+	 *
+	 *
+	 *@author Gael
+	 *
+	 *
+	 */
+	
+	
+	
 	private void initialize()
 	{
 		
@@ -106,7 +117,6 @@ public class MyMainMenuController {
 					stage.show();
 					
 				} catch (IOException f) {
-					// TODO Auto-generated catch block
 					f.printStackTrace();
 				}	
 				
@@ -142,14 +152,18 @@ public class MyMainMenuController {
 	}
 	
 	
-	
+	/**
+	 * lance le theme du menu principal
+	 * (le volume est a 0.0 au lieu de 0.5 pour eviter d avoir des problemes de droits)
+	 * @author Gael
+	 */
 	
 	public void mainMenuTheme()
 	 {
 		final URL musicURL = getClass().getResource("/BGM/MainMenuTheme.mp3");   
 		final  Media media = new Media(musicURL.toExternalForm());
 		mediaPlayer = new MediaPlayer(media); 
-		mediaPlayer.setVolume(0.5);
+		mediaPlayer.setVolume(0.0);
 		mediaPlayer.setOnEndOfMedia(new Runnable() {
 		       public void run() {
 		         mediaPlayer.seek(Duration.ZERO);
@@ -157,6 +171,12 @@ public class MyMainMenuController {
 		   });
 		
 	 }
+	
+	/**
+	 * son des boutons
+	 * 
+	 * @author Gael
+	 */
 	public void buttonSFX()
 	{
 		AudioClip a1 = new AudioClip(getClass().getResource("/SFX/buttonSound.mp3").toString());
@@ -175,6 +195,11 @@ public class MyMainMenuController {
 		
 	}
 	@FXML
+	/**
+	 * lance le jeu
+	 * 
+	 * @author Gael
+	 */
 	private void exitMenu()
 	{
 		if( InGameController.scheduledExecutorService != null)
@@ -185,7 +210,11 @@ public class MyMainMenuController {
 		
 	}
 	
-	
+	/**
+	 * lance le jeu
+	 * 
+	 * @author Gael
+	 */
 	private void continueGame()
 	{
 		

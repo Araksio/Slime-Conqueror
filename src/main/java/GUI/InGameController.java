@@ -331,12 +331,13 @@ Competence competence2 = CompetenceList[1]; //Seconde compétence = seconde comp
 	
 	
 	
-	/**
-	 * Méthode executé lorsque l'utilisateur appuie sur une touche.
-	 * @param event
-	 *             La touche sur laquelle l'utilisateur appuie.
-	 * @throws SQLException : Si la requête SQL n'est pas conforme
-	 */
+/**
+ * Méthode executé lorsque l'utilisateur appuie sur une touche.
+ * @param event
+ *             La touche sur laquelle l'utilisateur appuie.
+ * @throws SQLException : Si la requête SQL n'est pas conforme
+ * @author Gael, Esteban, Remi, Louis
+ */
  
 @FXML
 public void keyPressed(KeyEvent event) throws SQLException
