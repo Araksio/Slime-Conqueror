@@ -23,6 +23,12 @@ public class MyGameMenuController {
 
 
  @FXML
+ 
+ /**
+  * fonction de FXGL qui initialise le menu pause avec les boutons
+  * 
+  * @author Gael
+  */
  private void initialize()
  {
 	 resumeButton.setOnMouseEntered(e -> { 
@@ -52,7 +58,11 @@ public class MyGameMenuController {
 
  }
  
- 
+
+ /**
+  * fonction pour le son des boutons 
+  * @author Gael
+  */
 	public void buttonSFX()
 	{
 		AudioClip a1 = new AudioClip(getClass().getResource("/SFX/buttonSound.mp3").toString());
@@ -61,11 +71,22 @@ public class MyGameMenuController {
 
 
  @FXML
+ /**
+  * fonction de FXGL qui relance le jeu
+  * 
+  * @author Gael
+  */
   private void resumeGame()
   {
 	 FXGL.getGameController().gotoPlay();
   }
  @FXML
+ 
+ /**
+  * fonction de FXGL qui renvoie au menu principal  
+  *  
+  * @author Gael
+  */
  private void goToMainMenu()
  {
       FXGL.getGameScene().removeChild(GameApp.layout);
@@ -77,6 +98,11 @@ public class MyGameMenuController {
 	 
  }
  @FXML
+ /**
+  * fonction de FXGL qui ferme le jeu
+  * 
+  * @author Gael
+  */
  private void exitGame()
  {
 	 InGameController.scheduledExecutorService.shutdown();
