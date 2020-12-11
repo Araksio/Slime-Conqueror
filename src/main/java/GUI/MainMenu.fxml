@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" onMouseMoved="#closeRequest" prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MyMainMenuController">
+<AnchorPane fx:id="Anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mouseEntered" onMouseMoved="#closeRequest" prefHeight="900.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MyMainMenuController">
    <children>
       <Button fx:id="startButton" layoutX="140.0" layoutY="208.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="1000.0" style="-fx-background-color: grey; -fx-border-color: black; -fx-border-radius: 2;" text="Nouvelle partie" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0">
          <font>

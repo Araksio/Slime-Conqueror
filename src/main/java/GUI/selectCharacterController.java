@@ -16,11 +16,24 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * selectCharacterController permets de gérer la séléction du pseudo du joueur.
+ * Elle est composé d'un TextField, pour écrire son pseudo
+ * Et d'un boutton pour confirmer.
+ * @author Gaël
+ *
+ */
 public class selectCharacterController {
 @FXML
 private TextField selectPseudo;
 @FXML
 private Button startButton;
+
+/**
+ * On initialise le controller et on mets comme PromptText
+ * (texte qui s'enlève quand l'utilisateur écrit), "Pseudo"
+ * @author Gaël
+ */
 @FXML
 private void initialize()
 {
@@ -28,14 +41,11 @@ private void initialize()
 	selectPseudo.setPromptText("Pseudo");
 }
 
-
-@FXML
-
 /**
  * test si le pseudo est correct puis crée les informations du joueur dans la
  * base de donnée et lance le jeu
  *  
- * @author Gael et Esteban
+ * @author Gael, Esteban
  * 
  * @throws SQLException
  * @throws InterruptedException
@@ -43,9 +53,14 @@ private void initialize()
  * 
  * 
  */
+@FXML
 private void startGame() throws SQLException, InterruptedException {
 	
 	{
+		/*
+		 * Si le pseudo du joueur n'est pas conformer,
+		 * On ouvre une fenêtre d'alerte
+		 */
 		if(selectPseudo.getText().isEmpty() || selectPseudo.getText().length() < 3 || selectPseudo.getText().length() > 12)
 		{
 			Alert alert = new Alert(AlertType.ERROR);
@@ -149,12 +164,12 @@ private void startGame() throws SQLException, InterruptedException {
 					
 					
 					
-			MyMainMenuController.mediaPlayer.stop();
+			MyMainMenuController.mediaPlayer.stop(); // On arrête la musique
 			Stage s = (Stage)startButton.getScene().getWindow();
-			s.close();
-			//je dois mettre un sleep assez consequent pour pouvoir generer la map ET quel soit prise en compte 
+			s.close(); // On fermer la fenêtre de séléction de pseudo
 			
-			FXGL.getGameController().startNewGame();
+			
+			FXGL.getGameController().startNewGame(); // Puis on lance désormais le jeu
 	}
 	}
 }

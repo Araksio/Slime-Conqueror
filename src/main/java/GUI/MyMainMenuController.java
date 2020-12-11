@@ -2,10 +2,6 @@ package GUI;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import com.almasb.fxgl.dsl.FXGL;
 
@@ -24,13 +20,25 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+/**
+ * MyManuMenuController permet de générer le menu principale en jeu.
+ * Ce menu est composé de :
+ * 
+ * Un boutton pour commencer une nouvelle partie 
+ * Un boutton pour continuer une partie 
+ * Un boutton options
+ * Un boutton pour quitter le jeu.
+ * @author Gaël
+ *
+ */
 public class MyMainMenuController {
 	
-	 static MediaPlayer mediaPlayer;
+	 static MediaPlayer mediaPlayer; // Une variable MediaPlayer pour jouer de la musique
 	
-	 // Controller
+	
     @FXML
-    private static AnchorPane Anchor;
+    private static AnchorPane Anchor; // L'anchorPane du menu principale.
     
     @FXML
   	private Button exitButton;
@@ -45,8 +53,13 @@ public class MyMainMenuController {
 	private Button settingsButton;
 	
 	@FXML
-	private Label versionJeu;
+	private Label versionJeu; // La version actuel du jeu
 	
+	
+	/**
+	 * Cette méthode permet de confirmer la fermeture de la fenêtre 
+	 * @author Gaël
+	 */
 	 @FXML
 	 private void closeRequest() {
 	        
@@ -58,12 +71,15 @@ public class MyMainMenuController {
 	        ButtonType result = alert.showAndWait().orElse(ButtonType.NO);
 	        if (ButtonType.NO.equals(result)) {
 	          
-	            e.consume();
+	            e.consume();// Si on choisit non, l'evenement se consume et la fenêtre ne se ferme pas
 	        }
 	        else
 	        {
+	        	/*
+	        	 * Sinon, on arrête le jeu et on ferme la fenêtre
+	        	 */
 	        	
-	        	if(InGameController.scheduledExecutorService != null)
+	        	if(InGameController.scheduledExecutorService != null) 
 	        	{
 	        	InGameController.scheduledExecutorService.shutdown();
 	        	}
@@ -77,23 +93,23 @@ public class MyMainMenuController {
 	  });
 	 }
 	 
-	@FXML
+	
 	/**
-	 * fonction qui initialise le menu principal et les boutons
-	 *
-	 *
+	 * Fonction qui initialise le menu principal, les boutons, ainsi que le label
 	 *@author Gael
-	 *
-	 *
 	 */
-	
-	
-	
+
+	 @FXML
 	private void initialize()
 	{
 		
 		
-		versionJeu.setText(GameApp.vJeu);
+		versionJeu.setText(GameApp.vJeu); // On change le texte du label à la version du jeu
+		 /*
+		  * Lorsque l'on passe notre souris sur un des bouttons,
+		  * On joue un petit son et le boutton devient orangé
+		  * Puis lorsque l'on quitte le boutton, il reprends sa couleur originelle.
+		  */
 		startButton.setOnMouseEntered(e -> {
 			
 			startButton.setStyle("-fx-background-color: #914206; ");
@@ -102,6 +118,11 @@ public class MyMainMenuController {
 		);
 		startButton.setOnMouseExited(e -> startButton.setStyle("-fx-background-color: grey; "));
 		
+		
+		/*
+		 * Lorsqu'on appuie sur nouvelle partie,
+		 * on ouvre une nouvelle fenêtre séléction de pseudo.
+		 */
 		startButton.setOnMouseClicked(e -> {
 			
 			
@@ -145,17 +166,16 @@ public class MyMainMenuController {
 		exitButton.setOnMouseExited(e -> exitButton.setStyle("-fx-background-color: grey; "));
 		
 		
-	    continueButton.setOnAction(e -> continueGame());
+	    continueButton.setOnAction(e -> continueGame()); // On charge notre partie 
 	   
-	    mainMenuTheme();
+	    mainMenuTheme(); // On lance la musique du jeu
 	   
 	}
 	
 	
 	/**
-	 * lance le theme du menu principal
-	 * (le volume est a 0.0 au lieu de 0.5 pour eviter d avoir des problemes de droits)
-	 * @author Gael
+	 * Initialise le thème du menu principal
+	 * @author Gaël
 	 */
 	
 	public void mainMenuTheme()
@@ -163,7 +183,7 @@ public class MyMainMenuController {
 		final URL musicURL = getClass().getResource("/BGM/MainMenuTheme.mp3");   
 		final  Media media = new Media(musicURL.toExternalForm());
 		mediaPlayer = new MediaPlayer(media); 
-		mediaPlayer.setVolume(0.0);
+		mediaPlayer.setVolume(1);
 		mediaPlayer.setOnEndOfMedia(new Runnable() {
 		       public void run() {
 		         mediaPlayer.seek(Duration.ZERO);
@@ -173,9 +193,9 @@ public class MyMainMenuController {
 	 }
 	
 	/**
-	 * son des boutons
+	 * Initialise le son des boutons
 	 * 
-	 * @author Gael
+	 * @author Gaël
 	 */
 	public void buttonSFX()
 	{
@@ -184,21 +204,21 @@ public class MyMainMenuController {
 	}
 	
 	
+	/**
+	 * On lance la musique du jeu lorsque la souris entre dans la fenêtre
+	 * @author Gaël
+	 */
 	@FXML
 	private void mouseEntered()
 	{
 		mediaPlayer.play();
 	}
-	@FXML
-	private void mouseExited()
-	{
-		
-	}
+	
 	@FXML
 	/**
-	 * lance le jeu
+	 * Quitte le menu principal et le jeu
 	 * 
-	 * @author Gael
+	 * @author Gaël
 	 */
 	private void exitMenu()
 	{
@@ -211,9 +231,9 @@ public class MyMainMenuController {
 	}
 	
 	/**
-	 * lance le jeu
+	 * Charge notre partie et lance le jeu
 	 * 
-	 * @author Gael
+	 * @author Gaël
 	 */
 	private void continueGame()
 	{

@@ -6,7 +6,16 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.app.scene.SceneFactory;
 
+/**
+ * MySceneFactory permets de retourner le menu et ainsi de l'afficher
+ * @author Gaël
+ *
+ */
 public class MySceneFactory extends SceneFactory {
+	/**
+	 * Retourne le menu principal
+	 * @author Gaël
+	 */
 	 @Override
      public FXGLMenu newMainMenu() {
          try {
@@ -17,7 +26,10 @@ public class MySceneFactory extends SceneFactory {
 		}
          return null;
      }
-
+/**
+ * Retourne le menu de pause
+ * @author Gaël
+ */
      @Override
      public FXGLMenu newGameMenu() {
          try {
