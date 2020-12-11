@@ -2,20 +2,23 @@ package entity;
 
 import java.util.ArrayList;
 
-import game.and.map.*;
-import other.components.*;
+/*
+* cette classe permet de gerer les sous partie dont l'inventaire est constitué
+* @author Pitohui.G7
+*
+*/
 
 public class Sous_Inventaire {
 	
-	private String Nom;
-	public Item CurrentSousInventory[]= new Item[999];
-	public int CurrentSousInventoryNumber[]= new int[999];
+	private String Nom; // permet de donner un nom au son inventaire (utile pour l'affichage)
+	public Item CurrentSousInventory[]= new Item[999]; // créer un tableau de 999 element pour mettre des item
+	public int CurrentSousInventoryNumber[]= new int[999]; // créer un tableau de 999 element pour mettre la quantité d'item a la même position que l'item dans l'autre tableau
 	
 
 
 
 	public int[] getCurrentSousInventoryNumber() {
-		return CurrentSousInventoryNumber;
+		return CurrentSousInventoryNumber; 
 	}
 
 	public void setCurrentSousInventoryNumber(int[] currentSousInventoryNumber) {
@@ -42,6 +45,7 @@ public class Sous_Inventaire {
 		return this.CurrentSousInventory;
 	}
 	
+	// fonction qui permet de savoir la quantité d'un item en particulier dans le sous inventaire
 	public int getQuantityOfAnItem(Item IT)
 	{
 		for(int i = 0; i < 999; i++)
@@ -54,6 +58,7 @@ public class Sous_Inventaire {
 		return 0;
 	}
 	
+	// fonction qui permet de savoir si un item existe dans l'inventaire
 	public boolean ItemsExistOnInventory(Item IT)
 	{
 		for(int i = 0; i < 999; i++)
@@ -66,6 +71,7 @@ public class Sous_Inventaire {
 		return false;
 	}
 	
+	// fonction qui permet d'ajouter un item en 1 exemplaire dans l'inventaire
 	public void addItems(Item IT)
 	{
 	
@@ -82,6 +88,7 @@ public class Sous_Inventaire {
 		}
 	}
 	
+	// fonction qui permet d'ajouter un item en plusieurs exemplaires (Quantity) dans l'inventaire
 	public void addItems(Item IT,int quantity)
 	{
 		int IID = IT.getInventoryID();
@@ -96,6 +103,7 @@ public class Sous_Inventaire {
 		}
 	}
 	
+	// fonction qui permet de savoir la quantité d'objet (y compris en plusieurs exemplaire) dans l'inventaire
 	public int totalItems()
 	{
 		int total = 0;
@@ -107,6 +115,7 @@ public class Sous_Inventaire {
 		return total;
 	}
 	
+	// fonction dev qui permet d'affichier le sous inventaire dans la console
 	public void showInventory()
 	{
 		println("Inventaire des : " + this.Nom);
@@ -123,7 +132,7 @@ public class Sous_Inventaire {
 		}
 	}
 	
-	
+	// fonction dev qui permet d'affichier le sous inventaire dans la console
 	public void showInventoryComplette()
 	{
 		println("");
@@ -139,6 +148,8 @@ public class Sous_Inventaire {
 		println("------------------------------");
 		println("");
 	}
+	
+	// fonction dev qui permet d'affichier le sous inventaire dans la console de manière simple
 	public String showInventorySimple()
     {
         for(int i = 0; i < 999; i++)
@@ -150,6 +161,8 @@ public class Sous_Inventaire {
         }
         return null;
     }
+	
+	// fonction dev qui permet de recuperer le sous inventaire sous forme d'arraylist d'item
 	public ArrayList<Item> GetSousInventaire()
     {
         ArrayList<Item> AllItem = new ArrayList<Item>();
@@ -163,6 +176,7 @@ public class Sous_Inventaire {
         return AllItem;
     }
 	
+	// nouvelle fonction qui permet de savoir le nombre d'item dans l'inventaire
 	public int totalItemsv2()
     {
         int total = 0;
@@ -177,6 +191,7 @@ public class Sous_Inventaire {
         return total;
     }
 	
+	// fonction dev qui permet de recuperer les quantité d'item dans l'inventaire	
 	public ArrayList<Integer> GetSousInventaireQuantity()
     {
         ArrayList<Integer> AllItemQuantity = new ArrayList<Integer>();

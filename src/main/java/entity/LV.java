@@ -1,7 +1,11 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
+
+/**
+ * cette classe permet la création et la modification du level associer a un joueur
+ * @author Pitohui.G7
+ *
+ */
 
 public class LV {
 	
@@ -63,13 +67,14 @@ public class LV {
 	}
 	
 	
-	
+	// fonction qui permet d'ajouter de l'xp
 	public void addXP(double _xp)
 	{
 		this.TotalXP = this.TotalXP + _xp;
 		this.CurrentXPforLV = this.CurrentXPforLV + _xp;
 	}
 	
+	// fonction qui permet de savoir en fonction de l'xp du joueur si il peu monter au prochain level et augmente le level si c'est possible
 	public boolean checkLVisAvalaible()
 	{
 		if(this.CurrentXPforLV >= this.XPneedForNextLV)
@@ -81,7 +86,10 @@ public class LV {
 				return true;
 			}
 		}
-	
+		else
+		{
+			return false;
+		}
 		return false;
 	}
 
