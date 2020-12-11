@@ -1,9 +1,9 @@
 package entity;
 
 /**
- * cette classe comporte les diférentes varibles importante pour leur fonctionement en jeu
- * 
- * @author Rémi
+ * cette classe permet la création et la modification des items de type armes
+ * @author Pitohui.G7
+ *
  */
 
 public class ItemsArmes extends Item {
@@ -38,11 +38,6 @@ public class ItemsArmes extends Item {
 	}
 	
 	
-	/**
-	 * permet l'utilisation des objets
-	 * 
-	 * @author Rémi
-	 */
 	public void Use()
 	{
 		int D = this.getCurrentDurability();

@@ -65,12 +65,6 @@ import java.sql.*
 	Joueur J1;
 	public static ArrayList<LV> lvls;
 
-	//////////////////////////// ajout des textures ////////////////////////////
-	/**
-	 * Pour toute les methodes spawn on génére une tuile avec différente variable et on y applique une texture
-	 * 
-	 * @param data
-	 * @return data
 
 	// Création des mur
 	
@@ -78,6 +72,7 @@ import java.sql.*
 	 * quand un caractere 1 est lu dans maplevel, le traduit en murGauche
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
+	 * @author rémi, gabriel
 	 */
     @Spawns("1")
     public Entity newBlock(SpawnData data) {
@@ -96,6 +91,7 @@ import java.sql.*
 	 * quand un caractere 2 est lu dans maplevel, le traduit en murDroite
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
+	 * @author rémi, gabriel
 	 */    
     @Spawns("2")
     public Entity newBlock2(SpawnData data) {
@@ -115,6 +111,7 @@ import java.sql.*
 	 * quand un caractere 3 est lu dans maplevel, le traduit en murHautBas
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
+	 * @author gabriel
 	 */    
 
     @Spawns("3")
@@ -134,6 +131,7 @@ import java.sql.*
 	 * quand un caractere 4 est lu dans maplevel, le traduit en murCoinDroite
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
+	 * @author gabriel
 	 */    
 
 
@@ -154,6 +152,7 @@ import java.sql.*
 	 * quand un caractere 5 est lu dans maplevel, le traduit en murCoinGauche
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
+	 * @author gabriel 
 	 */    
 
     @Spawns("5")
@@ -172,6 +171,7 @@ import java.sql.*
 	 * quand un caractere C est lu dans maplevel, le traduit en coffre
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
+	 * @author rémi
 	 */    
 
     @Spawns("C")
@@ -190,79 +190,69 @@ import java.sql.*
 
     
     /**
-     * on génére une tuile monstre et on y aplique les methodes qui leurs seront propre 
+     * quand un caractere M est lu dans maplevel, le traduit en monstre
      * 
      * @param data
-     * @return mo  (variable ou sont stocker les monstres)
+     * @return mo  (variable ou est stocker les monstres)
      * @author Rémi, Gabriel
-     */
-
-
-	/**
-	 * quand un caractere M est lu dans maplevel, le traduit en un monstre
-	 * @param data : un caractere de maplevel
-	 * @return un monstre graphique
-	 */    
-
+     */   
 
     @Spawns("M")
     public Entity newMonster(SpawnData data) {
     	
-    	int RandomMonsterGenerate = (int)(Math.random()*(3));
+    	int RandomMonsterGenerate = (int)(Math.random()*(3)); // Generation d'un nombre aléatoire pour créer un monstre aléatoire
     	
     	if(RandomMonsterGenerate == 2)
     	{
-    		 var view = texture("lezard.png"); ///texture du monstre
+    		 var view = texture("lezard.png"); // création d'une variable contenant l'emplacement du skin (apparence du monstre)
     	        
-    	    	String Nom = "Lezard"; ///nom du monstre
+    	    	String Nom = "Lezard"; // Instanciation Nom du Monstre
     	    	
-    	    	int HPofMonster =  (int)(Math.random() * (15 - 10) + 10); ///stat monstre
-    	    	int AtkofMonster =  (int)(Math.random() * (3 - 2) + 2); ///stat monstre
-    	    	int DefofMonster =  (int)(Math.random() * (3 - 2) + 2); ///stat monstre
-    	    	int MPfMonster =  (int)(Math.random() * (12 - 8) + 8); ///stat monstre
-    	    	int SPAofMonster =  (int)(Math.random() * (4 - 2) + 2); ///stat monstre
-    	    	int SPDofMonster =  (int)(Math.random() * (4 - 2) + 2); ///stat monstre
-    	    	int SPEofMonster =  (int)(Math.random() * (8 - 4) + 4); ///stat monstre
-    	    	float CADofMonster = (float)(Math.random() * (20 - 10) + 10)/10; ///stat monstre
+    	    	int HPofMonster =  (int)(Math.random() * (15 - 10) + 10); // Insanciation HP du Monstre
+    	    	int AtkofMonster =  (int)(Math.random() * (3 - 2) + 2);  // Insanciation ATK du Monstre
+    	    	int DefofMonster =  (int)(Math.random() * (3 - 2) + 2);  // Insanciation DEF du Monstre
+    	    	int MPfMonster =  (int)(Math.random() * (12 - 8) + 8);  // Insanciation MP du Monstre 
+    	    	int SPAofMonster =  (int)(Math.random() * (4 - 2) + 2);  // Insanciation SPA du Monstre 
+    	    	int SPDofMonster =  (int)(Math.random() * (4 - 2) + 2);  // Insanciation SPD du Monstre 
+    	    	int SPEofMonster =  (int)(Math.random() * (8 - 4) + 4);  // Insanciation SPE du Monstre
+    	    	float CADofMonster = (float)(Math.random() * (20 - 10) + 10)/10;  // Insanciation de la cadence d'atk du Monstre
     	    	
  
     	    	
-    	    	ArrayList<Item> LootItemsOfMonster = new ArrayList<Item>();
-    	    	ArrayList<Integer> LootQuantityItemsOfMonster = new ArrayList<Integer>();
-    	    	LootItemsOfMonster.add(Items.LezardTail);
-    	    	LootQuantityItemsOfMonster.add((int)(Math.random() * (5 - 1) + 1 + 1));
-    	    	String LootMessage = "";
+    	    	ArrayList<Item> LootItemsOfMonster = new ArrayList<Item>(); // Création de l'arraylist d'item utiliser pour le loot 
+    	    	ArrayList<Integer> LootQuantityItemsOfMonster = new ArrayList<Integer>(); // Création de l'arraylist d'int utiliser pour le loot 
+    	    	LootItemsOfMonster.add(Items.LezardTail); // ajout de l'item a loot dans la liste
+    	    	LootQuantityItemsOfMonster.add((int)(Math.random() * (5 - 1) + 1 + 1)); // ajout de la quantité d'item dans la liste
+    	    	String LootMessage = ""; // création du lootmessage
     	    	
-       	    	Loot LootOfMonster = new Loot(LootItemsOfMonster,LootQuantityItemsOfMonster,LootMessage);
+       	    	Loot LootOfMonster = new Loot(LootItemsOfMonster,LootQuantityItemsOfMonster,LootMessage); // création du loot du monstre
+       	    	int LootGold = (int)(Math.random() * (50 - 10) + 10 + 1); // création de la quantité d'or que le montre va looter
 
-       	    	int LootGold = (int)(Math.random() * (50 - 10) + 10 + 1);
-
     	    	
-    	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
-    	    	Pos Pos1 = new Pos(0,0,0,0,0);
+    	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE // Instanciation des stat du montre
+    	    	Pos Pos1 = new Pos(0,0,0,0,0); // intanciation de la position du monstre
+    	    	 
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.LEZARD,5.0); // instanciation du monstre
     	    	
-    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.LEZARD,5.0); 
-
-
-    			Component C1;
+    	    	view.setTranslateX(-40);
+    	    	view.setTranslateY(-40);
     	    	
-    	    	
-    	        var mo = entityBuilder(data)
-    	                .type(MONSTER)
-    	                .bbox(new HitBox(new Point2D(50, 50), BoundingShape.box(300, 300)))
-    	                .view(view)
-    	                .zIndex(0)
-    	                .with(new CollidableComponent(true))
-    	                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, SPEofMonster*10))
-    	                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
-    	                .with(aiComponents.get())
-    	                .with("Mosnter1",M1)
-    	                .with("CADofMonster",CADofMonster)
-    	                .with("LootOfMonster",LootOfMonster)
-    	                .with("LootGold",LootGold)
+    	        var mo = entityBuilder(data) // création de l'entité montre
+    	                .type(MONSTER) // définition du type de monstre
+    	                .bbox(new HitBox(new Point2D(50, 50), BoundingShape.box(300, 300))) // création de la hitbox du monstre
+    	                .view(view) // relation entre le montre et son visuel
+    	                .zIndex(0) // priorité d'affichage du monstre par apport au autre texture
+    	                .with(new CollidableComponent(true)) // rendre la hitbox du monstre colisionable avec les autre entité
+    	                .with(new CellMoveComponent(BLOCK_SIZE, BLOCK_SIZE, SPEofMonster*10)) // défini la vitesse de deplacement du monstre
+    	                .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid")))) // définit les deplacement du monstre
+    	                .with(aiComponents.get()) // donne une "IA" au montre pour qu'il puisse ce déplacer et attaquer
+    	                .with("Mosnter1",M1) // stoque les statistique et autre paramettre du monstre dans une supervariable
+    	                .with("CADofMonster",CADofMonster) // stoque la cadende d'atk du monstre dans une supervariable
+    	                .with("LootOfMonster",LootOfMonster) // stoque le loot du monstre dans une supervariable
+    	                .with("LootGold",LootGold) // stoque la valeur du monstre dans une supervariable
     	                .build();
     	        
-    	        return mo;
+    	        return mo; 
     	}
     	else if(RandomMonsterGenerate == 1)
     	{
@@ -288,7 +278,7 @@ import java.sql.*
     	    	String LootMessage = "";
     	    	
        	    	Loot LootOfMonster = new Loot(LootItemsOfMonster,LootQuantityItemsOfMonster,LootMessage);
-    	    	//LootOfMonster.addItems(Items.SlimeBallElectic, (int)(Math.random() * (5 - 1) + 1 + 1));
+    	    	
 
        	    	int LootGold = (int)(Math.random() * (50 - 10) + 10 + 1);
 
@@ -300,6 +290,9 @@ import java.sql.*
 
 
     			Component C1;
+    			
+    			view.setTranslateX(-40);
+    	    	view.setTranslateY(-40);
     	    	
     	    	
     	        var mo = entityBuilder(data)
@@ -354,6 +347,9 @@ import java.sql.*
     	    	@SuppressWarnings("unused")
     			Component C1;
     	    	
+    	    	view.setTranslateX(-40);
+    	    	view.setTranslateY(-40);
+    	    	
     	    	
     	        var mo = entityBuilder(data)
     	                .type(MONSTER)
@@ -383,6 +379,7 @@ import java.sql.*
 	 * quand un caractere D est lu dans maplevel, le traduit en Boss
 	 * @param data : un caractere de maplevel
 	 * @return un boss graphique
+	 * @author rémi
 	 */    
 
     
@@ -457,12 +454,13 @@ import java.sql.*
 	 * quand un caractere 0 est lu dans maplevel, le traduit en Vide
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
+	 * @author rémi, gabriel
 	 */    
 
     @Spawns("0")
     public Entity newVide(SpawnData data) {
     	var rect = new Rectangle(80, 80, Color.GREY);
-    	 //var rect = texture("sol.png");
+    	 //var rect = texture("sol.png"); 
 
         return entityBuilder(data)
                 .type(VIDE)
@@ -472,13 +470,12 @@ import java.sql.*
     }
 
   //Creation du vide2
-  //Creation du vide
-    
 
 	/**
 	 * quand un caractere 9 est lu dans maplevel, le traduit en Vide
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
+	 * @author gabriel
 	 */    
 
     @Spawns("9")
@@ -492,14 +489,16 @@ import java.sql.*
                 .build();
     }
     
+ 
+    
+    
     //Creation des Escalier
     
-    
-
 	/**
 	 * quand un caractere E est lu dans maplevel, le traduit en Escalier
 	 * @param data : un caractere de maplevel
 	 * @return un bloc graphique
+	 * @author remi
 	 */    
 
     @Spawns("E")
@@ -518,11 +517,12 @@ import java.sql.*
     
     //Création des niveaux
     
-
 	/**
-	 * @author Esteban
+	 * 
 	 * cree une liste de niveau basé sur la base de donnée
 	 * @return une array liste de niveau
+	 * 
+	 * @author Esteban
 	 */    
 
     public static ArrayList<LV> createLVs() throws SQLException
@@ -597,6 +597,7 @@ import java.sql.*
 	 * en se basant principalement sur la base de donnée
 	 * @param data : un caractere de maplevel
 	 * @return un Joueur graphique
+	 * @author rémi, esteban, gabriel
 	 */    
 
     @Spawns("P")

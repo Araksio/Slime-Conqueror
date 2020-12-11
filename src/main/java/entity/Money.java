@@ -1,7 +1,10 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
+/**
+ * cette classe permet la création et la modification de l'argent du joueur
+ * @author Pitohui.G7
+ *
+ */
 
 public class Money {
 	
@@ -46,19 +49,21 @@ public class Money {
 		this.MoneyOnPlayer = this.MoneyOnPlayer - _Money;
 	}
 	
+	// fonction qui permet de transferer de l'argent du joueur a la banque
 	public void TransfertMoneyOnBank(double _Money)
 	{
 		this.MoneyOnBank = this.MoneyOnBank + _Money;
 		this.MoneyOnPlayer = this.MoneyOnPlayer - _Money;
 	}
 	
+	// fonction qui permet de transferer de l'argent de la banque a joueur
 	public void TransfertMoneyOnPlayer(double _Money)
 	{
 		this.MoneyOnPlayer = this.MoneyOnPlayer + _Money;
 		this.MoneyOnBank = this.MoneyOnBank - _Money;
 	}
 	
-	
+	// fonction qui permet de savoir si un joeur a assez d'argent pour acheter un objet
 	public boolean CanBuy(double _Money)
 	{
 		if(_Money > MoneyOnPlayer)

@@ -1,7 +1,10 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
+/*
+* cette classe permet d'avoir des rareté prédéfini utilisable sur les item
+* @author Pitohui.G7
+*
+*/
 
 public class Rarity {
 	
@@ -11,9 +14,9 @@ public class Rarity {
 	private float RarityBoost[] = new float [12];
 	private double RarityProba[] = new double [12];
 	private double RarityProbaCumul[] = new double [12];
-	//private int RankID;
-	//private float RankBoost[] = new float [12];
-	//private double RankProba[] = new double [12];
+	private int RankID;
+    private float RankBoost[] = new float [12];
+	private double RankProba[] = new double [12];
 	
 	
 	Rarity(int _RarityID)
@@ -37,6 +40,7 @@ public class Rarity {
 		System.out.println(T);
 	}	
 	
+	// instanciation et récupération du nom d'une rareté pour l'affichage par exemple
 	public String getRarityCall()
 	{
 		RarityCall[1] = "Basique";
@@ -54,6 +58,7 @@ public class Rarity {
 		return RarityCall[this.RarityID];
 	}
 	
+	// instanciation et récupération du nom abréger d'une rareté pour l'affichage par exemple
 	public String getRarityCallVcourt(int RID)
 	{
 		RarityCallVcourt[1] = "B";
@@ -71,6 +76,7 @@ public class Rarity {
 		return RarityCall[RID];
 	}
 	
+	// instanciation du facteur de boost de la rareté sur les statistique d'une arme
 	public float getRarityBoost(int RID)
 	{
 		RarityBoost[1] = (float) 0.75;
@@ -88,6 +94,7 @@ public class Rarity {
 		return RarityBoost[RID];
 	}
 	
+	// instanciation de la probabilité d'avoir une rareté pour la generation aléatoire (le total de toute les rareté doit être égale a 1
 	public double getRarityProba(int RID)
 	{
 		RarityProba[1] = (double) 0.27;
@@ -105,6 +112,7 @@ public class Rarity {
 		return RarityProba[RID];
 	}
 	
+	// instanciation de la probabilité d'avoir une rareté en commulé (pour simplifier le travail au algorhitme de generation aléatoire d'une rarete)
 	public double getRarityProbaCumul(int RID)
 	{
 		RarityProbaCumul[1] = (double) 270000;
@@ -122,6 +130,7 @@ public class Rarity {
 		return RarityProbaCumul[RID];
 	}
 	
+	// fonction qui permet de generer une rareté aléatoire en fonction des statistique prédéfini des rareté au dessus
 	public Rarity GenerateRandomRarity()
 	{
 		int ValMin = 0;
@@ -147,6 +156,7 @@ public class Rarity {
 		return R4;
 	}
 	
+	// fonction dev pour la generation de rareté dans des condition spécifique, a ne pas utiliser en jeux
 	public int GenerateRandomRarityV2()
 	{
 		int ValMin = 0;

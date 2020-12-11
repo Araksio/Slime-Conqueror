@@ -1,7 +1,10 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
+/**
+ * cette classe permet la création et la modification des stat d'une entité
+ * @author Pitohui.G7
+ *
+ */ 
 
 public class Stat {
 	
@@ -54,6 +57,8 @@ public class Stat {
 		System.out.println(T);
 	}	
 	
+	
+	// Fonction dev qui permet d'affichier les stat normale de l'entité dans la console
 	public void showAllMaxStat()
 	{
 		println(Space20 + "HP : " + this.getMaxHP());
@@ -65,6 +70,7 @@ public class Stat {
 		println(Space20 + "SPE : " + this.getMaxSPE());
 	}
 	
+	// Fonction a utiliser après un combat par exemple pour faire en sorte que les stat actuelle revienne a la normale en cas d'utilisation de compretence ou de sort
 	public void ResetStatAfterBattle()
 	{
 		this.CurrentATK = this.MaxATK;

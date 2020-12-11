@@ -1,7 +1,10 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
+/**
+ * cette classe permet la création et la modification du Stuff (Equipement) porter par le Joueur
+ * @author Pitohui.G7
+ *
+ */ 
 
 public class StuffPlayer {
 	
@@ -19,8 +22,8 @@ public class StuffPlayer {
 	
 	// Objet Magique du joueur
 	
-	private Item CurrentCollier;
-	private Item CurrentBracelet;
+	private Item CurrentCollier;           // Collier que porte le joueur Actuellemnt
+	private Item CurrentBracelet;          // Bracelet que porte le joueur Actuellement
 	
 	StuffPlayer(Item _CurrentMainWeapons, Item _CurrentSecondaryWeapons, Item _CurrentCasque, Item _CurrentPlastron, Item _CurrentJambiere, Item _CurrentBottes, Item _CurrentCollier, Item _CurrentBracelet)
 	{
@@ -41,9 +44,10 @@ public class StuffPlayer {
 		System.out.println(T);
 	}	
 	
+	// Fonction dev qui permet de savoir ce que porte comme Equipement le Joueur
 	public void showCurrentStuff()
 	{
-		println("Le stuff que votre personnage a �quiper et le suivant :");
+		println("Le stuff que votre personnage a equiper et le suivant :");
 		println("Arme Pricipal : " + this.CurrentMainWeapons.getNom());
 		println("Arme Secondaire : " + this.CurrentSecondaryWeapons.getNom());
 		println("Casque : " + this.CurrentCasque.getNom());
