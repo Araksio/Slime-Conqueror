@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import game.and.map.*;
 
 /**
- *  cette classe permet la création et la modification du joueur
+ * cette classe comporte les diférentes varibles importante pour le fonctionement du joueur en jeu
  * 
- * @author Pitohui.G7
+ * @author Rémi
  */
 public class Joueur extends Entiter{
 	
