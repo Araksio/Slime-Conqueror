@@ -51,7 +51,7 @@ class LVTest {
 //		assertFalse(l8.checkLVisAvalaible());//erreur ca me donne quand meme true, pourquoi?
 		
 		
-//		LV l9 = new LV(1,0.0,Double.MIN_VALUE-1,0,0); //test aavec une valeur minimal 
+//		LV l9 = new LV(1,0.0,Double.MIN_VALUE-1,0,0); //test aavec une valeur minimal -1
 //		assertTrue(l9.checkLVisAvalaible());// erreur car min_value -1 = la valeur  maximum possible	
 		
 		

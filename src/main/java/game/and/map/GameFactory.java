@@ -553,7 +553,7 @@ import java.sql.*
 			nombreLvlACreer = resultatRequete.getInt(1);
 		}
 			
-			//ce for sert a creer les 5 premiers niveaux - les levels deja passé
+			//ce for sert a creer les niveaux - les niveaux deja passé
 			for(int i = 1 ; i<=nombreLvlACreer; i+=1) {
 
 				//je recupere toutes les infos pour creer chaque lvl
