@@ -511,6 +511,7 @@ public class GameFactory implements EntityFactory {
 			nombreLvlACreer = resultatRequete.getInt(1);
 		}
 
+
 		// ce for sert a creer les 5 premiers niveaux - les levels deja passé
 		for (int i = 1; i <= nombreLvlACreer; i += 1) {
 
@@ -520,6 +521,18 @@ public class GameFactory implements EntityFactory {
 			// obligatoire sinon ne marche pas
 			while (niveauACreer.next()) {
 				niveau = niveauACreer.getInt(2);
+
+			
+			//ce for sert a creer les niveaux - les niveaux deja passé
+			for(int i = 1 ; i<=nombreLvlACreer; i+=1) {
+
+				//je recupere toutes les infos pour creer chaque lvl
+			niveauACreer = demandeRequete.executeQuery("SELECT * FROM `lvl` WHERE idLvl="+i);
+			
+			//obligatoire sinon ne marche pas
+			while(niveauACreer.next()) {
+				niveau = niveauACreer.getInt(2) ;
+
 				xpTotal = (double) niveauACreer.getInt(3);
 				xpActuel = (double) niveauACreer.getInt(4);
 				xpProchain = (double) niveauACreer.getInt(5);
