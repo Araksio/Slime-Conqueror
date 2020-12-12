@@ -7,42 +7,34 @@ package entity;
 */
 
 public class Rarity {
-	
+
 	private int RarityID;
-	private String RarityCall[] = new String [12];
-	private String RarityCallVcourt[] = new String [12];
-	private float RarityBoost[] = new float [12];
-	private double RarityProba[] = new double [12];
-	private double RarityProbaCumul[] = new double [12];
-	private int RankID;
-    private float RankBoost[] = new float [12];
-	private double RankProba[] = new double [12];
+	private String RarityCall[] = new String[12];
+	private String RarityCallVcourt[] = new String[12];
+	private float RarityBoost[] = new float[12];
+	private double RarityProba[] = new double[12];
+	private double RarityProbaCumul[] = new double[12];
 	
-	
-	Rarity(int _RarityID)
-	{
+
+	Rarity(int _RarityID) {
 		RarityID = _RarityID;
 	}
-	
-	Rarity()
-	{
+
+	Rarity() {
 		RarityID = this.GenerateRandomRarityV2();
 	}
-	
-	
-	public int getRarityID()
-	{
+
+	public int getRarityID() {
 		return this.RarityID;
 	}
-	
-	public static void println(String T)
-	{
+
+	public static void println(String T) {
 		System.out.println(T);
-	}	
-	
-	// instanciation et récupération du nom d'une rareté pour l'affichage par exemple
-	public String getRarityCall()
-	{
+	}
+
+	// instanciation et récupération du nom d'une rareté pour l'affichage par
+	// exemple
+	public String getRarityCall() {
 		RarityCall[1] = "Basique";
 		RarityCall[2] = "Commune";
 		RarityCall[3] = "Peu Commune";
@@ -54,13 +46,13 @@ public class Rarity {
 		RarityCall[9] = "Divine";
 		RarityCall[10] = "D�moniaque";
 		RarityCall[11] = "Rainbow";
-		
+
 		return RarityCall[this.RarityID];
 	}
-	
-	// instanciation et récupération du nom abréger d'une rareté pour l'affichage par exemple
-	public String getRarityCallVcourt(int RID)
-	{
+
+	// instanciation et récupération du nom abréger d'une rareté pour l'affichage
+	// par exemple
+	public String getRarityCallVcourt(int RID) {
 		RarityCallVcourt[1] = "B";
 		RarityCallVcourt[2] = "C";
 		RarityCallVcourt[3] = "PC";
@@ -72,13 +64,12 @@ public class Rarity {
 		RarityCallVcourt[9] = "DIV";
 		RarityCallVcourt[10] = "DEM";
 		RarityCallVcourt[11] = "R";
-		
+
 		return RarityCall[RID];
 	}
-	
+
 	// instanciation du facteur de boost de la rareté sur les statistique d'une arme
-	public float getRarityBoost(int RID)
-	{
+	public float getRarityBoost(int RID) {
 		RarityBoost[1] = (float) 0.75;
 		RarityBoost[2] = (float) 1;
 		RarityBoost[3] = (float) 1.2;
@@ -90,13 +81,13 @@ public class Rarity {
 		RarityBoost[9] = (float) 15;
 		RarityBoost[10] = (float) 15;
 		RarityBoost[11] = (float) 50;
-		
+
 		return RarityBoost[RID];
 	}
-	
-	// instanciation de la probabilité d'avoir une rareté pour la generation aléatoire (le total de toute les rareté doit être égale a 1
-	public double getRarityProba(int RID)
-	{
+
+	// instanciation de la probabilité d'avoir une rareté pour la generation
+	// aléatoire (le total de toute les rareté doit être égale a 1
+	public double getRarityProba(int RID) {
 		RarityProba[1] = (double) 0.27;
 		RarityProba[2] = (double) 0.25;
 		RarityProba[3] = (double) 0.20;
@@ -108,13 +99,13 @@ public class Rarity {
 		RarityProba[9] = (double) 0.00002;
 		RarityProba[10] = (double) 0.00002;
 		RarityProba[11] = (double) 0.000005;
-		
+
 		return RarityProba[RID];
 	}
-	
-	// instanciation de la probabilité d'avoir une rareté en commulé (pour simplifier le travail au algorhitme de generation aléatoire d'une rarete)
-	public double getRarityProbaCumul(int RID)
-	{
+
+	// instanciation de la probabilité d'avoir une rareté en commulé (pour
+	// simplifier le travail au algorhitme de generation aléatoire d'une rarete)
+	public double getRarityProbaCumul(int RID) {
 		RarityProbaCumul[1] = (double) 270000;
 		RarityProbaCumul[2] = (double) 520000;
 		RarityProbaCumul[3] = (double) 720000;
@@ -126,65 +117,52 @@ public class Rarity {
 		RarityProbaCumul[9] = (double) 999975;
 		RarityProbaCumul[10] = (double) 999995;
 		RarityProbaCumul[11] = (double) 1000000;
-		
+
 		return RarityProbaCumul[RID];
 	}
-	
-	// fonction qui permet de generer une rareté aléatoire en fonction des statistique prédéfini des rareté au dessus
-	public Rarity GenerateRandomRarity()
-	{
+
+	// fonction qui permet de generer une rareté aléatoire en fonction des
+	// statistique prédéfini des rareté au dessus
+	public Rarity GenerateRandomRarity() {
 		int ValMin = 0;
 		int ValMax = 1000000;
 		Rarity R4;
-		
+
 		double d2 = ((int) ((Math.random() * (ValMax - ValMin) + ValMin + 1)));
-		
-		for(int i = 1; i < 12; i++)
-		{
-			if(d2 <= RarityProbaCumul[i])
-			{
+
+		for (int i = 1; i < 12; i++) {
+			if (d2 <= RarityProbaCumul[i]) {
 				R4 = new Rarity(i);
 				return R4;
-			}
-			else
-			{
-				
+			} else {
+
 			}
 		}
-		
+
 		R4 = new Rarity(11);
 		return R4;
 	}
-	
-	// fonction dev pour la generation de rareté dans des condition spécifique, a ne pas utiliser en jeux
-	public int GenerateRandomRarityV2()
-	{
+
+	// fonction dev pour la generation de rareté dans des condition spécifique, a ne
+	// pas utiliser en jeux
+	public int GenerateRandomRarityV2() {
 		int ValMin = 0;
 		int ValMax = 1000000;
-		
+
 		double d2 = ((double) ((Math.random() * (ValMax - ValMin) + ValMin + 1)));
-		
-		d2 = (double)Math.round(d2);
-			
-		for(int i = 1; i < 12; i++)
-		{
-			
-			if(d2 <= getRarityProbaCumul(i))
-			{
+
+		d2 = (double) Math.round(d2);
+
+		for (int i = 1; i < 12; i++) {
+
+			if (d2 <= getRarityProbaCumul(i)) {
 				return i;
-			}
-			else
-			{
-				
+			} else {
+
 			}
 		}
-		
+
 		return 11;
 	}
-	
-	
-	
-	
-	 
 
 }
