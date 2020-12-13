@@ -1229,7 +1229,7 @@ public void keyPressed(KeyEvent event) throws SQLException
  
  
  /**
-	 * @author Gaël, Louis, Gabriel, Rémi
+	 * @author Gaël, Louis, Rémi
 	 * @see KeyCode.DIGIT1
 	 * @see skillButton1.setOnMouseClicked
 	 * Fonction de lancement de la competence1.
@@ -1267,7 +1267,7 @@ public void keyPressed(KeyEvent event) throws SQLException
  
  
  /**
-	 * @author Rémi, Louis
+	 * @author Rémi, Louis , Gabriel
 	 * @see KeyCode.DIGIT2
 	 * @see skillButton2.setOnMouseClicked
 	 * Fonction de lancement de la competence2.

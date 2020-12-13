@@ -1,8 +1,10 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
-
+/*
+* cette classe permet d'avoir des position prédéfini utilisable sur les entités
+* @author Pitohui.G7
+*
+*/
 public class Pos {
 	
 	private int CurrentMapID;

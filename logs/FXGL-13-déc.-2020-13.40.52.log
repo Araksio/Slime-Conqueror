@@ -1,0 +1,718 @@
+13:38:24.554 [main                     ] DEBUG Logger               - Configured Logger
+13:38:24.584 [main                     ] DEBUG GameApplication      - Logging settings
+Title: Slime Conqueror
+Version: v4.0
+Width: 1280
+Height: 900
+Fullscreen: true
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class GUI.MySceneFactory
+
+13:38:25.434 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+13:38:25.448 [JavaFX Application Thread] INFO  Engine               - FXGL-11.11 (08.09.2020 18.00) on WINDOWS (J:14.0.2 FX:14)
+13:38:25.448 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+13:38:25.449 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 10 version 10.0
+13:38:25.449 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+13:38:25.449 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+13:38:25.449 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+13:38:25.594 [JavaFX Application Thread] DEBUG MainWindow           - Creating a JavaFX scene
+13:38:25.594 [JavaFX Application Thread] DEBUG MainWindow           - Target size > screen size
+13:38:25.665 [JavaFX Application Thread] DEBUG MainWindow           - Target settings size: 1280.0 x 900.0
+13:38:25.666 [JavaFX Application Thread] DEBUG MainWindow           - Scaled scene size:    1203.0 x 863.0
+13:38:25.666 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (0.93984375, 0.9588888888888889)
+13:38:25.667 [JavaFX Application Thread] DEBUG MainWindow           - Set initial scene to StartupScene
+13:38:25.676 [JavaFX Application Thread] DEBUG MainWindow           - Opening main window
+13:38:25.809 [JavaFX Application Thread] DEBUG MainWindow           - Window border size: (14.5999755859375, 37.79998779296875)
+13:38:25.809 [JavaFX Application Thread] DEBUG MainWindow           - Scaled size: 1203.0 x 863.0
+13:38:25.810 [JavaFX Application Thread] DEBUG MainWindow           - Scaled ratio: (0.93984375, 0.93984375)
+13:38:25.810 [JavaFX Application Thread] DEBUG MainWindow           - Scene size: 1203.0 x 863.0
+13:38:25.811 [JavaFX Application Thread] DEBUG MainWindow           - Stage size: 1217.5999755859375 x 900.7999877929688
+13:38:25.824 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+13:38:25.873 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+13:38:25.875 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/css/fxgl_dark.css
+13:38:25.942 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+13:38:26.018 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+13:38:26.107 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=900, physics.ppm=50,0
+13:38:26.109 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1280x900
+13:38:26.635 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+13:38:26.686 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+13:38:26.712 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Users\Araksio\eclipse-workspace\Slime-Conqueror\system\fxgl.bundle
+13:38:26.732 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+13:38:26.734 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+13:38:26.754 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+13:38:26.755 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/VarelaRound-Regular.ttf
+13:38:26.757 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+13:38:26.757 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/languages/english.lang
+13:38:26.815 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0,991 sec
+13:38:26.836 [JavaFX Application Thread] DEBUG Input                - Registered new binding: HideGUI - H
+13:38:26.836 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Up - Z
+13:38:26.836 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Down - S
+13:38:26.837 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Left - Q
+13:38:26.837 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Right - D
+13:38:26.839 [JavaFX Application Thread] DEBUG Input                - Registered new binding: AttackPos - LMB
+13:38:26.840 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/fxgl_icon.png
+13:38:26.888 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/Abel-Regular.ttf
+13:38:26.892 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/lucida_console.ttf
+13:38:26.899 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/fonts/Courier-Prime.ttf
+13:38:26.917 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/ui/cursors/fxgl_default.png
+13:38:26.920 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - P
+13:38:26.920 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+13:38:26.921 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+13:38:26.922 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+C
+13:38:26.924 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+13:38:26.927 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+13:38:26.936 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from StartupScene and adding to FXGLMainMenuDummyScene
+13:38:26.936 [JavaFX Application Thread] DEBUG MainWindow           - StartupScene -> FXGLMainMenuDummyScene
+13:38:26.936 [JavaFX Application Thread] DEBUG MainWindow           - Push state: MyMenu
+13:38:26.937 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+13:38:26.953 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to MyMenu
+13:38:26.953 [JavaFX Application Thread] DEBUG MainWindow           - FXGLMainMenuDummyScene -> MyMenu
+13:38:26.971 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+13:38:27.399 [FXGL Background Thread 2 ] INFO  UpdaterService       - Your current version:  11.11
+13:38:27.401 [FXGL Background Thread 2 ] INFO  UpdaterService       - Latest stable version: dev-SNAPSHOT
+13:38:29.748 [FXGL Background Thread 3 ] DEBUG Engine               - Logging environment variables
+13:38:29.748 [FXGL Background Thread 3 ] DEBUG Engine               - achievements: []
+13:38:29.748 [FXGL Background Thread 3 ] DEBUG Engine               - appIcon: fxgl_icon.png
+13:38:29.748 [FXGL Background Thread 3 ] DEBUG Engine               - applicationMode: DEVELOPER
+13:38:29.749 [FXGL Background Thread 3 ] DEBUG Engine               - cSSList: [fxgl_dark.css]
+13:38:29.749 [FXGL Background Thread 3 ] DEBUG Engine               - configClass: Optional.empty
+13:38:29.749 [FXGL Background Thread 3 ] DEBUG Engine               - credits: []
+13:38:29.749 [FXGL Background Thread 3 ] DEBUG Engine               - devBBoxColorProperty: ObjectProperty [value: 0xff0000ff]
+13:38:29.749 [FXGL Background Thread 3 ] DEBUG Engine               - devEnableDebugCameraProperty: BooleanProperty [value: false]
+13:38:29.750 [FXGL Background Thread 3 ] DEBUG Engine               - devSensorColorProperty: ObjectProperty [value: 0xffff00ff]
+13:38:29.750 [FXGL Background Thread 3 ] DEBUG Engine               - devShowBBoxProperty: BooleanProperty [value: false]
+13:38:29.750 [FXGL Background Thread 3 ] DEBUG Engine               - devShowPositionProperty: BooleanProperty [value: false]
+13:38:29.750 [FXGL Background Thread 3 ] DEBUG Engine               - enabledMenuItems: []
+13:38:29.750 [FXGL Background Thread 3 ] DEBUG Engine               - engineServices: [class com.almasb.fxgl.app.FXGLApplication$GameApplicationService, class com.almasb.fxgl.app.services.FXGLDialogService, class com.almasb.fxgl.app.services.IOTaskExecutorService, class com.almasb.fxgl.event.EventBusService, class com.almasb.fxgl.io.FileSystemService, class com.almasb.fxgl.localization.LocalizationService, class com.almasb.fxgl.app.services.FXGLAssetLoaderService, class com.almasb.fxgl.app.services.SystemBundleService, class com.almasb.fxgl.profile.SaveLoadService, class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider, class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider, class com.almasb.fxgl.audio.AudioPlayer, class com.almasb.fxgl.notification.impl.NotificationServiceProvider, class com.almasb.fxgl.achievement.AchievementService, class com.almasb.fxgl.cutscene.CutsceneService, class com.almasb.fxgl.minigames.MiniGameService, class com.almasb.fxgl.net.NetService, class com.almasb.fxgl.app.services.UpdaterService, class com.almasb.fxgl.dev.DevService]
+13:38:29.750 [FXGL Background Thread 3 ] DEBUG Engine               - fontGame: Abel-Regular.ttf
+13:38:29.750 [FXGL Background Thread 3 ] DEBUG Engine               - fontMono: lucida_console.ttf
+13:38:29.750 [FXGL Background Thread 3 ] DEBUG Engine               - fontText: Courier-Prime.ttf
+13:38:29.750 [FXGL Background Thread 3 ] DEBUG Engine               - fontUI: VarelaRound-Regular.ttf
+13:38:29.751 [FXGL Background Thread 3 ] DEBUG Engine               - fullScreen: BooleanProperty [value: false]
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficulty: MEDIUM
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficultyProperty: ObjectProperty [value: MEDIUM]
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolume: 0.5
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolumeProperty: DoubleProperty [value: 0.5]
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolume: 0.5
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolumeProperty: DoubleProperty [value: 0.5]
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - height: 900
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isAndroid: false
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isBrowser: false
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isClickFeedbackEnabled: false
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isCloseConfirmation: false
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isDesktop: true
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isDeveloperMenuEnabled: false
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isEntityPreloadEnabled: true
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isExperimentalNative: false
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isExperimentalTiledLargeMap: false
+13:38:29.752 [FXGL Background Thread 3 ] DEBUG Engine               - isFileSystemWriteAllowed: true
+13:38:29.754 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenAllowed: true
+13:38:29.754 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenFromStart: false
+13:38:29.754 [FXGL Background Thread 3 ] DEBUG Engine               - isGameMenuEnabled: true
+13:38:29.754 [FXGL Background Thread 3 ] DEBUG Engine               - isIOS: false
+13:38:29.754 [FXGL Background Thread 3 ] DEBUG Engine               - isIntroEnabled: false
+13:38:29.754 [FXGL Background Thread 3 ] DEBUG Engine               - isLinux: false
+13:38:29.754 [FXGL Background Thread 3 ] DEBUG Engine               - isMac: false
+13:38:29.754 [FXGL Background Thread 3 ] DEBUG Engine               - isMainMenuEnabled: true
+13:38:29.754 [FXGL Background Thread 3 ] DEBUG Engine               - isManualResizeEnabled: true
+13:38:29.755 [FXGL Background Thread 3 ] DEBUG Engine               - isMobile: false
+13:38:29.755 [FXGL Background Thread 3 ] DEBUG Engine               - isPreserveResizeRatio: true
+13:38:29.755 [FXGL Background Thread 3 ] DEBUG Engine               - isProfilingEnabled: false
+13:38:29.755 [FXGL Background Thread 3 ] DEBUG Engine               - isSingleStep: false
+13:38:29.755 [FXGL Background Thread 3 ] DEBUG Engine               - isUserProfileEnabled: false
+13:38:29.755 [FXGL Background Thread 3 ] DEBUG Engine               - isWindows: true
+13:38:29.755 [FXGL Background Thread 3 ] DEBUG Engine               - language: ObjectProperty [value: ENGLISH]
+13:38:29.755 [FXGL Background Thread 3 ] DEBUG Engine               - menuKey: ESCAPE
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - notificationViewClass: class com.almasb.fxgl.notification.view.XboxNotificationView
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - pixelsPerMeter: 50.0
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - platform: WINDOWS
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - profileDir: profiles/
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - profileName: StringProperty [value: DEFAULT]
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - randomSeed: -1
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - runtimeInfo: RuntimeInfo(platform=WINDOWS, version=11.11, build=08.09.2020 18.00)
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - saveFileExt: sav
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - sceneFactory: GUI.MySceneFactory@6a1c4f29
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - secondsIn24h: 60
+13:38:29.756 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuBack: menu/back.wav
+13:38:29.757 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuPress: menu/press.wav
+13:38:29.757 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuSelect: menu/select.wav
+13:38:29.757 [FXGL Background Thread 3 ] DEBUG Engine               - soundNotification: core/notification.wav
+13:38:29.757 [FXGL Background Thread 3 ] DEBUG Engine               - stageStyle: DECORATED
+13:38:29.757 [FXGL Background Thread 3 ] DEBUG Engine               - supportedLanguages: [ENGLISH, FRENCH, GERMAN, HUNGARIAN, RUSSIAN]
+13:38:29.757 [FXGL Background Thread 3 ] DEBUG Engine               - title: Slime Conqueror
+13:38:29.757 [FXGL Background Thread 3 ] DEBUG Engine               - urlGithub: https://github.com/AlmasB/FXGL
+13:38:29.758 [FXGL Background Thread 3 ] DEBUG Engine               - urlLeaderboard: http://fxgl-top.herokuapp.com/
+13:38:29.758 [FXGL Background Thread 3 ] DEBUG Engine               - urlPOM: https://raw.githubusercontent.com/AlmasB/FXGL/master/pom.xml
+13:38:29.758 [FXGL Background Thread 3 ] DEBUG Engine               - version: v4.0
+13:38:29.758 [FXGL Background Thread 3 ] DEBUG Engine               - versionCheckDays: 7
+13:38:29.758 [FXGL Background Thread 3 ] DEBUG Engine               - width: 1280
+13:38:29.758 [FXGL Background Thread 3 ] DEBUG Engine               - Logging services
+13:38:29.758 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.FXGLApplication$GameApplicationService
+13:38:29.758 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLDialogService
+13:38:29.758 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.IOTaskExecutorService
+13:38:29.759 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.event.EventBusService
+13:38:29.759 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.io.FileSystemService
+13:38:29.759 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.localization.LocalizationService
+13:38:29.759 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLAssetLoaderService
+13:38:29.759 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.SystemBundleService
+13:38:29.759 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.profile.SaveLoadService
+13:38:29.759 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider
+13:38:29.759 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider
+13:38:29.760 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.audio.AudioPlayer
+13:38:29.760 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.notification.impl.NotificationServiceProvider
+13:38:29.760 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.achievement.AchievementService
+13:38:29.760 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.cutscene.CutsceneService
+13:38:29.760 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.minigames.MiniGameService
+13:38:29.760 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.net.NetService
+13:38:29.760 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.UpdaterService
+13:38:29.761 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.dev.DevService
+13:38:31.028 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+13:38:31.028 [JavaFX Application Thread] DEBUG MainWindow           - Pop state: MyMenu
+13:38:31.029 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+13:38:31.030 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from MyMenu and adding to FXGLMainMenuDummyScene
+13:38:31.031 [JavaFX Application Thread] DEBUG MainWindow           - FXGLMainMenuDummyScene <- MyMenu
+13:38:31.032 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+13:38:31.055 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to FXGLLoadingScene
+13:38:31.056 [JavaFX Application Thread] DEBUG MainWindow           - FXGLMainMenuDummyScene -> FXGLLoadingScene
+13:38:31.056 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+13:38:31.056 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+13:38:31.056 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+13:38:31.057 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+13:38:31.062 [FXGL Background Thread 2 ] DEBUG FXGLApplication      - Initializing game
+13:38:31.111 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/levels/map_level0.txt
+13:38:31.158 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/murGauche.png
+13:38:31.176 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/murHautBas.png
+13:38:31.184 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.185 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.186 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.187 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.188 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.189 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.190 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.192 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.193 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.193 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.195 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.197 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.197 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.198 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.201 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.202 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.204 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.205 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.206 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/murDroite.png
+13:38:31.209 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.216 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/escalier.png
+13:38:31.240 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.240 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.257 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.258 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.276 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.277 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.278 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/lezard.png
+13:38:31.309 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.310 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.311 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.311 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.311 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.312 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.313 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.314 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.316 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.322 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/renard.png
+13:38:31.326 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.326 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.335 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.337 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.342 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/lezard.png
+13:38:31.343 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/bat.png
+13:38:31.356 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.358 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.363 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.364 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.364 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.365 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.366 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.368 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.371 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.372 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.372 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.373 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.373 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.374 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.375 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.375 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.375 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.376 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.376 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.376 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.377 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.377 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.377 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.378 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.389 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.390 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.396 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.397 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.397 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.398 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.398 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.400 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.402 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.404 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.405 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.405 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.406 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.406 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.407 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.408 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.408 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.408 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.409 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.409 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.412 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.412 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.414 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/renard.png
+13:38:31.424 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.425 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.431 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.431 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.432 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.433 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.434 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.436 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.437 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.438 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.439 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.439 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.440 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.440 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.441 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.441 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.441 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.442 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.443 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.444 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.444 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.444 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.444 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.448 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/bat.png
+13:38:31.457 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.458 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.461 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/renard.png
+13:38:31.463 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.464 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.480 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.481 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.488 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.489 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.490 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.490 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.491 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.491 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.492 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.492 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.493 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.493 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.494 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.494 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.494 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.495 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.495 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.496 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.496 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:38:31.559 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/player.png
+13:38:31.600 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:38:31.602 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/murCoinGauche.png
+13:38:31.604 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.604 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.605 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.605 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.605 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.606 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.606 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.606 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.607 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.607 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.607 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.608 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.608 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.608 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.608 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.609 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.609 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.609 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.610 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:38:31.610 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/murCoinDroite.png
+13:38:31.613 [FXGL Background Thread 2 ] DEBUG GameWorld            - Clearing removable entities
+13:38:31.614 [FXGL Background Thread 2 ] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@26f153c1
+13:38:31.945 [FXGL Background Thread 2 ] INFO  FXGLApplication      - Game initialization took: 0,883 sec
+13:38:31.959 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+13:38:32.079 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
+13:38:32.080 [JavaFX Application Thread] DEBUG MainWindow           - FXGLLoadingScene -> GameScene
+13:38:44.822 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/Chest.png
+13:38:47.725 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:38:54.300 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:04.597 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:05.927 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:11.864 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:18.649 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:23.760 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/levels/map_level1.txt
+13:39:23.761 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.762 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.762 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.762 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.763 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.763 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.763 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.763 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.763 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.763 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.763 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.763 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.764 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.764 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.764 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.764 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.764 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.765 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.765 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.765 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.765 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.766 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.766 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/escalier.png
+13:39:23.768 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.768 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.772 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.772 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.776 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.776 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.776 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/renard.png
+13:39:23.778 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.778 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.778 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.779 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.779 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.779 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.779 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.779 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.779 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.780 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/bat.png
+13:39:23.780 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.781 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.783 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.784 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.785 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/bat.png
+13:39:23.785 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/renard.png
+13:39:23.787 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.787 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.790 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.790 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.790 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.790 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.791 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.791 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.792 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.792 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.792 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.792 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.792 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.793 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.793 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.793 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.793 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.794 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.794 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.794 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.794 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.795 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.795 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.795 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.797 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.799 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.800 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.800 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.800 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.801 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.801 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.801 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.801 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.801 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.801 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.801 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.801 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.802 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.802 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.802 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.802 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.802 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.802 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.803 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.803 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.803 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.805 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/lezard.png
+13:39:23.806 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.806 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.808 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.809 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.809 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.809 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.809 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.809 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.809 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.810 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.810 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.810 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.810 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.810 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.810 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.810 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.811 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.811 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.811 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.811 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.811 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.811 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.812 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.812 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/renard.png
+13:39:23.813 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.814 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.815 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/lezard.png
+13:39:23.816 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.816 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.817 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.817 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.817 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.818 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.818 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.818 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.818 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.818 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.818 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.818 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.819 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.819 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.819 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.819 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.819 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.819 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.819 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.820 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.820 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:39:23.837 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/player.png
+13:39:23.853 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:39:23.853 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murCoinGauche.png
+13:39:23.854 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.854 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.854 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.854 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.854 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.854 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.855 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.855 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.855 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.855 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.855 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.855 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.855 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.856 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.856 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.856 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.857 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.857 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.857 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:39:23.857 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murCoinDroite.png
+13:39:23.858 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+13:39:23.886 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@29761d9d
+13:39:34.044 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:35.860 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:42.962 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:53.422 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:54.155 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:39:58.494 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:05.184 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:12.261 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/levels/map_level2.txt
+13:40:12.264 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.264 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.264 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.264 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.264 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.264 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.265 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.265 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.265 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.265 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.265 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.266 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.282 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/player.png
+13:40:12.298 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.299 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.299 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.300 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.300 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.300 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.300 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.300 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.300 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.301 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.301 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.302 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.302 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/renard.png
+13:40:12.303 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.303 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.303 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.303 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.303 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.304 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.304 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.304 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.304 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.305 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.305 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.305 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.306 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.306 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.307 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.307 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.307 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.307 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.309 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/lezard.png
+13:40:12.309 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/lezard.png
+13:40:12.310 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.310 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.312 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.312 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.313 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.313 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.313 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.313 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.313 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.313 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.314 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.314 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.314 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.314 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.314 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.314 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.314 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.314 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.314 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.315 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murCoinDroite.png
+13:40:12.315 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.315 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.315 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.316 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.317 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.318 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.318 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.318 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.319 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.319 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/bat.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/lezard.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.320 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.321 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.321 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.321 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.322 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.322 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.323 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: /assets/textures/FireDragonBoss.png
+13:40:12.327 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.327 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.328 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/renard.png
+13:40:12.328 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/lezard.png
+13:40:12.328 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.328 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.328 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.328 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.328 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.328 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.331 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.332 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.332 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.332 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.332 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.332 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.332 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.332 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.332 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.333 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.333 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.333 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.333 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.333 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.333 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.333 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murGauche.png
+13:40:12.333 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/escalier.png
+13:40:12.334 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/renard.png
+13:40:12.334 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murDroite.png
+13:40:12.334 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murCoinGauche.png
+13:40:12.334 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.334 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.335 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.336 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.336 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.336 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.336 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murHautBas.png
+13:40:12.336 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/murCoinDroite.png
+13:40:12.336 [JavaFX Application Thread] DEBUG GameWorld            - Clearing removable entities
+13:40:12.350 [JavaFX Application Thread] DEBUG GameWorld            - Setting level: com.almasb.fxgl.entity.level.Level@3200fcc2
+13:40:15.809 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:16.717 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:19.551 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:24.832 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:26.763 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:29.462 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:30.396 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:36.306 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:47.089 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from cache: /assets/textures/Chest.png
+13:40:51.146 [JavaFX Application Thread] DEBUG MainWindow           - Push state: DialogSubScene
+13:40:51.146 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+13:40:51.148 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to DialogSubScene
+13:40:51.148 [JavaFX Application Thread] DEBUG MainWindow           - GameScene -> DialogSubScene
+13:40:52.363 [JavaFX Application Thread] DEBUG MainWindow           - Pop state: DialogSubScene
+13:40:52.363 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+13:40:52.364 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from DialogSubScene and adding to GameScene
+13:40:52.364 [JavaFX Application Thread] DEBUG MainWindow           - GameScene <- DialogSubScene
+13:40:52.364 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+13:40:52.364 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+13:40:52.364 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+13:40:52.367 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Users\Araksio\eclipse-workspace\Slime-Conqueror\system\fxgl.bundle
+13:40:52.369 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+13:40:52.369 [JavaFX Application Thread] DEBUG MainWindow           - Closing main window
+13:40:52.386 [JavaFX Application Thread] DEBUG Logger               - Closing Logger

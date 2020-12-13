@@ -4,8 +4,8 @@ import game.and.map.*;
 import other.components.*;
 
 /**
- * cette classe permet la création des entités et possède les mutatateurs
- * @author Rémi, Gabriel
+ * cette classe comporte les différentes variable nécésaire à la création d'entité
+ * @author rémi, gabriel
  *
  */
 

@@ -1,12 +1,10 @@
 package entity;
 
-import game.and.map.*;
-import other.components.*;
 
 /**
  * La classe compétence comporte les diférentes varibles (cooldown,cost...) importante pour leur fonctionement en jeu
  * 
- * @author Rémi(principalement),Gabriel
+ * @author rémi(principalement),gabriel
  *
  */
 

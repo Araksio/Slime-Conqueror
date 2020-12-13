@@ -2,7 +2,7 @@ package entity;
 /**
  * ici sont stocker les différentes compétence du joueur
  * 
- *@author Rémi, Gabriel
+ *@author rémi, gabriel
  */
 public class Competences {
 	

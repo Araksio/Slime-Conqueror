@@ -166,6 +166,42 @@ import java.sql.*
                 .build();
     }
     
+    /**
+	 * quand un caractere 6 est lu dans maplevel, le traduit en inD
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 * @author gabriel 
+	 */    
+
+    @Spawns("6")
+    public Entity newBlock6(SpawnData data) {
+    	var view = texture("inD.png");
+
+        return entityBuilder(data)
+                .type(BLOCK)
+                .viewWithBBox(view)
+                .zIndex(-1)
+                .build();
+    }
+    
+    /**
+	 * quand un caractere 7 est lu dans maplevel, le traduit en inG
+	 * @param data : un caractere de maplevel
+	 * @return un bloc graphique
+	 * @author gabriel 
+	 */    
+
+    @Spawns("7")
+    public Entity newBlock7(SpawnData data) {
+    	var view = texture("inG.png");
+
+        return entityBuilder(data)
+                .type(BLOCK)
+                .viewWithBBox(view)
+                .zIndex(-1)
+                .build();
+    }
+    
 
 	/**
 	 * quand un caractere C est lu dans maplevel, le traduit en coffre
@@ -286,7 +322,7 @@ import java.sql.*
     	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
     	    	Pos Pos1 = new Pos(2,1,0,0,1);
     	    	
-    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.BAT,5.0); 
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.BAT,10.0); 
 
 
     			Component C1;
@@ -342,7 +378,7 @@ import java.sql.*
     	    	Stat StatPlayer = new Stat(HPofMonster,AtkofMonster,DefofMonster,MPfMonster,SPAofMonster,SPDofMonster,SPEofMonster); // HP,ATK,DEF,MP,SPA,SPD,SPE
     	    	Pos Pos1 = new Pos(0,0,0,0,0);
     	    	
-    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.RENARD,5.0); 
+    	    	Monster M1 = new Monster(Nom,Pos1,StatPlayer,GameType.MONSTER,MonsterType.RENARD,15.0); 
 
     	    	@SuppressWarnings("unused")
     			Component C1;
@@ -392,8 +428,8 @@ import java.sql.*
     	        
     	    	String Nom = "Ultimate Fire Dragon";
     	    	
-    	    	int HPofMonster =  150;
-    	    	int AtkofMonster =  2;
+    	    	int HPofMonster =  300;
+    	    	int AtkofMonster =  5;
     	    	int DefofMonster =  2;
     	    	int MPfMonster =  250;
     	    	int SPAofMonster =  15;

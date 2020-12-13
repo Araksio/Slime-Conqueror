@@ -2,9 +2,9 @@ package entity;
 
 
 /**
- * cette classe comporte les diférentes varibles importante pour leur fonctionement en jeu
+ * cette classe comporte les diférentes varibles importante pour le fonctionement en jeu des objets
  * 
- * @author Rémi
+ * @author rémi
  */
 
 public class Item{
